@@ -10,7 +10,12 @@ namespace OpenCV.Net
     public abstract class CvArr : SafeHandleZeroOrMinusOneIsInvalid
     {
         protected CvArr()
-            : base(true)
+            : this(true)
+        {
+        }
+
+        protected CvArr(bool ownsHandle)
+            : base(ownsHandle)
         {
         }
 

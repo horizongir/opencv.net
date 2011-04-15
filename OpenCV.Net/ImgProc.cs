@@ -28,6 +28,9 @@ namespace OpenCV.Net
         public static extern void cvCvtColor(CvArr src, CvArr dst, ColorConversion code);
 
         [DllImport(libName)]
+        public static extern void cvCanny(CvArr image, CvArr edges, double threshold1, double threshold2, int aperture_size);
+
+        [DllImport(libName)]
         public static extern void cvFloodFill(
             CvArr image,
             CvPoint seed_point,
