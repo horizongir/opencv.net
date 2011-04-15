@@ -20,6 +20,9 @@ namespace OpenCV.Net.Native
         public static extern void cvReleaseImage(IntPtr image);
 
         [DllImport(libName)]
+        public static extern void cvReleaseImageHeader(IntPtr image);
+
+        [DllImport(libName)]
         public static extern void cvSetZero(CvArr arr);
 
         [DllImport(libName)]
