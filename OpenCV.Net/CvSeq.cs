@@ -1,0 +1,87 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Microsoft.Win32.SafeHandles;
+using OpenCV.Net.Native;
+
+namespace OpenCV.Net
+{
+    public class CvSeq : SafeHandleZeroOrMinusOneIsInvalid
+    {
+        public CvSeq()
+            : base(true)
+        {
+        }
+
+        public CvSeq HPrev
+        {
+            get
+            {
+                unsafe
+                {
+                    var pSeq = ((_CvSeq*)handle.ToPointer())->h_prev;
+                    if (pSeq == IntPtr.Zero) return null;
+
+                    var seq = new CvSeq();
+                    seq.SetHandle(pSeq);
+                    return seq;
+                }
+            }
+        }
+
+        public CvSeq HNext
+        {
+            get
+            {
+                unsafe
+                {
+                    var pSeq = ((_CvSeq*)handle.ToPointer())->h_next;
+                    if (pSeq == IntPtr.Zero) return null;
+
+                    var seq = new CvSeq();
+                    seq.SetHandle(pSeq);
+                    return seq;
+                }
+            }
+        }
+
+        public CvSeq VPrev
+        {
+            get
+            {
+                unsafe
+                {
+                    var pSeq = ((_CvSeq*)handle.ToPointer())->v_prev;
+                    if (pSeq == IntPtr.Zero) return null;
+
+                    var seq = new CvSeq();
+                    seq.SetHandle(pSeq);
+                    return seq;
+                }
+            }
+        }
+
+        public CvSeq VNext
+        {
+            get
+            {
+                unsafe
+                {
+                    var pSeq = ((_CvSeq*)handle.ToPointer())->v_next;
+                    if (pSeq == IntPtr.Zero) return null;
+
+                    var seq = new CvSeq();
+                    seq.SetHandle(pSeq);
+                    return seq;
+                }
+            }
+        }
+
+        protected override bool ReleaseHandle()
+        {
+            SetHandleAsInvalid();
+            return true;
+        }
+    }
+}
