@@ -47,6 +47,7 @@
     <Compile Include="CvArr.cs" />
     <Compile Include="CvCapture.cs" />
     <Compile Include="CvContour.cs" />
+    <Compile Include="CvHistogram.cs" />
     <Compile Include="CvMemStorage.cs" />
     <Compile Include="CvSeq.cs" />
     <Compile Include="HighGui.cs" />
@@ -56,6 +57,7 @@
     <Compile Include="IplConvKernel.cs" />
     <Compile Include="IplImage.cs" />
     <Compile Include="NamedWindow.cs" />
+    <Compile Include="Native\imgproc.cs" />
     <Compile Include="Native\core.cs" />
     <Compile Include="Native\highgui.cs" />
     <Compile Include="Native\types.cs" />

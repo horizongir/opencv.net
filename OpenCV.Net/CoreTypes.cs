@@ -6,6 +6,8 @@ using System.Runtime.InteropServices;
 
 namespace OpenCV.Net
 {
+    public delegate int CvErrorCallback(int status, string func_name, string err_msg, string file_name, int line);
+
     [StructLayout(LayoutKind.Sequential)]
     public struct CvPoint
     {
@@ -56,5 +58,13 @@ namespace OpenCV.Net
         public int Y;
         public int Width;
         public int Height;
+
+        public CvRect(int x, int y, int width, int height)
+        {
+            X = x;
+            Y = y;
+            Width = width;
+            Height = height;
+        }
     }
 }

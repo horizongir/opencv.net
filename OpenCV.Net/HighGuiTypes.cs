@@ -5,6 +5,13 @@ using System.Text;
 
 namespace OpenCV.Net
 {
+    public enum ConvertImageFlags : int
+    {
+        None = 0,
+        Flip = 1,
+        SwapRB = 2
+    }
+
     public enum LoadImageMode : int
     {
         /* 8bit, color or not */

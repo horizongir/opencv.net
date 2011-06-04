@@ -9,6 +9,8 @@ namespace OpenCV.Net
 {
     public abstract class CvArr : SafeHandleZeroOrMinusOneIsInvalid
     {
+        public static readonly CvArr Null = new CvArrNull();
+
         protected CvArr()
             : this(true)
         {
@@ -27,6 +29,16 @@ namespace OpenCV.Net
         public void SetData(IntPtr data, int step)
         {
             core.cvSetData(this, data, step);
+        }
+
+        class CvArrNull : CvArr
+        {
+            public CvArrNull() : base(false) { }
+
+            protected override bool ReleaseHandle()
+            {
+                return false;
+            }
         }
     }
 }

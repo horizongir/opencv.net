@@ -3,12 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Runtime.InteropServices;
+using OpenCV.Net.Native;
 
 namespace OpenCV.Net
 {
     public static class ImgProc
     {
         const string libName = "opencv_imgproc220";
+
+        public static void cvCalcHist(IplImage[] images, CvHistogram hist)
+        {
+            cvCalcHist(images, hist, 0, CvArr.Null);
+        }
+
+        public static void cvCalcHist(IplImage[] images, CvHistogram hist, int accumulate, CvArr mask)
+        {
+            var pImages = new IntPtr[images.Length];
+            for (int i = 0; i < images.Length; i++)
+            {
+                pImages[i] = images[i].DangerousGetHandle();
+            }
+
+            imgproc.cvCalcArrHist(pImages, hist, accumulate, mask);
+        }
 
         [DllImport(libName)]
         public static extern void cvDilate(CvArr src, CvArr dst, IplConvKernel element, int iterations);
@@ -40,6 +57,9 @@ namespace OpenCV.Net
             ref CvConnectedComp comp, //=NULL
             int flags, // = 4
             CvArr mask); // = null
+
+        [DllImport(libName)]
+        public static extern void cvUpdateMotionHistory(CvArr silhouette, CvArr mhi, double timestamp, double duration);
 
         [DllImport(libName)]
         public static extern int cvFindContours(
