@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 
 namespace OpenCV.Net.Native
 {
-    class highgui
+    static class highgui
     {
         const string libName = "opencv_highgui220";
 

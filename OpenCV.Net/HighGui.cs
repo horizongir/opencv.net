@@ -11,6 +11,9 @@ namespace OpenCV.Net
         const string libName = "opencv_highgui220";
 
         [DllImport(libName)]
+        public static extern void cvConvertImage(CvArr src, CvArr dst, ConvertImageFlags flags);
+
+        [DllImport(libName)]
         public static extern int cvWaitKey(int delay);
 
         [DllImport(libName, CharSet = CharSet.Ansi)]

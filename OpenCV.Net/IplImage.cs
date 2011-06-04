@@ -13,6 +13,7 @@ namespace OpenCV.Net
 
         internal IplImage()
         {
+            ownsData = true;
         }
 
         internal IplImage(IntPtr handle, bool ownsHandle)
@@ -26,6 +27,8 @@ namespace OpenCV.Net
         {
             var pImage = core.cvCreateImage(size, depth, channels);
             SetHandle(pImage);
+
+            GC.AddMemoryPressure(WidthStep * Height * depth / 8);
             ownsData = true;
         }
 
@@ -36,6 +39,34 @@ namespace OpenCV.Net
 
             SetData(data, WidthStep);
             ownsData = false;
+        }
+
+        public CvRect ImageROI
+        {
+            get { return core.cvGetImageROI(this); }
+            set { core.cvSetImageROI(this, value); }
+        }
+
+        public int Width
+        {
+            get
+            {
+                unsafe
+                {
+                    return ((_IplImage*)handle.ToPointer())->width;
+                }
+            }
+        }
+
+        public int Height
+        {
+            get
+            {
+                unsafe
+                {
+                    return ((_IplImage*)handle.ToPointer())->height;
+                }
+            }
         }
 
         public CvSize Size
@@ -61,6 +92,28 @@ namespace OpenCV.Net
             }
         }
 
+        public int Depth
+        {
+            get
+            {
+                unsafe
+                {
+                    return ((_IplImage*)handle.ToPointer())->depth;
+                }
+            }
+        }
+
+        public int NumChannels
+        {
+            get
+            {
+                unsafe
+                {
+                    return ((_IplImage*)handle.ToPointer())->nChannels;
+                }
+            }
+        }
+
         public IntPtr ImageData
         {
             get
@@ -72,12 +125,21 @@ namespace OpenCV.Net
             }
         }
 
+        public void ResetImageROI()
+        {
+            core.cvResetImageROI(this);
+        }
+
         protected override bool ReleaseHandle()
         {
             var pHandle = GCHandle.Alloc(handle, GCHandleType.Pinned);
             try
             {
-                if (ownsData) core.cvReleaseImage(pHandle.AddrOfPinnedObject());
+                if (ownsData)
+                {
+                    GC.RemoveMemoryPressure(WidthStep * Height * Depth / 8);
+                    core.cvReleaseImage(pHandle.AddrOfPinnedObject());
+                }
                 else core.cvReleaseImageHeader(pHandle.AddrOfPinnedObject());
                 return true;
             }

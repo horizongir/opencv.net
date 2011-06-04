@@ -6,6 +6,13 @@ using System.Runtime.InteropServices;
 
 namespace OpenCV.Net
 {
+    public enum HistogramType : int
+    {
+        Array = 0,
+        Sparse = 1,
+        Tree = Sparse
+    }
+
     [StructLayout(LayoutKind.Sequential)]
     public struct CvConnectedComp
     {

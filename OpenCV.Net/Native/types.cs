@@ -46,6 +46,16 @@ namespace OpenCV.Net.Native
     }
 
     [StructLayout(LayoutKind.Sequential)]
+    unsafe struct _CvHistogram
+    {
+        public int type;
+        public IntPtr bins;
+        public fixed float thresh[32 * 2]; /* for uniform histograms */
+        public IntPtr thresh2; /* for non-uniform histograms */
+        public IntPtr mat; /* embedded matrix header for array histograms */
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
     struct _CvSeq
     {
         public int flags; /* micsellaneous flags */
