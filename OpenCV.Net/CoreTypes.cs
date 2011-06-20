@@ -19,6 +19,25 @@ namespace OpenCV.Net
             X = x;
             Y = y;
         }
+
+        public CvPoint(CvPoint2D32f point)
+        {
+            X = (int)point.X;
+            Y = (int)point.Y;
+        }
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct CvPoint2D32f
+    {
+        public float X;
+        public float Y;
+
+        public CvPoint2D32f(float x, float y)
+        {
+            X = x;
+            Y = y;
+        }
     }
 
     [StructLayout(LayoutKind.Sequential)]
@@ -49,6 +68,65 @@ namespace OpenCV.Net
             Val2 = val2;
             Val3 = val3;
         }
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct CvTermCriteria
+    {
+        public TermCriteriaType Type;
+        public int MaxIter;
+        public double Epsilon;
+
+        public CvTermCriteria(TermCriteriaType type, int maxIter, int epsilon)
+        {
+            Type = type;
+            MaxIter = maxIter;
+            Epsilon = epsilon;
+        }
+    }
+
+    public enum CvMatDepth : int
+    {
+        CV_8U = 0,
+        CV_8S = 1,
+        CV_16U = 2,
+        CV_16S = 3,
+        CV_32S = 4,
+        CV_32F = 5,
+        CV_64F = 6
+    }
+
+    public enum FlipMode : int
+    {
+        Vertical = 0,
+        Horizontal = 1,
+        Both = -1
+    }
+
+    public enum TermCriteriaType : int
+    {
+        None = 0,
+        MaxIter = 1,
+        Epsilon = 2
+    }
+
+    [Flags]
+    public enum CovarianceFlags : int
+    {
+        Scrambled = 0,
+        Normal = 1,
+        UseAvg = 2,
+        Scale = 4,
+        Rows = 8,
+        Cols = 16
+    }
+
+    [Flags]
+    public enum PcaFlags : int
+    {
+        DataAsRow = 0,
+        DataAsCol = 1,
+        UseAvg = 2
     }
 
     [StructLayout(LayoutKind.Sequential)]

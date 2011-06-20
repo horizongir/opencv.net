@@ -31,6 +31,9 @@ namespace OpenCV.Net.Native
         [DllImport(libName, CharSet = CharSet.Ansi)]
         public static extern void cvResizeWindow(string name, int width, int height);
 
+        [DllImport(libName, CharSet = CharSet.Ansi)]
+        public static extern void cvSetMouseCallback(string windowName, [MarshalAs(UnmanagedType.FunctionPtr)]CvMouseCallback onMouse, IntPtr param);
+
         [DllImport(libName)]
         public static extern CvCapture cvCreateCameraCapture(int index);
 
