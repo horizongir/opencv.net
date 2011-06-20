@@ -11,6 +11,15 @@ namespace OpenCV.Net.Native
         const string libName = "opencv_core220";
 
         [DllImport(libName)]
+        public static extern IntPtr cvCreateMat(int rows, int cols, int type);
+
+        [DllImport(libName)]
+        public static extern void cvReleaseMat(IntPtr mat);
+
+        [DllImport(libName)]
+        public static extern void cvCalcCovarMatrix(IntPtr[] vects, int count, CvArr covMat, CvArr avg, CovarianceFlags flags);
+
+        [DllImport(libName)]
         public static extern CvRect cvGetImageROI(IplImage image);
 
         [DllImport(libName)]

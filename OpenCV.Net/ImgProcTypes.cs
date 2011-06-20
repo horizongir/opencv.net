@@ -6,6 +6,28 @@ using System.Runtime.InteropServices;
 
 namespace OpenCV.Net
 {
+    [Flags]
+    public enum SubPixelInterpolation : int
+    {
+        NearestNeighbor = 0,
+        Linear = 1,
+        Cubic = 2,
+        Area = 3,
+        Lanczos4 = 4
+    }
+
+    [Flags]
+    public enum WarpFlags : int
+    {
+        NearestNeighbor = 0,
+        Linear = 1,
+        Cubic = 2,
+        Area = 3,
+        Lanczos4 = 4,
+        FillOutliers = 8,
+        InverseMap = 16
+    }
+
     public enum HistogramType : int
     {
         Array = 0,

@@ -11,6 +11,18 @@ namespace OpenCV.Net
     {
         const string libName = "opencv_imgproc220";
 
+        [DllImport(libName)]
+        public static extern CvMat cvGetPerspectiveTransform(CvPoint2D32f[] src, CvPoint2D32f[] dst, CvMat map_matrix);
+
+        [DllImport(libName)]
+        public static extern void cvWarpPerspective(CvArr src, CvArr dst, CvMat map_matrix, WarpFlags flags, CvScalar fillval);
+
+        [DllImport(libName)]
+        public static extern void cvAcc(CvArr image, CvArr sum, CvArr mask);
+
+        [DllImport(libName)]
+        public static extern void cvRunningAvg(CvArr image, CvArr acc, double alpha, CvArr mask);
+
         public static void cvCalcHist(IplImage[] images, CvHistogram hist)
         {
             cvCalcHist(images, hist, 0, CvArr.Null);

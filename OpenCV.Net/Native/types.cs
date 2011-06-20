@@ -7,6 +7,18 @@ using System.Runtime.InteropServices;
 namespace OpenCV.Net.Native
 {
     [StructLayout(LayoutKind.Sequential)]
+    struct _CvMat
+    {
+        public int type;
+        public int step;
+        public IntPtr refcount;
+        public int hdr_refcount;
+        public IntPtr data;
+        public int rows;
+        public int cols;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
     struct _IplImage
     {
         public int nSize;

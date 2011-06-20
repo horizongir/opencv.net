@@ -5,6 +5,33 @@ using System.Text;
 
 namespace OpenCV.Net
 {
+    public delegate void CvMouseCallback(MouseEvent evt, int x, int y, MouseEventFlags flags, IntPtr param);
+
+    public enum MouseEvent : int
+    {
+        CV_EVENT_MOUSEMOVE = 0,
+        CV_EVENT_LBUTTONDOWN = 1,
+        CV_EVENT_RBUTTONDOWN = 2,
+        CV_EVENT_MBUTTONDOWN = 3,
+        CV_EVENT_LBUTTONUP = 4,
+        CV_EVENT_RBUTTONUP = 5,
+        CV_EVENT_MBUTTONUP = 6,
+        CV_EVENT_LBUTTONDBLCLK = 7,
+        CV_EVENT_RBUTTONDBLCLK = 8,
+        CV_EVENT_MBUTTONDBLCLK = 9
+    }
+
+    [Flags]
+    public enum MouseEventFlags : int
+    {
+        CV_EVENT_FLAG_LBUTTON = 1,
+        CV_EVENT_FLAG_RBUTTON = 2,
+        CV_EVENT_FLAG_MBUTTON = 4,
+        CV_EVENT_FLAG_CTRLKEY = 8,
+        CV_EVENT_FLAG_SHIFTKEY = 16,
+        CV_EVENT_FLAG_ALTKEY = 32
+    }
+
     public enum ConvertImageFlags : int
     {
         None = 0,

@@ -10,6 +10,7 @@ namespace OpenCV.Net
     {
         bool disposed;
         readonly string name;
+        CvMouseCallback mouseCallback;
 
         public NamedWindow(string name)
             : this(name, WindowFlags.AUTOSIZE | WindowFlags.KEEPRATIO | WindowFlags.GUI_EXPANDED)
@@ -50,6 +51,12 @@ namespace OpenCV.Net
         public void ResizeWindow(int width, int height)
         {
             highgui.cvResizeWindow(name, width, height);
+        }
+
+        public void SetMouseCallback(CvMouseCallback onMouse)
+        {
+            mouseCallback = onMouse;
+            highgui.cvSetMouseCallback(name, onMouse, IntPtr.Zero);
         }
 
         public static void DestroyAllWindows()
