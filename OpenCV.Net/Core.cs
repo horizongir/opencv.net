@@ -44,6 +44,9 @@ namespace OpenCV.Net
         public static extern void cvAnd(CvArr src1, CvArr src2, CvArr dst, CvArr mask);
 
         [DllImport(libName)]
+        public static extern CvScalar cvAvg(CvArr arr, CvArr mask);
+
+        [DllImport(libName)]
         public static extern void cvCopy(CvArr src, CvArr dst, CvArr mask);
 
         [DllImport(libName)]
@@ -66,6 +69,16 @@ namespace OpenCV.Net
 
         [DllImport(libName)]
         public static extern void cvCmpS(CvArr src, double value, CvArr dst, int cmp_op);
+
+        [DllImport(libName)]
+        public static extern void cvCircle(
+            CvArr img,
+            CvPoint center,
+            int radius,
+            CvScalar color,
+            int thickness, //=1
+            int lineType, //=8
+            int shift); //=0
 
         [DllImport(libName)]
         public static extern void cvDrawContours(
