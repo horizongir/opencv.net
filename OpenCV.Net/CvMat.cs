@@ -9,6 +9,8 @@ namespace OpenCV.Net
 {
     public class CvMat : CvArr
     {
+        public new static readonly CvMat Null = new CvMatNull();
+
         public const int MaxChannels = 512;
         public const int ChannelShift = 3;
         public const int DepthMax = 1 << ChannelShift;
@@ -16,6 +18,12 @@ namespace OpenCV.Net
 
         internal CvMat()
         {
+        }
+
+        internal CvMat(IntPtr handle)
+            : base(false)
+        {
+            SetHandle(handle);
         }
 
         public CvMat(int rows, int cols, CvMatDepth depth, int channels)
@@ -67,6 +75,16 @@ namespace OpenCV.Net
                 return true;
             }
             finally { pHandle.Free(); }
+        }
+
+        class CvMatNull : CvMat
+        {
+            public CvMatNull() : base(IntPtr.Zero) { }
+
+            protected override bool ReleaseHandle()
+            {
+                return false;
+            }
         }
     }
 }
