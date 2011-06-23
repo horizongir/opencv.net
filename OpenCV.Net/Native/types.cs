@@ -68,6 +68,49 @@ namespace OpenCV.Net.Native
     }
 
     [StructLayout(LayoutKind.Sequential)]
+    unsafe struct _CvKalman
+    {
+        public int MP;                     /* number of measurement vector dimensions */
+        public int DP;                     /* number of state vector dimensions */
+        public int CP;                     /* number of control vector dimensions */
+
+        /* backward compatibility fields */
+        public float* PosterState;         /* =state_pre->data.fl */
+        public float* PriorState;          /* =state_post->data.fl */
+        public float* DynamMatr;           /* =transition_matrix->data.fl */
+        public float* MeasurementMatr;     /* =measurement_matrix->data.fl */
+        public float* MNCovariance;        /* =measurement_noise_cov->data.fl */
+        public float* PNCovariance;        /* =process_noise_cov->data.fl */
+        public float* KalmGainMatr;        /* =gain->data.fl */
+        public float* PriorErrorCovariance;/* =error_cov_pre->data.fl */
+        public float* PosterErrorCovariance;/* =error_cov_post->data.fl */
+        public float* Temp1;               /* temp1->data.fl */
+        public float* Temp2;               /* temp2->data.fl */
+
+        public IntPtr state_pre;           /* predicted state (x'(k)):
+                                             x(k)=A*x(k-1)+B*u(k) */
+        public IntPtr state_post;          /* corrected state (x(k)):
+                                            x(k)=x'(k)+K(k)*(z(k)-H*x'(k)) */
+        public IntPtr transition_matrix;   /* state transition matrix (A) */
+        public IntPtr control_matrix;      /* control matrix (B)
+                                            (it is not used if there is no control)*/
+        public IntPtr measurement_matrix;  /* measurement matrix (H) */
+        public IntPtr process_noise_cov;   /* process noise covariance matrix (Q) */
+        public IntPtr measurement_noise_cov; /* measurement noise covariance matrix (R) */
+        public IntPtr error_cov_pre;       /* priori error estimate covariance matrix (P'(k)):
+                                             P'(k)=A*P(k-1)*At + Q)*/
+        public IntPtr gain;                /* Kalman gain matrix (K(k)):
+                                             K(k)=P'(k)*Ht*inv(H*P'(k)*Ht+R)*/
+        public IntPtr error_cov_post;      /* posteriori error estimate covariance matrix (P(k)):
+                                             P(k)=(I-K(k)*H)*P'(k) */
+        public IntPtr temp1;               /* temporary matrices */
+        public IntPtr temp2;
+        public IntPtr temp3;
+        public IntPtr temp4;
+        public IntPtr temp5;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
     struct _CvSeq
     {
         public int flags; /* micsellaneous flags */
