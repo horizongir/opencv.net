@@ -71,6 +71,11 @@ namespace OpenCV.Net
         LINK_RUNS = 5
     }
 
+    public enum PolygonApproximation : int
+    {
+        CV_POLY_APPROX_DP = 0
+    }
+
     public enum AdaptiveThresholdMethod : int
     {
         MEAN_C = 0,

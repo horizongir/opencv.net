@@ -59,6 +59,11 @@ namespace OpenCV.Net
             highgui.cvSetMouseCallback(name, onMouse, IntPtr.Zero);
         }
 
+        public Trackbar CreateTrackbar(string name, int value, int count)
+        {
+            return new Trackbar(name, this, value, count);
+        }
+
         public static void DestroyAllWindows()
         {
             highgui.cvDestroyAllWindows();

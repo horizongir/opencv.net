@@ -77,10 +77,19 @@ namespace OpenCV.Net
         public static extern void cvUpdateMotionHistory(CvArr silhouette, CvArr mhi, double timestamp, double duration);
 
         [DllImport(libName)]
+        public static extern CvSeq cvApproxPoly(
+            CvSeq src_seq,
+            int header_size,
+            CvMemStorage storage,
+            PolygonApproximation method,
+            double parameter,
+            int parameter2);
+
+        [DllImport(libName)]
         public static extern int cvFindContours(
             CvArr image,
             CvMemStorage storage,
-            out CvContour first_contour,
+            out CvSeq first_contour,
             int header_size, //=sizeof(CvContour),
             ContourRetrieval mode, //=CV_RETR_LIST,
             ContourApproximation method, //=CV_CHAIN_APPROX_SIMPLE,

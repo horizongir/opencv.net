@@ -7,6 +7,8 @@ namespace OpenCV.Net
 {
     public delegate void CvMouseCallback(MouseEvent evt, int x, int y, MouseEventFlags flags, IntPtr param);
 
+    public delegate void CvTrackbarCallback(int pos);
+
     public enum MouseEvent : int
     {
         CV_EVENT_MOUSEMOVE = 0,

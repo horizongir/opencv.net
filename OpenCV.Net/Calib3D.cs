@@ -19,5 +19,11 @@ namespace OpenCV.Net
             CvMat rotation_vector,
             CvMat translation_vector,
             int use_extrinsic_guess);
+
+        [DllImport(libName)]
+        public static extern int cvRodrigues2(CvMat src, CvMat dst, CvMat jacobian);
+
+        [DllImport(libName)]
+        public static extern void cvUndistort2(CvArr src, CvArr dst, CvMat cameraMatrix, CvMat distCoeffs, CvMat newCameraMatrix);
     }
 }

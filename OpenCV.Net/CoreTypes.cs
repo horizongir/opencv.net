@@ -41,6 +41,21 @@ namespace OpenCV.Net
     }
 
     [StructLayout(LayoutKind.Sequential)]
+    public struct CvPoint3D32f
+    {
+        public float X;
+        public float Y;
+        public float Z;
+
+        public CvPoint3D32f(float x, float y, float z)
+        {
+            X = x;
+            Y = y;
+            Z = z;
+        }
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
     public struct CvSize
     {
         public int Width;
@@ -67,6 +82,21 @@ namespace OpenCV.Net
             Val1 = val1;
             Val2 = val2;
             Val3 = val3;
+        }
+
+        public static CvScalar Real(double val0)
+        {
+            return new CvScalar(val0, 0, 0, 0);
+        }
+
+        public static CvScalar All(double val0123)
+        {
+            return new CvScalar(val0123, val0123, val0123, val0123);
+        }
+
+        public static CvScalar Rgb(double r, double g, double b)
+        {
+            return new CvScalar(b, g, r, 0);
         }
     }
 
