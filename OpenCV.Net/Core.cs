@@ -92,6 +92,19 @@ namespace OpenCV.Net
             CvPoint offset);//= CvPoint(0,0)
 
         [DllImport(libName)]
+        public static extern void cvEllipse(
+            CvArr img,
+            CvPoint center,
+            CvSize axes,
+            double angle,
+            double start_angle,
+            double end_angle,
+            CvScalar color,
+            int thickness, // = 1
+            int lineType, // = 8
+            int shift); // = 0
+
+        [DllImport(libName)]
         public static extern void cvLine(
             CvArr img,
             CvPoint pt1,
