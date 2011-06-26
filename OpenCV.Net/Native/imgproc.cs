@@ -24,5 +24,13 @@ namespace OpenCV.Net.Native
 
         [DllImport(libName)]
         public static extern void cvReleaseHist(IntPtr capture);
+
+        [DllImport(libName)]
+        public static extern IntPtr cvCreateStructuringElementEx(
+            int cols, int rows, int anchor_x, int anchor_y,
+            StructuringElementShape shape, int[] values);
+
+        [DllImport(libName)]
+        public static extern void cvReleaseStructuringElement(IntPtr element);
     }
 }

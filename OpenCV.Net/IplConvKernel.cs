@@ -12,9 +12,21 @@ namespace OpenCV.Net
     {
         public static readonly IplConvKernel Null = new IplConvKernel();
 
-        public IplConvKernel()
+        internal IplConvKernel()
             : base(true)
         {
+        }
+
+        public IplConvKernel(int cols, int rows, int anchorX, int anchorY, StructuringElementShape shape)
+            : this(cols, rows, anchorX, anchorY, shape, null)
+        {
+        }
+
+        public IplConvKernel(int cols, int rows, int anchorX, int anchorY, StructuringElementShape shape, int[] values)
+            : base(true)
+        {
+            var pKernel = imgproc.cvCreateStructuringElementEx(cols, rows, anchorX, anchorY, shape, values);
+            SetHandle(pKernel);
         }
 
         protected override bool ReleaseHandle()
@@ -22,7 +34,7 @@ namespace OpenCV.Net
             var pHandle = GCHandle.Alloc(handle, GCHandleType.Pinned);
             try
             {
-                core.cvReleaseStructuringElement(pHandle.AddrOfPinnedObject());
+                imgproc.cvReleaseStructuringElement(pHandle.AddrOfPinnedObject());
                 return true;
             }
             finally { pHandle.Free(); }

@@ -9,6 +9,7 @@ namespace SampleContours
     class Program
     {
         const int w = 500;
+        static int levels = 3;
         static CvSeq contours;
         static NamedWindow contoursWindow;
 
@@ -73,10 +74,9 @@ namespace SampleContours
             contours = ImgProc.cvApproxPoly(contours, CvContour.HeaderSize, storage, PolygonApproximation.CV_POLY_APPROX_DP, 3, 1);
 
             contoursWindow = new NamedWindow("contours", WindowFlags.AUTOSIZE);
-            var trackbar = contoursWindow.CreateTrackbar("levels+3", 3, 7);
-            trackbar.Changed += OnTrackbar;
+            contoursWindow.CreateTrackbar("levels+3", ref levels, 7, OnTrackbar);
 
-            OnTrackbar(trackbar.Position);
+            OnTrackbar(levels);
             HighGui.cvWaitKey(0);
             storage.Close();
             img.Close();
