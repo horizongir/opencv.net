@@ -125,6 +125,11 @@ namespace OpenCV.Net
             }
         }
 
+        public IplImage Clone()
+        {
+            return core.cvCloneImage(this);
+        }
+
         public void ResetImageROI()
         {
             core.cvResetImageROI(this);

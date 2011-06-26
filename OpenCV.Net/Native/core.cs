@@ -20,6 +20,9 @@ namespace OpenCV.Net.Native
         public static extern void cvCalcCovarMatrix(IntPtr[] vects, int count, CvArr covMat, CvArr avg, CovarianceFlags flags);
 
         [DllImport(libName)]
+        public static extern IplImage cvCloneImage(IplImage image);
+
+        [DllImport(libName)]
         public static extern CvRect cvGetImageROI(IplImage image);
 
         [DllImport(libName)]
@@ -63,8 +66,5 @@ namespace OpenCV.Net.Native
 
         [DllImport(libName)]
         public static extern void cvClearMemStorage(CvMemStorage storage);
-
-        [DllImport(libName)]
-        public static extern void cvReleaseStructuringElement(IntPtr element);
     }
 }

@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 
 namespace OpenCV.Net
 {
-    public class PositObject : SafeHandleZeroOrMinusOneIsInvalid
+    public class CvPositObject : SafeHandleZeroOrMinusOneIsInvalid
     {
-        public PositObject(CvPoint3D32f[] points)
+        public CvPositObject(CvPoint3D32f[] points)
             : base(true)
         {
             var pPosit = calib3d.cvCreatePOSITObject(points, points.Length);

@@ -6,6 +6,14 @@ using System.Runtime.InteropServices;
 
 namespace OpenCV.Net
 {
+    public enum StructuringElementShape : int
+    {
+        Rectangle = 0,
+        Cross = 1,
+        Ellipse = 2,
+        Custom = 100
+    }
+
     [Flags]
     public enum SubPixelInterpolation : int
     {
