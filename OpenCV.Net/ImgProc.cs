@@ -60,6 +60,9 @@ namespace OpenCV.Net
         public static extern void cvCanny(CvArr image, CvArr edges, double threshold1, double threshold2, int aperture_size);
 
         [DllImport(libName)]
+        public static extern void cvFindCornerSubPix(CvArr image, CvPoint2D32f[] corners, int count, CvSize win, CvSize zero_zone, CvTermCriteria criteria);
+
+        [DllImport(libName)]
         public static extern void cvMoments(CvArr arr, out CvMoments moments, int binary);
 
         [DllImport(libName)]
