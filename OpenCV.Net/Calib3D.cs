@@ -11,6 +11,9 @@ namespace OpenCV.Net
         const string libName = "opencv_calib3d220";
 
         [DllImport(libName)]
+        public static extern int cvFindChessboardCorners(CvArr image, CvSize patternSize, CvPoint2D32f[] corners, out int cornerCount, ChessboardCalibrationFlags flags);
+
+        [DllImport(libName)]
         public static extern void cvFindExtrinsicCameraParams2(
             CvMat object_points,
             CvMat image_points,

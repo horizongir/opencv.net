@@ -107,7 +107,7 @@ namespace OpenCV.Net
         public int MaxIter;
         public double Epsilon;
 
-        public CvTermCriteria(TermCriteriaType type, int maxIter, int epsilon)
+        public CvTermCriteria(TermCriteriaType type, int maxIter, double epsilon)
         {
             Type = type;
             MaxIter = maxIter;
