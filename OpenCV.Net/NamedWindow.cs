@@ -11,6 +11,7 @@ namespace OpenCV.Net
         bool disposed;
         readonly string name;
         CvMouseCallback mouseCallback;
+        List<CvTrackbarCallback> trackbars;
 
         public NamedWindow(string name)
             : this(name, WindowFlags.AUTOSIZE | WindowFlags.KEEPRATIO | WindowFlags.GUI_EXPANDED)
@@ -61,6 +62,12 @@ namespace OpenCV.Net
 
         public void CreateTrackbar(string name, ref int value, int count, CvTrackbarCallback onChanged)
         {
+            if (trackbars == null)
+            {
+                trackbars = new List<CvTrackbarCallback>();
+            }
+
+            trackbars.Add(onChanged);
             highgui.cvCreateTrackbar(name, Name, ref value, count, onChanged);
         }
 
