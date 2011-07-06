@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Win32.SafeHandles;
 using OpenCV.Net.Native;
+using System.Runtime.InteropServices;
 
 namespace OpenCV.Net
 {
@@ -12,6 +13,22 @@ namespace OpenCV.Net
         public CvSeq()
             : base(true)
         {
+        }
+
+        public IntPtr GetElement(int index)
+        {
+            return core.cvGetSeqElem(this, index);
+        }
+
+        public int Total
+        {
+            get
+            {
+                unsafe
+                {
+                    return ((_CvSeq*)handle.ToPointer())->total;
+                }
+            }
         }
 
         public CvSeq HPrev

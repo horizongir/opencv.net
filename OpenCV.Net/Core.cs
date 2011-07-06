@@ -9,7 +9,7 @@ namespace OpenCV.Net
 {
     public static class Core
     {
-        const string libName = "opencv_core220";
+        const string libName = "opencv_core230";
 
         public static void cvCalcCovarMatrix(CvArr[] vects, CvArr covMat, CvArr avg, CovarianceFlags flags)
         {
