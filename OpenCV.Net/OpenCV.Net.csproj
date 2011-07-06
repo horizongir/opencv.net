@@ -54,6 +54,8 @@
     <Compile Include="CvMat.cs" />
     <Compile Include="CvMemStorage.cs" />
     <Compile Include="CvSeq.cs" />
+    <Compile Include="Features2D.cs" />
+    <Compile Include="Features2DTypes.cs" />
     <Compile Include="HighGui.cs" />
     <Compile Include="HighGuiTypes.cs" />
     <Compile Include="ImgProc.cs" />

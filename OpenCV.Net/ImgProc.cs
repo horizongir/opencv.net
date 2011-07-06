@@ -9,7 +9,7 @@ namespace OpenCV.Net
 {
     public static class ImgProc
     {
-        const string libName = "opencv_imgproc220";
+        const string libName = "opencv_imgproc230";
 
         [DllImport(libName)]
         public static extern CvMat cvGetPerspectiveTransform(CvPoint2D32f[] src, CvPoint2D32f[] dst, CvMat map_matrix);
