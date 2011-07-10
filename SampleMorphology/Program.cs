@@ -59,7 +59,7 @@ namespace SampleMorphology
         static void Main(string[] args)
         {
             string filename = args.Length == 1 ? args[0] : (string)"baboon.jpg";
-            if ((src = HighGui.cvLoadImage(filename, LoadImageMode.Color)) == null)
+            if ((src = HighGui.cvLoadImage(filename, LoadImageMode.Color)).IsInvalid)
                 return;
 
             dst = src.Clone();
