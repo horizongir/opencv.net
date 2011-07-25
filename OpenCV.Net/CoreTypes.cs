@@ -9,6 +9,20 @@ namespace OpenCV.Net
     public delegate int CvErrorCallback(int status, string func_name, string err_msg, string file_name, int line);
 
     [StructLayout(LayoutKind.Sequential)]
+    public struct CvRNG
+    {
+        ulong state;
+
+        public CvRNG(long seed)
+        {
+            unchecked
+            {
+                state = seed > 0 ? (ulong)seed : (ulong)(long)-1;
+            }
+        }
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
     public struct CvPoint
     {
         public int X;
@@ -18,6 +32,18 @@ namespace OpenCV.Net
         {
             X = x;
             Y = y;
+        }
+
+        public CvPoint(float x, float y)
+        {
+            X = (int)x;
+            Y = (int)y;
+        }
+
+        public CvPoint(double x, double y)
+        {
+            X = (int)x;
+            Y = (int)y;
         }
 
         public CvPoint(CvPoint2D32f point)
@@ -113,6 +139,12 @@ namespace OpenCV.Net
             MaxIter = maxIter;
             Epsilon = epsilon;
         }
+    }
+
+    public enum CvRandDistribution : int
+    {
+        Uniform = 0,
+        Normal = 1
     }
 
     public enum CvMatDepth : int

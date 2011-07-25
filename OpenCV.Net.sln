@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleStarDetector", "Sampl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleLabeling", "SampleLabeling\SampleLabeling.csproj", "{53DE7756-AA56-4FF9-BDD6-8A87BE193FCC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleKalman", "SampleKalman\SampleKalman.csproj", "{DB73935B-1515-4EF1-935D-13E2C8E5FE93}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,18 @@ Global
 		{53DE7756-AA56-4FF9-BDD6-8A87BE193FCC}.Release|x64.ActiveCfg = Release|x86
 		{53DE7756-AA56-4FF9-BDD6-8A87BE193FCC}.Release|x86.ActiveCfg = Release|x86
 		{53DE7756-AA56-4FF9-BDD6-8A87BE193FCC}.Release|x86.Build.0 = Release|x86
+		{DB73935B-1515-4EF1-935D-13E2C8E5FE93}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{DB73935B-1515-4EF1-935D-13E2C8E5FE93}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{DB73935B-1515-4EF1-935D-13E2C8E5FE93}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{DB73935B-1515-4EF1-935D-13E2C8E5FE93}.Debug|x64.ActiveCfg = Debug|x86
+		{DB73935B-1515-4EF1-935D-13E2C8E5FE93}.Debug|x86.ActiveCfg = Debug|x86
+		{DB73935B-1515-4EF1-935D-13E2C8E5FE93}.Debug|x86.Build.0 = Debug|x86
+		{DB73935B-1515-4EF1-935D-13E2C8E5FE93}.Release|Any CPU.ActiveCfg = Release|x86
+		{DB73935B-1515-4EF1-935D-13E2C8E5FE93}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{DB73935B-1515-4EF1-935D-13E2C8E5FE93}.Release|Mixed Platforms.Build.0 = Release|x86
+		{DB73935B-1515-4EF1-935D-13E2C8E5FE93}.Release|x64.ActiveCfg = Release|x86
+		{DB73935B-1515-4EF1-935D-13E2C8E5FE93}.Release|x86.ActiveCfg = Release|x86
+		{DB73935B-1515-4EF1-935D-13E2C8E5FE93}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

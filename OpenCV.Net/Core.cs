@@ -11,6 +11,12 @@ namespace OpenCV.Net
     {
         const string libName = "opencv_core230";
 
+        [DllImport(libName)]
+        public static extern void cvRandArr(ref CvRNG rng, CvArr arr, CvRandDistribution dist_type, CvScalar param1, CvScalar param2);
+
+        [DllImport(libName)]
+        public static extern void cvSetIdentity(CvArr mat, CvScalar value);
+
         public static void cvCalcCovarMatrix(CvArr[] vects, CvArr covMat, CvArr avg, CovarianceFlags flags)
         {
             var pImages = new IntPtr[vects.Length];
@@ -21,6 +27,14 @@ namespace OpenCV.Net
 
             core.cvCalcCovarMatrix(pImages, pImages.Length, covMat, avg, flags);
         }
+
+        public static void cvMatMulAdd(CvArr src1, CvArr src2, CvArr src3, CvArr dst)
+        {
+            cvGEMM(src1, src2, 1, src3, 1, dst, 0);
+        }
+
+        [DllImport(libName)]
+        public static extern void cvGEMM(CvArr src1, CvArr src2, double alpha, CvArr src3, double beta, CvArr dst, int tABC);
 
         [DllImport(libName)]
         public static extern void cvCalcPCA(CvArr data, CvArr mean, CvArr eigenvals, CvArr eigenvects, PcaFlags flags);
