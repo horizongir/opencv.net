@@ -77,9 +77,6 @@ namespace OpenCV.Net
             CvArr mask); // = null
 
         [DllImport(libName)]
-        public static extern void cvUpdateMotionHistory(CvArr silhouette, CvArr mhi, double timestamp, double duration);
-
-        [DllImport(libName)]
         public static extern CvSeq cvApproxPoly(
             CvSeq src_seq,
             int header_size,

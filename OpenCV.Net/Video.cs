@@ -18,5 +18,8 @@ namespace OpenCV.Net
 
         [DllImport(libName)]
         public static extern void cvCalcOpticalFlowPyrLK(CvArr prev, CvArr curr, CvArr prevPyr, CvArr currPyr, CvPoint2D32f[] prevFeatures, CvPoint2D32f[] currFeatures, int count, CvSize winSize, int level, byte[] status, float[] track_error, CvTermCriteria criteria, LKFlowFlags flags);
+
+        [DllImport(libName)]
+        public static extern void cvUpdateMotionHistory(CvArr silhouette, CvArr mhi, double timestamp, double duration);
     }
 }
