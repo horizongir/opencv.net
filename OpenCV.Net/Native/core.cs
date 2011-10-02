@@ -8,7 +8,7 @@ namespace OpenCV.Net.Native
 {
     static class core
     {
-        const string libName = "opencv_core230";
+        const string libName = "opencv_core231";
 
         [DllImport(libName)]
         public static extern IntPtr cvCreateMat(int rows, int cols, int type);
