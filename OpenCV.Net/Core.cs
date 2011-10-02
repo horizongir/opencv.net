@@ -9,7 +9,7 @@ namespace OpenCV.Net
 {
     public static class Core
     {
-        const string libName = "opencv_core230";
+        const string libName = "opencv_core231";
 
         [DllImport(libName)]
         public static extern void cvRandArr(ref CvRNG rng, CvArr arr, CvRandDistribution dist_type, CvScalar param1, CvScalar param2);

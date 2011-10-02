@@ -8,7 +8,7 @@ namespace OpenCV.Net.Native
 {
     static class video
     {
-        const string libName = "opencv_video230";
+        const string libName = "opencv_video231";
 
         [DllImport(libName)]
         public static extern IntPtr cvCreateKalman(int dynam_params, int measure_params, int control_params);

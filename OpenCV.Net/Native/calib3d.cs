@@ -8,7 +8,7 @@ namespace OpenCV.Net.Native
 {
     static class calib3d
     {
-        const string libName = "opencv_calib3d230";
+        const string libName = "opencv_calib3d231";
 
         [DllImport(libName)]
         public static extern IntPtr cvCreatePOSITObject(CvPoint3D32f[] points, int point_count);

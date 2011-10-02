@@ -8,7 +8,7 @@ namespace OpenCV.Net
 {
     public static class Calib3D
     {
-        const string libName = "opencv_calib3d230";
+        const string libName = "opencv_calib3d231";
 
         [DllImport(libName)]
         public static extern int cvFindChessboardCorners(CvArr image, CvSize patternSize, CvPoint2D32f[] corners, out int cornerCount, ChessboardCalibrationFlags flags);

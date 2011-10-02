@@ -8,7 +8,7 @@ namespace OpenCV.Net
 {
     public static class Video
     {
-        const string libName = "opencv_video230";
+        const string libName = "opencv_video231";
 
         [DllImport(libName)]
         public static extern void cvCalcOpticalFlowLK(CvArr prev, CvArr curr, CvSize win_size, CvArr velx, CvArr vely);
