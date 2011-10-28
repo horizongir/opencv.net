@@ -47,8 +47,11 @@
     <Compile Include="Core.cs" />
     <Compile Include="CoreTypes.cs" />
     <Compile Include="CvArr.cs" />
+    <Compile Include="CvBGStatModel.cs" />
     <Compile Include="CvCapture.cs" />
     <Compile Include="CvContour.cs" />
+    <Compile Include="CvFGDStatModel.cs" />
+    <Compile Include="CvGaussBGModel.cs" />
     <Compile Include="CvHistogram.cs" />
     <Compile Include="CvKalman.cs" />
     <Compile Include="CvMat.cs" />
