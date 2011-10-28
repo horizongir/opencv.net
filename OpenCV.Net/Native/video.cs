@@ -21,5 +21,20 @@ namespace OpenCV.Net.Native
 
         [DllImport(libName)]
         public static extern void cvReleaseKalman(IntPtr kalman);
+
+        [DllImport(libName)]
+        public static extern void cvReleaseBGStatModel(IntPtr bg_model);
+
+        [DllImport(libName)]
+        public static extern int cvUpdateBGStatModel(IplImage current_frame, CvBGStatModel bg_model, double learningRate);
+
+        [DllImport(libName)]
+        public static extern int cvRefineForegroundMaskBySegm(CvSeq segments, CvBGStatModel bg_model);
+
+        [DllImport(libName)]
+        public static extern IntPtr cvCreateFGDStatModel(IplImage first_frame, IntPtr parameters);
+
+        [DllImport(libName)]
+        public static extern IntPtr cvCreateGaussianBGModel(IplImage first_frame, IntPtr parameters);
     }
 }

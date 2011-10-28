@@ -111,6 +111,20 @@ namespace OpenCV.Net.Native
     }
 
     [StructLayout(LayoutKind.Sequential)]
+    struct _CvBGStatModel
+    {
+        public int type; /*type of BG model*/
+        public IntPtr release;
+        public IntPtr update;
+        public IntPtr background;   /*8UC3 reference background image*/
+        public IntPtr foreground;   /*8UC1 foreground image*/
+        public IntPtr layers;       /*8UC3 reference background image, can be null */
+        public int layer_count;  /* can be zero */
+        public IntPtr storage;      /*storage for foreground_regions*/
+        public IntPtr foreground_regions; /*foreground object contours*/
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
     struct _CvSeq
     {
         public int flags; /* micsellaneous flags */
