@@ -15,9 +15,21 @@ namespace OpenCV.Net
         {
         }
 
+        public int GrabFrame()
+        {
+            return highgui.cvGrabFrame(this);
+        }
+
         public IplImage QueryFrame()
         {
-            return new IplImage(highgui.cvQueryFrame(this), false);
+            var pFrame = highgui.cvQueryFrame(this);
+            return pFrame != IntPtr.Zero ? new IplImage(pFrame, false) : null;
+        }
+
+        public IplImage RetrieveFrame()
+        {
+            var pFrame = highgui.cvRetrieveFrame(this);
+            return pFrame != IntPtr.Zero ? new IplImage(pFrame, false) : null;
         }
 
         public double GetProperty(CaptureProperty property_id)

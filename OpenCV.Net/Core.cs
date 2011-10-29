@@ -58,7 +58,19 @@ namespace OpenCV.Net
         public static extern void cvAnd(CvArr src1, CvArr src2, CvArr dst, CvArr mask);
 
         [DllImport(libName)]
+        public static extern void cvInRangeS(CvArr src, CvScalar lower, CvScalar upper, CvArr dst);
+
+        [DllImport(libName)]
         public static extern CvScalar cvAvg(CvArr arr, CvArr mask);
+
+        [DllImport(libName)]
+        public static extern void cvMinMaxLoc(
+            CvArr arr,
+            out double min_val,
+            out double max_val,
+            out CvPoint min_loc, // = NULL
+            out CvPoint max_loc, // = NULL
+            CvArr mask); // = NULL
 
         [DllImport(libName)]
         public static extern void cvCopy(CvArr src, CvArr dst, CvArr mask);
@@ -80,6 +92,9 @@ namespace OpenCV.Net
 
         [DllImport(libName)]
         public static extern CvScalar cvSum(CvArr arr);
+
+        [DllImport(libName)]
+        public static extern int cvCountNonZero(CvArr arr);
 
         [DllImport(libName)]
         public static extern void cvCmpS(CvArr src, double value, CvArr dst, int cmp_op);

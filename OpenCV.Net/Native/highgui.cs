@@ -50,7 +50,13 @@ namespace OpenCV.Net.Native
         public static extern int cvSetCaptureProperty(CvCapture capture, CaptureProperty property_id, double value);
 
         [DllImport(libName)]
+        public static extern int cvGrabFrame(CvCapture capture);
+        
+        [DllImport(libName)]
         public static extern IntPtr cvQueryFrame(CvCapture capture);
+
+        [DllImport(libName)]
+        public static extern IntPtr cvRetrieveFrame(CvCapture capture);
 
         [DllImport(libName)]
         public static extern void cvReleaseCapture(IntPtr capture);
