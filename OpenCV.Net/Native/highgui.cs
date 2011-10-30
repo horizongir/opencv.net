@@ -60,5 +60,14 @@ namespace OpenCV.Net.Native
 
         [DllImport(libName)]
         public static extern void cvReleaseCapture(IntPtr capture);
+
+        [DllImport(libName, CharSet = CharSet.Ansi)]
+        public static extern IntPtr cvCreateVideoWriter(string filename, int fourcc, double fps, CvSize frame_size, int is_color);
+
+        [DllImport(libName)]
+        public static extern int cvWriteFrame(CvVideoWriter writer, IplImage image);
+
+        [DllImport(libName)]
+        public static extern void cvReleaseVideoWriter(IntPtr capture);
     }
 }
