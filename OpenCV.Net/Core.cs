@@ -79,6 +79,9 @@ namespace OpenCV.Net
         public static extern void cvFlip(CvArr src, CvArr dst, FlipMode flipMode);
 
         [DllImport(libName)]
+        public static extern void cvMerge(CvArr src0, CvArr src1, CvArr src2, CvArr src3, CvArr dst);
+
+        [DllImport(libName)]
         public static extern void cvMul(CvArr src1, CvArr src2, CvArr dst, double scale);
 
         [DllImport(libName)]
