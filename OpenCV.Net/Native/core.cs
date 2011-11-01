@@ -59,6 +59,9 @@ namespace OpenCV.Net.Native
         public static extern void cvSetData(CvArr arr, IntPtr data, int step);
 
         [DllImport(libName)]
+        public static extern void cvGetRawData(CvArr arr, out IntPtr data, out int step, out CvSize roiSize);
+
+        [DllImport(libName)]
         public static extern void cvSetImageROI(IplImage image, CvRect rect);
 
         [DllImport(libName)]
