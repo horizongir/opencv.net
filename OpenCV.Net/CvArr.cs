@@ -31,6 +31,24 @@ namespace OpenCV.Net
             core.cvSetData(this, data, step);
         }
 
+        public void GetRawData(out IntPtr data)
+        {
+            int step;
+            CvSize roiSize;
+            core.cvGetRawData(this, out data, out step, out roiSize);
+        }
+
+        public void GetRawData(out IntPtr data, out int step)
+        {
+            CvSize roiSize;
+            core.cvGetRawData(this, out data, out step, out roiSize);
+        }
+
+        public void GetRawData(out IntPtr data, out int step, out CvSize roiSize)
+        {
+            core.cvGetRawData(this, out data, out step, out roiSize);
+        }
+
         class CvArrNull : CvArr
         {
             public CvArrNull() : base(false) { }
