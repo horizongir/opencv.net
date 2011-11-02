@@ -113,6 +113,9 @@ namespace OpenCV.Net
             int shift); //=0
 
         [DllImport(libName)]
+        public static extern int cvClipLine(CvSize imgSize, ref CvPoint pt1, ref CvPoint pt2);
+
+        [DllImport(libName)]
         public static extern void cvDrawContours(
             CvArr img,
             CvSeq contour,
