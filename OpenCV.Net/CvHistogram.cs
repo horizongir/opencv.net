@@ -16,26 +16,35 @@ namespace OpenCV.Net
         }
 
         public CvHistogram(int dims, int[] sizes, HistogramType type)
-            : this(dims, sizes, type, null, 1)
+            : this(dims, sizes, type, null, true)
         {
         }
 
         public CvHistogram(int dims, int[] sizes, HistogramType type, float[][] ranges)
-            : this(dims, sizes, type, ranges, 1)
+            : this(dims, sizes, type, ranges, true)
         {
         }
 
-        public CvHistogram(int dims, int[] sizes, HistogramType type, float[][] ranges, int uniform)
+        public CvHistogram(int dims, int[] sizes, HistogramType type, float[][] ranges, bool uniform)
             : base(true)
         {
-            IntPtr[] pRanges = null;
-            if (ranges != null)
+            GCHandle[] handles = ranges != null ? new GCHandle[ranges.Length] : null;
+            IntPtr[] pRanges = ranges != null ? new IntPtr[ranges.Length] : null;
+            if (pRanges != null)
             {
-                throw new NotSupportedException();
+                for (int i = 0; i < ranges.Length; i++)
+                {
+                    handles[i] = GCHandle.Alloc(ranges[i], GCHandleType.Pinned);
+                    pRanges[i] = handles[i].AddrOfPinnedObject();
+                }
             }
 
-            var pHist = imgproc.cvCreateHist(dims, sizes, type, pRanges, uniform);
-            SetHandle(pHist);
+            try
+            {
+                var pHist = imgproc.cvCreateHist(dims, sizes, type, pRanges, uniform ? 1 : 0);
+                SetHandle(pHist);
+            }
+            finally { if (handles != null) Array.ForEach(handles, h => h.Free()); }
         }
 
         public void GetMinMaxHistValue(out float min_value, out float max_value, int[] min_idx, int[] max_idx)

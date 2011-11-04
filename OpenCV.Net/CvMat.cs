@@ -17,6 +17,7 @@ namespace OpenCV.Net
         const int DepthMask = DepthMax - 1;
 
         internal CvMat()
+            : base(false)
         {
         }
 
