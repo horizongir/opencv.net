@@ -10,6 +10,14 @@ namespace OpenCV.Net
 {
     public class CvMemStorage : SafeHandleZeroOrMinusOneIsInvalid
     {
+        public static readonly CvMemStorage Null = new CvMemStorageNull();
+
+        internal CvMemStorage(IntPtr handle)
+            : base(true)
+        {
+            SetHandle(handle);
+        }
+
         public CvMemStorage()
             : this(0)
         {
@@ -36,6 +44,16 @@ namespace OpenCV.Net
                 return true;
             }
             finally { pHandle.Free(); }
+        }
+
+        class CvMemStorageNull : CvMemStorage
+        {
+            public CvMemStorageNull() : base(IntPtr.Zero) { }
+
+            protected override bool ReleaseHandle()
+            {
+                return false;
+            }
         }
     }
 }

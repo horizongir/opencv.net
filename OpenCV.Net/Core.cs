@@ -177,6 +177,28 @@ namespace OpenCV.Net
             int lineType,// = 8
             int shift);// = 0
 
+        [DllImport(libName, CharSet = CharSet.Ansi)]
+        public static extern void cvSave(string filename, SafeHandle struct_ptr, string name, string comment, CvAttrList attributes);
+
+        public static T cvLoad<T>(string filename, CvMemStorage storage, string name) where T : SafeHandle
+        {
+            string realName;
+            return cvLoad<T>(filename, storage, name, out realName);
+        }
+
+        public static T cvLoad<T>(string filename, CvMemStorage storage, string name, out string realName) where T : SafeHandle
+        {
+            var handle = core.cvLoad(filename, storage, name, out realName);
+            var result = (T)Activator.CreateInstance(
+                typeof(T),
+                System.Reflection.BindingFlags.Instance |
+                System.Reflection.BindingFlags.NonPublic,
+                null,
+                new object[] { handle },
+                null);
+            return result;
+        }
+        
         [DllImport(libName)]
         public static extern int cvGetErrStatus();
 

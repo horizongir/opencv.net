@@ -12,7 +12,7 @@ namespace OpenCV.Net
         public static readonly CvArr Null = new CvArrNull();
 
         protected CvArr()
-            : this(true)
+            : base(true)
         {
         }
 
