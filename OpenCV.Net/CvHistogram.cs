@@ -15,6 +15,12 @@ namespace OpenCV.Net
         {
         }
 
+        internal CvHistogram(IntPtr handle)
+            : base(true)
+        {
+            SetHandle(handle);
+        }
+
         public CvHistogram(int dims, int[] sizes, HistogramType type)
             : this(dims, sizes, type, null, true)
         {

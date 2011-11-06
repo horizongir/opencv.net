@@ -72,5 +72,8 @@ namespace OpenCV.Net.Native
 
         [DllImport(libName)]
         public static extern void cvClearMemStorage(CvMemStorage storage);
+
+        [DllImport(libName, CharSet = CharSet.Ansi)]
+        public static extern IntPtr cvLoad(string filename, CvMemStorage storage, string name, out string realName);
     }
 }

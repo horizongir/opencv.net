@@ -207,4 +207,18 @@ namespace OpenCV.Net
             Height = height;
         }
     }
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct CvAttrList
+    {
+        public IntPtr attr;
+        public IntPtr next;
+    }
+
+    public enum FileStorageFlags : int
+    {
+        Read = 0,
+        Write = 1,
+        Append = 2
+    }
 }
