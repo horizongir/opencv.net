@@ -23,6 +23,17 @@ namespace OpenCV.Net
         [DllImport(libName)]
         public static extern void cvRunningAvg(CvArr image, CvArr acc, double alpha, CvArr mask);
 
+        public static void cvCalcBackProject(IplImage[] images, CvArr back_project, CvHistogram hist)
+        {
+            var pImages = new IntPtr[images.Length];
+            for (int i = 0; i < images.Length; i++)
+            {
+                pImages[i] = images[i].DangerousGetHandle();
+            }
+
+            imgproc.cvCalcArrBackProject(pImages, back_project, hist);
+        }
+
         public static void cvCalcHist(IplImage[] images, CvHistogram hist)
         {
             cvCalcHist(images, hist, 0, CvArr.Null);
@@ -44,6 +55,9 @@ namespace OpenCV.Net
 
         [DllImport(libName)]
         public static extern void cvErode(CvArr src, CvArr dst, IplConvKernel element, int iterations);
+
+        [DllImport(libName)]
+        public static extern void cvEqualizeHist(CvArr src, CvArr dst);
 
         [DllImport(libName)]
         public static extern void cvAdaptiveThreshold(CvArr src, CvArr dst, double maxValue,

@@ -14,6 +14,9 @@ namespace OpenCV.Net.Native
         public static extern IntPtr cvCreateHist(int dims, int[] sizes, HistogramType type, IntPtr[] ranges, int uniform);
 
         [DllImport(libName)]
+        public static extern void cvCalcArrBackProject(IntPtr[] images, CvArr back_project, CvHistogram hist);
+
+        [DllImport(libName)]
         public static extern void cvCalcArrHist(IntPtr[] images, CvHistogram hist, int accumulate, CvArr mask);
 
         [DllImport(libName)]
