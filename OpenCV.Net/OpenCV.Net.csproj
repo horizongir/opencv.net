@@ -49,6 +49,7 @@
     <Compile Include="CvArr.cs" />
     <Compile Include="CvBGStatModel.cs" />
     <Compile Include="CvCapture.cs" />
+    <Compile Include="CvConDensation.cs" />
     <Compile Include="CvContour.cs" />
     <Compile Include="CvFGDStatModel.cs" />
     <Compile Include="CvGaussBGModel.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="IplImage.cs" />
     <Compile Include="NamedWindow.cs" />
     <Compile Include="Native\calib3d.cs" />
+    <Compile Include="Native\legacy.cs" />
     <Compile Include="Native\video.cs" />
     <Compile Include="Native\imgproc.cs" />
     <Compile Include="Native\core.cs" />

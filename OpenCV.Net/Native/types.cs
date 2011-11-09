@@ -180,4 +180,21 @@ namespace OpenCV.Net.Native
         IntPtr values;
         int nShiftR;
     }
+
+    [StructLayout(LayoutKind.Sequential)]
+    unsafe struct _CvConDensation
+    {
+        public int MP;
+        public int DP;
+        public float* DynamMatr;       /* Matrix of the linear Dynamics system  */
+        public float* State;           /* Vector of State                       */
+        public int SamplesNum;         /* Number of the Samples                 */
+        public float** flSamples;      /* arr of the Sample Vectors             */
+        public float** flNewSamples;   /* temporary array of the Sample Vectors */
+        public float* flConfidence;    /* Confidence for each Sample            */
+        public float* flCumulative;    /* Cumulative confidence                 */
+        public float* Temp;            /* Temporary vector                      */
+        public float* RandomSample;    /* RandomVector to update sample set     */
+        public IntPtr RandS;           /* Array of structures to generate random vectors */
+    }
 }
