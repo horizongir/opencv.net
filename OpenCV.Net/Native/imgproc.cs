@@ -35,5 +35,14 @@ namespace OpenCV.Net.Native
 
         [DllImport(libName)]
         public static extern void cvReleaseStructuringElement(IntPtr element);
+
+        [DllImport(libName)]
+        public static extern CvSeq cvFindNextContour(CvContourScanner scanner);
+
+        [DllImport(libName)]
+        public static extern void cvSubstituteContour(CvContourScanner scanner, CvSeq new_contour);
+
+        [DllImport(libName)]
+        public static extern CvSeq cvEndFindContours(IntPtr scanner);
     }
 }

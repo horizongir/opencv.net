@@ -51,6 +51,7 @@
     <Compile Include="CvCapture.cs" />
     <Compile Include="CvConDensation.cs" />
     <Compile Include="CvContour.cs" />
+    <Compile Include="CvContourScanner.cs" />
     <Compile Include="CvFGDStatModel.cs" />
     <Compile Include="CvGaussBGModel.cs" />
     <Compile Include="CvHistogram.cs" />

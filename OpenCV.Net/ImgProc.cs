@@ -108,5 +108,17 @@ namespace OpenCV.Net
             ContourRetrieval mode, //=CV_RETR_LIST,
             ContourApproximation method, //=CV_CHAIN_APPROX_SIMPLE,
             CvPoint offset); //=cvPoint(0, 0)
+
+        [DllImport(libName)]
+        public static extern CvContourScanner cvStartFindContours(
+            CvArr image,
+            CvMemStorage storage,
+            int header_size, //=sizeof(CvContour),
+            ContourRetrieval mode, //=CV_RETR_LIST,
+            ContourApproximation method, //=CV_CHAIN_APPROX_SIMPLE,
+            CvPoint offset); //=cvPoint(0, 0)
+
+        [DllImport(libName)]
+        public static extern double cvContourArea(CvSeq contour, CvSlice slice, int oriented);
     }
 }

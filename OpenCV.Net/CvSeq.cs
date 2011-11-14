@@ -10,8 +10,15 @@ namespace OpenCV.Net
 {
     public class CvSeq : SafeHandleZeroOrMinusOneIsInvalid
     {
+        public static readonly CvSeq Null = new CvSeqNull();
+
         public CvSeq()
             : base(true)
+        {
+        }
+
+        private CvSeq(bool ownsHandle)
+            : base(ownsHandle)
         {
         }
 
@@ -99,6 +106,16 @@ namespace OpenCV.Net
         {
             SetHandleAsInvalid();
             return true;
+        }
+
+        class CvSeqNull : CvSeq
+        {
+            public CvSeqNull() : base(false) { }
+
+            protected override bool ReleaseHandle()
+            {
+                return false;
+            }
         }
     }
 }
