@@ -221,4 +221,20 @@ namespace OpenCV.Net
         Write = 1,
         Append = 2
     }
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct CvSlice
+    {
+        public const int WholeSeqEndIndex = 0x3fffffff;
+        public static readonly CvSlice WholeSeq = new CvSlice(0, WholeSeqEndIndex);
+
+        public int start_index;
+        public int end_index;
+
+        public CvSlice(int start, int end)
+        {
+            start_index = start;
+            end_index = end;
+        }
+    }
 }
