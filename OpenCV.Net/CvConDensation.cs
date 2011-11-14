@@ -10,11 +10,12 @@ namespace OpenCV.Net
 {
     public class CvConDensation : SafeHandleZeroOrMinusOneIsInvalid
     {
+        int dp;
+        int mp;
+        int samplesNum;
         IntPtr dynamMatr;
         IntPtr state;
-        IntPtr flSamples;
         IntPtr flNewSamples;
-        IntPtr flConfidence;
         IntPtr flCumulative;
 
         public CvConDensation(int dynam_params, int measure_params, int sample_count)
@@ -25,13 +26,29 @@ namespace OpenCV.Net
 
             unsafe
             {
+                dp = ((_CvConDensation*)handle.ToPointer())->DP;
+                mp = ((_CvConDensation*)handle.ToPointer())->MP;
+                samplesNum = ((_CvConDensation*)handle.ToPointer())->SamplesNum;
                 dynamMatr = (IntPtr)((_CvConDensation*)handle.ToPointer())->DynamMatr;
                 state = (IntPtr)((_CvConDensation*)handle.ToPointer())->State;
-                flSamples = (IntPtr)((_CvConDensation*)handle.ToPointer())->flSamples;
                 flNewSamples = (IntPtr)((_CvConDensation*)handle.ToPointer())->flNewSamples;
-                flConfidence = (IntPtr)((_CvConDensation*)handle.ToPointer())->flConfidence;
                 flCumulative = (IntPtr)((_CvConDensation*)handle.ToPointer())->flCumulative;
             }
+        }
+
+        public int DP
+        {
+            get { return dp; }
+        }
+
+        public int MP
+        {
+            get { return mp; }
+        }
+
+        public int SamplesNum
+        {
+            get { return samplesNum; }
         }
 
         public IntPtr DynamMatr
@@ -46,7 +63,10 @@ namespace OpenCV.Net
 
         public IntPtr Samples
         {
-            get { return flSamples; }
+            get
+            {
+                unsafe { return (IntPtr)((_CvConDensation*)handle.ToPointer())->flSamples; }
+            }
         }
 
         public IntPtr NewSamples
@@ -56,7 +76,10 @@ namespace OpenCV.Net
 
         public IntPtr Confidence
         {
-            get { return flConfidence; }
+            get
+            {
+                unsafe { return (IntPtr)((_CvConDensation*)handle.ToPointer())->flConfidence; }
+            }
         }
 
         public IntPtr Cumulative
