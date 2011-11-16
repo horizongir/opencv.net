@@ -22,7 +22,12 @@ namespace OpenCV.Net
         }
 
         internal CvMat(IntPtr handle)
-            : base(false)
+            : this(handle, true)
+        {
+        }
+
+        internal CvMat(IntPtr handle, bool ownsHandle)
+            : base(ownsHandle)
         {
             SetHandle(handle);
         }
@@ -80,7 +85,7 @@ namespace OpenCV.Net
 
         class CvMatNull : CvMat
         {
-            public CvMatNull() : base(IntPtr.Zero) { }
+            public CvMatNull() : base(IntPtr.Zero, false) { }
 
             protected override bool ReleaseHandle()
             {

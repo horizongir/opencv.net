@@ -29,16 +29,16 @@ namespace OpenCV.Net
 
             unsafe
             {
-                state_pre = new CvMat(((_CvKalman*)handle.ToPointer())->state_pre);
-                state_post = new CvMat(((_CvKalman*)handle.ToPointer())->state_post);
-                transition_matrix = new CvMat(((_CvKalman*)handle.ToPointer())->transition_matrix);
-                control_matrix = new CvMat(((_CvKalman*)handle.ToPointer())->control_matrix);
-                measurement_matrix = new CvMat(((_CvKalman*)handle.ToPointer())->measurement_matrix);
-                process_noise_cov = new CvMat(((_CvKalman*)handle.ToPointer())->process_noise_cov);
-                measurement_noise_cov = new CvMat(((_CvKalman*)handle.ToPointer())->measurement_noise_cov);
-                error_cov_pre = new CvMat(((_CvKalman*)handle.ToPointer())->error_cov_pre);
-                gain = new CvMat(((_CvKalman*)handle.ToPointer())->gain);
-                error_cov_post = new CvMat(((_CvKalman*)handle.ToPointer())->error_cov_post);
+                state_pre = new CvMat(((_CvKalman*)handle.ToPointer())->state_pre, false);
+                state_post = new CvMat(((_CvKalman*)handle.ToPointer())->state_post, false);
+                transition_matrix = new CvMat(((_CvKalman*)handle.ToPointer())->transition_matrix, false);
+                control_matrix = new CvMat(((_CvKalman*)handle.ToPointer())->control_matrix, false);
+                measurement_matrix = new CvMat(((_CvKalman*)handle.ToPointer())->measurement_matrix, false);
+                process_noise_cov = new CvMat(((_CvKalman*)handle.ToPointer())->process_noise_cov, false);
+                measurement_noise_cov = new CvMat(((_CvKalman*)handle.ToPointer())->measurement_noise_cov, false);
+                error_cov_pre = new CvMat(((_CvKalman*)handle.ToPointer())->error_cov_pre, false);
+                gain = new CvMat(((_CvKalman*)handle.ToPointer())->gain, false);
+                error_cov_post = new CvMat(((_CvKalman*)handle.ToPointer())->error_cov_post, false);
             }
         }
 
@@ -99,12 +99,12 @@ namespace OpenCV.Net
 
         public CvMat Predict(CvMat control)
         {
-            return new CvMat(video.cvKalmanPredict(handle, control ?? CvMat.Null));
+            return new CvMat(video.cvKalmanPredict(handle, control ?? CvMat.Null), false);
         }
 
         public CvMat Correct(CvMat measurement)
         {
-            return new CvMat(video.cvKalmanCorrect(handle, measurement));
+            return new CvMat(video.cvKalmanCorrect(handle, measurement), false);
         }
 
         protected override bool ReleaseHandle()
