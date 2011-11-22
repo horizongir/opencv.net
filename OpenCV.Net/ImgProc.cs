@@ -68,6 +68,16 @@ namespace OpenCV.Net
         public static extern double cvThreshold(CvArr src, CvArr dst, double threshold, double maxValue, ThresholdType thresholdType);
 
         [DllImport(libName)]
+        public static extern void cvSmooth(
+            CvArr src,
+            CvArr dst,
+            SmoothMethod smoothtype, // CV_DEFAULT(CV_GAUSSIAN),
+            int size1, // CV_DEFAULT(3),
+            int size2, // CV_DEFAULT(0),
+            double sigma1, // CV_DEFAULT(0),
+            double sigma2); // CV_DEFAULT(0);
+
+        [DllImport(libName)]
         public static extern void cvCvtColor(CvArr src, CvArr dst, ColorConversion code);
 
         [DllImport(libName)]

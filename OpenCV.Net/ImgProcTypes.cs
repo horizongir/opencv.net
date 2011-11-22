@@ -102,6 +102,15 @@ namespace OpenCV.Net
                                  combine the flag with one of the above * values */
     }
 
+    public enum SmoothMethod : int
+    {
+        BlurNoScale = 0,
+        Blur = 1,
+        Gaussian = 2,
+        Median = 3,
+        Bilateral = 4
+    }
+
     public enum ColorConversion : int
     {
         BGR2BGRA = 0,
