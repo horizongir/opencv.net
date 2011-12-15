@@ -58,6 +58,9 @@ namespace OpenCV.Net
         public static extern void cvAnd(CvArr src1, CvArr src2, CvArr dst, CvArr mask);
 
         [DllImport(libName)]
+        public static extern void cvNot(CvArr src, CvArr dst);
+
+        [DllImport(libName)]
         public static extern void cvInRangeS(CvArr src, CvScalar lower, CvScalar upper, CvArr dst);
 
         public static CvScalar cvAvg(CvArr arr)
