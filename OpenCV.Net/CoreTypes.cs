@@ -25,6 +25,8 @@ namespace OpenCV.Net
     [StructLayout(LayoutKind.Sequential)]
     public struct CvPoint
     {
+        public static readonly CvPoint Zero = new CvPoint();
+
         public int X;
         public int Y;
 
@@ -56,6 +58,8 @@ namespace OpenCV.Net
     [StructLayout(LayoutKind.Sequential)]
     public struct CvPoint2D32f
     {
+        public static readonly CvPoint2D32f Zero = new CvPoint2D32f();
+
         public float X;
         public float Y;
 
@@ -69,6 +73,8 @@ namespace OpenCV.Net
     [StructLayout(LayoutKind.Sequential)]
     public struct CvPoint3D32f
     {
+        public static readonly CvPoint3D32f Zero = new CvPoint3D32f();
+
         public float X;
         public float Y;
         public float Z;
