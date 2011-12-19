@@ -10,6 +10,21 @@ namespace OpenCV.Net.Native
     {
         const string libName = "opencv_core231";
 
+        public static readonly CvErrorCallback DefaultCvErrorCallback = SetDefaultErrorCallback();
+
+        private static CvErrorCallback SetDefaultErrorCallback()
+        {
+            IntPtr userData;
+            CvErrorCallback callback = CvErrorExceptionCallback;
+            Core.cvRedirectError(callback, IntPtr.Zero, out userData);
+            return callback;
+        }
+
+        private static int CvErrorExceptionCallback(int status, string func_name, string err_msg, string file_name, int line)
+        {
+            throw new CvException(status, func_name, err_msg, file_name, line);
+        }
+
         [DllImport(libName)]
         public static extern IntPtr cvCreateMat(int rows, int cols, int type);
 

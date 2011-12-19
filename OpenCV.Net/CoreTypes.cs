@@ -8,6 +8,13 @@ namespace OpenCV.Net
 {
     public delegate int CvErrorCallback(int status, string func_name, string err_msg, string file_name, int line);
 
+    public enum ErrorMode : int
+    {
+        Leaf,
+        Parent,
+        Silent
+    }
+
     [StructLayout(LayoutKind.Sequential)]
     public struct CvRNG
     {
