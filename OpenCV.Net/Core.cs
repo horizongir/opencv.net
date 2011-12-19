@@ -206,6 +206,15 @@ namespace OpenCV.Net
         public static extern int cvGetErrStatus();
 
         [DllImport(libName)]
+        public static extern void cvSetErrStatus(int status);
+
+        [DllImport(libName)]
+        public static extern ErrorMode cvGetErrMode();
+
+        [DllImport(libName)]
+        public static extern ErrorMode cvSetErrMode(ErrorMode mode);
+
+        [DllImport(libName)]
         public static extern string cvErrorStr(int status);
 
         [DllImport(libName)]
