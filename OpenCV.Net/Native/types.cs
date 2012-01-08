@@ -197,4 +197,20 @@ namespace OpenCV.Net.Native
         public float* RandomSample;    /* RandomVector to update sample set     */
         public IntPtr RandS;           /* Array of structures to generate random vectors */
     }
+
+    [StructLayout(LayoutKind.Sequential)]
+    unsafe struct _CvFont
+    {
+        byte* nameFont;		//Qt:nameFont
+        CvScalar color;				//Qt:ColorFont -> cvScalar(blue_component, green_component, red\_component[, alpha_component])
+        int font_face; 		//Qt: bool italic         /* =CV_FONT_* */
+        int* ascii; 			/* font data and metrics */
+        int* greek;
+        int* cyrillic;
+        float hscale, vscale;
+        float shear; 			/* slope coefficient: 0 - normal, >0 - italic */
+        int thickness; 		//Qt: weight               /* letters thickness */
+        float dx; 			/* horizontal interval between letters */
+        int line_type;		//Qt: PointSize
+    }
 }
