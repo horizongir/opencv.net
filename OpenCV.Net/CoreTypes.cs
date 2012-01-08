@@ -95,7 +95,7 @@ namespace OpenCV.Net
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    public struct CvSize
+    public struct CvSize : IEquatable<CvSize>
     {
         public int Width;
         public int Height;
@@ -104,6 +104,36 @@ namespace OpenCV.Net
         {
             Width = width;
             Height = height;
+        }
+
+        public override int GetHashCode()
+        {
+            return Width.GetHashCode() ^ Height.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is CvSize)
+            {
+                return Equals((CvSize)obj);
+            }
+
+            return false;
+        }
+
+        public bool Equals(CvSize other)
+        {
+            return Width == other.Width && Height == other.Height;
+        }
+
+        public static bool operator ==(CvSize left, CvSize right)
+        {
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(CvSize left, CvSize right)
+        {
+            return !left.Equals(right);
         }
     }
 
@@ -152,6 +182,18 @@ namespace OpenCV.Net
             MaxIter = maxIter;
             Epsilon = epsilon;
         }
+    }
+
+    public enum FontFace : int
+    {
+        HersheySimplex = 0,
+        HersheyPlain = 1,
+        HersheyDuplex = 2,
+        HersheyComplex = 3,
+        HersheyTriplex = 4,
+        HersheyComplexSmall = 5,
+        HersheyScriptSimplex = 6,
+        HersheyScriptComplex = 7
     }
 
     public enum CvRandDistribution : int

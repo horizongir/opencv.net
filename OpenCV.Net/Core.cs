@@ -139,6 +139,12 @@ namespace OpenCV.Net
         [DllImport(libName)]
         public static extern int cvClipLine(CvSize imgSize, ref CvPoint pt1, ref CvPoint pt2);
 
+        [DllImport(libName, CharSet = CharSet.Ansi)]
+        public static extern void cvPutText(CvArr img, string text, CvPoint org, CvFont font, CvScalar color);
+
+        [DllImport(libName, CharSet = CharSet.Ansi)]
+        public static extern void cvGetTextSize(string text_string, CvFont font, out CvSize text_size, out int baseline);
+
         [DllImport(libName)]
         public static extern void cvDrawContours(
             CvArr img,

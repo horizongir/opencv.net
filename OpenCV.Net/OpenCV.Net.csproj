@@ -54,6 +54,7 @@
     <Compile Include="CvContourScanner.cs" />
     <Compile Include="CvException.cs" />
     <Compile Include="CvFGDStatModel.cs" />
+    <Compile Include="CvFont.cs" />
     <Compile Include="CvGaussBGModel.cs" />
     <Compile Include="CvHistogram.cs" />
     <Compile Include="CvKalman.cs" />

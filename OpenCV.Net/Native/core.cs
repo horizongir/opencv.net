@@ -90,5 +90,8 @@ namespace OpenCV.Net.Native
 
         [DllImport(libName, CharSet = CharSet.Ansi)]
         public static extern IntPtr cvLoad(string filename, CvMemStorage storage, string name, out string realName);
+
+        [DllImport(libName)]
+        public static extern void cvInitFont(IntPtr font, FontFace fontFace, double hscale, double vscale, double shear, int thickness, int lineType);
     }
 }
