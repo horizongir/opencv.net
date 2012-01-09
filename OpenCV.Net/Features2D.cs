@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Runtime.InteropServices;
+using OpenCV.Net.Native;
 
 namespace OpenCV.Net
 {
@@ -10,7 +11,11 @@ namespace OpenCV.Net
     {
         const string libName = "opencv_features2d231";
 
-        [DllImport(libName)]
-        public static extern CvSeq cvGetStarKeypoints(CvArr img, CvMemStorage storage, CvStarDetectorParams detectorParams);
+        public static CvSeq cvGetStarKeypoints(CvArr img, CvMemStorage storage, CvStarDetectorParams detectorParams)
+        {
+            var keypoints = features2d.cvGetStarKeypoints(img, storage, detectorParams);
+            keypoints.SetOwnerStorage(storage);
+            return keypoints;
+        }
     }
 }

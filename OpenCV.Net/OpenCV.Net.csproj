@@ -72,6 +72,7 @@
     <Compile Include="IplImage.cs" />
     <Compile Include="NamedWindow.cs" />
     <Compile Include="Native\calib3d.cs" />
+    <Compile Include="Native\features2d.cs" />
     <Compile Include="Native\legacy.cs" />
     <Compile Include="Native\video.cs" />
     <Compile Include="Native\imgproc.cs" />

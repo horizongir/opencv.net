@@ -37,6 +37,34 @@ namespace OpenCV.Net.Native
         public static extern void cvReleaseStructuringElement(IntPtr element);
 
         [DllImport(libName)]
+        public static extern CvSeq cvApproxPoly(
+            CvSeq src_seq,
+            int header_size,
+            CvMemStorage storage,
+            PolygonApproximation method,
+            double parameter,
+            int parameter2);
+
+        [DllImport(libName)]
+        public static extern int cvFindContours(
+            CvArr image,
+            CvMemStorage storage,
+            out CvSeq first_contour,
+            int header_size, //=sizeof(CvContour),
+            ContourRetrieval mode, //=CV_RETR_LIST,
+            ContourApproximation method, //=CV_CHAIN_APPROX_SIMPLE,
+            CvPoint offset); //=cvPoint(0, 0)
+
+        [DllImport(libName)]
+        public static extern CvContourScanner cvStartFindContours(
+            CvArr image,
+            CvMemStorage storage,
+            int header_size, //=sizeof(CvContour),
+            ContourRetrieval mode, //=CV_RETR_LIST,
+            ContourApproximation method, //=CV_CHAIN_APPROX_SIMPLE,
+            CvPoint offset); //=cvPoint(0, 0)
+
+        [DllImport(libName)]
         public static extern CvSeq cvFindNextContour(CvContourScanner scanner);
 
         [DllImport(libName)]

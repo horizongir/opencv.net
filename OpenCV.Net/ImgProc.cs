@@ -100,33 +100,45 @@ namespace OpenCV.Net
             int flags, // = 4
             CvArr mask); // = null
 
-        [DllImport(libName)]
-        public static extern CvSeq cvApproxPoly(
+        public static CvSeq cvApproxPoly(
             CvSeq src_seq,
             int header_size,
             CvMemStorage storage,
             PolygonApproximation method,
             double parameter,
-            int parameter2);
+            int parameter2)
+        {
+            var poly = imgproc.cvApproxPoly(src_seq, header_size, storage, method, parameter, parameter2);
+            poly.SetOwnerStorage(storage);
+            return poly;
+        }
 
-        [DllImport(libName)]
-        public static extern int cvFindContours(
+        public static int cvFindContours(
             CvArr image,
             CvMemStorage storage,
             out CvSeq first_contour,
             int header_size, //=sizeof(CvContour),
             ContourRetrieval mode, //=CV_RETR_LIST,
             ContourApproximation method, //=CV_CHAIN_APPROX_SIMPLE,
-            CvPoint offset); //=cvPoint(0, 0)
+            CvPoint offset) //=cvPoint(0, 0)
+        {
+            var result = imgproc.cvFindContours(image, storage, out first_contour, header_size, mode, method, offset);
+            first_contour.SetOwnerStorage(storage);
+            return result;
+        }
 
-        [DllImport(libName)]
-        public static extern CvContourScanner cvStartFindContours(
+        public static CvContourScanner cvStartFindContours(
             CvArr image,
             CvMemStorage storage,
             int header_size, //=sizeof(CvContour),
             ContourRetrieval mode, //=CV_RETR_LIST,
             ContourApproximation method, //=CV_CHAIN_APPROX_SIMPLE,
-            CvPoint offset); //=cvPoint(0, 0)
+            CvPoint offset) //=cvPoint(0, 0)
+        {
+            var scanner = imgproc.cvStartFindContours(image, storage, header_size, mode, method, offset);
+            scanner.SetOwnerStorage(storage);
+            return scanner;
+        }
 
         [DllImport(libName)]
         public static extern double cvContourArea(CvSeq contour, CvSlice slice, int oriented);

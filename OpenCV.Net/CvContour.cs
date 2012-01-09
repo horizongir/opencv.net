@@ -30,6 +30,7 @@ namespace OpenCV.Net
             if (seq == null) return null;
 
             var contour = new CvContour();
+            contour.SetOwnerStorage(seq.Storage);
             contour.SetHandle(seq.DangerousGetHandle());
             return contour;
         }

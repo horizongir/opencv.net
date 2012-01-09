@@ -11,15 +11,32 @@ namespace OpenCV.Net
     public class CvSeq : SafeHandleZeroOrMinusOneIsInvalid
     {
         public static readonly CvSeq Null = new CvSeqNull();
+        CvMemStorage owner;
 
-        public CvSeq()
+        internal CvSeq()
             : base(true)
         {
+        }
+
+        public CvSeq(CvMemStorage storage)
+            : base(true)
+        {
+            owner = storage;
         }
 
         private CvSeq(bool ownsHandle)
             : base(ownsHandle)
         {
+        }
+
+        public CvMemStorage Storage
+        {
+            get { return owner; }
+        }
+
+        internal void SetOwnerStorage(CvMemStorage storage)
+        {
+            owner = storage;
         }
 
         public IntPtr GetElement(int index)
@@ -47,7 +64,7 @@ namespace OpenCV.Net
                     var pSeq = ((_CvSeq*)handle.ToPointer())->h_prev;
                     if (pSeq == IntPtr.Zero) return null;
 
-                    var seq = new CvSeq();
+                    var seq = new CvSeq(owner);
                     seq.SetHandle(pSeq);
                     return seq;
                 }
@@ -63,7 +80,7 @@ namespace OpenCV.Net
                     var pSeq = ((_CvSeq*)handle.ToPointer())->h_next;
                     if (pSeq == IntPtr.Zero) return null;
 
-                    var seq = new CvSeq();
+                    var seq = new CvSeq(owner);
                     seq.SetHandle(pSeq);
                     return seq;
                 }
@@ -79,7 +96,7 @@ namespace OpenCV.Net
                     var pSeq = ((_CvSeq*)handle.ToPointer())->v_prev;
                     if (pSeq == IntPtr.Zero) return null;
 
-                    var seq = new CvSeq();
+                    var seq = new CvSeq(owner);
                     seq.SetHandle(pSeq);
                     return seq;
                 }
@@ -95,7 +112,7 @@ namespace OpenCV.Net
                     var pSeq = ((_CvSeq*)handle.ToPointer())->v_next;
                     if (pSeq == IntPtr.Zero) return null;
 
-                    var seq = new CvSeq();
+                    var seq = new CvSeq(owner);
                     seq.SetHandle(pSeq);
                     return seq;
                 }
@@ -105,6 +122,7 @@ namespace OpenCV.Net
         protected override bool ReleaseHandle()
         {
             SetHandleAsInvalid();
+            owner = null;
             return true;
         }
 
