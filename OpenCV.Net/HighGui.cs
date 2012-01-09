@@ -10,16 +10,16 @@ namespace OpenCV.Net
     {
         const string libName = "opencv_highgui231";
 
-        [DllImport(libName)]
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvConvertImage(CvArr src, CvArr dst, ConvertImageFlags flags);
 
-        [DllImport(libName)]
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int cvWaitKey(int delay);
 
-        [DllImport(libName, CharSet = CharSet.Ansi)]
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public static extern IplImage cvLoadImage(string filename, LoadImageMode iscolor);
 
-        [DllImport(libName, CharSet = CharSet.Ansi)]
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public static extern int cvSaveImage(string filename, CvArr image, params int[] parameters);
     }
 }
