@@ -10,10 +10,10 @@ namespace OpenCV.Net
     {
         const string libName = "opencv_calib3d231";
 
-        [DllImport(libName)]
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int cvFindChessboardCorners(CvArr image, CvSize patternSize, CvPoint2D32f[] corners, out int cornerCount, ChessboardCalibrationFlags flags);
 
-        [DllImport(libName)]
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvFindExtrinsicCameraParams2(
             CvMat object_points,
             CvMat image_points,
@@ -23,10 +23,10 @@ namespace OpenCV.Net
             CvMat translation_vector,
             int use_extrinsic_guess);
 
-        [DllImport(libName)]
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int cvRodrigues2(CvMat src, CvMat dst, CvMat jacobian);
 
-        [DllImport(libName)]
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvUndistort2(CvArr src, CvArr dst, CvMat cameraMatrix, CvMat distCoeffs, CvMat newCameraMatrix);
     }
 }

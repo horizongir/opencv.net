@@ -11,16 +11,16 @@ namespace OpenCV.Net
     {
         const string libName = "opencv_imgproc231";
 
-        [DllImport(libName)]
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern CvMat cvGetPerspectiveTransform(CvPoint2D32f[] src, CvPoint2D32f[] dst, CvMat map_matrix);
 
-        [DllImport(libName)]
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvWarpPerspective(CvArr src, CvArr dst, CvMat map_matrix, WarpFlags flags, CvScalar fillval);
 
-        [DllImport(libName)]
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvAcc(CvArr image, CvArr sum, CvArr mask);
 
-        [DllImport(libName)]
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvRunningAvg(CvArr image, CvArr acc, double alpha, CvArr mask);
 
         public static void cvCalcBackProject(IplImage[] images, CvArr back_project, CvHistogram hist)
@@ -50,24 +50,24 @@ namespace OpenCV.Net
             imgproc.cvCalcArrHist(pImages, hist, accumulate, mask);
         }
 
-        [DllImport(libName)]
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvDilate(CvArr src, CvArr dst, IplConvKernel element, int iterations);
 
-        [DllImport(libName)]
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvErode(CvArr src, CvArr dst, IplConvKernel element, int iterations);
 
-        [DllImport(libName)]
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvEqualizeHist(CvArr src, CvArr dst);
 
-        [DllImport(libName)]
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvAdaptiveThreshold(CvArr src, CvArr dst, double maxValue,
                           AdaptiveThresholdMethod adaptiveMethod, ThresholdType thresholdType,
                           int blockSize, double param1 );
 
-        [DllImport(libName)]
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern double cvThreshold(CvArr src, CvArr dst, double threshold, double maxValue, ThresholdType thresholdType);
 
-        [DllImport(libName)]
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvSmooth(
             CvArr src,
             CvArr dst,
@@ -77,19 +77,19 @@ namespace OpenCV.Net
             double sigma1, // CV_DEFAULT(0),
             double sigma2); // CV_DEFAULT(0);
 
-        [DllImport(libName)]
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvCvtColor(CvArr src, CvArr dst, ColorConversion code);
 
-        [DllImport(libName)]
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvCanny(CvArr image, CvArr edges, double threshold1, double threshold2, int aperture_size);
 
-        [DllImport(libName)]
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvFindCornerSubPix(CvArr image, CvPoint2D32f[] corners, int count, CvSize win, CvSize zero_zone, CvTermCriteria criteria);
 
-        [DllImport(libName)]
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvMoments(SafeHandle arr, out CvMoments moments, int binary);
 
-        [DllImport(libName)]
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvFloodFill(
             CvArr image,
             CvPoint seed_point,
@@ -140,7 +140,7 @@ namespace OpenCV.Net
             return scanner;
         }
 
-        [DllImport(libName)]
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern double cvContourArea(CvSeq contour, CvSlice slice, int oriented);
     }
 }

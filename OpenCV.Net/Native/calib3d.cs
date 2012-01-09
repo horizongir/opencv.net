@@ -10,10 +10,10 @@ namespace OpenCV.Net.Native
     {
         const string libName = "opencv_calib3d231";
 
-        [DllImport(libName)]
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr cvCreatePOSITObject(CvPoint3D32f[] points, int point_count);
 
-        [DllImport(libName)]
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvPOSIT(
             IntPtr posit_object,
             CvPoint2D32f[] image_points,
@@ -22,7 +22,7 @@ namespace OpenCV.Net.Native
             float[] rotation_matrix,
             float[] translation_vector);
 
-        [DllImport(libName)]
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvReleasePOSITObject(IntPtr posit_object);
     }
 }

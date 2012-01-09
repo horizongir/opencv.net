@@ -10,16 +10,16 @@ namespace OpenCV.Net.Native
     {
         const string libName = "opencv_legacy231";
 
-        [DllImport(libName)]
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr cvCreateConDensation(int dynam_params, int measure_params, int sample_count);
 
-        [DllImport(libName)]
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvReleaseConDensation(IntPtr condens);
 
-        [DllImport(libName)]
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvConDensUpdateByTime(CvConDensation condens);
 
-        [DllImport(libName)]
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvConDensInitSampleSet(CvConDensation condens, CvMat lower_bound, CvMat upper_bound);
     }
 }
