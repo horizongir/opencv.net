@@ -10,14 +10,23 @@ namespace OpenCV.Net
 {
     public sealed class CvContourScanner : SafeHandleZeroOrMinusOneIsInvalid
     {
-        public CvContourScanner()
+        CvMemStorage owner;
+
+        internal CvContourScanner()
             : base(true)
         {
         }
 
+        internal void SetOwnerStorage(CvMemStorage storage)
+        {
+            owner = storage;
+        }
+
         public CvSeq FindNextContour()
         {
-            return imgproc.cvFindNextContour(this);
+            var contour = imgproc.cvFindNextContour(this);
+            contour.SetOwnerStorage(owner);
+            return contour;
         }
 
         public void SubstituteContour(CvSeq new_contour)
@@ -31,6 +40,7 @@ namespace OpenCV.Net
             try
             {
                 var contours = imgproc.cvEndFindContours(pHandle.AddrOfPinnedObject());
+                contours.SetOwnerStorage(owner);
                 SetHandle(IntPtr.Zero);
                 SetHandleAsInvalid();
                 return contours;
@@ -41,6 +51,7 @@ namespace OpenCV.Net
         protected override bool ReleaseHandle()
         {
             if (!IsClosed) EndFindContours();
+            owner = null;
             return true;
         }
     }
