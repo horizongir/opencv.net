@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Runtime.InteropServices;
+using System.ComponentModel;
 
 namespace OpenCV.Net
 {
@@ -30,6 +31,7 @@ namespace OpenCV.Net
     }
 
     [StructLayout(LayoutKind.Sequential)]
+    [TypeConverter(typeof(NumericAggregateConverter))]
     public struct CvPoint
     {
         public static readonly CvPoint Zero = new CvPoint();
@@ -63,6 +65,7 @@ namespace OpenCV.Net
     }
 
     [StructLayout(LayoutKind.Sequential)]
+    [TypeConverter(typeof(NumericAggregateConverter))]
     public struct CvPoint2D32f
     {
         public static readonly CvPoint2D32f Zero = new CvPoint2D32f();
@@ -78,6 +81,7 @@ namespace OpenCV.Net
     }
 
     [StructLayout(LayoutKind.Sequential)]
+    [TypeConverter(typeof(NumericAggregateConverter))]
     public struct CvPoint3D32f
     {
         public static readonly CvPoint3D32f Zero = new CvPoint3D32f();
@@ -95,6 +99,7 @@ namespace OpenCV.Net
     }
 
     [StructLayout(LayoutKind.Sequential)]
+    [TypeConverter(typeof(NumericAggregateConverter))]
     public struct CvSize : IEquatable<CvSize>
     {
         public int Width;
@@ -138,6 +143,7 @@ namespace OpenCV.Net
     }
 
     [StructLayout(LayoutKind.Sequential)]
+    [TypeConverter(typeof(NumericAggregateConverter))]
     public struct CvScalar
     {
         public double Val0;
@@ -247,6 +253,7 @@ namespace OpenCV.Net
     }
 
     [StructLayout(LayoutKind.Sequential)]
+    [TypeConverter(typeof(NumericAggregateConverter))]
     public struct CvRect
     {
         public int X;
