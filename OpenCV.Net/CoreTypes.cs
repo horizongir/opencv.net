@@ -82,6 +82,22 @@ namespace OpenCV.Net
 
     [StructLayout(LayoutKind.Sequential)]
     [TypeConverter(typeof(NumericAggregateConverter))]
+    public struct CvPoint2D64f
+    {
+        public static readonly CvPoint2D64f Zero = new CvPoint2D64f();
+
+        public double X;
+        public double Y;
+
+        public CvPoint2D64f(double x, double y)
+        {
+            X = x;
+            Y = y;
+        }
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    [TypeConverter(typeof(NumericAggregateConverter))]
     public struct CvPoint3D32f
     {
         public static readonly CvPoint3D32f Zero = new CvPoint3D32f();

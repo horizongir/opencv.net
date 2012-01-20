@@ -18,6 +18,9 @@ namespace OpenCV.Net
         public static extern void cvWarpPerspective(CvArr src, CvArr dst, CvMat map_matrix, WarpFlags flags, CvScalar fillval);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvUndistort2(CvArr src, CvArr dst, CvMat camera_matrix, CvMat distortion_coeffs, CvMat new_camera_matrix);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvAcc(CvArr image, CvArr sum, CvArr mask);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
@@ -79,6 +82,9 @@ namespace OpenCV.Net
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvCvtColor(CvArr src, CvArr dst, ColorConversion code);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvResize(CvArr src, CvArr dst, SubPixelInterpolation interpolation);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvCanny(CvArr image, CvArr edges, double threshold1, double threshold2, int aperture_size);
