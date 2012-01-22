@@ -139,6 +139,17 @@ namespace OpenCV.Net
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int cvClipLine(CvSize imgSize, ref CvPoint pt1, ref CvPoint pt2);
 
+        public static void cvPolyLine(CvArr img, CvPoint[][] pts, int[] npts, int contours, int is_closed, CvScalar color, int thickness, int lineType, int shift)
+        {
+            var handles = Array.ConvertAll(pts, poly => GCHandle.Alloc(poly, GCHandleType.Pinned));
+            try
+            {
+                var pPts = Array.ConvertAll(handles, handle => handle.AddrOfPinnedObject());
+                core.cvPolyLine(img, pPts, npts, contours, is_closed, color, thickness, lineType, shift);
+            }
+            finally { Array.ForEach(handles, handle => handle.Free()); }
+        }
+
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public static extern void cvPutText(CvArr img, string text, CvPoint org, CvFont font, CvScalar color);
 
@@ -155,6 +166,20 @@ namespace OpenCV.Net
             int thickness,// = 1
             int lineType,// = 8
             CvPoint offset);//= CvPoint(0,0)
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvFillConvexPoly(CvArr img, CvPoint[] pts, int npts, CvScalar color, int line_type, int shift);
+
+        public static void cvFillPoly(CvArr img, CvPoint[][] pts, int[] npts, int contours, CvScalar color, int lineType, int shift)
+        {
+            var handles = Array.ConvertAll(pts, poly => GCHandle.Alloc(poly, GCHandleType.Pinned));
+            try
+            {
+                var pPts = Array.ConvertAll(handles, handle => handle.AddrOfPinnedObject());
+                core.cvFillPoly(img, pPts, npts, contours, color, lineType, shift);
+            }
+            finally { Array.ForEach(handles, handle => handle.Free()); }
+        }
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvEllipse(
