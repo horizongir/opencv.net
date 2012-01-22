@@ -93,5 +93,11 @@ namespace OpenCV.Net.Native
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvInitFont(IntPtr font, FontFace fontFace, double hscale, double vscale, double shear, int thickness, int lineType);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvPolyLine(CvArr img, IntPtr[] pts, int[] npts, int contours, int is_closed, CvScalar color, int thickness, int lineType, int shift);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvFillPoly(CvArr img, IntPtr[] pts, int[] npts, int contours, CvScalar color, int lineType, int shift);
     }
 }
