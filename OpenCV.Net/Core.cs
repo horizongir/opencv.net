@@ -254,5 +254,11 @@ namespace OpenCV.Net
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         [return:MarshalAs(UnmanagedType.FunctionPtr)]
         public static extern CvErrorCallback cvRedirectError([MarshalAs(UnmanagedType.FunctionPtr)]CvErrorCallback error_handler, IntPtr userdata, out IntPtr prevUserdata);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvSetMemoryManager(
+            [MarshalAs(UnmanagedType.FunctionPtr)]CvAllocFunc allocFunc,
+            [MarshalAs(UnmanagedType.FunctionPtr)]CvFreeFunc freeFunc,
+            IntPtr userdata);
     }
 }
