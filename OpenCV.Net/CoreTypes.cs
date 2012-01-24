@@ -9,6 +9,10 @@ namespace OpenCV.Net
 {
     public delegate int CvErrorCallback(int status, string func_name, string err_msg, string file_name, int line);
 
+    public delegate IntPtr CvAllocFunc(IntPtr size, IntPtr userdata);
+
+    public delegate int CvFreeFunc(IntPtr pptr, IntPtr userdata);
+
     public enum ErrorMode : int
     {
         Leaf,
