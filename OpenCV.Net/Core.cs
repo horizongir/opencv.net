@@ -58,6 +58,9 @@ namespace OpenCV.Net
         public static extern void cvAddS(CvArr src, CvScalar value, CvArr dst, CvArr mask);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvAddWeighted(CvArr src1, double alpha, CvArr src2, double beta, double gamma, CvArr dst);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvAnd(CvArr src1, CvArr src2, CvArr dst, CvArr mask);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
