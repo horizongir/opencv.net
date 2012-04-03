@@ -69,6 +69,14 @@ namespace OpenCV.Net
                     return seq;
                 }
             }
+            set
+            {
+                unsafe
+                {
+                    var pSeq = value != null ? value.handle : IntPtr.Zero;
+                    ((_CvSeq*)handle.ToPointer())->h_prev = pSeq;
+                }
+            }
         }
 
         public CvSeq HNext
@@ -83,6 +91,14 @@ namespace OpenCV.Net
                     var seq = new CvSeq(owner);
                     seq.SetHandle(pSeq);
                     return seq;
+                }
+            }
+            set
+            {
+                unsafe
+                {
+                    var pSeq = value != null ? value.handle : IntPtr.Zero;
+                    ((_CvSeq*)handle.ToPointer())->h_next = pSeq;
                 }
             }
         }
@@ -101,6 +117,14 @@ namespace OpenCV.Net
                     return seq;
                 }
             }
+            set
+            {
+                unsafe
+                {
+                    var pSeq = value != null ? value.handle : IntPtr.Zero;
+                    ((_CvSeq*)handle.ToPointer())->v_prev = pSeq;
+                }
+            }
         }
 
         public CvSeq VNext
@@ -115,6 +139,14 @@ namespace OpenCV.Net
                     var seq = new CvSeq(owner);
                     seq.SetHandle(pSeq);
                     return seq;
+                }
+            }
+            set
+            {
+                unsafe
+                {
+                    var pSeq = value != null ? value.handle : IntPtr.Zero;
+                    ((_CvSeq*)handle.ToPointer())->v_next = pSeq;
                 }
             }
         }
