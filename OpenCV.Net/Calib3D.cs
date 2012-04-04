@@ -23,6 +23,11 @@ namespace OpenCV.Net
             CvMat translation_vector,
             int use_extrinsic_guess);
 
+        public static int cvRodrigues2(CvMat src, CvMat dst)
+        {
+            return cvRodrigues2(src, dst, CvMat.Null);
+        }
+
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int cvRodrigues2(CvMat src, CvMat dst, CvMat jacobian);
 

@@ -272,6 +272,16 @@ namespace OpenCV.Net
         UseAvg = 2
     }
 
+    public enum InversionMethod : int
+    {
+        LU = 0,
+        Svd = 1,
+        SvdSym = 2,
+        Cholesky = 3,
+        QR = 4,
+        Normal = 16
+    }
+
     [StructLayout(LayoutKind.Sequential)]
     [TypeConverter(typeof(NumericAggregateConverter))]
     public struct CvRect

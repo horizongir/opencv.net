@@ -85,6 +85,14 @@ namespace OpenCV.Net
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvAvgSdv(CvArr arr, out CvScalar mean, out CvScalar std_dev, CvArr mask);
 
+        public static double cvInvert(CvArr src, CvArr dst)
+        {
+            return cvInvert(src, dst, InversionMethod.LU);
+        }
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern double cvInvert(CvArr src, CvArr dst, InversionMethod method);
+
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvMinMaxLoc(
             CvArr arr,
