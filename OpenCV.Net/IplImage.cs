@@ -20,6 +20,8 @@ namespace OpenCV.Net
             : base(ownsHandle)
         {
             SetHandle(handle);
+
+            GC.AddMemoryPressure(WidthStep * Height * Depth / 8);
             ownsData = true;
         }
 
@@ -28,7 +30,7 @@ namespace OpenCV.Net
             var pImage = core.cvCreateImage(size, depth, channels);
             SetHandle(pImage);
 
-            GC.AddMemoryPressure(WidthStep * Height * depth / 8);
+            GC.AddMemoryPressure(WidthStep * Height * Depth / 8);
             ownsData = true;
         }
 
