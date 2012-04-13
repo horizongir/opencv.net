@@ -46,6 +46,18 @@ namespace OpenCV.Net
         public static extern void cvConvertScale(CvArr src, CvArr dst, double scale, double shift);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern CvScalar cvGet1D(CvArr arr, int idx0);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern CvScalar cvGet2D(CvArr arr, int idx0, int idx1);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern CvScalar cvGet3D(CvArr arr, int idx0, int idx1, int idx2);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern CvScalar cvGetND(CvArr arr, int[] idx);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvGetRawData(CvArr arr, out IntPtr data, out int step, out CvSize roiSize);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
