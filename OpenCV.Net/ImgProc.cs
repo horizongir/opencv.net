@@ -93,6 +93,20 @@ namespace OpenCV.Net
         public static extern void cvFindCornerSubPix(CvArr image, CvPoint2D32f[] corners, int count, CvSize win, CvSize zero_zone, CvTermCriteria criteria);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvGoodFeaturesToTrack(
+            CvArr image,
+            CvArr eig_image,
+            CvArr temp_image,
+            [Out]CvPoint2D32f[] corners,
+            out int corner_count,
+            double quality_level,
+            double min_distance,
+            CvArr mask, // CV_DEFAULT(NULL),
+            int block_size, // CV_DEFAULT(3),
+            int use_harris, // CV_DEFAULT(0),
+            double k); // CV_DEFAULT(0.04);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvMoments(SafeHandle arr, out CvMoments moments, int binary);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
