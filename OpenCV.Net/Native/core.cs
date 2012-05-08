@@ -35,7 +35,7 @@ namespace OpenCV.Net.Native
         public static extern void cvCalcCovarMatrix(IntPtr[] vects, int count, CvArr covMat, CvArr avg, CovarianceFlags flags);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IplImage cvCloneImage(IplImage image);
+        public static extern IntPtr cvCloneImage(IplImage image);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern CvRect cvGetImageROI(IplImage image);

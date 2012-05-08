@@ -21,26 +21,23 @@ namespace OpenCV.Net
         {
             SetHandle(handle);
 
-            GC.AddMemoryPressure(WidthStep * Height * Depth / 8);
-            ownsData = true;
+            if (ownsHandle)
+            {
+                GC.AddMemoryPressure(WidthStep * Height * Depth / 8);
+                ownsData = true;
+            }
         }
 
         public IplImage(CvSize size, int depth, int channels)
+            : this(core.cvCreateImage(size, depth, channels), true)
         {
-            var pImage = core.cvCreateImage(size, depth, channels);
-            SetHandle(pImage);
-
-            GC.AddMemoryPressure(WidthStep * Height * Depth / 8);
-            ownsData = true;
         }
 
         public IplImage(CvSize size, int depth, int channels, IntPtr data)
         {
             var pImage = core.cvCreateImageHeader(size, depth, channels);
             SetHandle(pImage);
-
             SetData(data, WidthStep);
-            ownsData = false;
         }
 
         public CvRect ImageROI
@@ -129,7 +126,7 @@ namespace OpenCV.Net
 
         public IplImage Clone()
         {
-            return core.cvCloneImage(this);
+            return new IplImage(core.cvCloneImage(this), true);
         }
 
         public void ResetImageROI()
