@@ -12,6 +12,12 @@ namespace OpenCV.Net
         const string libName = "opencv_imgproc231";
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvGetRectSubPix(CvArr src, CvArr dst, CvPoint2D32f center);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvGetQuadrangleSubPix(CvArr src, CvArr dst, CvMat map_matrix);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern CvMat cvGetPerspectiveTransform(CvPoint2D32f[] src, CvPoint2D32f[] dst, CvMat map_matrix);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
