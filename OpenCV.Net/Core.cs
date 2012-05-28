@@ -11,6 +11,52 @@ namespace OpenCV.Net
     {
         const string libName = "opencv_core231";
 
+        public static void cvNormalize(CvArr src, CvArr dst)
+        {
+            cvNormalize(src, dst, 1, 0, NormTypes.CV_L2, CvArr.Null);
+        }
+
+        public static void cvNormalize(CvArr src, CvArr dst, double a)
+        {
+            cvNormalize(src, dst, a, 0, NormTypes.CV_L2, CvArr.Null);
+        }
+
+        public static void cvNormalize(CvArr src, CvArr dst, double a, double b)
+        {
+            cvNormalize(src, dst, a, b, NormTypes.CV_L2, CvArr.Null);
+        }
+
+        public static void cvNormalize(CvArr src, CvArr dst, double a, double b, NormTypes norm_type)
+        {
+            cvNormalize(src, dst, a, b, norm_type, CvArr.Null);
+        }
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvNormalize(CvArr src, CvArr dst, double a, double b, NormTypes norm_type, CvArr mask);
+
+        #region Discrete Linear Transforms and Related Functions
+
+        /* Discrete Fourier Transform:
+            complex->complex,
+            real->ccs (forward),
+            ccs->real (inverse) */
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvDFT(CvArr src, CvArr dst, DiscreteTransformFlags flags, int nonzero_rows);
+
+        /* Multiply results of DFTs: DFT(X)*DFT(Y) or DFT(X)*conj(DFT(Y)) */
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvMulSpectrums(CvArr src1, CvArr src2, CvArr dst, DiscreteTransformFlags flags);
+
+        /* Finds optimal DFT vector size >= size0 */
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int cvGetOptimalDFTSize(int size0);
+
+        /* Discrete Cosine Transform */
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvDCT(CvArr src, CvArr dst, DiscreteTransformFlags flags);
+
+        #endregion
+
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvRandArr(ref CvRNG rng, CvArr arr, CvRandDistribution dist_type, CvScalar param1, CvScalar param2);
 
@@ -92,6 +138,9 @@ namespace OpenCV.Net
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvInRangeS(CvArr src, CvScalar lower, CvScalar upper, CvArr dst);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvLog(CvArr src, CvArr dst);
 
         public static CvScalar cvAvg(CvArr arr)
         {

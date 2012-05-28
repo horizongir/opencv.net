@@ -76,6 +76,11 @@ namespace OpenCV.Net
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern double cvThreshold(CvArr src, CvArr dst, double threshold, double maxValue, ThresholdType thresholdType);
 
+        /* Copies source 2D array inside of the larger destination array and
+         * makes a border of the specified type (IPL_BORDER_*) around the copied area. */
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvCopyMakeBorder(CvArr src, CvArr dst, CvPoint offset, BorderType bordertype, CvScalar value);
+
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvSmooth(
             CvArr src,

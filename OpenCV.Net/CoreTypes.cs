@@ -7,6 +7,44 @@ using System.ComponentModel;
 
 namespace OpenCV.Net
 {
+    [Flags]
+    public enum NormTypes : int
+    {
+        CV_C = 1,
+        CV_L1 = 2,
+        CV_L2 = 4,
+        CV_NORM_MASK = 7,
+        CV_RELATIVE = 8,
+        CV_DIFF = 16,
+        CV_MINMAX = 32,
+
+        CV_DIFF_C = (CV_DIFF | CV_C),
+        CV_DIFF_L1 = (CV_DIFF | CV_L1),
+        CV_DIFF_L2 = (CV_DIFF | CV_L2),
+        CV_RELATIVE_C = (CV_RELATIVE | CV_C),
+        CV_RELATIVE_L1 = (CV_RELATIVE | CV_L1),
+        CV_RELATIVE_L2 = (CV_RELATIVE | CV_L2)
+    }
+
+    public enum BorderType : int
+    {
+        Constant,
+        Replicate,
+        Reflect,
+        Wrap
+    }
+
+    [Flags]
+    public enum DiscreteTransformFlags : int
+    {
+        Forward = 0,
+        Inverse = 1,
+        Scale = 2, /* divide result by size of array */
+        InverseScale = (Inverse + Scale),
+        Rows = 4, /* transform each row individually */
+        MultiplyConjugate = 8 /* conjugate the second argument of cvMulSpectrums */
+    }
+
     public delegate int CvErrorCallback(int status, string func_name, string err_msg, string file_name, int line);
 
     public delegate IntPtr CvAllocFunc(IntPtr size, IntPtr userdata);
