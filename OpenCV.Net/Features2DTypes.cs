@@ -2,9 +2,67 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Runtime.InteropServices;
+using OpenCV.Net.Native;
 
 namespace OpenCV.Net
 {
+    [StructLayout(LayoutKind.Sequential)]
+    public struct CvSURFPoint
+    {
+        public CvPoint2D32f Point;
+        public int Laplacian;
+        public int Size;
+        public float Direction;
+        public float Hessian;
+
+        public CvSURFPoint(CvPoint2D32f point, int laplacian, int size)
+            : this(point, laplacian, size, 0, 0)
+        {
+        }
+
+        public CvSURFPoint(CvPoint2D32f point, int laplacian, int size, float direction)
+            : this(point, laplacian, size, direction, 0)
+        {
+        }
+
+        public CvSURFPoint(CvPoint2D32f point, int laplacian, int size, float direction, float hessian)
+        {
+            Point = point;
+            Laplacian = laplacian;
+            Size = size;
+            Direction = direction;
+            Hessian = hessian;
+        }
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct CvSURFParams
+    {
+        public int Extended;
+        public int Upright;
+        public double HessianThreshold;
+
+        public int NumOctaves;
+        public int NumOctaveLayers;
+
+        public CvSURFParams(double hessianThreshold)
+            : this(hessianThreshold, 0)
+        {
+        }
+
+        public CvSURFParams(double hessianThreshold, int extended)
+        {
+            var surfParams = features2d.cvSURFParams(hessianThreshold, extended);
+            Extended = surfParams.Extended;
+            Upright = surfParams.Upright;
+            HessianThreshold = surfParams.HessianThreshold;
+            NumOctaves = surfParams.NumOctaves;
+            NumOctaveLayers = surfParams.NumOctaveLayers;
+        }
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
     public struct CvStarKeypoint
     {
         public CvPoint Point;
@@ -12,6 +70,7 @@ namespace OpenCV.Net
         public float Response;
     }
 
+    [StructLayout(LayoutKind.Sequential)]
     public struct CvStarDetectorParams
     {
         public int MaxSize;

@@ -17,5 +17,14 @@ namespace OpenCV.Net
             keypoints.SetOwnerStorage(storage);
             return keypoints;
         }
+
+        // If useProvidedKeyPts!=0, keypoints are not detected, but descriptors are computed
+        //  at the locations provided in keypoints (a CvSeq of CvSURFPoint).
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvExtractSURF(
+            CvArr img, CvArr mask,
+            out CvSeq keypoints, out CvSeq descriptors,
+            CvMemStorage storage, CvSURFParams _params,
+            int useProvidedKeyPts);
     }
 }

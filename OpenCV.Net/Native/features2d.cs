@@ -12,5 +12,8 @@ namespace OpenCV.Net.Native
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern CvSeq cvGetStarKeypoints(CvArr img, CvMemStorage storage, CvStarDetectorParams detectorParams);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern CvSURFParams cvSURFParams(double hessianThreshold, int extended);
     }
 }
