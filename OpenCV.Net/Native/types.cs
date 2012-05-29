@@ -171,6 +171,19 @@ namespace OpenCV.Net.Native
     }
 
     [StructLayout(LayoutKind.Sequential)]
+    struct _CvSeqReader
+    {
+        public int header_size;
+        public IntPtr seq;        /* sequence, beign read */
+        public IntPtr block;      /* current block */
+        public IntPtr ptr;        /* pointer to element be read next */
+        public IntPtr block_min;  /* pointer to the beginning of block */
+        public IntPtr block_max;  /* pointer to the end of block */
+        public int delta_index;   /* = seq->first->start_index   */
+        public IntPtr prev_elem;  /* pointer to previous element */
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
     struct _IplConvKernel
     {
         int nCols;

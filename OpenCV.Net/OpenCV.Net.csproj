@@ -61,6 +61,7 @@
     <Compile Include="CvMat.cs" />
     <Compile Include="CvMemStorage.cs" />
     <Compile Include="CvSeq.cs" />
+    <Compile Include="CvSeqReader.cs" />
     <Compile Include="CvVideoWriter.cs" />
     <Compile Include="NumericAggregateConverter.cs" />
     <Compile Include="Features2D.cs" />
