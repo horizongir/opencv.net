@@ -58,6 +58,7 @@ namespace OpenCV.Net
             }
             else
             {
+                if (!string.IsNullOrEmpty(errorMessage)) errorText += string.Format(": {0}", errorMessage);
                 if (!string.IsNullOrEmpty(functionName)) errorText += string.Format("in function {0}", functionName);
                 if (!string.IsNullOrEmpty(fileName)) errorText += string.Format(", {0}({1})", Path.GetFileName(fileName), line);
                 return errorText;
