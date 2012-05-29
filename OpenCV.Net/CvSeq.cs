@@ -44,6 +44,17 @@ namespace OpenCV.Net
             return core.cvGetSeqElem(this, index);
         }
 
+        public int ElementSize
+        {
+            get
+            {
+                unsafe
+                {
+                    return ((_CvSeq*)handle.ToPointer())->elem_size;
+                }
+            }
+        }
+
         public int Total
         {
             get
