@@ -193,6 +193,9 @@ namespace OpenCV.Net
         public static extern void cvMul(CvArr src1, CvArr src2, CvArr dst, double scale);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvCartToPolar(CvArr x, CvArr y, CvArr magnitude, CvArr angle, int angle_in_degrees);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvPow(CvArr src, CvArr dst, double power);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
