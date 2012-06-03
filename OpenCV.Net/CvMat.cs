@@ -15,6 +15,7 @@ namespace OpenCV.Net
         public const int ChannelShift = 3;
         public const int DepthMax = 1 << ChannelShift;
         const int DepthMask = DepthMax - 1;
+        const int AutoStep = 0x7fffffff;
 
         internal CvMat()
             : base(false)

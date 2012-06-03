@@ -29,6 +29,12 @@ namespace OpenCV.Net.Native
         public static extern IntPtr cvCreateMat(int rows, int cols, int type);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr cvCreateMatHeader(int rows, int cols, int type);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr cvInitMatHeader(CvMat mat, int rows, int cols, int type, IntPtr data, int step);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvReleaseMat(IntPtr mat);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]

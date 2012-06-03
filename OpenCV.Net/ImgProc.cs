@@ -144,6 +144,9 @@ namespace OpenCV.Net
             return poly;
         }
 
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern CvRect cvBoundingRect(SafeHandle points, int update);
+
         public static int cvFindContours(
             CvArr image,
             CvMemStorage storage,
