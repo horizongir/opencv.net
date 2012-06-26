@@ -186,12 +186,12 @@ namespace OpenCV.Net.Native
     [StructLayout(LayoutKind.Sequential)]
     struct _IplConvKernel
     {
-        int nCols;
-        int nRows;
-        int anchorX;
-        int anchorY;
-        IntPtr values;
-        int nShiftR;
+        public int nCols;
+        public int nRows;
+        public int anchorX;
+        public int anchorY;
+        public IntPtr values;
+        public int nShiftR;
     }
 
     [StructLayout(LayoutKind.Sequential)]
