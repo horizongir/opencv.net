@@ -39,5 +39,29 @@ namespace OpenCV.Net
             }
             finally { pHandle.Free(); }
         }
+
+        public CvSize Size
+        {
+            get
+            {
+                unsafe
+                {
+                    return new CvSize(((_IplConvKernel*)handle.ToPointer())->nCols,
+                                      ((_IplConvKernel*)handle.ToPointer())->nRows);
+                }
+            }
+        }
+
+        public CvPoint Anchor
+        {
+            get
+            {
+                unsafe
+                {
+                    return new CvPoint(((_IplConvKernel*)handle.ToPointer())->anchorX,
+                                       ((_IplConvKernel*)handle.ToPointer())->anchorY);
+                }
+            }
+        }
     }
 }
