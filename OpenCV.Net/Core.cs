@@ -228,7 +228,7 @@ namespace OpenCV.Net
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int cvClipLine(CvSize imgSize, ref CvPoint pt1, ref CvPoint pt2);
-
+            
         public static void cvPolyLine(CvArr img, CvPoint[][] pts, int[] npts, int contours, int is_closed, CvScalar color, int thickness, int lineType, int shift)
         {
             var handles = Array.ConvertAll(pts, poly => GCHandle.Alloc(poly, GCHandleType.Pinned));
@@ -293,6 +293,17 @@ namespace OpenCV.Net
             int thickness,// = 1
             int lineType,// = 8
             int shift);// = 0
+
+        public static void cvRectangle(
+            CvArr img,
+            CvRect rect,
+            CvScalar color,
+            int thickness,// = 1
+            int lineType,// = 8
+            int shift)// = 0
+        {
+            cvRectangle(img, new CvPoint(rect.X, rect.Y), new CvPoint(rect.X + rect.Width, rect.Y + rect.Height), color, thickness, lineType, shift);
+        }
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvRectangle(
