@@ -95,6 +95,9 @@ namespace OpenCV.Net
         public static extern void cvCvtColor(CvArr src, CvArr dst, ColorConversion code);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvSobel(CvArr src, CvArr dst, int xorder, int yorder, int aperture_size);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvResize(CvArr src, CvArr dst, SubPixelInterpolation interpolation);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
