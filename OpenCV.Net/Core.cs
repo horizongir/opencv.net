@@ -184,6 +184,9 @@ namespace OpenCV.Net
         public static extern void cvCopy(CvArr src, CvArr dst, CvArr mask);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvTranspose(CvArr src, CvArr dst);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvFlip(CvArr src, CvArr dst, FlipMode flipMode);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
