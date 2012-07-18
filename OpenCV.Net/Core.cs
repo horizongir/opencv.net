@@ -88,6 +88,11 @@ namespace OpenCV.Net
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern double cvMahalanobis(CvArr vec1, CvArr vec2, CvArr mat);
 
+        public static void cvConvert(CvArr src, CvArr dst)
+        {
+            cvConvertScale(src, dst, 1, 0);
+        }
+
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvConvertScale(CvArr src, CvArr dst, double scale, double shift);
 
