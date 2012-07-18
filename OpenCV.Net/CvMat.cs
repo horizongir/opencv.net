@@ -11,9 +11,9 @@ namespace OpenCV.Net
     {
         public new static readonly CvMat Null = new CvMatNull();
 
-        public const int MaxChannels = 512;
-        public const int ChannelShift = 3;
-        public const int DepthMax = 1 << ChannelShift;
+        const int MaxChannels = 512;
+        const int ChannelShift = 3;
+        const int DepthMax = 1 << ChannelShift;
         const int DepthMask = DepthMax - 1;
         const int AutoStep = 0x7fffffff;
 
