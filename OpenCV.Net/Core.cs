@@ -180,19 +180,6 @@ namespace OpenCV.Net
             out CvPoint max_loc, // = NULL
             CvArr mask); // = NULL
 
-        public static IplImage cvGetSubRect(IplImage image, CvRect rect)
-        {
-            unsafe
-            {
-                _CvMat mat;
-                var subRect = new IplImage(new CvSize(rect.Width, rect.Height), image.Depth, image.NumChannels);
-                core.cvGetSubRect(image, out mat, rect);
-                Core.cvCopy(new CvMat((IntPtr)(&mat), false), subRect);
-                GC.KeepAlive(image);
-                return subRect;
-            }
-        }
-
         public static void cvCopy(CvArr src, CvArr dst)
         {
             cvCopy(src, dst, CvArr.Null);
