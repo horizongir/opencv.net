@@ -120,6 +120,22 @@ namespace OpenCV.Net
             int use_harris, // CV_DEFAULT(0),
             double k); // CV_DEFAULT(0.04);
 
+        public static CvSeq cvHoughCircles(
+            CvArr image,
+            CvMemStorage circle_storage,
+            HoughTransformMethod method,
+            double dp,
+            double min_dist,
+            double param1,// CV_DEFAULT(100),
+            double param2, // CV_DEFAULT(100),
+            int min_radius, // CV_DEFAULT(0),
+            int max_radius) // CV_DEFAULT(0));
+        {
+            var result = imgproc.cvHoughCircles(image, circle_storage, method, dp, min_dist, param1, param2, min_radius, max_radius);
+            result.SetOwnerStorage(circle_storage);
+            return result;
+        }
+
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvMoments(SafeHandle arr, out CvMoments moments, int binary);
 

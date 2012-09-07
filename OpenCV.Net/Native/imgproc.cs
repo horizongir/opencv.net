@@ -46,6 +46,18 @@ namespace OpenCV.Net.Native
             int parameter2);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern CvSeq cvHoughCircles(
+            CvArr image,
+            CvMemStorage circle_storage,
+            HoughTransformMethod method,
+            double dp,
+            double min_dist,
+            double param1,// CV_DEFAULT(100),
+            double param2, // CV_DEFAULT(100),
+            int min_radius, // CV_DEFAULT(0),
+            int max_radius); // CV_DEFAULT(0));
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int cvFindContours(
             CvArr image,
             CvMemStorage storage,
