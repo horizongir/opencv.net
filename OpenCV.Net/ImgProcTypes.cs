@@ -6,6 +6,14 @@ using System.Runtime.InteropServices;
 
 namespace OpenCV.Net
 {
+    public enum HoughTransformMethod : int
+    {
+        Standard = 0,
+        Probabilistic = 1,
+        MultiScale = 2,
+        Gradient = 3
+    }
+
     public enum StructuringElementShape : int
     {
         Rectangle = 0,
