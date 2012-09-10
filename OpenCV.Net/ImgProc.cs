@@ -136,6 +136,20 @@ namespace OpenCV.Net
             return result;
         }
 
+        public static void cvHoughCircles(
+            CvArr image,
+            CvArr circle_storage,
+            HoughTransformMethod method,
+            double dp,
+            double min_dist,
+            double param1,// CV_DEFAULT(100),
+            double param2, // CV_DEFAULT(100),
+            int min_radius, // CV_DEFAULT(0),
+            int max_radius) // CV_DEFAULT(0));
+        {
+            imgproc.cvHoughCircles(image, circle_storage, method, dp, min_dist, param1, param2, min_radius, max_radius);
+        }
+
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvMoments(SafeHandle arr, out CvMoments moments, int binary);
 
@@ -165,6 +179,12 @@ namespace OpenCV.Net
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern CvRect cvBoundingRect(SafeHandle points, int update);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int cvMinEnclosingCircle(SafeHandle points, out CvPoint2D32f center, out float radius);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern CvBox2D cvFitEllipse2(SafeHandle points);
 
         public static int cvFindContours(
             CvArr image,
