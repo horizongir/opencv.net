@@ -202,6 +202,58 @@ namespace OpenCV.Net
 
     [StructLayout(LayoutKind.Sequential)]
     [TypeConverter(typeof(NumericAggregateConverter))]
+    public struct CvSize2D32f : IEquatable<CvSize2D32f>
+    {
+        public float Width;
+        public float Height;
+
+        public CvSize2D32f(float width, float height)
+        {
+            Width = width;
+            Height = height;
+        }
+
+        public override int GetHashCode()
+        {
+            return Width.GetHashCode() ^ Height.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is CvSize2D32f)
+            {
+                return Equals((CvSize2D32f)obj);
+            }
+
+            return false;
+        }
+
+        public bool Equals(CvSize2D32f other)
+        {
+            return Width == other.Width && Height == other.Height;
+        }
+
+        public static bool operator ==(CvSize2D32f left, CvSize2D32f right)
+        {
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(CvSize2D32f left, CvSize2D32f right)
+        {
+            return !left.Equals(right);
+        }
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct CvBox2D
+    {
+        public CvPoint2D32f Center;
+        public CvSize2D32f Size;
+        public float Angle;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    [TypeConverter(typeof(NumericAggregateConverter))]
     public struct CvScalar
     {
         public double Val0;

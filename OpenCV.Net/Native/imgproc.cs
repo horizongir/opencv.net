@@ -48,7 +48,7 @@ namespace OpenCV.Net.Native
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern CvSeq cvHoughCircles(
             CvArr image,
-            CvMemStorage circle_storage,
+            SafeHandle circle_storage,
             HoughTransformMethod method,
             double dp,
             double min_dist,
