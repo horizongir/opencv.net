@@ -112,7 +112,7 @@ namespace OpenCV.Net
             CvArr eig_image,
             CvArr temp_image,
             [Out]CvPoint2D32f[] corners,
-            out int corner_count,
+            ref int corner_count,
             double quality_level,
             double min_distance,
             CvArr mask, // CV_DEFAULT(NULL),
