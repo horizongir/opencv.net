@@ -8,6 +8,27 @@ using OpenCV.Net.Native;
 namespace OpenCV.Net
 {
     [StructLayout(LayoutKind.Sequential)]
+    public struct KeyPoint
+    {
+        public CvPoint2D32f Point;
+        public float Size;
+        public float Angle;
+        public float Response;
+        public int Octave;
+        public int ClassId;
+
+        public KeyPoint(CvPoint2D32f point, float size = 0, float angle = -1, float response = 0, int octave = 0, int classId = -1)
+        {
+            Point = point;
+            Size = size;
+            Angle = angle;
+            Response = response;
+            Octave = octave;
+            ClassId = classId;
+        }
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
     public struct CvSURFPoint
     {
         public CvPoint2D32f Point;
