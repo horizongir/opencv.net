@@ -89,7 +89,7 @@ namespace OpenCV.Net
 
     public enum PolygonApproximation : int
     {
-        CV_POLY_APPROX_DP = 0
+        POLY_APPROX_DP = 0
     }
 
     public enum AdaptiveThresholdMethod : int
@@ -248,6 +248,103 @@ namespace OpenCV.Net
         YUV2BGR = 84,
         YUV2RGB = 85,
 
-        COLORCVT_MAX = 100
+        BayerBG2GRAY = 86,
+        BayerGB2GRAY = 87,
+        BayerRG2GRAY = 88,
+        BayerGR2GRAY = 89,
+
+        //YUV 4:2:0 formats family
+        YUV2RGB_NV12 = 90,
+        YUV2BGR_NV12 = 91,
+        YUV2RGB_NV21 = 92,
+        YUV2BGR_NV21 = 93,
+        YUV420sp2RGB = YUV2RGB_NV21,
+        YUV420sp2BGR = YUV2BGR_NV21,
+
+        YUV2RGBA_NV12 = 94,
+        YUV2BGRA_NV12 = 95,
+        YUV2RGBA_NV21 = 96,
+        YUV2BGRA_NV21 = 97,
+        YUV420sp2RGBA = YUV2RGBA_NV21,
+        YUV420sp2BGRA = YUV2BGRA_NV21,
+
+        YUV2RGB_YV12 = 98,
+        YUV2BGR_YV12 = 99,
+        YUV2RGB_IYUV = 100,
+        YUV2BGR_IYUV = 101,
+        YUV2RGB_I420 = YUV2RGB_IYUV,
+        YUV2BGR_I420 = YUV2BGR_IYUV,
+        YUV420p2RGB = YUV2RGB_YV12,
+        YUV420p2BGR = YUV2BGR_YV12,
+
+        YUV2RGBA_YV12 = 102,
+        YUV2BGRA_YV12 = 103,
+        YUV2RGBA_IYUV = 104,
+        YUV2BGRA_IYUV = 105,
+        YUV2RGBA_I420 = YUV2RGBA_IYUV,
+        YUV2BGRA_I420 = YUV2BGRA_IYUV,
+        YUV420p2RGBA = YUV2RGBA_YV12,
+        YUV420p2BGRA = YUV2BGRA_YV12,
+
+        YUV2GRAY_420 = 106,
+        YUV2GRAY_NV21 = YUV2GRAY_420,
+        YUV2GRAY_NV12 = YUV2GRAY_420,
+        YUV2GRAY_YV12 = YUV2GRAY_420,
+        YUV2GRAY_IYUV = YUV2GRAY_420,
+        YUV2GRAY_I420 = YUV2GRAY_420,
+        YUV420sp2GRAY = YUV2GRAY_420,
+        YUV420p2GRAY = YUV2GRAY_420,
+
+        //YUV 4:2:2 formats family
+        YUV2RGB_UYVY = 107,
+        YUV2BGR_UYVY = 108,
+        //YUV2RGB_VYUY = 109,
+        //YUV2BGR_VYUY = 110,
+        YUV2RGB_Y422 = YUV2RGB_UYVY,
+        YUV2BGR_Y422 = YUV2BGR_UYVY,
+        YUV2RGB_UYNV = YUV2RGB_UYVY,
+        YUV2BGR_UYNV = YUV2BGR_UYVY,
+
+        YUV2RGBA_UYVY = 111,
+        YUV2BGRA_UYVY = 112,
+        //YUV2RGBA_VYUY = 113,
+        //YUV2BGRA_VYUY = 114,
+        YUV2RGBA_Y422 = YUV2RGBA_UYVY,
+        YUV2BGRA_Y422 = YUV2BGRA_UYVY,
+        YUV2RGBA_UYNV = YUV2RGBA_UYVY,
+        YUV2BGRA_UYNV = YUV2BGRA_UYVY,
+
+        YUV2RGB_YUY2 = 115,
+        YUV2BGR_YUY2 = 116,
+        YUV2RGB_YVYU = 117,
+        YUV2BGR_YVYU = 118,
+        YUV2RGB_YUYV = YUV2RGB_YUY2,
+        YUV2BGR_YUYV = YUV2BGR_YUY2,
+        YUV2RGB_YUNV = YUV2RGB_YUY2,
+        YUV2BGR_YUNV = YUV2BGR_YUY2,
+
+        YUV2RGBA_YUY2 = 119,
+        YUV2BGRA_YUY2 = 120,
+        YUV2RGBA_YVYU = 121,
+        YUV2BGRA_YVYU = 122,
+        YUV2RGBA_YUYV = YUV2RGBA_YUY2,
+        YUV2BGRA_YUYV = YUV2BGRA_YUY2,
+        YUV2RGBA_YUNV = YUV2RGBA_YUY2,
+        YUV2BGRA_YUNV = YUV2BGRA_YUY2,
+
+        YUV2GRAY_UYVY = 123,
+        YUV2GRAY_YUY2 = 124,
+        //YUV2GRAY_VYUY = YUV2GRAY_UYVY,
+        YUV2GRAY_Y422 = YUV2GRAY_UYVY,
+        YUV2GRAY_UYNV = YUV2GRAY_UYVY,
+        YUV2GRAY_YVYU = YUV2GRAY_YUY2,
+        YUV2GRAY_YUYV = YUV2GRAY_YUY2,
+        YUV2GRAY_YUNV = YUV2GRAY_YUY2,
+
+        // alpha premultiplication
+        RGBA2mRGBA = 125,
+        mRGBA2RGBA = 126,
+
+        COLORCVT_MAX = 127
     }
 }

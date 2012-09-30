@@ -8,7 +8,7 @@ namespace OpenCV.Net.Native
 {
     static class video
     {
-        const string libName = "opencv_video231";
+        const string libName = "opencv_video242";
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr cvCreateKalman(int dynam_params, int measure_params, int control_params);
@@ -21,20 +21,5 @@ namespace OpenCV.Net.Native
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvReleaseKalman(IntPtr kalman);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvReleaseBGStatModel(IntPtr bg_model);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int cvUpdateBGStatModel(IplImage current_frame, CvBGStatModel bg_model, double learningRate);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int cvRefineForegroundMaskBySegm(CvSeq segments, CvBGStatModel bg_model);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr cvCreateFGDStatModel(IplImage first_frame, IntPtr parameters);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr cvCreateGaussianBGModel(IplImage first_frame, IntPtr parameters);
     }
 }
