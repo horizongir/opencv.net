@@ -9,7 +9,7 @@ namespace OpenCV.Net
 {
     public static class ImgProc
     {
-        const string libName = "opencv_imgproc231";
+        const string libName = "opencv_imgproc242";
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvGetRectSubPix(CvArr src, CvArr dst, CvPoint2D32f center);
@@ -169,10 +169,10 @@ namespace OpenCV.Net
             int header_size,
             CvMemStorage storage,
             PolygonApproximation method,
-            double parameter,
-            int parameter2)
+            double eps,
+            int recursive)
         {
-            var poly = imgproc.cvApproxPoly(src_seq, header_size, storage, method, parameter, parameter2);
+            var poly = imgproc.cvApproxPoly(src_seq, header_size, storage, method, eps, recursive);
             poly.SetOwnerStorage(storage);
             return poly;
         }

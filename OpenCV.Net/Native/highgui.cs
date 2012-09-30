@@ -8,7 +8,7 @@ namespace OpenCV.Net.Native
 {
     static class highgui
     {
-        const string libName = "opencv_highgui231";
+        const string libName = "opencv_highgui242";
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public static extern int cvNamedWindow(string name, WindowFlags flags);

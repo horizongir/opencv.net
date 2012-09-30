@@ -8,7 +8,7 @@ namespace OpenCV.Net.Native
 {
     static class legacy
     {
-        const string libName = "opencv_legacy231";
+        const string libName = "opencv_legacy242";
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr cvCreateConDensation(int dynam_params, int measure_params, int sample_count);
