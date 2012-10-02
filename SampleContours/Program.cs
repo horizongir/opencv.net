@@ -71,7 +71,7 @@ namespace SampleContours
             ImgProc.cvFindContours(img, storage, out contours, CvContour.HeaderSize,
                                    ContourRetrieval.Tree, ContourApproximation.CHAIN_APPROX_SIMPLE, new CvPoint(0, 0));
 
-            contours = ImgProc.cvApproxPoly(contours, CvContour.HeaderSize, storage, PolygonApproximation.CV_POLY_APPROX_DP, 3, 1);
+            contours = ImgProc.cvApproxPoly(contours, CvContour.HeaderSize, storage, PolygonApproximation.POLY_APPROX_DP, 3, 1);
 
             contoursWindow = new NamedWindow("contours", WindowFlags.AUTOSIZE);
             contoursWindow.CreateTrackbar("levels+3", ref levels, 7, OnTrackbar);
