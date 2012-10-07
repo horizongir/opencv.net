@@ -97,6 +97,11 @@ namespace OpenCV.Net
             return ((int)depth & DepthMask) + ((channels - 1) << ChannelShift);
         }
 
+        public CvMat Clone()
+        {
+            return new CvMat(core.cvCloneMat(this), true);
+        }
+
         protected override bool ReleaseHandle()
         {
             var pHandle = GCHandle.Alloc(handle, GCHandleType.Pinned);

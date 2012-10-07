@@ -56,6 +56,9 @@ namespace OpenCV.Net.Native
         public static extern double cvGetReal3D(IntPtr arr, int idx0, int idx1, int idx2);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr cvCloneMat(CvMat mat);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr cvGetSubRect(CvArr arr, out _CvMat submat, CvRect rect);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
