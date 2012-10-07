@@ -35,9 +35,17 @@ namespace OpenCV.Net
 
         public CvMat(int rows, int cols, CvMatDepth depth, int channels)
         {
-            var type = ((int)depth & DepthMask) + ((channels - 1) << ChannelShift);
+            var type = GetMatType(depth, channels);
             var pMat = core.cvCreateMat(rows, cols, type);
             SetHandle(pMat);
+        }
+
+        public CvMat(int rows, int cols, CvMatDepth depth, int channels, IntPtr data)
+        {
+            var type = GetMatType(depth, channels);
+            var pMat = core.cvCreateMatHeader(rows, cols, type);
+            SetHandle(pMat);
+            SetData(data, Step);
         }
 
         public int Rows
@@ -62,6 +70,17 @@ namespace OpenCV.Net
             }
         }
 
+        public int Step
+        {
+            get
+            {
+                unsafe
+                {
+                    return ((_CvMat*)handle.ToPointer())->step;
+                }
+            }
+        }
+
         public IntPtr Data
         {
             get
@@ -71,6 +90,11 @@ namespace OpenCV.Net
                     return ((_CvMat*)handle.ToPointer())->data;
                 }
             }
+        }
+
+        static int GetMatType(CvMatDepth depth, int channels)
+        {
+            return ((int)depth & DepthMask) + ((channels - 1) << ChannelShift);
         }
 
         protected override bool ReleaseHandle()
