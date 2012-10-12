@@ -20,7 +20,7 @@ namespace OpenCV.Net.Native
             return callback;
         }
 
-        private static int CvErrorExceptionCallback(int status, string func_name, string err_msg, string file_name, int line)
+        private static int CvErrorExceptionCallback(int status, string func_name, string err_msg, string file_name, int line, IntPtr userData)
         {
             throw new CvException(status, func_name, err_msg, file_name, line);
         }

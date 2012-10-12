@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Runtime.Serialization;
 using System.IO;
+using System.Runtime.InteropServices;
 
 namespace OpenCV.Net
 {
@@ -51,13 +52,14 @@ namespace OpenCV.Net
 
         private static string GetErrorMessage(int status, string functionName, string errorMessage, string fileName, int line)
         {
-            var errorText = Core.cvErrorStr(status);
-            if (string.IsNullOrEmpty(errorText))
+            var errorStr = Core.cvErrorStr(status);
+            if (errorStr == IntPtr.Zero)
             {
                 return "Unknown error.";
             }
             else
             {
+                var errorText = Marshal.PtrToStringAnsi(errorStr);
                 if (!string.IsNullOrEmpty(errorMessage)) errorText += string.Format(": {0}", errorMessage);
                 if (!string.IsNullOrEmpty(functionName)) errorText += string.Format("in function {0}", functionName);
                 if (!string.IsNullOrEmpty(fileName)) errorText += string.Format(", {0}({1})", Path.GetFileName(fileName), line);
