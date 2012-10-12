@@ -104,6 +104,16 @@ namespace OpenCV.Net
             X = (int)point.X;
             Y = (int)point.Y;
         }
+
+        public static CvPoint operator +(CvPoint pt1, CvPoint pt2)
+        {
+            return new CvPoint(pt1.X + pt2.X, pt1.Y + pt2.Y);
+        }
+
+        public static CvPoint operator -(CvPoint pt1, CvPoint pt2)
+        {
+            return new CvPoint(pt1.X - pt2.X, pt1.Y - pt2.Y);
+        }
     }
 
     [StructLayout(LayoutKind.Sequential)]
@@ -120,6 +130,16 @@ namespace OpenCV.Net
             X = x;
             Y = y;
         }
+
+        public static CvPoint2D32f operator +(CvPoint2D32f pt1, CvPoint2D32f pt2)
+        {
+            return new CvPoint2D32f(pt1.X + pt2.X, pt1.Y + pt2.Y);
+        }
+
+        public static CvPoint2D32f operator -(CvPoint2D32f pt1, CvPoint2D32f pt2)
+        {
+            return new CvPoint2D32f(pt1.X - pt2.X, pt1.Y - pt2.Y);
+        }
     }
 
     [StructLayout(LayoutKind.Sequential)]
@@ -135,6 +155,16 @@ namespace OpenCV.Net
         {
             X = x;
             Y = y;
+        }
+
+        public static CvPoint2D64f operator +(CvPoint2D64f pt1, CvPoint2D64f pt2)
+        {
+            return new CvPoint2D64f(pt1.X + pt2.X, pt1.Y + pt2.Y);
+        }
+
+        public static CvPoint2D64f operator -(CvPoint2D64f pt1, CvPoint2D64f pt2)
+        {
+            return new CvPoint2D64f(pt1.X - pt2.X, pt1.Y - pt2.Y);
         }
     }
 
@@ -153,6 +183,16 @@ namespace OpenCV.Net
             X = x;
             Y = y;
             Z = z;
+        }
+
+        public static CvPoint3D32f operator +(CvPoint3D32f pt1, CvPoint3D32f pt2)
+        {
+            return new CvPoint3D32f(pt1.X + pt2.X, pt1.Y + pt2.Y, pt1.Z + pt2.Z);
+        }
+
+        public static CvPoint3D32f operator -(CvPoint3D32f pt1, CvPoint3D32f pt2)
+        {
+            return new CvPoint3D32f(pt1.X - pt2.X, pt1.Y - pt2.Y, pt1.Z - pt2.Z);
         }
     }
 
