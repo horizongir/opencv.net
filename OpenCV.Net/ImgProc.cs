@@ -217,6 +217,6 @@ namespace OpenCV.Net
         public static extern double cvContourArea(CvSeq contour, CvSlice slice, int oriented);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern double cvPointPolygonTest(CvSeq contour, CvPoint2D32f pt, int measure_dist);
+        public static extern double cvPointPolygonTest(SafeHandle contour, CvPoint2D32f pt, int measure_dist);
     }
 }
