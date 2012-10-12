@@ -358,7 +358,7 @@ namespace OpenCV.Net
         public static extern ErrorMode cvSetErrMode(ErrorMode mode);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern string cvErrorStr(int status);
+        public static extern IntPtr cvErrorStr(int status);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         [return:MarshalAs(UnmanagedType.FunctionPtr)]

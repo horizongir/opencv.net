@@ -45,7 +45,7 @@ namespace OpenCV.Net
         MultiplyConjugate = 8 /* conjugate the second argument of cvMulSpectrums */
     }
 
-    public delegate int CvErrorCallback(int status, string func_name, string err_msg, string file_name, int line);
+    public delegate int CvErrorCallback(int status, string func_name, string err_msg, string file_name, int line, IntPtr userData);
 
     public delegate IntPtr CvAllocFunc(IntPtr size, IntPtr userdata);
 
