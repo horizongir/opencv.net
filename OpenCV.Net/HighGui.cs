@@ -8,7 +8,7 @@ namespace OpenCV.Net
 {
     public static class HighGui
     {
-        const string libName = "opencv_highgui242";
+        const string libName = "opencv_highgui243";
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvConvertImage(CvArr src, CvArr dst, ConvertImageFlags flags);

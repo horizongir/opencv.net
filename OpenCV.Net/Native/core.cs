@@ -8,7 +8,7 @@ namespace OpenCV.Net.Native
 {
     static class core
     {
-        const string libName = "opencv_core242";
+        const string libName = "opencv_core243";
 
         public static readonly CvErrorCallback DefaultCvErrorCallback = SetDefaultErrorCallback();
 
