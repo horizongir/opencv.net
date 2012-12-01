@@ -8,7 +8,7 @@ namespace OpenCV.Net.Native
 {
     public static class features2d
     {
-        const string libName = "opencv_features2d242";
+        const string libName = "opencv_features2d243";
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern CvSeq cvGetStarKeypoints(CvArr img, CvMemStorage storage, CvStarDetectorParams detectorParams);
