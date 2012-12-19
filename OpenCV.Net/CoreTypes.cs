@@ -114,6 +114,11 @@ namespace OpenCV.Net
         {
             return new CvPoint(pt1.X - pt2.X, pt1.Y - pt2.Y);
         }
+
+        public static CvPoint operator -(CvPoint pt)
+        {
+            return new CvPoint(-pt.X, -pt.Y);
+        }
     }
 
     [StructLayout(LayoutKind.Sequential)]
@@ -131,6 +136,16 @@ namespace OpenCV.Net
             Y = y;
         }
 
+        public static CvPoint2D32f operator *(CvPoint2D32f pt, float scalar)
+        {
+            return new CvPoint2D32f(scalar * pt.X, scalar * pt.Y);
+        }
+
+        public static CvPoint2D32f operator *(float scalar, CvPoint2D32f pt)
+        {
+            return new CvPoint2D32f(scalar * pt.X, scalar * pt.Y);
+        }
+
         public static CvPoint2D32f operator +(CvPoint2D32f pt1, CvPoint2D32f pt2)
         {
             return new CvPoint2D32f(pt1.X + pt2.X, pt1.Y + pt2.Y);
@@ -139,6 +154,11 @@ namespace OpenCV.Net
         public static CvPoint2D32f operator -(CvPoint2D32f pt1, CvPoint2D32f pt2)
         {
             return new CvPoint2D32f(pt1.X - pt2.X, pt1.Y - pt2.Y);
+        }
+
+        public static CvPoint2D32f operator -(CvPoint2D32f pt)
+        {
+            return new CvPoint2D32f(-pt.X, -pt.Y);
         }
     }
 
@@ -157,6 +177,16 @@ namespace OpenCV.Net
             Y = y;
         }
 
+        public static CvPoint2D64f operator *(CvPoint2D64f pt, double scalar)
+        {
+            return new CvPoint2D64f(scalar * pt.X, scalar * pt.Y);
+        }
+
+        public static CvPoint2D64f operator *(double scalar, CvPoint2D64f pt)
+        {
+            return new CvPoint2D64f(scalar * pt.X, scalar * pt.Y);
+        }
+
         public static CvPoint2D64f operator +(CvPoint2D64f pt1, CvPoint2D64f pt2)
         {
             return new CvPoint2D64f(pt1.X + pt2.X, pt1.Y + pt2.Y);
@@ -165,6 +195,11 @@ namespace OpenCV.Net
         public static CvPoint2D64f operator -(CvPoint2D64f pt1, CvPoint2D64f pt2)
         {
             return new CvPoint2D64f(pt1.X - pt2.X, pt1.Y - pt2.Y);
+        }
+
+        public static CvPoint2D64f operator -(CvPoint2D64f pt)
+        {
+            return new CvPoint2D64f(-pt.X, -pt.Y);
         }
     }
 
@@ -185,6 +220,16 @@ namespace OpenCV.Net
             Z = z;
         }
 
+        public static CvPoint3D32f operator *(CvPoint3D32f pt, float scalar)
+        {
+            return new CvPoint3D32f(scalar * pt.X, scalar * pt.Y, scalar * pt.Z);
+        }
+
+        public static CvPoint3D32f operator *(float scalar, CvPoint3D32f pt)
+        {
+            return new CvPoint3D32f(scalar * pt.X, scalar * pt.Y, scalar * pt.Z);
+        }
+
         public static CvPoint3D32f operator +(CvPoint3D32f pt1, CvPoint3D32f pt2)
         {
             return new CvPoint3D32f(pt1.X + pt2.X, pt1.Y + pt2.Y, pt1.Z + pt2.Z);
@@ -193,6 +238,11 @@ namespace OpenCV.Net
         public static CvPoint3D32f operator -(CvPoint3D32f pt1, CvPoint3D32f pt2)
         {
             return new CvPoint3D32f(pt1.X - pt2.X, pt1.Y - pt2.Y, pt1.Z - pt2.Z);
+        }
+
+        public static CvPoint3D32f operator -(CvPoint3D32f pt)
+        {
+            return new CvPoint3D32f(-pt.X, -pt.Y, -pt.Z);
         }
     }
 
