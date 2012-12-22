@@ -130,6 +130,12 @@ namespace OpenCV.Net
         public float X;
         public float Y;
 
+        public CvPoint2D32f(CvPoint point)
+        {
+            X = point.X;
+            Y = point.Y;
+        }
+
         public CvPoint2D32f(float x, float y)
         {
             X = x;
