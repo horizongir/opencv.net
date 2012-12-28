@@ -9,6 +9,7 @@ namespace OpenCV.Net
 {
     public class CvMat : CvArr
     {
+        bool ownsData;
         public new static readonly CvMat Null = new CvMatNull();
 
         const int MaxChannels = 512;
@@ -22,6 +23,11 @@ namespace OpenCV.Net
         {
         }
 
+        internal CvMat(bool ownsHandle)
+            : base(ownsHandle)
+        {
+        }
+
         internal CvMat(IntPtr handle)
             : this(handle, true)
         {
@@ -31,13 +37,17 @@ namespace OpenCV.Net
             : base(ownsHandle)
         {
             SetHandle(handle);
+
+            if (ownsHandle)
+            {
+                GC.AddMemoryPressure(Step * Rows);
+                ownsData = true;
+            }
         }
 
         public CvMat(int rows, int cols, CvMatDepth depth, int channels)
+            : this(core.cvCreateMat(rows, cols, GetMatType(depth, channels)), true)
         {
-            var type = GetMatType(depth, channels);
-            var pMat = core.cvCreateMat(rows, cols, type);
-            SetHandle(pMat);
         }
 
         public CvMat(int rows, int cols, CvMatDepth depth, int channels, IntPtr data)
@@ -102,11 +112,21 @@ namespace OpenCV.Net
             return new CvMat(core.cvCloneMat(this), true);
         }
 
+        public CvMat GetSubRect(CvRect rect)
+        {
+            return new CvMatSubRect(this, rect);
+        }
+
         protected override bool ReleaseHandle()
         {
             var pHandle = GCHandle.Alloc(handle, GCHandleType.Pinned);
             try
             {
+                if (ownsData)
+                {
+                    GC.RemoveMemoryPressure(Step * Rows);
+                }
+
                 core.cvReleaseMat(pHandle.AddrOfPinnedObject());
                 return true;
             }
@@ -120,6 +140,29 @@ namespace OpenCV.Net
             protected override bool ReleaseHandle()
             {
                 return false;
+            }
+        }
+
+        class CvMatSubRect : CvMat
+        {
+            CvMat owner;
+
+            public CvMatSubRect(CvMat source, CvRect rect)
+                : base(true)
+            {
+                _CvMat subRect;
+                core.cvGetSubRect(source, out subRect, rect);
+                var pMat = core.cvCreateMatHeader(subRect.rows, subRect.cols, subRect.type);
+                SetHandle(pMat);
+                SetData(subRect.data, subRect.step);
+                owner = source;
+            }
+
+            protected override bool ReleaseHandle()
+            {
+                base.ReleaseHandle();
+                owner = null;
+                return true;
             }
         }
     }
