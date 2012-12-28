@@ -12,8 +12,13 @@ namespace OpenCV.Net
         bool ownsData;
 
         internal IplImage()
+            : this(true)
         {
-            ownsData = true;
+        }
+
+        internal IplImage(bool ownsData)
+        {
+            this.ownsData = ownsData;
         }
 
         internal IplImage(IntPtr handle, bool ownsHandle)
@@ -23,7 +28,7 @@ namespace OpenCV.Net
 
             if (ownsHandle)
             {
-                GC.AddMemoryPressure(WidthStep * Height * Depth / 8);
+                GC.AddMemoryPressure(WidthStep * Height);
                 ownsData = true;
             }
         }
@@ -129,6 +134,11 @@ namespace OpenCV.Net
             return new IplImage(core.cvCloneImage(this), true);
         }
 
+        public IplImage GetSubRect(CvRect rect)
+        {
+            return new IplImageSubRect(this, rect);
+        }
+
         public void ResetImageROI()
         {
             core.cvResetImageROI(this);
@@ -141,13 +151,36 @@ namespace OpenCV.Net
             {
                 if (ownsData)
                 {
-                    GC.RemoveMemoryPressure(WidthStep * Height * Depth / 8);
+                    GC.RemoveMemoryPressure(WidthStep * Height);
                     core.cvReleaseImage(pHandle.AddrOfPinnedObject());
                 }
                 else core.cvReleaseImageHeader(pHandle.AddrOfPinnedObject());
                 return true;
             }
             finally { pHandle.Free(); }
+        }
+
+        class IplImageSubRect : IplImage
+        {
+            IplImage owner;
+
+            public IplImageSubRect(IplImage source, CvRect rect)
+                : base(false)
+            {
+                _CvMat subRect;
+                core.cvGetSubRect(source, out subRect, rect);
+                var pImage = core.cvCreateImageHeader(new CvSize(rect.Width, rect.Height), source.Depth, source.NumChannels);
+                SetHandle(pImage);
+                SetData(subRect.data, subRect.step);
+                owner = source;
+            }
+
+            protected override bool ReleaseHandle()
+            {
+                base.ReleaseHandle();
+                owner = null;
+                return true;
+            }
         }
     }
 }
