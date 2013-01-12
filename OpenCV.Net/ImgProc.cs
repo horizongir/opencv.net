@@ -91,6 +91,14 @@ namespace OpenCV.Net
             double sigma1, // CV_DEFAULT(0),
             double sigma2); // CV_DEFAULT(0);
 
+        public static void cvFilter2D(CvArr src, CvArr dst, CvMat kernel)
+        {
+            cvFilter2D(src, dst, kernel, new CvPoint(-1,-1));
+        }
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvFilter2D(CvArr src, CvArr dst, CvMat kernel, CvPoint anchor);
+
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvCvtColor(CvArr src, CvArr dst, ColorConversion code);
 
