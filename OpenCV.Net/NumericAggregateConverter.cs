@@ -39,7 +39,7 @@ namespace OpenCV.Net
                         var instance = Activator.CreateInstance(context.PropertyDescriptor.PropertyType);
                         for (int i = 0; i < fields.Length; i++)
                         {
-                            var fieldValue = Convert.ChangeType(fieldValues[i], fields[i].FieldType);
+                            var fieldValue = Convert.ChangeType(fieldValues[i], fields[i].FieldType, culture);
                             fields[i].SetValue(instance, fieldValue);
                         }
 
