@@ -91,6 +91,28 @@ namespace OpenCV.Net
             }
         }
 
+        public CvMatDepth Depth
+        {
+            get
+            {
+                unsafe
+                {
+                    return (CvMatDepth)(((_CvMat*)handle.ToPointer())->type & DepthMask);
+                }
+            }
+        }
+
+        public int NumChannels
+        {
+            get
+            {
+                unsafe
+                {
+                    return ((((_CvMat*)handle.ToPointer())->type >> ChannelShift) & (MaxChannels - 1)) + 1;
+                }
+            }
+        }
+
         public IntPtr Data
         {
             get
