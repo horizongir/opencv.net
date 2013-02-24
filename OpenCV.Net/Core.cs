@@ -34,6 +34,9 @@ namespace OpenCV.Net
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvNormalize(CvArr src, CvArr dst, double a, double b, NormTypes norm_type, CvArr mask);
 
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvReduce(CvArr src, CvArr dst, int dim, ReduceOperation op);
+
         #region Discrete Linear Transforms and Related Functions
 
         /* Discrete Fourier Transform:
