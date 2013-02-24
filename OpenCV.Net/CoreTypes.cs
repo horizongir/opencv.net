@@ -26,6 +26,14 @@ namespace OpenCV.Net
         CV_RELATIVE_L2 = (CV_RELATIVE | CV_L2)
     }
 
+    public enum ReduceOperation : int
+    {
+        Sum,
+        Avg,
+        Max,
+        Min
+    }
+
     public enum BorderType : int
     {
         Constant,
