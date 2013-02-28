@@ -162,6 +162,16 @@ namespace OpenCV.Net
             }
         }
 
+        public void CopyTo<TElement>(TElement[] array)
+        {
+            var arrayHandle = GCHandle.Alloc(array, GCHandleType.Pinned);
+            try
+            {
+                core.cvCvtSeqToArray(this, arrayHandle.AddrOfPinnedObject(), CvSlice.WholeSeq);
+            }
+            finally { arrayHandle.Free(); }
+        }
+
         protected override bool ReleaseHandle()
         {
             SetHandleAsInvalid();
