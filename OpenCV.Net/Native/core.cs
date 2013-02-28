@@ -109,6 +109,9 @@ namespace OpenCV.Net.Native
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvChangeSeqBlock(ref _CvSeqReader reader, int direction);
 
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr cvCvtSeqToArray(CvSeq seq, IntPtr elements, CvSlice slice);
+
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public static extern IntPtr cvLoad(string filename, CvMemStorage storage, string name, out string realName);
 
