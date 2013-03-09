@@ -98,6 +98,24 @@ namespace OpenCV.Net
         GAUSSIAN_C = 1
     }
 
+    public enum DistanceLabel : int
+    {
+        ConnectedComponent = 0,
+        Pixel = 1
+    }
+
+    public enum DistanceType : int
+    {
+        User = -1,  /* User defined distance */
+        L1 = 1,   /* distance = |x1-x2| + |y1-y2| */
+        L2 = 2,   /* the simple euclidean distance */
+        C = 3,   /* distance = max(|x1-x2|,|y1-y2|) */
+        L12 = 4,   /* L1-L2 metric: distance = 2(sqrt(1+x*x/2) - 1)) */
+        Fair = 5,   /* distance = c^2(|x|/c-log(1+|x|/c)), c = 1.3998 */
+        Welsch = 6,   /* distance = c^2/2(1-exp(-(x/c)^2)), c = 2.9846 */
+        Huber = 7    /* distance = |x|<c ? x^2/2 : c(|x|-c/2), c=1.345 */
+    }
+
     public enum ThresholdType : int
     {
         Binary = 0,  /* value = value > threshold ? max_value : 0       */
