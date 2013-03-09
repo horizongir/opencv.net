@@ -73,6 +73,17 @@ namespace OpenCV.Net
                           AdaptiveThresholdMethod adaptiveMethod, ThresholdType thresholdType,
                           int blockSize, double param1 );
 
+        /* Applies distance transform to binary image */
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvDistTransform(
+            CvArr src,
+            CvArr dst,
+            DistanceType distance_type, // CV_DEFAULT(CV_DIST_L2),
+            int mask_size, // CV_DEFAULT(3),
+            float[] mask, // CV_DEFAULT(NULL),
+            CvArr labels, // CV_DEFAULT(NULL),
+            DistanceLabel labelType); // CV_DEFAULT(CV_DIST_LABEL_CCOMP));
+
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern double cvThreshold(CvArr src, CvArr dst, double threshold, double maxValue, ThresholdType thresholdType);
 
@@ -98,6 +109,9 @@ namespace OpenCV.Net
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvFilter2D(CvArr src, CvArr dst, CvMat kernel, CvPoint anchor);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvWatershed(CvArr image, CvArr markers);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvCvtColor(CvArr src, CvArr dst, ColorConversion code);
