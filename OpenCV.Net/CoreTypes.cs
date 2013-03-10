@@ -34,6 +34,16 @@ namespace OpenCV.Net
         Min
     }
 
+    public enum ComparisonOperation : int
+    {
+        Equal = 0,
+        GreaterThan = 1,
+        GreaterOrEqual = 2,
+        LessThan = 3,
+        LessOrEqual = 4,
+        NotEqual = 5
+    }
+
     public enum BorderType : int
     {
         Constant,

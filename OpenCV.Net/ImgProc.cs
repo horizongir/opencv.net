@@ -114,6 +114,9 @@ namespace OpenCV.Net
         public static extern void cvWatershed(CvArr image, CvArr markers);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvLaplace(CvArr src, CvArr dst, int aperture_size);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvCvtColor(CvArr src, CvArr dst, ColorConversion code);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
