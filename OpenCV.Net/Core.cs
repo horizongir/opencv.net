@@ -142,6 +142,9 @@ namespace OpenCV.Net
         public static extern void cvAnd(CvArr src1, CvArr src2, CvArr dst, CvArr mask);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvOr(CvArr src1, CvArr src2, CvArr dst, CvArr mask);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvNot(CvArr src, CvArr dst);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
@@ -225,7 +228,7 @@ namespace OpenCV.Net
         public static extern int cvCountNonZero(CvArr arr);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvCmpS(CvArr src, double value, CvArr dst, int cmp_op);
+        public static extern void cvCmpS(CvArr src, double value, CvArr dst, ComparisonOperation cmp_op);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvCircle(
