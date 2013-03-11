@@ -208,6 +208,14 @@ namespace OpenCV.Net
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int cvMinEnclosingCircle(SafeHandle points, out CvPoint2D32f center, out float radius);
 
+        /* Calculates exact convex hull of 2d point set */
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern CvSeq cvConvexHull2(SafeHandle input, SafeHandle hull_storage, ShapeOrientation orientation, int return_points);
+
+        /* Finds convexity defects for the contour */
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern CvSeq cvConvexityDefects(SafeHandle contour, SafeHandle convexhull, CvMemStorage storage);
+
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern CvBox2D cvFitEllipse2(SafeHandle points);
 
