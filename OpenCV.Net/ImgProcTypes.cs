@@ -92,6 +92,61 @@ namespace OpenCV.Net
         POLY_APPROX_DP = 0
     }
 
+    /* Shape orientation */
+    public enum ShapeOrientation
+    {
+        Clockwise = 1,
+        CounterClockwise = 2
+    }
+
+    /* Convexity defect */
+    [StructLayout(LayoutKind.Sequential)]
+    public struct CvConvexityDefect
+    {
+        IntPtr start; /* point of the contour where the defect begins */
+        IntPtr end; /* point of the contour where the defect ends */
+        IntPtr depth_point; /* the farthest from the convex hull point within the defect */
+        float depth; /* distance between the farthest point and the convex hull */
+
+        public CvPoint Start
+        {
+            get
+            {
+                unsafe
+                {
+                    return *((CvPoint*)start.ToPointer());
+                }
+            }
+        }
+
+        public CvPoint End
+        {
+            get
+            {
+                unsafe
+                {
+                    return *((CvPoint*)end.ToPointer());
+                }
+            }
+        }
+
+        public CvPoint DepthPoint
+        {
+            get
+            {
+                unsafe
+                {
+                    return *((CvPoint*)depth_point.ToPointer());
+                }
+            }
+        }
+
+        public float Depth
+        {
+            get { return depth; }
+        }
+    }
+
     public enum AdaptiveThresholdMethod : int
     {
         MEAN_C = 0,
