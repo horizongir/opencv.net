@@ -127,6 +127,12 @@ namespace OpenCV.Net
         public static extern void cvGetRawData(CvArr arr, out IntPtr data, out int step, out CvSize roiSize);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvMin(CvArr src1, CvArr src2, CvArr dst);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvMax(CvArr src1, CvArr src2, CvArr dst);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvAbsDiff(CvArr src1, CvArr src2, CvArr dst);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
