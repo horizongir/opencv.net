@@ -9,6 +9,6 @@ namespace OpenCV.Net
 {
     public static class Features2D
     {
-        const string libName = "opencv_features2d243";
+        const string libName = "opencv_features2d244";
     }
 }

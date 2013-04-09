@@ -9,7 +9,7 @@ namespace OpenCV.Net
 {
     public static class ImgProc
     {
-        const string libName = "opencv_imgproc243";
+        const string libName = "opencv_imgproc244";
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvGetRectSubPix(CvArr src, CvArr dst, CvPoint2D32f center);
