@@ -8,7 +8,7 @@ namespace OpenCV.Net.Native
 {
     static class imgproc
     {
-        const string libName = "opencv_imgproc243";
+        const string libName = "opencv_imgproc244";
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr cvCreateHist(int dims, int[] sizes, HistogramType type, IntPtr[] ranges, int uniform);

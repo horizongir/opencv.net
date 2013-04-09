@@ -9,7 +9,7 @@ namespace OpenCV.Net
 {
     public static class Core
     {
-        const string libName = "opencv_core243";
+        const string libName = "opencv_core244";
 
         public static void cvNormalize(CvArr src, CvArr dst)
         {
