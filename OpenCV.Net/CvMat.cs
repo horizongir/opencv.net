@@ -187,5 +187,124 @@ namespace OpenCV.Net
                 return true;
             }
         }
+
+        class CvMatDataHandle : CvMat
+        {
+            GCHandle handle;
+
+            public CvMatDataHandle(int rows, int cols, CvMatDepth depth, int channels, object data)
+                : this(rows, cols, depth, channels, GCHandle.Alloc(data, GCHandleType.Pinned))
+            {
+            }
+
+            private CvMatDataHandle(int rows, int cols, CvMatDepth depth, int channels, GCHandle dataHandle)
+                : base(rows, cols, depth, channels, dataHandle.AddrOfPinnedObject())
+            {
+                handle = dataHandle;
+            }
+
+            protected override bool ReleaseHandle()
+            {
+                base.ReleaseHandle();
+                handle.Free();
+                return true;
+            }
+        }
+
+        public static CvMat FromArray(byte[] data)
+        {
+            using (var dataHeader = new CvMatDataHandle(1, data.Length, CvMatDepth.CV_8U, 1, data))
+            {
+                return dataHeader.Clone();
+            }
+        }
+
+        public static CvMat FromArray(byte[,] data)
+        {
+            using (var dataHeader = new CvMatDataHandle(data.GetLength(0), data.GetLength(1), CvMatDepth.CV_8U, 1, data))
+            {
+                return dataHeader.Clone();
+            }
+        }
+
+        public static CvMat FromArray(short[] data)
+        {
+            using (var dataHeader = new CvMatDataHandle(1, data.Length, CvMatDepth.CV_16S, 1, data))
+            {
+                return dataHeader.Clone();
+            }
+        }
+
+        public static CvMat FromArray(short[,] data)
+        {
+            using (var dataHeader = new CvMatDataHandle(data.GetLength(0), data.GetLength(1), CvMatDepth.CV_16S, 1, data))
+            {
+                return dataHeader.Clone();
+            }
+        }
+
+        public static CvMat FromArray(ushort[] data)
+        {
+            using (var dataHeader = new CvMatDataHandle(1, data.Length, CvMatDepth.CV_16U, 1, data))
+            {
+                return dataHeader.Clone();
+            }
+        }
+
+        public static CvMat FromArray(ushort[,] data)
+        {
+            using (var dataHeader = new CvMatDataHandle(data.GetLength(0), data.GetLength(1), CvMatDepth.CV_16U, 1, data))
+            {
+                return dataHeader.Clone();
+            }
+        }
+
+        public static CvMat FromArray(int[] data)
+        {
+            using (var dataHeader = new CvMatDataHandle(1, data.Length, CvMatDepth.CV_32S, 1, data))
+            {
+                return dataHeader.Clone();
+            }
+        }
+
+        public static CvMat FromArray(int[,] data)
+        {
+            using (var dataHeader = new CvMatDataHandle(data.GetLength(0), data.GetLength(1), CvMatDepth.CV_32S, 1, data))
+            {
+                return dataHeader.Clone();
+            }
+        }
+
+        public static CvMat FromArray(float[] data)
+        {
+            using (var dataHeader = new CvMatDataHandle(1, data.Length, CvMatDepth.CV_32F, 1, data))
+            {
+                return dataHeader.Clone();
+            }
+        }
+
+        public static CvMat FromArray(float[,] data)
+        {
+            using (var dataHeader = new CvMatDataHandle(data.GetLength(0), data.GetLength(1), CvMatDepth.CV_32F, 1, data))
+            {
+                return dataHeader.Clone();
+            }
+        }
+
+        public static CvMat FromArray(double[] data)
+        {
+            using (var dataHeader = new CvMatDataHandle(1, data.Length, CvMatDepth.CV_64F, 1, data))
+            {
+                return dataHeader.Clone();
+            }
+        }
+
+        public static CvMat FromArray(double[,] data)
+        {
+            using (var dataHeader = new CvMatDataHandle(data.GetLength(0), data.GetLength(1), CvMatDepth.CV_64F, 1, data))
+            {
+                return dataHeader.Clone();
+            }
+        }
     }
 }
