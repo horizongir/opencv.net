@@ -211,9 +211,69 @@ namespace OpenCV.Net
             }
         }
 
+        public static CvMat CreateMatHeader(byte[] data)
+        {
+            return new CvMatDataHandle(1, data.Length, CvMatDepth.CV_8U, 1, data);
+        }
+
+        public static CvMat CreateMatHeader(byte[,] data)
+        {
+            return new CvMatDataHandle(data.GetLength(0), data.GetLength(1), CvMatDepth.CV_8U, 1, data);
+        }
+
+        public static CvMat CreateMatHeader(short[] data)
+        {
+            return new CvMatDataHandle(1, data.Length, CvMatDepth.CV_16S, 1, data);
+        }
+
+        public static CvMat CreateMatHeader(short[,] data)
+        {
+            return new CvMatDataHandle(data.GetLength(0), data.GetLength(1), CvMatDepth.CV_16S, 1, data);
+        }
+
+        public static CvMat CreateMatHeader(ushort[] data)
+        {
+            return new CvMatDataHandle(1, data.Length, CvMatDepth.CV_16U, 1, data);
+        }
+
+        public static CvMat CreateMatHeader(ushort[,] data)
+        {
+            return new CvMatDataHandle(data.GetLength(0), data.GetLength(1), CvMatDepth.CV_16U, 1, data);
+        }
+
+        public static CvMat CreateMatHeader(int[] data)
+        {
+            return new CvMatDataHandle(1, data.Length, CvMatDepth.CV_32S, 1, data);
+        }
+
+        public static CvMat CreateMatHeader(int[,] data)
+        {
+            return new CvMatDataHandle(data.GetLength(0), data.GetLength(1), CvMatDepth.CV_32S, 1, data);
+        }
+
+        public static CvMat CreateMatHeader(float[] data)
+        {
+            return new CvMatDataHandle(1, data.Length, CvMatDepth.CV_32F, 1, data);
+        }
+
+        public static CvMat CreateMatHeader(float[,] data)
+        {
+            return new CvMatDataHandle(data.GetLength(0), data.GetLength(1), CvMatDepth.CV_32F, 1, data);
+        }
+
+        public static CvMat CreateMatHeader(double[] data)
+        {
+            return new CvMatDataHandle(1, data.Length, CvMatDepth.CV_64F, 1, data);
+        }
+
+        public static CvMat CreateMatHeader(double[,] data)
+        {
+            return new CvMatDataHandle(data.GetLength(0), data.GetLength(1), CvMatDepth.CV_64F, 1, data);
+        }
+
         public static CvMat FromArray(byte[] data)
         {
-            using (var dataHeader = new CvMatDataHandle(1, data.Length, CvMatDepth.CV_8U, 1, data))
+            using (var dataHeader = CreateMatHeader(data))
             {
                 return dataHeader.Clone();
             }
@@ -221,7 +281,7 @@ namespace OpenCV.Net
 
         public static CvMat FromArray(byte[,] data)
         {
-            using (var dataHeader = new CvMatDataHandle(data.GetLength(0), data.GetLength(1), CvMatDepth.CV_8U, 1, data))
+            using (var dataHeader = CreateMatHeader(data))
             {
                 return dataHeader.Clone();
             }
@@ -229,7 +289,7 @@ namespace OpenCV.Net
 
         public static CvMat FromArray(short[] data)
         {
-            using (var dataHeader = new CvMatDataHandle(1, data.Length, CvMatDepth.CV_16S, 1, data))
+            using (var dataHeader = CreateMatHeader(data))
             {
                 return dataHeader.Clone();
             }
@@ -237,7 +297,7 @@ namespace OpenCV.Net
 
         public static CvMat FromArray(short[,] data)
         {
-            using (var dataHeader = new CvMatDataHandle(data.GetLength(0), data.GetLength(1), CvMatDepth.CV_16S, 1, data))
+            using (var dataHeader = CreateMatHeader(data))
             {
                 return dataHeader.Clone();
             }
@@ -245,7 +305,7 @@ namespace OpenCV.Net
 
         public static CvMat FromArray(ushort[] data)
         {
-            using (var dataHeader = new CvMatDataHandle(1, data.Length, CvMatDepth.CV_16U, 1, data))
+            using (var dataHeader = CreateMatHeader(data))
             {
                 return dataHeader.Clone();
             }
@@ -253,7 +313,7 @@ namespace OpenCV.Net
 
         public static CvMat FromArray(ushort[,] data)
         {
-            using (var dataHeader = new CvMatDataHandle(data.GetLength(0), data.GetLength(1), CvMatDepth.CV_16U, 1, data))
+            using (var dataHeader = CreateMatHeader(data))
             {
                 return dataHeader.Clone();
             }
@@ -261,7 +321,7 @@ namespace OpenCV.Net
 
         public static CvMat FromArray(int[] data)
         {
-            using (var dataHeader = new CvMatDataHandle(1, data.Length, CvMatDepth.CV_32S, 1, data))
+            using (var dataHeader = CreateMatHeader(data))
             {
                 return dataHeader.Clone();
             }
@@ -269,7 +329,7 @@ namespace OpenCV.Net
 
         public static CvMat FromArray(int[,] data)
         {
-            using (var dataHeader = new CvMatDataHandle(data.GetLength(0), data.GetLength(1), CvMatDepth.CV_32S, 1, data))
+            using (var dataHeader = CreateMatHeader(data))
             {
                 return dataHeader.Clone();
             }
@@ -277,7 +337,7 @@ namespace OpenCV.Net
 
         public static CvMat FromArray(float[] data)
         {
-            using (var dataHeader = new CvMatDataHandle(1, data.Length, CvMatDepth.CV_32F, 1, data))
+            using (var dataHeader = CreateMatHeader(data))
             {
                 return dataHeader.Clone();
             }
@@ -285,7 +345,7 @@ namespace OpenCV.Net
 
         public static CvMat FromArray(float[,] data)
         {
-            using (var dataHeader = new CvMatDataHandle(data.GetLength(0), data.GetLength(1), CvMatDepth.CV_32F, 1, data))
+            using (var dataHeader = CreateMatHeader(data))
             {
                 return dataHeader.Clone();
             }
@@ -293,7 +353,7 @@ namespace OpenCV.Net
 
         public static CvMat FromArray(double[] data)
         {
-            using (var dataHeader = new CvMatDataHandle(1, data.Length, CvMatDepth.CV_64F, 1, data))
+            using (var dataHeader = CreateMatHeader(data))
             {
                 return dataHeader.Clone();
             }
@@ -301,7 +361,7 @@ namespace OpenCV.Net
 
         public static CvMat FromArray(double[,] data)
         {
-            using (var dataHeader = new CvMatDataHandle(data.GetLength(0), data.GetLength(1), CvMatDepth.CV_64F, 1, data))
+            using (var dataHeader = CreateMatHeader(data))
             {
                 return dataHeader.Clone();
             }
