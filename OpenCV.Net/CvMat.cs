@@ -190,7 +190,7 @@ namespace OpenCV.Net
 
         class CvMatDataHandle : CvMat
         {
-            GCHandle handle;
+            GCHandle dataHandle;
 
             public CvMatDataHandle(int rows, int cols, CvMatDepth depth, int channels, object data)
                 : this(rows, cols, depth, channels, GCHandle.Alloc(data, GCHandleType.Pinned))
@@ -200,13 +200,13 @@ namespace OpenCV.Net
             private CvMatDataHandle(int rows, int cols, CvMatDepth depth, int channels, GCHandle dataHandle)
                 : base(rows, cols, depth, channels, dataHandle.AddrOfPinnedObject())
             {
-                handle = dataHandle;
+                this.dataHandle = dataHandle;
             }
 
             protected override bool ReleaseHandle()
             {
                 base.ReleaseHandle();
-                handle.Free();
+                dataHandle.Free();
                 return true;
             }
         }
