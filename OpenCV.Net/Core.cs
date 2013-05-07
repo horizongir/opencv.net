@@ -129,14 +129,7 @@ namespace OpenCV.Net
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvGetRawData(CvArr arr, out IntPtr data, out int step, out CvSize roiSize);
 
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvMin(CvArr src1, CvArr src2, CvArr dst);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvMax(CvArr src1, CvArr src2, CvArr dst);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvAbsDiff(CvArr src1, CvArr src2, CvArr dst);
+        #region Arithmetic, logic and comparison operations
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvAdd(CvArr src1, CvArr src2, CvArr dst, CvArr mask);
@@ -145,19 +138,93 @@ namespace OpenCV.Net
         public static extern void cvAddS(CvArr src, CvScalar value, CvArr dst, CvArr mask);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvSub(CvArr src1, CvArr src2, CvArr dst, CvArr mask);
+
+        public static void cvSubS(CvArr src, CvScalar value, CvArr dst, CvArr mask)
+        {
+            cvAddS(src, new CvScalar(-value.Val0, -value.Val1, -value.Val2, -value.Val3), dst, mask);
+        }
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvSubRS(CvArr src, CvScalar value, CvArr dst, CvArr mask);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvMul(CvArr src1, CvArr src2, CvArr dst, double scale);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvDiv(CvArr src1, CvArr src2, CvArr dst, double scale);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvScaleAdd(CvArr src1, CvScalar scale, CvArr src2, CvArr dst);
+
+        public static void cvAXPY(CvArr A, double real_scalar, CvArr B, CvArr C)
+        {
+            cvScaleAdd(A, CvScalar.Real(real_scalar), B, C);
+        }
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvAddWeighted(CvArr src1, double alpha, CvArr src2, double beta, double gamma, CvArr dst);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern double cvDotProduct(CvArr src1, CvArr src2);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvAnd(CvArr src1, CvArr src2, CvArr dst, CvArr mask);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvAndS(CvArr src, CvScalar value, CvArr dst, CvArr mask);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvOr(CvArr src1, CvArr src2, CvArr dst, CvArr mask);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvOrS(CvArr src, CvScalar value, CvArr dst, CvArr mask);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvXor(CvArr src1, CvArr src2, CvArr dst, CvArr mask);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvXorS(CvArr src, CvScalar value, CvArr dst, CvArr mask);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvNot(CvArr src, CvArr dst);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvInRange(CvArr src, CvArr lower, CvArr upper, CvArr dst);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvInRangeS(CvArr src, CvScalar lower, CvScalar upper, CvArr dst);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvCmp(CvArr src1, CvArr src2, CvArr dst, ComparisonOperation cmp_op);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvCmpS(CvArr src, double value, CvArr dst, ComparisonOperation cmp_op);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvMin(CvArr src1, CvArr src2, CvArr dst);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvMax(CvArr src1, CvArr src2, CvArr dst);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvMinS(CvArr src, double value, CvArr dst);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvMaxS(CvArr src, double value, CvArr dst);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvAbsDiff(CvArr src1, CvArr src2, CvArr dst);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvAbsDiffS(CvArr src, CvArr dst, CvScalar value);
+
+        public static void cvAbs(CvArr src, CvArr dst)
+        {
+            cvAbsDiffS(src, dst, CvScalar.All(0));
+        }
+
+        #endregion
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvLog(CvArr src, CvArr dst);
@@ -213,12 +280,6 @@ namespace OpenCV.Net
         public static extern void cvMerge(CvArr src0, CvArr src1, CvArr src2, CvArr src3, CvArr dst);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvMul(CvArr src1, CvArr src2, CvArr dst, double scale);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvScaleAdd(CvArr src1, CvScalar scale, CvArr src2, CvArr dst);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvCartToPolar(CvArr x, CvArr y, CvArr magnitude, CvArr angle, int angle_in_degrees);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
@@ -228,16 +289,10 @@ namespace OpenCV.Net
         public static extern void cvSplit(CvArr src, CvArr dst0, CvArr dst1, CvArr dst2, CvArr dst3);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvSub(CvArr src1, CvArr src2, CvArr dst, CvArr mask);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern CvScalar cvSum(CvArr arr);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int cvCountNonZero(CvArr arr);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvCmpS(CvArr src, double value, CvArr dst, ComparisonOperation cmp_op);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvCircle(
