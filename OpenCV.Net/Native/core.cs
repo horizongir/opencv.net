@@ -62,6 +62,15 @@ namespace OpenCV.Net.Native
         public static extern IntPtr cvGetSubRect(CvArr arr, out _CvMat submat, CvRect rect);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr cvGetRows(CvArr arr, out _CvMat submat, int start_row, int end_row, int delta_row);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr cvGetCols(CvArr arr, out _CvMat submat, int start_col, int end_col);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr cvGetDiag(CvArr arr, out _CvMat submat, int diag);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr cvGetImage(ref _CvMat arr, out _IplImage image_header);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]

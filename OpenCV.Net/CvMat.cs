@@ -136,7 +136,50 @@ namespace OpenCV.Net
 
         public CvMat GetSubRect(CvRect rect)
         {
-            return new CvMatSubRect(this, rect);
+            _CvMat subRect;
+            core.cvGetSubRect(this, out subRect, rect);
+            return new CvMatSubMat(this, subRect);
+        }
+
+        public CvMat GetRow(int row)
+        {
+            return GetRows(row, row + 1, 1);
+        }
+
+        public CvMat GetRows(int startRow, int endRow)
+        {
+            return GetRows(startRow, endRow, 1);
+        }
+
+        public CvMat GetRows(int startRow, int endRow, int deltaRow)
+        {
+            _CvMat subMat;
+            core.cvGetRows(this, out subMat, startRow, endRow, deltaRow);
+            return new CvMatSubMat(this, subMat);
+        }
+
+        public CvMat GetCol(int col)
+        {
+            return GetCols(col, col + 1);
+        }
+
+        public CvMat GetCols(int startCol, int endCol)
+        {
+            _CvMat subMat;
+            core.cvGetCols(this, out subMat, startCol, endCol);
+            return new CvMatSubMat(this, subMat);
+        }
+
+        public CvMat GetDiag()
+        {
+            return GetDiag(0);
+        }
+
+        public CvMat GetDiag(int diag)
+        {
+            _CvMat subMat;
+            core.cvGetDiag(this, out subMat, diag);
+            return new CvMatSubMat(this, subMat);
         }
 
         protected override bool ReleaseHandle()
@@ -165,18 +208,16 @@ namespace OpenCV.Net
             }
         }
 
-        class CvMatSubRect : CvMat
+        class CvMatSubMat : CvMat
         {
             CvMat owner;
 
-            public CvMatSubRect(CvMat source, CvRect rect)
+            public CvMatSubMat(CvMat source, _CvMat subMat)
                 : base(true)
             {
-                _CvMat subRect;
-                core.cvGetSubRect(source, out subRect, rect);
-                var pMat = core.cvCreateMatHeader(subRect.rows, subRect.cols, subRect.type);
+                var pMat = core.cvCreateMatHeader(subMat.rows, subMat.cols, subMat.type);
                 SetHandle(pMat);
-                SetData(subRect.data, subRect.step);
+                SetData(subMat.data, subMat.step);
                 owner = source;
             }
 
