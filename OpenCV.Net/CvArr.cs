@@ -21,6 +21,16 @@ namespace OpenCV.Net
         {
         }
 
+        public void Set(CvScalar value)
+        {
+            Set(value, CvArr.Null);
+        }
+
+        public void Set(CvScalar value, CvArr mask)
+        {
+            core.cvSet(this, value, mask);
+        }
+
         public void SetZero()
         {
             core.cvSetZero(this);

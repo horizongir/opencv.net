@@ -92,6 +92,9 @@ namespace OpenCV.Net.Native
         public static extern void cvResetImageROI(IplImage image);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvSet(CvArr arr, CvScalar value, CvArr mask);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvSetZero(CvArr arr);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
