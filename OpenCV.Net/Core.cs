@@ -11,6 +11,9 @@ namespace OpenCV.Net
     {
         const string libName = "opencv_core244";
 
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvRepeat(CvArr src, CvArr dst);
+
         public static void cvNormalize(CvArr src, CvArr dst)
         {
             cvNormalize(src, dst, 1, 0, NormTypes.CV_L2, CvArr.Null);
