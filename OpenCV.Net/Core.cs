@@ -64,9 +64,6 @@ namespace OpenCV.Net
         #endregion
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvRandArr(ref CvRNG rng, CvArr arr, CvRandDistribution dist_type, CvScalar param1, CvScalar param2);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvSetIdentity(CvArr mat, CvScalar value);
 
         public static void cvCalcCovarMatrix(CvArr[] vects, CvArr covMat, CvArr avg, CovarianceFlags flags)
@@ -226,8 +223,48 @@ namespace OpenCV.Net
 
         #endregion
 
+        #region Math operations
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvCartToPolar(CvArr x, CvArr y, CvArr magnitude, CvArr angle, int angle_in_degrees);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvPolarToCart(CvArr magnitude, CvArr angle, CvArr x, CvArr y, int angle_in_degrees);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvPow(CvArr src, CvArr dst, double power);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvExp(CvArr src, CvArr dst);
+
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvLog(CvArr src, CvArr dst);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern float cvFastArctan(float y, float x);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern float cvCbrt(float value);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int cvCheckArr(CvArr arr, CheckArrayFlags flags, double min_val, double max_val);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvRandArr(ref CvRNG rng, CvArr arr, CvRandDistribution dist_type, CvScalar param1, CvScalar param2);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvRandShuffle(CvArr mat, ref CvRNG rng, double iter_factor);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvSort(CvArr src, CvArr dst, CvArr idxmat, CvSortFlags flags);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int cvSolveCubic(CvMat coeffs, CvMat roots);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvSolvePoly(CvMat coeffs, CvMat roots2, int maxiter, int fig);
+
+        #endregion
 
         public static CvScalar cvAvg(CvArr arr)
         {
@@ -278,12 +315,6 @@ namespace OpenCV.Net
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvMerge(CvArr src0, CvArr src1, CvArr src2, CvArr src3, CvArr dst);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvCartToPolar(CvArr x, CvArr y, CvArr magnitude, CvArr angle, int angle_in_degrees);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvPow(CvArr src, CvArr dst, double power);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvSplit(CvArr src, CvArr dst0, CvArr dst1, CvArr dst2, CvArr dst3);
