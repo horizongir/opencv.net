@@ -14,55 +14,6 @@ namespace OpenCV.Net
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvRepeat(CvArr src, CvArr dst);
 
-        public static void cvNormalize(CvArr src, CvArr dst)
-        {
-            cvNormalize(src, dst, 1, 0, NormTypes.CV_L2, CvArr.Null);
-        }
-
-        public static void cvNormalize(CvArr src, CvArr dst, double a)
-        {
-            cvNormalize(src, dst, a, 0, NormTypes.CV_L2, CvArr.Null);
-        }
-
-        public static void cvNormalize(CvArr src, CvArr dst, double a, double b)
-        {
-            cvNormalize(src, dst, a, b, NormTypes.CV_L2, CvArr.Null);
-        }
-
-        public static void cvNormalize(CvArr src, CvArr dst, double a, double b, NormTypes norm_type)
-        {
-            cvNormalize(src, dst, a, b, norm_type, CvArr.Null);
-        }
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvNormalize(CvArr src, CvArr dst, double a, double b, NormTypes norm_type, CvArr mask);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvReduce(CvArr src, CvArr dst, int dim, ReduceOperation op);
-
-        #region Discrete Linear Transforms and Related Functions
-
-        /* Discrete Fourier Transform:
-            complex->complex,
-            real->ccs (forward),
-            ccs->real (inverse) */
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvDFT(CvArr src, CvArr dst, DiscreteTransformFlags flags, int nonzero_rows);
-
-        /* Multiply results of DFTs: DFT(X)*DFT(Y) or DFT(X)*conj(DFT(Y)) */
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvMulSpectrums(CvArr src1, CvArr src2, CvArr dst, DiscreteTransformFlags flags);
-
-        /* Finds optimal DFT vector size >= size0 */
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int cvGetOptimalDFTSize(int size0);
-
-        /* Discrete Cosine Transform */
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvDCT(CvArr src, CvArr dst, DiscreteTransformFlags flags);
-
-        #endregion
-
         public static void cvConvert(CvArr src, CvArr dst)
         {
             cvConvertScale(src, dst, 1, 0);
@@ -331,6 +282,14 @@ namespace OpenCV.Net
 
         #endregion
 
+        #region Array Statistics
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern CvScalar cvSum(CvArr arr);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int cvCountNonZero(CvArr arr);
+
         public static CvScalar cvAvg(CvArr arr)
         {
             return cvAvg(arr, CvArr.Null);
@@ -356,6 +315,60 @@ namespace OpenCV.Net
             out CvPoint max_loc, // = NULL
             CvArr mask); // = NULL
 
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern double cvNorm(CvArr arr1, CvArr arr2, NormTypes norm_type, CvArr mask);
+
+        public static void cvNormalize(CvArr src, CvArr dst)
+        {
+            cvNormalize(src, dst, 1, 0, NormTypes.CV_L2, CvArr.Null);
+        }
+
+        public static void cvNormalize(CvArr src, CvArr dst, double a)
+        {
+            cvNormalize(src, dst, a, 0, NormTypes.CV_L2, CvArr.Null);
+        }
+
+        public static void cvNormalize(CvArr src, CvArr dst, double a, double b)
+        {
+            cvNormalize(src, dst, a, b, NormTypes.CV_L2, CvArr.Null);
+        }
+
+        public static void cvNormalize(CvArr src, CvArr dst, double a, double b, NormTypes norm_type)
+        {
+            cvNormalize(src, dst, a, b, norm_type, CvArr.Null);
+        }
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvNormalize(CvArr src, CvArr dst, double a, double b, NormTypes norm_type, CvArr mask);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvReduce(CvArr src, CvArr dst, int dim, ReduceOperation op);
+
+        #endregion
+
+        #region Discrete Linear Transforms and Related Functions
+
+        /* Discrete Fourier Transform:
+            complex->complex,
+            real->ccs (forward),
+            ccs->real (inverse) */
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvDFT(CvArr src, CvArr dst, DiscreteTransformFlags flags, int nonzero_rows);
+
+        /* Multiply results of DFTs: DFT(X)*DFT(Y) or DFT(X)*conj(DFT(Y)) */
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvMulSpectrums(CvArr src1, CvArr src2, CvArr dst, DiscreteTransformFlags flags);
+
+        /* Finds optimal DFT vector size >= size0 */
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int cvGetOptimalDFTSize(int size0);
+
+        /* Discrete Cosine Transform */
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvDCT(CvArr src, CvArr dst, DiscreteTransformFlags flags);
+
+        #endregion
+
         public static void cvCopy(CvArr src, CvArr dst)
         {
             cvCopy(src, dst, CvArr.Null);
@@ -369,12 +382,6 @@ namespace OpenCV.Net
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvSplit(CvArr src, CvArr dst0, CvArr dst1, CvArr dst2, CvArr dst3);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern CvScalar cvSum(CvArr arr);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int cvCountNonZero(CvArr arr);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvCircle(
