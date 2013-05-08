@@ -63,34 +63,6 @@ namespace OpenCV.Net
 
         #endregion
 
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvSetIdentity(CvArr mat, CvScalar value);
-
-        public static void cvCalcCovarMatrix(CvArr[] vects, CvArr covMat, CvArr avg, CovarianceFlags flags)
-        {
-            var pImages = new IntPtr[vects.Length];
-            for (int i = 0; i < vects.Length; i++)
-            {
-                pImages[i] = vects[i].DangerousGetHandle();
-            }
-
-            core.cvCalcCovarMatrix(pImages, pImages.Length, covMat, avg, flags);
-        }
-
-        public static void cvMatMulAdd(CvArr src1, CvArr src2, CvArr src3, CvArr dst)
-        {
-            cvGEMM(src1, src2, 1, src3, 1, dst, 0);
-        }
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvGEMM(CvArr src1, CvArr src2, double alpha, CvArr src3, double beta, CvArr dst, int tABC);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvCalcPCA(CvArr data, CvArr mean, CvArr eigenvals, CvArr eigenvects, PcaFlags flags);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern double cvMahalanobis(CvArr vec1, CvArr vec2, CvArr mat);
-
         public static void cvConvert(CvArr src, CvArr dst)
         {
             cvConvertScale(src, dst, 1, 0);
@@ -256,13 +228,106 @@ namespace OpenCV.Net
         public static extern void cvRandShuffle(CvArr mat, ref CvRNG rng, double iter_factor);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvSort(CvArr src, CvArr dst, CvArr idxmat, CvSortFlags flags);
+        public static extern void cvSort(CvArr src, CvArr dst, CvArr idxmat, SortFlags flags);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int cvSolveCubic(CvMat coeffs, CvMat roots);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvSolvePoly(CvMat coeffs, CvMat roots2, int maxiter, int fig);
+
+        #endregion
+
+        #region Matrix operations
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvCrossProduct(CvArr src1, CvArr src2, CvArr dst);
+
+        public static void cvMatMulAdd(CvArr src1, CvArr src2, CvArr src3, CvArr dst)
+        {
+            cvGEMM(src1, src2, 1, src3, 1, dst, 0);
+        }
+
+        public static void cvMatMul(CvArr src1, CvArr src2, CvArr dst)
+        {
+            cvMatMulAdd(src1, src2, CvArr.Null, dst);
+        }
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvGEMM(CvArr src1, CvArr src2, double alpha, CvArr src3, double beta, CvArr dst, GemmFlags tABC);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvTransform(CvArr src, CvArr dst, CvMat transmat, CvMat shiftvec);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvPerspectiveTransform(CvArr src, CvArr dst, CvMat mat);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvMulTransposed(CvArr src, CvArr dst, int order, CvArr delta, double scale);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvTranspose(CvArr src, CvArr dst);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvCompleteSymm(CvMat matrix, int LtoR);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvFlip(CvArr src, CvArr dst, FlipMode flipMode);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvSVD(CvArr A, CvArr W, CvArr U, CvArr V, SvdFlags flags);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvSVBkSb(CvArr W, CvArr U, CvArr V, CvArr B, CvArr X, SvdFlags flags);
+
+        public static double cvInvert(CvArr src, CvArr dst)
+        {
+            return cvInvert(src, dst, InversionMethod.LU);
+        }
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern double cvInvert(CvArr src, CvArr dst, InversionMethod method);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int cvSolve(CvArr src1, CvArr src2, CvArr dst, InversionMethod method);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern double cvDet(CvArr mat);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern CvScalar cvTrace(CvArr mat);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvEigenVV(CvArr mat, CvArr evects, CvArr evals, double eps, int lowindex, int highindex);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvSetIdentity(CvArr mat, CvScalar value);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern CvArr cvRange(CvArr mat, double start, double end);
+
+        public static void cvCalcCovarMatrix(CvArr[] vects, CvArr covMat, CvArr avg, CovarianceFlags flags)
+        {
+            var pImages = new IntPtr[vects.Length];
+            for (int i = 0; i < vects.Length; i++)
+            {
+                pImages[i] = vects[i].DangerousGetHandle();
+            }
+
+            core.cvCalcCovarMatrix(pImages, pImages.Length, covMat, avg, flags);
+        }
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvCalcPCA(CvArr data, CvArr mean, CvArr eigenvals, CvArr eigenvects, PcaFlags flags);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvProjectPCA(CvArr data, CvArr mean, CvArr eigenvects, CvArr result);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvBackProjectPCA(CvArr proj, CvArr mean, CvArr eigenvects, CvArr result);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern double cvMahalanobis(CvArr vec1, CvArr vec2, CvArr mat);
 
         #endregion
 
@@ -282,14 +347,6 @@ namespace OpenCV.Net
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvAvgSdv(CvArr arr, out CvScalar mean, out CvScalar std_dev, CvArr mask);
 
-        public static double cvInvert(CvArr src, CvArr dst)
-        {
-            return cvInvert(src, dst, InversionMethod.LU);
-        }
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern double cvInvert(CvArr src, CvArr dst, InversionMethod method);
-
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvMinMaxLoc(
             CvArr arr,
@@ -306,12 +363,6 @@ namespace OpenCV.Net
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvCopy(CvArr src, CvArr dst, CvArr mask);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvTranspose(CvArr src, CvArr dst);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvFlip(CvArr src, CvArr dst, FlipMode flipMode);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvMerge(CvArr src0, CvArr src1, CvArr src2, CvArr src3, CvArr dst);
