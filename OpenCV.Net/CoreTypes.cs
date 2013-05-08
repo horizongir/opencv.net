@@ -44,6 +44,14 @@ namespace OpenCV.Net
         NotEqual = 5
     }
 
+    [Flags]
+    public enum CheckArrayFlags : int
+    {
+        None = 0,
+        CheckRange = 1,
+        CheckQuiet = 2
+    }
+
     public enum BorderType : int
     {
         Constant,
@@ -430,6 +438,15 @@ namespace OpenCV.Net
     {
         Uniform = 0,
         Normal = 1
+    }
+
+    [Flags]
+    public enum CvSortFlags : int
+    {
+        EveryRow = 0,
+        EveryColumn = 1,
+        Ascending = 0,
+        Descending = 16
     }
 
     public enum CvMatDepth : int
