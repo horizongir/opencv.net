@@ -441,12 +441,30 @@ namespace OpenCV.Net
     }
 
     [Flags]
-    public enum CvSortFlags : int
+    public enum SortFlags : int
     {
         EveryRow = 0,
         EveryColumn = 1,
         Ascending = 0,
         Descending = 16
+    }
+
+    [Flags]
+    public enum GemmFlags : int
+    {
+        None = 0,
+        TransposeA = 1,
+        TransposeB = 2,
+        TransposeC = 4
+    }
+
+    [Flags]
+    public enum SvdFlags : int
+    {
+        None = 0,
+        ModifyA = 1,
+        TransposeU = 2,
+        TransposeV = 4
     }
 
     public enum CvMatDepth : int
