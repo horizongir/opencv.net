@@ -11,6 +11,19 @@ namespace OpenCV.Net.Native
         const string libName = "opencv_imgproc244";
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr cvCreatePyramid(
+            CvArr img,
+            int extra_layers,
+            double rate,
+            CvSize[] layer_sizes,
+            CvArr bufarr,
+            int calc,
+            PyramidDecompositionFilter filter);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int cvSampleLine(CvArr image, CvPoint pt1, CvPoint pt2, IntPtr buffer, int connectivity);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr cvCreateHist(int dims, int[] sizes, HistogramType type, IntPtr[] ranges, int uniform);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
