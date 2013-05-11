@@ -11,6 +11,184 @@ namespace OpenCV.Net
     {
         const string libName = "opencv_imgproc244";
 
+        #region Background statistics accumulation
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvAcc(CvArr image, CvArr sum, CvArr mask);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvSquareAcc(CvArr image, CvArr sqsum, CvArr mask);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvMultiplyAcc(CvArr image1, CvArr image2, CvArr acc, CvArr mask);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvRunningAvg(CvArr image, CvArr acc, double alpha, CvArr mask);
+
+        #endregion
+
+        #region Image Processing
+
+        /* Copies source 2D array inside of the larger destination array and
+         * makes a border of the specified type (IPL_BORDER_*) around the copied area. */
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvCopyMakeBorder(CvArr src, CvArr dst, CvPoint offset, BorderType bordertype, CvScalar value);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvSmooth(
+            CvArr src,
+            CvArr dst,
+            SmoothMethod smoothtype, // CV_DEFAULT(CV_GAUSSIAN),
+            int size1, // CV_DEFAULT(3),
+            int size2, // CV_DEFAULT(0),
+            double sigma1, // CV_DEFAULT(0),
+            double sigma2); // CV_DEFAULT(0);
+
+        public static void cvFilter2D(CvArr src, CvArr dst, CvMat kernel)
+        {
+            cvFilter2D(src, dst, kernel, new CvPoint(-1, -1));
+        }
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvFilter2D(CvArr src, CvArr dst, CvMat kernel, CvPoint anchor);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvIntegral(CvArr image, CvArr sum, CvArr sqsum, CvArr tilted_sum);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvPyrDown(CvArr src, CvArr dst, PyramidDecompositionFilter filter);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvPyrUp(CvArr src, CvArr dst, PyramidDecompositionFilter filter);
+
+        public static CvMat[] cvCreatePyramid(
+            CvArr img,
+            int extra_layers,
+            double rate,
+            CvSize[] layer_sizes,
+            CvArr bufarr,
+            int calc,
+            PyramidDecompositionFilter filter)
+        {
+            var handles = new IntPtr[extra_layers + 1];
+            var pyramid = imgproc.cvCreatePyramid(img, extra_layers, rate, layer_sizes, bufarr, calc, filter);
+            Marshal.Copy(pyramid, handles, 0, handles.Length);
+            return Array.ConvertAll(handles, handle => new CvMat(handle));
+        }
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvPyrMeanShiftFiltering(CvArr src, CvArr dst, double sp, double sr, int max_level, CvTermCriteria termcrit);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvWatershed(CvArr image, CvArr markers);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvSobel(CvArr src, CvArr dst, int xorder, int yorder, int aperture_size);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvLaplace(CvArr src, CvArr dst, int aperture_size);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvCvtColor(CvArr src, CvArr dst, ColorConversion code);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvResize(CvArr src, CvArr dst, SubPixelInterpolation interpolation);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvWarpAffine(CvArr src, CvArr dst, CvMat map_matrix, WarpFlags flags, CvScalar fillval);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern CvMat cvGetAffineTransform(CvPoint2D32f[] src, CvPoint2D32f[] dst, CvMat map_matrix);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern CvMat cv2DRotationMatrix(CvPoint2D32f center, double angle, double scale, CvMat map_matrix);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvWarpPerspective(CvArr src, CvArr dst, CvMat map_matrix, WarpFlags flags, CvScalar fillval);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern CvMat cvGetPerspectiveTransform(CvPoint2D32f[] src, CvPoint2D32f[] dst, CvMat map_matrix);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvRemap(CvArr src, CvArr dst, CvArr mapx, CvArr mapy, WarpFlags flags, CvScalar fillval);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvConvertMaps(CvArr mapx, CvArr mapy, CvArr mapxy, CvArr mapalpha);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvLogPolar(CvArr src, CvArr dst, CvPoint2D32f center, double M, WarpFlags flags);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvLinearPolar(CvArr src, CvArr dst, CvPoint2D32f center, double maxRadius, WarpFlags flags);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvUndistort2(CvArr src, CvArr dst, CvMat camera_matrix, CvMat distortion_coeffs, CvMat new_camera_matrix);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvInitUndistortMap(CvMat camera_matrix, CvMat distortion_coeffs, CvArr mapx, CvArr mapy);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvInitUndistortRectifyMap(
+            CvMat camera_matrix,
+            CvMat dist_coeffs,
+            CvMat R,
+            CvMat new_camera_matrix,
+            CvArr mapx,
+            CvArr mapy);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvUndistortPoints(
+            CvMat src,
+            CvMat dst,
+            CvMat camera_matrix,
+            CvMat dist_coeffs,
+            CvMat R,
+            CvMat P);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvErode(CvArr src, CvArr dst, IplConvKernel element, int iterations);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvDilate(CvArr src, CvArr dst, IplConvKernel element, int iterations);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvMorphologyEx(
+            CvArr src,
+            CvArr dst,
+            CvArr temp,
+            IplConvKernel element,
+            MorphologicalOperation operation,
+            int iterations);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvMoments(SafeHandle arr, out CvMoments moments, int binary);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern double cvGetSpatialMoment(ref CvMoments moments, int x_order, int y_order);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern double cvGetCentralMoment(ref CvMoments moments, int x_order, int y_order);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern double cvGetNormalizedCentralMoment(ref CvMoments moments, int x_order, int y_order);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvGetHuMoments(ref CvMoments moments, out CvHuMoments hu_moments);
+
+        #endregion
+
+        #region Data Sampling
+
+        public static int cvSampleLine<TElement>(CvArr image, CvPoint pt1, CvPoint pt2, TElement[] buffer, int connectivity) where TElement : struct
+        {
+            var bufferHandle = GCHandle.Alloc(buffer, GCHandleType.Pinned);
+            try
+            {
+                return imgproc.cvSampleLine(image, pt1, pt2, bufferHandle.AddrOfPinnedObject(), connectivity);
+            }
+            finally { bufferHandle.Free(); }
+        }
+
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvGetRectSubPix(CvArr src, CvArr dst, CvPoint2D32f center);
 
@@ -18,19 +196,9 @@ namespace OpenCV.Net
         public static extern void cvGetQuadrangleSubPix(CvArr src, CvArr dst, CvMat map_matrix);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern CvMat cvGetPerspectiveTransform(CvPoint2D32f[] src, CvPoint2D32f[] dst, CvMat map_matrix);
+        public static extern void cvMatchTemplate(CvArr image, CvArr templ, CvArr result, TemplateMatchingMethod method);
 
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvWarpPerspective(CvArr src, CvArr dst, CvMat map_matrix, WarpFlags flags, CvScalar fillval);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvUndistort2(CvArr src, CvArr dst, CvMat camera_matrix, CvMat distortion_coeffs, CvMat new_camera_matrix);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvAcc(CvArr image, CvArr sum, CvArr mask);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvRunningAvg(CvArr image, CvArr acc, double alpha, CvArr mask);
+        #endregion
 
         public static void cvCalcBackProject(IplImage[] images, CvArr back_project, CvHistogram hist)
         {
@@ -60,12 +228,6 @@ namespace OpenCV.Net
         }
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvDilate(CvArr src, CvArr dst, IplConvKernel element, int iterations);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvErode(CvArr src, CvArr dst, IplConvKernel element, int iterations);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvEqualizeHist(CvArr src, CvArr dst);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
@@ -86,44 +248,6 @@ namespace OpenCV.Net
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern double cvThreshold(CvArr src, CvArr dst, double threshold, double maxValue, ThresholdType thresholdType);
-
-        /* Copies source 2D array inside of the larger destination array and
-         * makes a border of the specified type (IPL_BORDER_*) around the copied area. */
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvCopyMakeBorder(CvArr src, CvArr dst, CvPoint offset, BorderType bordertype, CvScalar value);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvSmooth(
-            CvArr src,
-            CvArr dst,
-            SmoothMethod smoothtype, // CV_DEFAULT(CV_GAUSSIAN),
-            int size1, // CV_DEFAULT(3),
-            int size2, // CV_DEFAULT(0),
-            double sigma1, // CV_DEFAULT(0),
-            double sigma2); // CV_DEFAULT(0);
-
-        public static void cvFilter2D(CvArr src, CvArr dst, CvMat kernel)
-        {
-            cvFilter2D(src, dst, kernel, new CvPoint(-1,-1));
-        }
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvFilter2D(CvArr src, CvArr dst, CvMat kernel, CvPoint anchor);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvWatershed(CvArr image, CvArr markers);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvLaplace(CvArr src, CvArr dst, int aperture_size);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvCvtColor(CvArr src, CvArr dst, ColorConversion code);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvSobel(CvArr src, CvArr dst, int xorder, int yorder, int aperture_size);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvResize(CvArr src, CvArr dst, SubPixelInterpolation interpolation);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvCanny(CvArr image, CvArr edges, double threshold1, double threshold2, int aperture_size);
@@ -174,9 +298,6 @@ namespace OpenCV.Net
         {
             imgproc.cvHoughCircles(image, circle_storage, method, dp, min_dist, param1, param2, min_radius, max_radius);
         }
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvMoments(SafeHandle arr, out CvMoments moments, int binary);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvFloodFill(

@@ -6,6 +6,11 @@ using System.Runtime.InteropServices;
 
 namespace OpenCV.Net
 {
+    public enum PyramidDecompositionFilter : int
+    {
+        Gaussian5x5 = 7
+    }
+
     public enum HoughTransformMethod : int
     {
         Standard = 0,
@@ -20,6 +25,17 @@ namespace OpenCV.Net
         Cross = 1,
         Ellipse = 2,
         Custom = 100
+    }
+
+    public enum MorphologicalOperation : int
+    {
+        Erode = 0,
+        Dilate = 1,
+        Open = 2,
+        Close = 3,
+        Gradient = 4,
+        TopHat = 5,
+        BlackHat = 6
     }
 
     [Flags]
@@ -57,6 +73,22 @@ namespace OpenCV.Net
         public double m00, m10, m01, m20, m11, m02, m30, m21, m12, m03; /* spatial moments */
         public double mu20, mu11, mu02, mu30, mu21, mu12, mu03; /* central moments */
         public double inv_sqrt_m00; /* m00 != 0 ? 1/sqrt(m00) : 0 */
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct CvHuMoments
+    {
+        public double hu1, hu2, hu3, hu4, hu5, hu6, hu7; /* Hu invariants */
+    }
+
+    public enum TemplateMatchingMethod : int
+    {
+        SquareDifference = 0,
+        SquareDifferenceNormalized = 1,
+        CrossCorrelation = 2,
+        CrossCorrelationNormalized = 3,
+        CorrelationCoefficient = 4,
+        CorrelationCoefficientNormalized = 5
     }
 
     [StructLayout(LayoutKind.Sequential)]
