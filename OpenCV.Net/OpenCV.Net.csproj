@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="Calib3D.cs" />
     <Compile Include="Calib3DTypes.cs" />
+    <Compile Include="CvChainPtReader.cs" />
+    <Compile Include="CvChain.cs" />
     <Compile Include="Core.cs" />
     <Compile Include="CoreTypes.cs" />
     <Compile Include="CvArr.cs" />

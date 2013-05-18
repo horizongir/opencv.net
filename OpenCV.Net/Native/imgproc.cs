@@ -33,6 +33,12 @@ namespace OpenCV.Net.Native
             int recursive);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvStartReadChainPoints(CvChain chain, out _CvChainPtReader reader);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern CvPoint cvReadChainPoint(ref _CvChainPtReader reader);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr cvCreateHist(int dims, int[] sizes, HistogramType type, IntPtr[] ranges, int uniform);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]

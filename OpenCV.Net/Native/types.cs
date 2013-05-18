@@ -171,6 +171,28 @@ namespace OpenCV.Net.Native
     }
 
     [StructLayout(LayoutKind.Sequential)]
+    struct _CvChain
+    {
+        public int flags; /* micsellaneous flags */
+        public int header_size; /* size of sequence header */
+        public IntPtr h_prev; /* previous sequence */
+        public IntPtr h_next; /* next sequence */
+        public IntPtr v_prev; /* 2nd previous sequence */
+        public IntPtr v_next; /* 2nd next sequence */
+        public int total; /* total number of elements */
+        public int elem_size;/* size of sequence element in bytes */
+        public IntPtr block_max;/* maximal bound of the last block */
+        public IntPtr ptr; /* current write pointer */
+        public int delta_elems; /* how many elements allocated when the sequence grows
+                                   (sequence granularity) */
+        public IntPtr storage; /* where the seq is stored */
+        public IntPtr free_blocks; /* free blocks list */
+        public IntPtr first;
+
+        public CvPoint origin;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
     struct _CvSeqReader
     {
         public int header_size;
@@ -181,6 +203,38 @@ namespace OpenCV.Net.Native
         public IntPtr block_max;  /* pointer to the end of block */
         public int delta_index;   /* = seq->first->start_index   */
         public IntPtr prev_elem;  /* pointer to previous element */
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    struct _CvChainPtReader
+    {
+        public int header_size;
+        public IntPtr seq;        /* sequence, beign read */
+        public IntPtr block;      /* current block */
+        public IntPtr ptr;        /* pointer to element be read next */
+        public IntPtr block_min;  /* pointer to the beginning of block */
+        public IntPtr block_max;  /* pointer to the end of block */
+        public int delta_index;   /* = seq->first->start_index   */
+        public IntPtr prev_elem;  /* pointer to previous element */
+
+        public byte code;
+        public CvPoint pt;
+        public byte deltas00;
+        public byte deltas01;
+        public byte deltas10;
+        public byte deltas11;
+        public byte deltas20;
+        public byte deltas21;
+        public byte deltas30;
+        public byte deltas31;
+        public byte deltas40;
+        public byte deltas41;
+        public byte deltas50;
+        public byte deltas51;
+        public byte deltas60;
+        public byte deltas61;
+        public byte deltas70;
+        public byte deltas71;
     }
 
     [StructLayout(LayoutKind.Sequential)]
