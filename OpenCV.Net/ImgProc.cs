@@ -200,6 +200,50 @@ namespace OpenCV.Net
 
         #endregion
 
+        #region Contours retrieving
+
+        public static int cvFindContours(
+            CvArr image,
+            CvMemStorage storage,
+            out CvSeq first_contour,
+            int header_size, //=sizeof(CvContour),
+            ContourRetrieval mode, //=CV_RETR_LIST,
+            ContourApproximation method, //=CV_CHAIN_APPROX_SIMPLE,
+            CvPoint offset) //=cvPoint(0, 0)
+        {
+            var result = imgproc.cvFindContours(image, storage, out first_contour, header_size, mode, method, offset);
+            first_contour.SetOwnerStorage(storage);
+            return result;
+        }
+
+        public static CvContourScanner cvStartFindContours(
+            CvArr image,
+            CvMemStorage storage,
+            int header_size, //=sizeof(CvContour),
+            ContourRetrieval mode, //=CV_RETR_LIST,
+            ContourApproximation method, //=CV_CHAIN_APPROX_SIMPLE,
+            CvPoint offset) //=cvPoint(0, 0)
+        {
+            var scanner = imgproc.cvStartFindContours(image, storage, header_size, mode, method, offset);
+            scanner.SetOwnerStorage(storage);
+            return scanner;
+        }
+
+        public static CvSeq cvApproxChains(
+            CvSeq src_seq,
+            CvMemStorage storage,
+            ContourApproximation method,
+            double parameter,
+            int minimal_perimeter,
+            int recursive)
+        {
+            var chain = imgproc.cvApproxChains(src_seq, storage, method, parameter, minimal_perimeter, recursive);
+            chain.SetOwnerStorage(storage);
+            return chain;
+        }
+
+        #endregion
+
         public static void cvCalcBackProject(IplImage[] images, CvArr back_project, CvHistogram hist)
         {
             var pImages = new IntPtr[images.Length];
@@ -339,33 +383,6 @@ namespace OpenCV.Net
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern CvBox2D cvFitEllipse2(SafeHandle points);
-
-        public static int cvFindContours(
-            CvArr image,
-            CvMemStorage storage,
-            out CvSeq first_contour,
-            int header_size, //=sizeof(CvContour),
-            ContourRetrieval mode, //=CV_RETR_LIST,
-            ContourApproximation method, //=CV_CHAIN_APPROX_SIMPLE,
-            CvPoint offset) //=cvPoint(0, 0)
-        {
-            var result = imgproc.cvFindContours(image, storage, out first_contour, header_size, mode, method, offset);
-            first_contour.SetOwnerStorage(storage);
-            return result;
-        }
-
-        public static CvContourScanner cvStartFindContours(
-            CvArr image,
-            CvMemStorage storage,
-            int header_size, //=sizeof(CvContour),
-            ContourRetrieval mode, //=CV_RETR_LIST,
-            ContourApproximation method, //=CV_CHAIN_APPROX_SIMPLE,
-            CvPoint offset) //=cvPoint(0, 0)
-        {
-            var scanner = imgproc.cvStartFindContours(image, storage, header_size, mode, method, offset);
-            scanner.SetOwnerStorage(storage);
-            return scanner;
-        }
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern double cvContourArea(CvSeq contour, CvSlice slice, int oriented);

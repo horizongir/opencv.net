@@ -24,6 +24,15 @@ namespace OpenCV.Net.Native
         public static extern int cvSampleLine(CvArr image, CvPoint pt1, CvPoint pt2, IntPtr buffer, int connectivity);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern CvSeq cvApproxChains(
+            CvSeq src_seq,
+            CvMemStorage storage,
+            ContourApproximation method,
+            double parameter,
+            int minimal_perimeter,
+            int recursive);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr cvCreateHist(int dims, int[] sizes, HistogramType type, IntPtr[] ranges, int uniform);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
