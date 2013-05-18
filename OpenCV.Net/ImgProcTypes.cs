@@ -124,6 +124,13 @@ namespace OpenCV.Net
         POLY_APPROX_DP = 0
     }
 
+    public enum ShapeMatchingMethod : int
+    {
+        MatchI1 = 1,
+        MatchI2 = 2,
+        MatchI3 = 3
+    }
+
     /* Shape orientation */
     public enum ShapeOrientation
     {

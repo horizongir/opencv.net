@@ -244,6 +244,72 @@ namespace OpenCV.Net
 
         #endregion
 
+        #region Contour Processing and Shape Analysis
+
+        public static CvSeq cvApproxPoly(
+            CvSeq src_seq,
+            int header_size,
+            CvMemStorage storage,
+            PolygonApproximation method,
+            double eps,
+            int recursive)
+        {
+            var poly = imgproc.cvApproxPoly(src_seq, header_size, storage, method, eps, recursive);
+            poly.SetOwnerStorage(storage);
+            return poly;
+        }
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern double cvArcLength(SafeHandle curve, CvSlice slice, int is_closed);
+
+        public static double cvContourPerimeter(CvContour contour)
+        {
+            return cvArcLength(contour, CvSlice.WholeSeq, 1);
+        }
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern CvRect cvBoundingRect(SafeHandle points, int update);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern double cvContourArea(CvSeq contour, CvSlice slice, int oriented);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern CvBox2D cvMinAreaRect2(SafeHandle points, CvMemStorage storage);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int cvMinEnclosingCircle(SafeHandle points, out CvPoint2D32f center, out float radius);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern double cvMatchShapes(SafeHandle object1, SafeHandle object2, ShapeMatchingMethod method, double parameter);
+
+        /* Calculates exact convex hull of 2d point set */
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern CvSeq cvConvexHull2(SafeHandle input, SafeHandle hull_storage, ShapeOrientation orientation, int return_points);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int cvCheckContourConvexity(SafeHandle contour);
+
+        /* Finds convexity defects for the contour */
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern CvSeq cvConvexityDefects(SafeHandle contour, SafeHandle convexhull, CvMemStorage storage);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern CvBox2D cvFitEllipse2(SafeHandle points);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern CvRect cvMaxRect(ref CvRect rect1, ref CvRect rect2);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvBoxPoints(CvBox2D box, CvPoint2D32f[] pt);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern CvSeq cvPointSeqFromMat(int seq_kind, CvArr mat, CvContour contour_header, IntPtr block);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern double cvPointPolygonTest(SafeHandle contour, CvPoint2D32f pt, int measure_dist);
+
+        #endregion
+
         public static void cvCalcBackProject(IplImage[] images, CvArr back_project, CvHistogram hist)
         {
             var pImages = new IntPtr[images.Length];
@@ -353,41 +419,5 @@ namespace OpenCV.Net
             ref CvConnectedComp comp, //=NULL
             int flags, // = 4
             CvArr mask); // = null
-
-        public static CvSeq cvApproxPoly(
-            CvSeq src_seq,
-            int header_size,
-            CvMemStorage storage,
-            PolygonApproximation method,
-            double eps,
-            int recursive)
-        {
-            var poly = imgproc.cvApproxPoly(src_seq, header_size, storage, method, eps, recursive);
-            poly.SetOwnerStorage(storage);
-            return poly;
-        }
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern CvRect cvBoundingRect(SafeHandle points, int update);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int cvMinEnclosingCircle(SafeHandle points, out CvPoint2D32f center, out float radius);
-
-        /* Calculates exact convex hull of 2d point set */
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern CvSeq cvConvexHull2(SafeHandle input, SafeHandle hull_storage, ShapeOrientation orientation, int return_points);
-
-        /* Finds convexity defects for the contour */
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern CvSeq cvConvexityDefects(SafeHandle contour, SafeHandle convexhull, CvMemStorage storage);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern CvBox2D cvFitEllipse2(SafeHandle points);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern double cvContourArea(CvSeq contour, CvSlice slice, int oriented);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern double cvPointPolygonTest(SafeHandle contour, CvPoint2D32f pt, int measure_dist);
     }
 }
