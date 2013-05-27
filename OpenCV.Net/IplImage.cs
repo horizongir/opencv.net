@@ -45,6 +45,12 @@ namespace OpenCV.Net
             SetData(data, WidthStep);
         }
 
+        public int ImageCOI
+        {
+            get { return core.cvGetImageCOI(this); }
+            set { core.cvSetImageCOI(this, value); }
+        }
+
         public CvRect ImageROI
         {
             get { return core.cvGetImageROI(this); }
