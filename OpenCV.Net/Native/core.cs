@@ -25,8 +25,37 @@ namespace OpenCV.Net.Native
             throw new CvException(status, func_name, err_msg, file_name, line);
         }
 
+        #region Array allocation, deallocation, initialization and access to elements
+
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr cvCreateMat(int rows, int cols, int type);
+        public static extern IntPtr cvCreateImageHeader(CvSize size, int depth, int channels);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr cvCreateImage(CvSize size, int depth, int channels);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvReleaseImageHeader(IntPtr image);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvReleaseImage(IntPtr image);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr cvCloneImage(IplImage image);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvSetImageCOI(IplImage image, int coi);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int cvGetImageCOI(IplImage image);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern CvRect cvGetImageROI(IplImage image);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvSetImageROI(IplImage image, CvRect rect);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvResetImageROI(IplImage image);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr cvCreateMatHeader(int rows, int cols, int type);
@@ -35,25 +64,10 @@ namespace OpenCV.Net.Native
         public static extern IntPtr cvInitMatHeader(CvMat mat, int rows, int cols, int type, IntPtr data, int step);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr cvCreateMat(int rows, int cols, int type);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvReleaseMat(IntPtr mat);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvCalcCovarMatrix(IntPtr[] vects, int count, CvArr covMat, CvArr avg, CovarianceFlags flags);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr cvCloneImage(IplImage image);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern CvRect cvGetImageROI(IplImage image);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern double cvGetReal1D(IntPtr arr, int idx0);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern double cvGetReal2D(IntPtr arr, int idx0, int idx1);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern double cvGetReal3D(IntPtr arr, int idx0, int idx1, int idx2);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr cvCloneMat(CvMat mat);
@@ -71,31 +85,16 @@ namespace OpenCV.Net.Native
         public static extern IntPtr cvGetDiag(CvArr arr, out _CvMat submat, int diag);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern double cvGetReal1D(IntPtr arr, int idx0);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern double cvGetReal2D(IntPtr arr, int idx0, int idx1);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern double cvGetReal3D(IntPtr arr, int idx0, int idx1, int idx2);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr cvGetImage(ref _CvMat arr, out _IplImage image_header);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr cvGetSeqElem(CvSeq seq, int index);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr cvCreateImage(CvSize size, int depth, int channels);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr cvCreateImageHeader(CvSize size, int depth, int channels);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvReleaseImage(IntPtr image);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvReleaseImageHeader(IntPtr image);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvResetImageROI(IplImage image);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvSet(CvArr arr, CvScalar value, CvArr mask);
-
-        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvSetZero(CvArr arr);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void cvSetData(CvArr arr, IntPtr data, int step);
@@ -104,7 +103,18 @@ namespace OpenCV.Net.Native
         public static extern void cvGetRawData(CvArr arr, out IntPtr data, out int step, out CvSize roiSize);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void cvSetImageROI(IplImage image, CvRect rect);
+        public static extern void cvSet(CvArr arr, CvScalar value, CvArr mask);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvSetZero(CvArr arr);
+
+        #endregion
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void cvCalcCovarMatrix(IntPtr[] vects, int count, CvArr covMat, CvArr avg, CovarianceFlags flags);
+
+        [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr cvGetSeqElem(CvSeq seq, int index);
 
         [DllImport(libName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr cvCreateMemStorage(int blockSize);
