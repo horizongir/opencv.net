@@ -76,7 +76,7 @@ namespace OpenCV.Net.Native
         public IntPtr refcount;
         public int hdr_refcount;
         public IntPtr heap;
-        public IntPtr hashtable;
+        public IntPtr* hashtable;
         public int hashsize;
         public int valoffset;
         public int idxoffset;
@@ -84,17 +84,17 @@ namespace OpenCV.Net.Native
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    struct _CvSparseNode
+    unsafe struct _CvSparseNode
     {
         public uint hashval;
-        public IntPtr next;
+        public _CvSparseNode* next;
     }
 
     [StructLayout(LayoutKind.Sequential)]
     struct _CvSparseMatIterator
     {
-        public IntPtr mat;
-        public IntPtr node;
+        unsafe public _CvSparseMat* mat;
+        unsafe public _CvSparseNode* node;
         public int curidx;
     }
 

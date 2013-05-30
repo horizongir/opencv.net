@@ -4,39 +4,25 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace OpenCV.Net.UnitTests
 {
     [TestClass]
-    public class TestCvMat
+    public class TestCvMat : TestCvArr
     {
-        const int Cols = 320;
-        const int Rows = 240;
-        const int Channels = 1;
-        const CvMatDepth Depth = CvMatDepth.F32;
-
         CvMat mat;
 
-        [TestInitialize]
-        public void InitializeCvMat()
+        protected override CvArr CreateCvArr()
         {
-            mat = new CvMat(Rows, Cols, Depth, Channels);
-            Assert.AreEqual(mat.IsInvalid, false);
-        }
-
-        [TestCleanup]
-        public void CleanupCvMat()
-        {
-            mat.Close();
-            Assert.AreEqual(mat.IsClosed, true);
+            return mat = new CvMat(Dim0, Dim1, Depth, Channels);
         }
 
         [TestMethod]
         public void TestCvMatRows()
         {
-            Assert.AreEqual(mat.Rows, Rows);
+            Assert.AreEqual(mat.Rows, Dim0);
         }
 
         [TestMethod]
         public void TestCvMatCols()
         {
-            Assert.AreEqual(mat.Cols, Cols);
+            Assert.AreEqual(mat.Cols, Dim1);
         }
 
         [TestMethod]
