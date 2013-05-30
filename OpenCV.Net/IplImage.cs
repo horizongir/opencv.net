@@ -3,23 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using OpenCV.Net.Native;
-using System.Runtime.InteropServices;
 
 namespace OpenCV.Net
 {
+    /// <summary>
+    /// Represents an IPL image header.
+    /// </summary>
     public class IplImage : CvArr
     {
         bool ownsData;
-
-        internal IplImage()
-            : this(true)
-        {
-        }
-
-        internal IplImage(bool ownsData)
-        {
-            this.ownsData = ownsData;
-        }
 
         internal IplImage(IntPtr handle, bool ownsHandle)
             : base(ownsHandle)
@@ -33,30 +25,58 @@ namespace OpenCV.Net
             }
         }
 
-        public IplImage(CvSize size, int depth, int channels)
-            : this(core.cvCreateImage(size, depth, channels), true)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="IplImage"/> class with the
+        /// specified <paramref name="size"/>, pixel bit <paramref name="depth"/> and
+        /// <paramref name="channels"/> per element.
+        /// </summary>
+        /// <param name="size">The pixel-accurate size of the <see cref="IplImage"/>.</param>
+        /// <param name="depth">The bit depth of image pixels.</param>
+        /// <param name="channels">The number of channels per pixel.</param>
+        public IplImage(CvSize size, IplDepth depth, int channels)
+            : this(NativeMethods.cvCreateImage(size, depth, channels), true)
         {
         }
 
-        public IplImage(CvSize size, int depth, int channels, IntPtr data)
+        public IplImage(CvSize size, IplDepth depth, int channels, IntPtr data)
+            : base(true)
         {
-            var pImage = core.cvCreateImageHeader(size, depth, channels);
+            var pImage = NativeMethods.cvCreateImageHeader(size, depth, channels);
             SetHandle(pImage);
-            SetData(data, WidthStep);
+            //SetData(data, WidthStep);
         }
 
-        public int ImageCOI
+        /// <summary>
+        /// Gets the bit depth of image pixels.
+        /// </summary>
+        public IplDepth Depth
         {
-            get { return core.cvGetImageCOI(this); }
-            set { core.cvSetImageCOI(this, value); }
+            get
+            {
+                unsafe
+                {
+                    return ((_IplImage*)handle.ToPointer())->depth;
+                }
+            }
         }
 
-        public CvRect ImageROI
+        /// <summary>
+        /// Gets the number of channels per image pixel.
+        /// </summary>
+        public int NumChannels
         {
-            get { return core.cvGetImageROI(this); }
-            set { core.cvSetImageROI(this, value); }
+            get
+            {
+                unsafe
+                {
+                    return ((_IplImage*)handle.ToPointer())->nChannels;
+                }
+            }
         }
 
+        /// <summary>
+        /// Gets the width of the image in pixels.
+        /// </summary>
         public int Width
         {
             get
@@ -68,6 +88,9 @@ namespace OpenCV.Net
             }
         }
 
+        /// <summary>
+        /// Gets the height of the image in pixels.
+        /// </summary>
         public int Height
         {
             get
@@ -79,6 +102,9 @@ namespace OpenCV.Net
             }
         }
 
+        /// <summary>
+        /// Gets the pixel-accurate size of the image.
+        /// </summary>
         public CvSize Size
         {
             get
@@ -91,6 +117,9 @@ namespace OpenCV.Net
             }
         }
 
+        /// <summary>
+        /// Gets the size of the aligned image row in bytes.
+        /// </summary>
         public int WidthStep
         {
             get
@@ -102,28 +131,9 @@ namespace OpenCV.Net
             }
         }
 
-        public int Depth
-        {
-            get
-            {
-                unsafe
-                {
-                    return ((_IplImage*)handle.ToPointer())->depth;
-                }
-            }
-        }
-
-        public int NumChannels
-        {
-            get
-            {
-                unsafe
-                {
-                    return ((_IplImage*)handle.ToPointer())->nChannels;
-                }
-            }
-        }
-
+        /// <summary>
+        /// Gets a pointer to the aligned image data.
+        /// </summary>
         public IntPtr ImageData
         {
             get
@@ -135,58 +145,62 @@ namespace OpenCV.Net
             }
         }
 
+        /// <summary>
+        /// Gets or sets the image channel of interest.
+        /// Only a few functions support COI.
+        /// </summary>
+        public int ChannelOfInterest
+        {
+            get { return NativeMethods.cvGetImageCOI(this); }
+            set { NativeMethods.cvSetImageCOI(this, value); }
+        }
+
+        /// <summary>
+        /// Gets or sets the image region of interest.
+        /// </summary>
+        public CvRect RegionOfInterest
+        {
+            get { return NativeMethods.cvGetImageROI(this); }
+            set { NativeMethods.cvSetImageROI(this, value); }
+        }
+
+        /// <summary>
+        /// Resets the image region and channel of interest.
+        /// </summary>
+        public void ResetRegionOfInterest()
+        {
+            NativeMethods.cvResetImageROI(this);
+        }
+
+        /// <summary>
+        /// Creates a new <see cref="IplImage"/> that is a copy of the current instance.
+        /// </summary>
+        /// <returns>
+        /// A new <see cref="IplImage"/> that is a copy of this instance.
+        /// <see cref="WidthStep"/> may differ.
+        /// </returns>
         public IplImage Clone()
         {
-            return new IplImage(core.cvCloneImage(this), true);
+            return new IplImage(NativeMethods.cvCloneImage(this), true);
         }
 
-        public IplImage GetSubRect(CvRect rect)
-        {
-            return new IplImageSubRect(this, rect);
-        }
-
-        public void ResetImageROI()
-        {
-            core.cvResetImageROI(this);
-        }
-
+        /// <summary>
+        /// Executes the code required to free the native <see cref="IplImage"/> handle.
+        /// </summary>
+        /// <returns>
+        /// <b>true</b> if the handle is released successfully; otherwise, in the event of a
+        /// catastrophic failure, <b>false</b>.
+        /// </returns>
         protected override bool ReleaseHandle()
         {
-            var pHandle = GCHandle.Alloc(handle, GCHandleType.Pinned);
-            try
+            var pImage = handle;
+            if (ownsData)
             {
-                if (ownsData)
-                {
-                    GC.RemoveMemoryPressure(WidthStep * Height);
-                    core.cvReleaseImage(pHandle.AddrOfPinnedObject());
-                }
-                else core.cvReleaseImageHeader(pHandle.AddrOfPinnedObject());
-                return true;
+                GC.RemoveMemoryPressure(WidthStep * Height);
+                NativeMethods.cvReleaseImage(ref pImage);
             }
-            finally { pHandle.Free(); }
-        }
-
-        class IplImageSubRect : IplImage
-        {
-            IplImage owner;
-
-            public IplImageSubRect(IplImage source, CvRect rect)
-                : base(false)
-            {
-                _CvMat subRect;
-                core.cvGetSubRect(source, out subRect, rect);
-                var pImage = core.cvCreateImageHeader(new CvSize(rect.Width, rect.Height), source.Depth, source.NumChannels);
-                SetHandle(pImage);
-                SetData(subRect.data, subRect.step);
-                owner = source;
-            }
-
-            protected override bool ReleaseHandle()
-            {
-                base.ReleaseHandle();
-                owner = null;
-                return true;
-            }
+            else NativeMethods.cvReleaseImageHeader(ref pImage);
+            return true;
         }
     }
 }

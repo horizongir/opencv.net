@@ -7,25 +7,13 @@ using System.Runtime.InteropServices;
 namespace OpenCV.Net.Native
 {
     [StructLayout(LayoutKind.Sequential)]
-    struct _CvMat
-    {
-        public int type;
-        public int step;
-        public IntPtr refcount;
-        public int hdr_refcount;
-        public IntPtr data;
-        public int rows;
-        public int cols;
-    }
-
-    [StructLayout(LayoutKind.Sequential)]
     struct _IplImage
     {
         public int nSize;
         public int ID;
         public int nChannels;
         public int alphaChannel;
-        public int depth;
+        public IplDepth depth;
         public byte colorModel0;
         public byte colorModel1;
         public byte colorModel2;
@@ -58,226 +46,84 @@ namespace OpenCV.Net.Native
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    unsafe struct _CvHistogram
+    struct _CvMat
     {
         public int type;
-        public IntPtr bins;
-        public fixed float thresh[32 * 2]; /* for uniform histograms */
-        public IntPtr thresh2; /* for non-uniform histograms */
-        public IntPtr mat; /* embedded matrix header for array histograms */
+        public int step;
+        public IntPtr refcount;
+        public int hdr_refcount;
+        public IntPtr data;
+        public int rows;
+        public int cols;
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    unsafe struct _CvKalman
+    unsafe struct _CvMatND
     {
-        public int MP;                     /* number of measurement vector dimensions */
-        public int DP;                     /* number of state vector dimensions */
-        public int CP;                     /* number of control vector dimensions */
-
-        /* backward compatibility fields */
-        public float* PosterState;         /* =state_pre->data.fl */
-        public float* PriorState;          /* =state_post->data.fl */
-        public float* DynamMatr;           /* =transition_matrix->data.fl */
-        public float* MeasurementMatr;     /* =measurement_matrix->data.fl */
-        public float* MNCovariance;        /* =measurement_noise_cov->data.fl */
-        public float* PNCovariance;        /* =process_noise_cov->data.fl */
-        public float* KalmGainMatr;        /* =gain->data.fl */
-        public float* PriorErrorCovariance;/* =error_cov_pre->data.fl */
-        public float* PosterErrorCovariance;/* =error_cov_post->data.fl */
-        public float* Temp1;               /* temp1->data.fl */
-        public float* Temp2;               /* temp2->data.fl */
-
-        public IntPtr state_pre;           /* predicted state (x'(k)):
-                                             x(k)=A*x(k-1)+B*u(k) */
-        public IntPtr state_post;          /* corrected state (x(k)):
-                                            x(k)=x'(k)+K(k)*(z(k)-H*x'(k)) */
-        public IntPtr transition_matrix;   /* state transition matrix (A) */
-        public IntPtr control_matrix;      /* control matrix (B)
-                                            (it is not used if there is no control)*/
-        public IntPtr measurement_matrix;  /* measurement matrix (H) */
-        public IntPtr process_noise_cov;   /* process noise covariance matrix (Q) */
-        public IntPtr measurement_noise_cov; /* measurement noise covariance matrix (R) */
-        public IntPtr error_cov_pre;       /* priori error estimate covariance matrix (P'(k)):
-                                             P'(k)=A*P(k-1)*At + Q)*/
-        public IntPtr gain;                /* Kalman gain matrix (K(k)):
-                                             K(k)=P'(k)*Ht*inv(H*P'(k)*Ht+R)*/
-        public IntPtr error_cov_post;      /* posteriori error estimate covariance matrix (P(k)):
-                                             P(k)=(I-K(k)*H)*P'(k) */
-        public IntPtr temp1;               /* temporary matrices */
-        public IntPtr temp2;
-        public IntPtr temp3;
-        public IntPtr temp4;
-        public IntPtr temp5;
+        public int type;
+        public int dims;
+        public IntPtr refcount;
+        public int hdr_refcount;
+        public IntPtr data;
+        public fixed long dim[MatHelper.MaxDim];
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    struct _CvBGStatModel
+    unsafe struct _CvSparseMat
     {
-        public int type; /*type of BG model*/
-        public IntPtr release;
-        public IntPtr update;
-        public IntPtr background;   /*8UC3 reference background image*/
-        public IntPtr foreground;   /*8UC1 foreground image*/
-        public IntPtr layers;       /*8UC3 reference background image, can be null */
-        public int layer_count;  /* can be zero */
-        public IntPtr storage;      /*storage for foreground_regions*/
-        public IntPtr foreground_regions; /*foreground object contours*/
+        public int type;
+        public int dims;
+        public IntPtr refcount;
+        public int hdr_refcount;
+        public IntPtr heap;
+        public IntPtr hashtable;
+        public int hashsize;
+        public int valoffset;
+        public int idxoffset;
+        public fixed int size[MatHelper.MaxDim];
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    struct _CvSeq
+    struct _CvSparseNode
     {
-        public int flags; /* micsellaneous flags */
-        public int header_size; /* size of sequence header */
-        public IntPtr h_prev; /* previous sequence */
-        public IntPtr h_next; /* next sequence */
-        public IntPtr v_prev; /* 2nd previous sequence */
-        public IntPtr v_next; /* 2nd next sequence */
-        public int total; /* total number of elements */
-        public int elem_size;/* size of sequence element in bytes */
-        public IntPtr block_max;/* maximal bound of the last block */
-        public IntPtr ptr; /* current write pointer */
-        public int delta_elems; /* how many elements allocated when the sequence grows
-                                   (sequence granularity) */
-        public IntPtr storage; /* where the seq is stored */
-        public IntPtr free_blocks; /* free blocks list */
-        public IntPtr first;
+        public uint hashval;
+        public IntPtr next;
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    struct _CvContour
+    struct _CvSparseMatIterator
     {
-        public int flags; /* micsellaneous flags */
-        public int header_size; /* size of sequence header */
-        public IntPtr h_prev; /* previous sequence */
-        public IntPtr h_next; /* next sequence */
-        public IntPtr v_prev; /* 2nd previous sequence */
-        public IntPtr v_next; /* 2nd next sequence */
-        public int total; /* total number of elements */
-        public int elem_size;/* size of sequence element in bytes */
-        public IntPtr block_max;/* maximal bound of the last block */
-        public IntPtr ptr; /* current write pointer */
-        public int delta_elems; /* how many elements allocated when the sequence grows
-                                   (sequence granularity) */
-        public IntPtr storage; /* where the seq is stored */
-        public IntPtr free_blocks; /* free blocks list */
-        public IntPtr first;
-
-        public CvRect rect;
-        public int color;
-        public int reserved0;
-        public int reserved1;
-        public int reserved2;
+        public IntPtr mat;
+        public IntPtr node;
+        public int curidx;
     }
 
-    [StructLayout(LayoutKind.Sequential)]
-    struct _CvChain
+    static class MatHelper
     {
-        public int flags; /* micsellaneous flags */
-        public int header_size; /* size of sequence header */
-        public IntPtr h_prev; /* previous sequence */
-        public IntPtr h_next; /* next sequence */
-        public IntPtr v_prev; /* 2nd previous sequence */
-        public IntPtr v_next; /* 2nd next sequence */
-        public int total; /* total number of elements */
-        public int elem_size;/* size of sequence element in bytes */
-        public IntPtr block_max;/* maximal bound of the last block */
-        public IntPtr ptr; /* current write pointer */
-        public int delta_elems; /* how many elements allocated when the sequence grows
-                                   (sequence granularity) */
-        public IntPtr storage; /* where the seq is stored */
-        public IntPtr free_blocks; /* free blocks list */
-        public IntPtr first;
+        internal const int MaxDim = 32;
+        internal const int MaxChannels = 512;
+        internal const int ChannelShift = 3;
+        internal const int DepthMax = 1 << ChannelShift;
+        internal const int DepthMask = DepthMax - 1;
 
-        public CvPoint origin;
-    }
+        internal static int GetMatType(CvMatDepth depth, int channels)
+        {
+            return ((int)depth & DepthMask) + ((channels - 1) << ChannelShift);
+        }
 
-    [StructLayout(LayoutKind.Sequential)]
-    struct _CvSeqReader
-    {
-        public int header_size;
-        public IntPtr seq;        /* sequence, beign read */
-        public IntPtr block;      /* current block */
-        public IntPtr ptr;        /* pointer to element be read next */
-        public IntPtr block_min;  /* pointer to the beginning of block */
-        public IntPtr block_max;  /* pointer to the end of block */
-        public int delta_index;   /* = seq->first->start_index   */
-        public IntPtr prev_elem;  /* pointer to previous element */
-    }
+        internal static CvMatDepth GetMatDepth(int type)
+        {
+            return (CvMatDepth)(type & DepthMask);
+        }
 
-    [StructLayout(LayoutKind.Sequential)]
-    struct _CvChainPtReader
-    {
-        public int header_size;
-        public IntPtr seq;        /* sequence, beign read */
-        public IntPtr block;      /* current block */
-        public IntPtr ptr;        /* pointer to element be read next */
-        public IntPtr block_min;  /* pointer to the beginning of block */
-        public IntPtr block_max;  /* pointer to the end of block */
-        public int delta_index;   /* = seq->first->start_index   */
-        public IntPtr prev_elem;  /* pointer to previous element */
+        internal static int GetMatNumChannels(int type)
+        {
+            return ((type >> ChannelShift) & (MaxChannels - 1)) + 1;
+        }
 
-        public byte code;
-        public CvPoint pt;
-        public byte deltas00;
-        public byte deltas01;
-        public byte deltas10;
-        public byte deltas11;
-        public byte deltas20;
-        public byte deltas21;
-        public byte deltas30;
-        public byte deltas31;
-        public byte deltas40;
-        public byte deltas41;
-        public byte deltas50;
-        public byte deltas51;
-        public byte deltas60;
-        public byte deltas61;
-        public byte deltas70;
-        public byte deltas71;
-    }
-
-    [StructLayout(LayoutKind.Sequential)]
-    struct _IplConvKernel
-    {
-        public int nCols;
-        public int nRows;
-        public int anchorX;
-        public int anchorY;
-        public IntPtr values;
-        public int nShiftR;
-    }
-
-    [StructLayout(LayoutKind.Sequential)]
-    unsafe struct _CvConDensation
-    {
-        public int MP;
-        public int DP;
-        public float* DynamMatr;       /* Matrix of the linear Dynamics system  */
-        public float* State;           /* Vector of State                       */
-        public int SamplesNum;         /* Number of the Samples                 */
-        public float** flSamples;      /* arr of the Sample Vectors             */
-        public float** flNewSamples;   /* temporary array of the Sample Vectors */
-        public float* flConfidence;    /* Confidence for each Sample            */
-        public float* flCumulative;    /* Cumulative confidence                 */
-        public float* Temp;            /* Temporary vector                      */
-        public float* RandomSample;    /* RandomVector to update sample set     */
-        public IntPtr RandS;           /* Array of structures to generate random vectors */
-    }
-
-    [StructLayout(LayoutKind.Sequential)]
-    unsafe struct _CvFont
-    {
-        byte* nameFont;		//Qt:nameFont
-        CvScalar color;				//Qt:ColorFont -> cvScalar(blue_component, green_component, red\_component[, alpha_component])
-        int font_face; 		//Qt: bool italic         /* =CV_FONT_* */
-        int* ascii; 			/* font data and metrics */
-        int* greek;
-        int* cyrillic;
-        float hscale, vscale;
-        float shear; 			/* slope coefficient: 0 - normal, >0 - italic */
-        int thickness; 		//Qt: weight               /* letters thickness */
-        float dx; 			/* horizontal interval between letters */
-        int line_type;		//Qt: PointSize
+        internal static int GetElemSize(int type)
+        {
+            return ((((Marshal.SizeOf(typeof(UIntPtr)) << 28) | 0x8442211) >> (type & DepthMask) * 4) & 15);
+        }
     }
 }

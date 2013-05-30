@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{D07280E0-B436-4E29-956C-AC881E7C9A82}</ProjectGuid>
+    <ProjectGuid>{DAF4D704-2C86-4657-9210-DB5B847BA8BE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>OpenCV.Net</RootNamespace>
@@ -31,58 +31,31 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile>bin\Release\OpenCV.Net.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Calib3D.cs" />
-    <Compile Include="Calib3DTypes.cs" />
-    <Compile Include="CvChainPtReader.cs" />
-    <Compile Include="CvChain.cs" />
     <Compile Include="Core.cs" />
     <Compile Include="CoreTypes.cs" />
     <Compile Include="CvArr.cs" />
-    <Compile Include="CvCapture.cs" />
-    <Compile Include="CvConDensation.cs" />
-    <Compile Include="CvContour.cs" />
-    <Compile Include="CvContourScanner.cs" />
-    <Compile Include="CvException.cs" />
-    <Compile Include="CvFont.cs" />
-    <Compile Include="CvHistogram.cs" />
-    <Compile Include="CvKalman.cs" />
     <Compile Include="CvMat.cs" />
-    <Compile Include="CvMemStorage.cs" />
-    <Compile Include="CvSeq.cs" />
-    <Compile Include="CvSeqReader.cs" />
-    <Compile Include="CvVideoWriter.cs" />
-    <Compile Include="NumericAggregateConverter.cs" />
-    <Compile Include="Features2D.cs" />
-    <Compile Include="Features2DTypes.cs" />
-    <Compile Include="HighGui.cs" />
-    <Compile Include="HighGuiTypes.cs" />
-    <Compile Include="ImgProc.cs" />
-    <Compile Include="ImgProcTypes.cs" />
-    <Compile Include="IplConvKernel.cs" />
+    <Compile Include="CvMatND.cs" />
+    <Compile Include="CvRect.cs" />
+    <Compile Include="CvSize.cs" />
+    <Compile Include="CvSparseMat.cs" />
     <Compile Include="IplImage.cs" />
-    <Compile Include="NamedWindow.cs" />
-    <Compile Include="Native\calib3d.cs" />
-    <Compile Include="Native\features2d.cs" />
-    <Compile Include="Native\legacy.cs" />
-    <Compile Include="Native\video.cs" />
-    <Compile Include="Native\imgproc.cs" />
     <Compile Include="Native\core.cs" />
-    <Compile Include="Native\highgui.cs" />
     <Compile Include="Native\types.cs" />
-    <Compile Include="CvPositObject.cs" />
+    <Compile Include="NumericAggregateConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Video.cs" />
-    <Compile Include="VideoTypes.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

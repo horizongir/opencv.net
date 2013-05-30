@@ -7,66 +7,14 @@ using OpenCV.Net.Native;
 
 namespace OpenCV.Net
 {
+    /// <summary>
+    /// Represents an arbitrary array-like data structure.
+    /// </summary>
     public abstract class CvArr : SafeHandleZeroOrMinusOneIsInvalid
     {
-        public static readonly CvArr Null = new CvArrNull();
-
-        protected CvArr()
-            : base(true)
-        {
-        }
-
-        protected CvArr(bool ownsHandle)
+        internal CvArr(bool ownsHandle)
             : base(ownsHandle)
         {
-        }
-
-        public void Set(CvScalar value)
-        {
-            Set(value, CvArr.Null);
-        }
-
-        public void Set(CvScalar value, CvArr mask)
-        {
-            core.cvSet(this, value, mask);
-        }
-
-        public void SetZero()
-        {
-            core.cvSetZero(this);
-        }
-
-        public void SetData(IntPtr data, int step)
-        {
-            core.cvSetData(this, data, step);
-        }
-
-        public void GetRawData(out IntPtr data)
-        {
-            int step;
-            CvSize roiSize;
-            core.cvGetRawData(this, out data, out step, out roiSize);
-        }
-
-        public void GetRawData(out IntPtr data, out int step)
-        {
-            CvSize roiSize;
-            core.cvGetRawData(this, out data, out step, out roiSize);
-        }
-
-        public void GetRawData(out IntPtr data, out int step, out CvSize roiSize)
-        {
-            core.cvGetRawData(this, out data, out step, out roiSize);
-        }
-
-        class CvArrNull : CvArr
-        {
-            public CvArrNull() : base(false) { }
-
-            protected override bool ReleaseHandle()
-            {
-                return false;
-            }
         }
     }
 }
