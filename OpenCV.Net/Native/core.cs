@@ -112,7 +112,10 @@ namespace OpenCV.Net.Native
         internal static extern IntPtr cvCloneSparseMat(CvSparseMat mat);
 
         [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern IntPtr cvInitSparseMatIterator(CvSparseMat mat, ref _CvSparseMatIterator mat_iterator);
+        internal static extern IntPtr cvInitSparseMatIterator(CvSparseMat mat, out _CvSparseMatIterator mat_iterator);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int cvGetDimSize(CvArr arr, int index);
 
         #endregion
     }

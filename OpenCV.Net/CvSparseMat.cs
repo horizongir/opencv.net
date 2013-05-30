@@ -75,6 +75,40 @@ namespace OpenCV.Net
             return new CvSparseMat(NativeMethods.cvCloneSparseMat(this), true);
         }
 
+        IntPtr GetNextSparseNode(ref _CvSparseMatIterator mat_iterator)
+        {
+            unsafe
+            {
+                if (mat_iterator.node->next != null)
+                    return (IntPtr)(mat_iterator.node = mat_iterator.node->next);
+                else
+                {
+                    int idx;
+                    for (idx = ++mat_iterator.curidx; idx < mat_iterator.mat->hashsize; idx++)
+                    {
+                        var node = (_CvSparseNode*)mat_iterator.mat->hashtable[idx];
+                        if (node != null)
+                        {
+                            mat_iterator.curidx = idx;
+                            return (IntPtr)(mat_iterator.node = node);
+                        }
+                    }
+                    return IntPtr.Zero;
+                }
+            }
+        }
+
+        public IEnumerable<IntPtr> GetSparseNodes()
+        {
+            _CvSparseMatIterator iterator;
+            for (var node = NativeMethods.cvInitSparseMatIterator(this, out iterator);
+                 node != IntPtr.Zero;
+                 node = GetNextSparseNode(ref iterator))
+            {
+                yield return node;
+            }
+        }
+
         /// <summary>
         /// Executes the code required to free the native <see cref="CvSparseMat"/> handle.
         /// </summary>
