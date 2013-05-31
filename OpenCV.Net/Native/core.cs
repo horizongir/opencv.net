@@ -115,7 +115,75 @@ namespace OpenCV.Net.Native
         internal static extern IntPtr cvInitSparseMatIterator(CvSparseMat mat, out _CvSparseMatIterator mat_iterator);
 
         [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int cvGetDims(CvArr arr, int[] sizes = null);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
         internal static extern int cvGetDimSize(CvArr arr, int index);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr cvPtr1D(CvArr arr, int idx0, out int type);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr cvPtr2D(CvArr arr, int idx0, int idx1, out int type);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr cvPtr3D(CvArr arr, int idx0, int idx1, int idx2, out int type);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr cvPtrND(
+            CvArr arr,
+            int[] idx,
+            out int type,
+            int create_node,
+            ref uint precalc_hashval);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern CvScalar cvGet1D(CvArr arr, int idx0);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern CvScalar cvGet2D(CvArr arr, int idx0, int idx1);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern CvScalar cvGet3D(CvArr arr, int idx0, int idx1, int idx2);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern CvScalar cvGetND(CvArr arr, int[] idx);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvSetZero(CvArr arr);
+
+        #endregion
+
+        #region Error handling
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int cvGetErrStatus();
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvSetErrStatus(int status);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int cvSetErrMode(int mode);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr cvErrorStr(int status);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr cvRedirectError([MarshalAs(UnmanagedType.FunctionPtr)]CvErrorCallback error_handler, IntPtr userdata, out IntPtr prevUserdata);
+
+        internal static CvErrorCallback CvErrorCallback;
+
+        static NativeMethods()
+        {
+            IntPtr userData;
+            CvErrorCallback = CvErrorExceptionCallback;
+            cvRedirectError(CvErrorCallback, IntPtr.Zero, out userData);
+        }
+
+        static int CvErrorExceptionCallback(int status, string func_name, string err_msg, string file_name, int line, IntPtr userData)
+        {
+            throw new CvException(status, func_name, err_msg, file_name, line);
+        }
 
         #endregion
     }

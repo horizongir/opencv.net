@@ -98,6 +98,8 @@ namespace OpenCV.Net.Native
         public int curidx;
     }
 
+    delegate int CvErrorCallback(int status, string func_name, string err_msg, string file_name, int line, IntPtr userData);
+
     static class MatHelper
     {
         internal const int MaxDim = 32;

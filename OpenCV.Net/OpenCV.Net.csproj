@@ -46,9 +46,11 @@
     <Compile Include="Core.cs" />
     <Compile Include="CoreTypes.cs" />
     <Compile Include="CvArr.cs" />
+    <Compile Include="CvException.cs" />
     <Compile Include="CvMat.cs" />
     <Compile Include="CvMatND.cs" />
     <Compile Include="CvRect.cs" />
+    <Compile Include="CvScalar.cs" />
     <Compile Include="CvSize.cs" />
     <Compile Include="CvSparseMat.cs" />
     <Compile Include="IplImage.cs" />

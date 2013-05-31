@@ -17,6 +17,14 @@ namespace OpenCV.Net
             SetHandle(handle);
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CvSparseMat"/> class with the
+        /// specified dimension sizes, element bit <paramref name="depth"/> and
+        /// <paramref name="channels"/> per element.
+        /// </summary>
+        /// <param name="dimSizes">The size of each of the multi-dimensional array dimensions.</param>
+        /// <param name="depth">The bit depth of matrix elements.</param>
+        /// <param name="channels">The number of channels per element.</param>
         public CvSparseMat(int[] dimSizes, CvMatDepth depth, int channels)
             : this(NativeMethods.cvCreateSparseMat(dimSizes.Length, dimSizes, MatHelper.GetMatType(depth, channels)), true)
         {

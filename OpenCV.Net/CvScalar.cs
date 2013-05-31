@@ -1,0 +1,96 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Text;
+
+namespace OpenCV.Net
+{
+    /// <summary>
+    /// A container for one-,two-,three- or four-tuples of doubles.
+    /// <see cref="CvScalar"/> is always represented as a four-tuple.
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    [TypeConverter(typeof(NumericAggregateConverter))]
+    public struct CvScalar
+    {
+        /// <summary>
+        /// The first value of the scalar tuple.
+        /// </summary>
+        public double Val0;
+
+        /// <summary>
+        /// The second value of the scalar tuple.
+        /// </summary>
+        public double Val1;
+
+        /// <summary>
+        /// The third value of the scalar tuple.
+        /// </summary>
+        public double Val2;
+
+        /// <summary>
+        /// The fourth value of the scalar tuple.
+        /// </summary>
+        public double Val3;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CvScalar"/> structure from
+        /// the specified values.
+        /// </summary>
+        /// <param name="val0">The first value of the scalar tuple.</param>
+        /// <param name="val1">The optional second value of the scalar tuple.</param>
+        /// <param name="val2">The optional third value of the scalar tuple.</param>
+        /// <param name="val3">The optional fourth value of the scalar tuple.</param>
+        public CvScalar(double val0, double val1 = 0, double val2 = 0, double val3 = 0)
+        {
+            Val0 = val0;
+            Val1 = val1;
+            Val2 = val2;
+            Val3 = val3;
+        }
+
+        /// <summary>
+        /// Initializes a new <see cref="CvScalar"/> instance representing a single scalar value.
+        /// </summary>
+        /// <param name="val0">The scalar value.</param>
+        /// <returns>
+        /// A new <see cref="CvScalar"/> instance representing a single scalar value.
+        /// </returns>
+        public static CvScalar Real(double val0)
+        {
+            return new CvScalar(val0, 0, 0, 0);
+        }
+
+        /// <summary>
+        /// Initializes a new <see cref="CvScalar"/> instance where all the values
+        /// of the tuple are initialized to the same scalar value.
+        /// </summary>
+        /// <param name="val0123">The scalar value from which to initialize all tuple scalars.</param>
+        /// <returns>
+        /// A new <see cref="CvScalar"/> instance where all the values
+        /// of the tuple are initialized to the specified scalar value.
+        /// </returns>
+        public static CvScalar All(double val0123)
+        {
+            return new CvScalar(val0123, val0123, val0123, val0123);
+        }
+
+        /// <summary>
+        /// Initializes a new <see cref="CvScalar"/> instance representing a
+        /// color pixel value.
+        /// </summary>
+        /// <param name="r">The red component of the color.</param>
+        /// <param name="g">The green component of the color.</param>
+        /// <param name="b">The blue component of the color.</param>
+        /// <returns>
+        /// A new <see cref="CvScalar"/> instance where the values of the
+        /// tuple are initialized to the specified color components.
+        /// </returns>
+        public static CvScalar Rgb(double r, double g, double b)
+        {
+            return new CvScalar(b, g, r, 0);
+        }
+    }
+}
