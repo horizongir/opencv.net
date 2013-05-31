@@ -7,15 +7,7 @@ namespace OpenCV.Net.UnitTests
     public class TestCore
     {
         [TestMethod]
-        public void TestAlloc()
-        {
-            var size = new UIntPtr(1024);
-            var ptr = cv.Alloc(size);
-            Assert.AreNotEqual(ptr, IntPtr.Zero);
-        }
-
-        [TestMethod]
-        public void TestFree()
+        public void TestAllocFree()
         {
             var size = new UIntPtr(1024);
             var ptr = cv.Alloc(size);

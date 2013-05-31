@@ -12,6 +12,7 @@ namespace OpenCV.Net
     public class CvMatND : CvArr
     {
         bool ownsData;
+        readonly long bytesAllocated;
 
         internal CvMatND(IntPtr handle, bool ownsHandle)
             : base(ownsHandle)
@@ -20,16 +21,41 @@ namespace OpenCV.Net
 
             if (ownsHandle)
             {
-                //GC.AddMemoryPressure(Step * Rows);
-                //ownsData = true;
+                var dimSizes = new int[MatHelper.MaxDim];
+                var dims = GetDims(dimSizes);
+                bytesAllocated = ElementSize;
+                for (int i = 0; i < dims; i++)
+                {
+                    bytesAllocated *= dimSizes[i];
+                }
+                GC.AddMemoryPressure(bytesAllocated);
+                ownsData = true;
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CvMatND"/> class with the
+        /// specified dimension sizes, element bit <paramref name="depth"/> and
+        /// <paramref name="channels"/> per element.
+        /// </summary>
+        /// <param name="dimSizes">The size of each of the multi-dimensional array dimensions.</param>
+        /// <param name="depth">The bit depth of matrix elements.</param>
+        /// <param name="channels">The number of channels per element.</param>
         public CvMatND(int[] dimSizes, CvMatDepth depth, int channels)
             : this(NativeMethods.cvCreateMatND(dimSizes.Length, dimSizes, MatHelper.GetMatType(depth, channels)), true)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CvMatND"/> class with the
+        /// specified dimension sizes, element bit <paramref name="depth"/> and
+        /// <paramref name="channels"/> per element. A pointer to the matrix
+        /// raw element <paramref name="data"/> is provided.
+        /// </summary>
+        /// <param name="dimSizes">The size of each of the multi-dimensional array dimensions.</param>
+        /// <param name="depth">The bit depth of matrix elements.</param>
+        /// <param name="channels">The number of channels per element.</param>
+        /// <param name="data">A pointer to the matrix raw element data.</param>
         public CvMatND(int[] dimSizes, CvMatDepth depth, int channels, IntPtr data)
             : base(true)
         {
@@ -104,7 +130,7 @@ namespace OpenCV.Net
             var pMat = handle;
             if (ownsData)
             {
-                //GC.RemoveMemoryPressure(Step * Rows);
+                GC.RemoveMemoryPressure(bytesAllocated);
             }
 
             NativeMethods.cvReleaseMat(ref pMat);

@@ -61,7 +61,7 @@ namespace OpenCV.Net
         /// <param name="cols">The number of columns in the matrix.</param>
         /// <param name="depth">The bit depth of matrix elements.</param>
         /// <param name="channels">The number of channels per matrix element.</param>
-        /// <param name="data">A pointer to the matrix raw data</param>
+        /// <param name="data">A pointer to the matrix raw element data.</param>
         /// <param name="step">The full row length in bytes.</param>
         public CvMat(int rows, int cols, CvMatDepth depth, int channels, IntPtr data, int step = AutoStep)
             : base(true)

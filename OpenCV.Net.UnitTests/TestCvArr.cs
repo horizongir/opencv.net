@@ -19,14 +19,26 @@ namespace OpenCV.Net.UnitTests
         public void InitializeCvArr()
         {
             arr = CreateCvArr();
-            Assert.AreEqual(arr.IsInvalid, false);
+            Assert.AreEqual(false, arr.IsInvalid);
         }
 
         [TestCleanup]
         public void CleanupCvArr()
         {
             arr.Close();
-            Assert.AreEqual(arr.IsClosed, true);
+            Assert.AreEqual(true, arr.IsClosed);
+        }
+
+        [TestMethod]
+        public void TestGetDims()
+        {
+            var dims = arr.GetDims();
+            Assert.AreEqual(2, dims);
+            var sizes = new int[dims];
+            dims = arr.GetDims(sizes);
+            Assert.AreEqual(2, dims);
+            Assert.AreEqual(Dim0, sizes[0]);
+            Assert.AreEqual(Dim1, sizes[1]);
         }
 
         [TestMethod]
@@ -36,6 +48,39 @@ namespace OpenCV.Net.UnitTests
             var dim1 = arr.GetDimSize(1);
             Assert.AreEqual(Dim0, dim0);
             Assert.AreEqual(Dim1, dim1);
+        }
+
+        [TestMethod]
+        public void TestGet1D()
+        {
+            arr.SetZero();
+            var scalar = arr.Get1D(0);
+            Assert.AreEqual(0, scalar.Val0);
+        }
+
+        [TestMethod]
+        public void TestGet2D()
+        {
+            arr.SetZero();
+            var scalar = arr.Get2D(0, 0);
+            Assert.AreEqual(0, scalar.Val0);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(CvException))]
+        public void TestGet3D()
+        {
+            arr.SetZero();
+            var scalar = arr.Get3D(0, 0, 0);
+            Assert.AreEqual(0, scalar.Val0);
+        }
+
+        [TestMethod]
+        public void TestGetND()
+        {
+            arr.SetZero();
+            var scalar = arr.GetND(0, 0);
+            Assert.AreEqual(0, scalar.Val0);
         }
     }
 }
