@@ -135,7 +135,7 @@ namespace OpenCV.Net.Native
             int[] idx,
             out int type,
             int create_node,
-            ref uint precalc_hashval);
+            IntPtr precalc_hashval);
 
         [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
         internal static extern CvScalar cvGet1D(CvArr arr, int idx0);
@@ -148,6 +148,57 @@ namespace OpenCV.Net.Native
 
         [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
         internal static extern CvScalar cvGetND(CvArr arr, int[] idx);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern double cvGetReal1D(CvArr arr, int idx0);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern double cvGetReal2D(CvArr arr, int idx0, int idx1);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern double cvGetReal3D(CvArr arr, int idx0, int idx1, int idx2);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern double cvGetRealND(CvArr arr, int[] idx);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvSet1D(CvArr arr, int idx0, CvScalar value);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvSet2D(CvArr arr, int idx0, int idx1, CvScalar value);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvSet3D(CvArr arr, int idx0, int idx1, int idx2, CvScalar value);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvSetND(CvArr arr, int[] idx, CvScalar value);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvSetReal1D(CvArr arr, int idx0, double value);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvSetReal2D(CvArr arr, int idx0, int idx1, double value);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvSetReal3D(CvArr arr, int idx0, int idx1, int idx2, double value);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvSetRealND(CvArr arr, int[] idx, double value);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvClearND(CvArr arr, int[] idx);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr cvGetMat(CvArr arr, out _CvMat header, out int coi, int allowND = 0);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvSetData(CvArr arr, IntPtr data, int step);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern CvSize cvGetSize(CvArr arr);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvSet(CvArr arr, CvScalar value, CvArr mask = null);
 
         [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void cvSetZero(CvArr arr);

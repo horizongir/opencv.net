@@ -40,7 +40,7 @@ namespace OpenCV.Net.UnitTests
         [TestMethod]
         public void TestCvMatStep()
         {
-            Assert.AreEqual(mat.Step, mat.Cols * mat.ElementSize);
+            Assert.AreEqual(mat.Step, mat.Cols * mat.ElementSize * mat.NumChannels);
         }
     }
 }
