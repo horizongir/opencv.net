@@ -181,7 +181,7 @@ namespace OpenCV.Net
         {
             _CvMat subRect;
             NativeMethods.cvGetSubRect(this, out subRect, rect);
-            return new CvMatSubMat(this, subRect);
+            return new CvMatHeader(this, subRect);
         }
 
         /// <summary>
@@ -210,7 +210,7 @@ namespace OpenCV.Net
         {
             _CvMat subMat;
             NativeMethods.cvGetRows(this, out subMat, startRow, endRow, deltaRow);
-            return new CvMatSubMat(this, subMat);
+            return new CvMatHeader(this, subMat);
         }
 
         /// <summary>
@@ -238,7 +238,7 @@ namespace OpenCV.Net
         {
             _CvMat subMat;
             NativeMethods.cvGetCols(this, out subMat, startCol, endCol);
-            return new CvMatSubMat(this, subMat);
+            return new CvMatHeader(this, subMat);
         }
 
         /// <summary>
@@ -269,7 +269,7 @@ namespace OpenCV.Net
         {
             _CvMat subMat;
             NativeMethods.cvGetDiag(this, out subMat, diag);
-            return new CvMatSubMat(this, subMat);
+            return new CvMatHeader(this, subMat);
         }
 
         /// <summary>
@@ -289,27 +289,6 @@ namespace OpenCV.Net
 
             NativeMethods.cvReleaseMat(ref pMat);
             return true;
-        }
-
-        class CvMatSubMat : CvMat
-        {
-            CvMat owner;
-
-            public CvMatSubMat(CvMat source, _CvMat subMat)
-                : base(true)
-            {
-                var pMat = NativeMethods.cvCreateMatHeader(subMat.rows, subMat.cols, subMat.type);
-                NativeMethods.cvInitMatHeader(pMat, subMat.rows, subMat.cols, subMat.type, subMat.data, subMat.step);
-                SetHandle(pMat);
-                owner = source;
-            }
-
-            protected override bool ReleaseHandle()
-            {
-                base.ReleaseHandle();
-                owner = null;
-                return true;
-            }
         }
     }
 }

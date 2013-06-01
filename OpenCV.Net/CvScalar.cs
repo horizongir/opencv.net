@@ -92,5 +92,10 @@ namespace OpenCV.Net
         {
             return new CvScalar(b, g, r, 0);
         }
+
+        public override string ToString()
+        {
+            return string.Format("({0}, {1}, {2}, {3})", Val0, Val1, Val2, Val3);
+        }
     }
 }

@@ -38,12 +38,22 @@ namespace OpenCV.Net
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="IplImage"/> class with the
+        /// specified <paramref name="size"/>, pixel bit <paramref name="depth"/> and
+        /// <paramref name="channels"/> per element. A pointer to the image raw
+        /// <paramref name="data"/> is provided.
+        /// </summary>
+        /// <param name="size">The pixel-accurate size of the <see cref="IplImage"/>.</param>
+        /// <param name="depth">The bit depth of image pixels.</param>
+        /// <param name="channels">The number of channels per pixel.</param>
+        /// <param name="data">A pointer to the image raw pixel data.</param>
         public IplImage(CvSize size, IplDepth depth, int channels, IntPtr data)
             : base(true)
         {
             var pImage = NativeMethods.cvCreateImageHeader(size, depth, channels);
             SetHandle(pImage);
-            //SetData(data, WidthStep);
+            SetData(data, WidthStep);
         }
 
         /// <summary>
