@@ -115,6 +115,9 @@ namespace OpenCV.Net.Native
         internal static extern IntPtr cvInitSparseMatIterator(CvSparseMat mat, out _CvSparseMatIterator mat_iterator);
 
         [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int cvGetElemType(CvArr arr);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
         internal static extern int cvGetDims(CvArr arr, int[] sizes = null);
 
         [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
@@ -192,16 +195,193 @@ namespace OpenCV.Net.Native
         internal static extern IntPtr cvGetMat(CvArr arr, out _CvMat header, out int coi, int allowND = 0);
 
         [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr cvReshape(
+            CvArr arr,
+            out _CvMat header,
+            int new_cn,
+            int new_rows = 0);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvRepeat(CvArr src, CvArr dst);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void cvSetData(CvArr arr, IntPtr data, int step);
 
         [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvGetRawData(
+            CvArr arr,
+            out IntPtr data,
+            out int step,
+            out CvSize roi_size);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
         internal static extern CvSize cvGetSize(CvArr arr);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvCopy(CvArr src, CvArr dst, CvArr mask = null);
 
         [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void cvSet(CvArr arr, CvScalar value, CvArr mask = null);
 
         [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void cvSetZero(CvArr arr);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvSplit(CvArr src, CvArr dst0, CvArr dst1, CvArr dst2, CvArr dst3);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvMerge(CvArr src0, CvArr src1, CvArr src2, CvArr src3, CvArr dst);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvMixChannels(
+            IntPtr[] src, int src_count,
+            IntPtr[] dst, int dst_count,
+            int[] from_to, int pair_count );
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvConvertScale(
+            CvArr src,
+            CvArr dst,
+            double scale = 1,
+            double shift = 0);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvConvertScaleAbs(
+            CvArr src,
+            CvArr dst,
+            double scale = 1,
+            double shift = 0);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern CvTermCriteria cvCheckTermCriteria(
+            CvTermCriteria criteria,
+            double default_eps,
+            int default_max_iters);
+
+        #endregion
+
+        #region Arithmetic, logic and comparison operations
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvAdd(CvArr src1, CvArr src2, CvArr dst, CvArr mask);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvAddS(CvArr src, CvScalar value, CvArr dst, CvArr mask);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvSub(CvArr src1, CvArr src2, CvArr dst, CvArr mask);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvSubRS(CvArr src, CvScalar value, CvArr dst, CvArr mask);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvMul(CvArr src1, CvArr src2, CvArr dst, double scale);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvDiv(CvArr src1, CvArr src2, CvArr dst, double scale);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvScaleAdd(CvArr src1, CvScalar scale, CvArr src2, CvArr dst);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvAddWeighted(CvArr src1, double alpha, CvArr src2, double beta, double gamma, CvArr dst);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern double cvDotProduct(CvArr src1, CvArr src2);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvAnd(CvArr src1, CvArr src2, CvArr dst, CvArr mask);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvAndS(CvArr src, CvScalar value, CvArr dst, CvArr mask);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvOr(CvArr src1, CvArr src2, CvArr dst, CvArr mask);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvOrS(CvArr src, CvScalar value, CvArr dst, CvArr mask);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvXor(CvArr src1, CvArr src2, CvArr dst, CvArr mask);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvXorS(CvArr src, CvScalar value, CvArr dst, CvArr mask);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvNot(CvArr src, CvArr dst);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvInRange(CvArr src, CvArr lower, CvArr upper, CvArr dst);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvInRangeS(CvArr src, CvScalar lower, CvScalar upper, CvArr dst);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvCmp(CvArr src1, CvArr src2, CvArr dst, ComparisonOperation cmp_op);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvCmpS(CvArr src, double value, CvArr dst, ComparisonOperation cmp_op);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvMin(CvArr src1, CvArr src2, CvArr dst);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvMax(CvArr src1, CvArr src2, CvArr dst);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvMinS(CvArr src, double value, CvArr dst);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvMaxS(CvArr src, double value, CvArr dst);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvAbsDiff(CvArr src1, CvArr src2, CvArr dst);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvAbsDiffS(CvArr src, CvArr dst, CvScalar value);
+
+        #endregion
+
+        #region Math operations
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvCartToPolar(CvArr x, CvArr y, CvArr magnitude, CvArr angle, int angle_in_degrees);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvPolarToCart(CvArr magnitude, CvArr angle, CvArr x, CvArr y, int angle_in_degrees);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvPow(CvArr src, CvArr dst, double power);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvExp(CvArr src, CvArr dst);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvLog(CvArr src, CvArr dst);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern float cvFastArctan(float y, float x);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern float cvCbrt(float value);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int cvCheckArr(CvArr arr, CheckArrayFlags flags, double min_val, double max_val);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvRandArr(ref ulong rng, CvArr arr, CvRandDistribution dist_type, CvScalar param1, CvScalar param2);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvRandShuffle(CvArr mat, ref ulong rng, double iter_factor);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvSort(CvArr src, CvArr dst, CvArr idxmat, SortFlags flags);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int cvSolveCubic(CvMat coeffs, CvMat roots);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvSolvePoly(CvMat coeffs, CvMat roots2, int maxiter, int fig);
 
         #endregion
 

@@ -20,6 +20,22 @@ namespace OpenCV.Net
         }
 
         /// <summary>
+        /// Gets the type of array elements.
+        /// </summary>
+        public int ElementType
+        {
+            get { return NativeMethods.cvGetElemType(this); }
+        }
+
+        /// <summary>
+        /// Gets the pixel-accurate size of the array.
+        /// </summary>
+        public CvSize Size
+        {
+            get { return NativeMethods.cvGetSize(this); }
+        }
+
+        /// <summary>
         /// Returns the number of array dimensions and their sizes.
         /// </summary>
         /// <param name="sizes">
@@ -293,7 +309,7 @@ namespace OpenCV.Net
         /// has two dimensions or 1D matrix otherwise. The array must be continuous.
         /// </param>
         /// <returns>
-        /// Returns a matrix header for the array which can be an image, matrix or
+        /// A matrix header for the array which can be an image, matrix or
         /// multi-dimensional dense array.
         /// </returns>
         public CvMat GetMat(bool allowND = false)
@@ -306,6 +322,27 @@ namespace OpenCV.Net
         }
 
         /// <summary>
+        /// Changes shape of matrix/image without copying data.
+        /// </summary>
+        /// <param name="channels">
+        /// The new number of channels. Zero means that the number of channels
+        /// remains unchanged.
+        /// </param>
+        /// <param name="rows">
+        /// The new number of rows. Zero means that the number of rows remains
+        /// unchanged unless it needs to be changed according to <paramref name="channels"/>.
+        /// </param>
+        /// <returns>
+        /// A new matrix header for the array with the newly specified shape.
+        /// </returns>
+        public CvMat Reshape(int channels, int rows = 0)
+        {
+            _CvMat header;
+            NativeMethods.cvReshape(this, out header, channels, rows);
+            return new CvMatHeader(this, header);
+        }
+
+        /// <summary>
         /// Assigns the specified user data pointer to the array header.
         /// </summary>
         /// <param name="data">The user data pointer to the raw element data.</param>
@@ -315,25 +352,43 @@ namespace OpenCV.Net
             NativeMethods.cvSetData(this, data, step);
         }
 
-        internal class CvMatHeader : CvMat
+        /// <summary>
+        /// Retrieves low-level information about the array.
+        /// </summary>
+        /// <param name="data">
+        /// Output pointer to the whole image origin or ROI origin if ROI is set.
+        /// </param>
+        public void GetRawData(out IntPtr data)
         {
-            CvArr owner;
+            int step;
+            CvSize roiSize;
+            NativeMethods.cvGetRawData(this, out data, out step, out roiSize);
+        }
 
-            public CvMatHeader(CvArr source, _CvMat subMat)
-                : base(true)
-            {
-                var pMat = NativeMethods.cvCreateMatHeader(subMat.rows, subMat.cols, subMat.type);
-                NativeMethods.cvInitMatHeader(pMat, subMat.rows, subMat.cols, subMat.type, subMat.data, subMat.step);
-                SetHandle(pMat);
-                owner = source;
-            }
+        /// <summary>
+        /// Retrieves low-level information about the array.
+        /// </summary>
+        /// <param name="data">
+        /// Output pointer to the whole image origin or ROI origin if ROI is set.
+        /// </param>
+        /// <param name="step">Output full row length in bytes.</param>
+        public void GetRawData(out IntPtr data, out int step)
+        {
+            CvSize roiSize;
+            NativeMethods.cvGetRawData(this, out data, out step, out roiSize);
+        }
 
-            protected override bool ReleaseHandle()
-            {
-                base.ReleaseHandle();
-                owner = null;
-                return true;
-            }
+        /// <summary>
+        /// Retrieves low-level information about the array.
+        /// </summary>
+        /// <param name="data">
+        /// Output pointer to the whole image origin or ROI origin if ROI is set.
+        /// </param>
+        /// <param name="step">Output full row length in bytes.</param>
+        /// <param name="roiSize">Output pixel-accurate ROI size.</param>
+        public void GetRawData(out IntPtr data, out int step, out CvSize roiSize)
+        {
+            NativeMethods.cvGetRawData(this, out data, out step, out roiSize);
         }
 
         /// <summary>
@@ -356,6 +411,27 @@ namespace OpenCV.Net
         public void SetZero()
         {
             NativeMethods.cvSetZero(this);
+        }
+
+        internal class CvMatHeader : CvMat
+        {
+            CvArr owner;
+
+            public CvMatHeader(CvArr source, _CvMat subMat)
+                : base(true)
+            {
+                var pMat = NativeMethods.cvCreateMatHeader(subMat.rows, subMat.cols, subMat.type);
+                NativeMethods.cvInitMatHeader(pMat, subMat.rows, subMat.cols, subMat.type, subMat.data, subMat.step);
+                SetHandle(pMat);
+                owner = source;
+            }
+
+            protected override bool ReleaseHandle()
+            {
+                base.ReleaseHandle();
+                owner = null;
+                return true;
+            }
         }
 
         class CvArrNull : CvArr
