@@ -12,6 +12,7 @@ namespace OpenCV.Net
     public class CvMat : CvArr
     {
         bool ownsData;
+        internal new static readonly CvMat Null = new CvMatNull();
 
         /// <summary>
         /// A constant passed to the <see cref="CvMat"/> constructor which specifies that no
@@ -289,6 +290,16 @@ namespace OpenCV.Net
 
             NativeMethods.cvReleaseMat(ref pMat);
             return true;
+        }
+
+        class CvMatNull : CvMat
+        {
+            public CvMatNull() : base(IntPtr.Zero, false) { }
+
+            protected override bool ReleaseHandle()
+            {
+                return false;
+            }
         }
     }
 }

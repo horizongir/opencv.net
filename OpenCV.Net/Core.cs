@@ -684,7 +684,7 @@ namespace OpenCV.Net
         /// <returns><b>true</b> if all array elements are valid and within range; <b>false</b> otherwise.</returns>
         public static bool CheckArr(CvArr arr, CheckArrayFlags flags, double min_val, double max_val)
         {
-            return NativeMethods.cvCheckArr(arr, flags, min_val, max_val) > 0;
+            return NativeMethods.cvCheckArr(arr, flags, min_val, max_val) != 0;
         }
 
         /// <summary>
@@ -795,6 +795,346 @@ namespace OpenCV.Net
         public static void SolvePoly(CvMat coeffs, CvMat roots2, int maxIter = 20, int fig = 100)
         {
             NativeMethods.cvSolvePoly(coeffs, roots2, maxIter, fig);
+        }
+
+        #endregion
+
+        #region Matrix operations
+
+        /// <summary>
+        /// Calculates the cross product of two 3D vectors.
+        /// </summary>
+        /// <param name="src1">The first source vector.</param>
+        /// <param name="src2">The second source vector.</param>
+        /// <param name="dst">The destination vector.</param>
+        public static void CrossProduct(CvArr src1, CvArr src2, CvArr dst)
+        {
+            NativeMethods.cvCrossProduct(src1, src2, dst);
+        }
+
+        /// <summary>
+        /// Performs generalized matrix multiplication.
+        /// </summary>
+        /// <param name="src1">The first source array.</param>
+        /// <param name="src2">The second source array.</param>
+        /// <param name="src3">
+        /// The third source array (shift). Can be <b>null</b>, if there is no shift.
+        /// </param>
+        /// <param name="dst">The destination array.</param>
+        public static void MatMulAdd(CvArr src1, CvArr src2, CvArr src3, CvArr dst)
+        {
+            GEMM(src1, src2, 1, src3, 1, dst, 0);
+        }
+
+        /// <summary>
+        /// Performs generalized matrix multiplication.
+        /// </summary>
+        /// <param name="src1">The first source array.</param>
+        /// <param name="src2">The second source array.</param>
+        /// <param name="dst">The destination array.</param>
+        public static void MatMul(CvArr src1, CvArr src2, CvArr dst)
+        {
+            MatMulAdd(src1, src2, CvArr.Null, dst);
+        }
+
+        /// <summary>
+        /// Performs generalized matrix multiplication.
+        /// </summary>
+        /// <param name="src1">The first source array.</param>
+        /// <param name="src2">The second source array.</param>
+        /// <param name="alpha">A scale factor for the multiplication.</param>
+        /// <param name="src3">
+        /// The third source array (shift). Can be <b>null</b>, if there is no shift.
+        /// </param>
+        /// <param name="beta">A scale factor for the shift.</param>
+        /// <param name="dst">The destination array.</param>
+        /// <param name="tABC">
+        /// The operation flags, used to indicate whether any of the inputs should be transposed.
+        /// </param>
+        public static void GEMM(CvArr src1, CvArr src2, double alpha, CvArr src3, double beta, CvArr dst, GemmFlags tABC = 0)
+        {
+            NativeMethods.cvGEMM(src1, src2, alpha, src3 ?? CvArr.Null, beta, dst, tABC);
+        }
+
+        /// <summary>
+        /// Transforms each element of source array and stores resultant vectors in destination array.
+        /// </summary>
+        /// <param name="src">The source array.</param>
+        /// <param name="dst">The destination array.</param>
+        /// <param name="transmat">The transformation matrix to apply to elements of the source array.</param>
+        /// <param name="shiftvec">The optional shift vector.</param>
+        public static void Transform(CvArr src, CvArr dst, CvMat transmat, CvMat shiftvec = null)
+        {
+            NativeMethods.cvTransform(src, dst, transmat, shiftvec ?? CvMat.Null);
+        }
+
+        /// <summary>
+        /// Performs perspective matrix transformation of a vector array.
+        /// </summary>
+        /// <param name="src">The source three-channel floating-point array.</param>
+        /// <param name="dst">The destination three-channel floating-point array.</param>
+        /// <param name="mat">The 3x3 or 4x4 transformation matrix.</param>
+        public static void PerspectiveTransform(CvArr src, CvArr dst, CvMat mat)
+        {
+            NativeMethods.cvPerspectiveTransform(src, dst, mat);
+        }
+
+        /// <summary>
+        /// Calculates the product of an array and a transposed array.
+        /// </summary>
+        /// <param name="src">The source array.</param>
+        /// <param name="dst">The destination array. Must be of type F32 or F64.</param>
+        /// <param name="order">The order of multipliers.</param>
+        /// <param name="delta">An optional array, subtracted from <paramref name="src"/> before multiplication.</param>
+        /// <param name="scale">An optional scale factor.</param>
+        public static void MulTransposed(CvArr src, CvArr dst, int order, CvArr delta = null, double scale = 1)
+        {
+            NativeMethods.cvMulTransposed(src, dst, order, delta ?? CvArr.Null, scale);
+        }
+
+        /// <summary>
+        /// Transposes a matrix.
+        /// </summary>
+        /// <param name="src">The source matrix.</param>
+        /// <param name="dst">The destination matrix.</param>
+        public static void Transpose(CvArr src, CvArr dst)
+        {
+            NativeMethods.cvTranspose(src, dst);
+        }
+
+        /// <summary>
+        /// Copies the lower or the upper half of a square matrix to another half.
+        /// </summary>
+        /// <param name="matrix">The input-output floating point square matrix.</param>
+        /// <param name="lowerToUpper">
+        /// If <b>true</b>, the lower half is copied to the upper half, otherwise
+        /// the upper half is copied to the lower half.
+        /// </param>
+        public static void CompleteSymm(CvMat matrix, bool lowerToUpper = false)
+        {
+            NativeMethods.cvCompleteSymm(matrix, lowerToUpper ? 1 : 0);
+        }
+
+        /// <summary>
+        /// Flips a 2D array around vertical, horizontal or both axes.
+        /// </summary>
+        /// <param name="src">The source array.</param>
+        /// <param name="dst">The destination array. If it is <b>null</b>, the flipping is done in place.</param>
+        /// <param name="flipMode">A value that specifies how to flip the array.</param>
+        public static void Flip(CvArr src, CvArr dst = null, FlipMode flipMode = FlipMode.Vertical)
+        {
+            NativeMethods.cvFlip(src, dst ?? CvArr.Null, flipMode);
+        }
+
+        /// <summary>
+        /// Performs singular value decomposition of a real floating-point matrix.
+        /// </summary>
+        /// <param name="A">The source MxN matrix.</param>
+        /// <param name="W">The resulting singular value diagonal matrix or vector of singular values.</param>
+        /// <param name="U">The optional left orthogonal matrix.</param>
+        /// <param name="V">The optional right orthogonal matrix.</param>
+        /// <param name="flags">The operation flags that can be used to speed up the processing.</param>
+        public static void SVD(CvArr A, CvArr W, CvArr U = null, CvArr V = null, SvdFlags flags = 0)
+        {
+            NativeMethods.cvSVD(A, W, U ?? CvArr.Null, V ?? CvArr.Null, flags);
+        }
+
+        /// <summary>
+        /// Performs singular value back substitution.
+        /// </summary>
+        /// <param name="W">The matrix or vector of singular values.</param>
+        /// <param name="U">The left orthogonal matrix (may be transposed).</param>
+        /// <param name="V">The right orthogonal matrix (may be transposed).</param>
+        /// <param name="B">
+        /// The matrix to multiply the pseudo-inverse of the original matrix A by. If it is <b>null</b>
+        /// it will be assumed to be an identity matrix of an appropriate size.
+        /// </param>
+        /// <param name="X">The destination matrix for the result of back substitution.</param>
+        /// <param name="flags">The operation flags that were used to compute the singular values.</param>
+        public static void SVBkSb(CvArr W, CvArr U, CvArr V, CvArr B, CvArr X, SvdFlags flags)
+        {
+            NativeMethods.cvSVBkSb(W, U, V, B ?? CvArr.Null, X, flags);
+        }
+
+        /// <summary>
+        /// Finds the inverse or pseudo-inverse of a matrix.
+        /// </summary>
+        /// <param name="src">The source matrix.</param>
+        /// <param name="dst">The destination matrix.</param>
+        /// <param name="method">The inversion method.</param>
+        /// <returns>
+        /// The inversed condition of <paramref name="src"/> (ratio of the smallest singular value
+        /// to the largest singular value) or 0 if <paramref name="src"/> is all zeros.
+        /// </returns>
+        public static double Invert(CvArr src, CvArr dst, InversionMethod method = InversionMethod.LU)
+        {
+            return NativeMethods.cvInvert(src, dst, method);
+        }
+
+        /// <summary>
+        /// Solves a linear system or least-squares problem.
+        /// </summary>
+        /// <param name="src1">The source matrix.</param>
+        /// <param name="src2">The right-hand part of the linear system.</param>
+        /// <param name="dst">The output solution.</param>
+        /// <param name="method">The matrix inversion method.</param>
+        /// <returns>
+        /// If <see cref="InversionMethod.LU"/> method is used, returns <b>true</b> if <paramref name="src1"/>
+        /// is non-singular and <b>false</b> otherwise; in the latter case, <paramref name="dst"/> is not
+        /// valid.
+        /// </returns>
+        public static bool Solve(CvArr src1, CvArr src2, CvArr dst, InversionMethod method = InversionMethod.LU)
+        {
+            return NativeMethods.cvSolve(src1, src2, dst, method) != 0;
+        }
+
+        /// <summary>
+        /// Returns the determinant of a matrix.
+        /// </summary>
+        /// <param name="mat">The source matrix.</param>
+        /// <returns>The determinant of the square matrix <paramref name="mat"/>.</returns>
+        public static double Det(CvArr mat)
+        {
+            return NativeMethods.cvDet(mat);
+        }
+
+        /// <summary>
+        /// Returns the trace of a matrix.
+        /// </summary>
+        /// <param name="mat">The source matrix.</param>
+        /// <returns>The sum of the diagonal elements of the matrix <paramref name="mat"/>.</returns>
+        public static CvScalar Trace(CvArr mat)
+        {
+            return NativeMethods.cvTrace(mat);
+        }
+
+        /// <summary>
+        /// Computes eigenvalues and eigenvectors of a symmetric matrix.
+        /// </summary>
+        /// <param name="mat">The input symmetric square matrix, modified during the processing.</param>
+        /// <param name="evects">The output matrix of eigenvectors, stored as subsequent rows.</param>
+        /// <param name="evals">The output vector of eigenvalues, stored in the descending order.</param>
+        /// <param name="eps">Accuracy of diagonalization.</param>
+        /// <param name="lowindex">Optional index of largest eigenvalue/-vector to calculate.</param>
+        /// <param name="highindex">Optional index of smallest eigenvalue/-vector to calculate.</param>
+        public static void EigenVV(CvArr mat, CvArr evects, CvArr evals, double eps = 0, int lowindex = -1, int highindex = -1)
+        {
+            NativeMethods.cvEigenVV(mat, evects, evals, eps, lowindex, highindex);
+        }
+
+        /// <summary>
+        /// Initializes a scaled identity matrix.
+        /// </summary>
+        /// <param name="mat">The matrix to initialize (not necessarily square).</param>
+        public static void SetIdentity(CvArr mat)
+        {
+            SetIdentity(mat, CvScalar.Real(1));
+        }
+
+        /// <summary>
+        /// Initializes a scaled identity matrix.
+        /// </summary>
+        /// <param name="mat">The matrix to initialize (not necessarily square).</param>
+        /// <param name="value">The value to assign to the diagonal elements.</param>
+        public static void SetIdentity(CvArr mat, CvScalar value)
+        {
+            NativeMethods.cvSetIdentity(mat, value);
+        }
+
+        /// <summary>
+        /// Fills a matrix with the given range of numbers.
+        /// </summary>
+        /// <param name="mat">
+        /// The matrix to initialize. It should be single-channel, 32-bit
+        /// integer or floating-point.
+        /// </param>
+        /// <param name="start">The lower inclusive boundary of the range.</param>
+        /// <param name="end">The upper exclusive boundary of the range.</param>
+        /// <returns>The source matrix if the operation was successful, <b>null</b> otherwise.</returns>
+        public static CvArr Range(CvArr mat, double start, double end)
+        {
+            return NativeMethods.cvRange(mat, start, end) != IntPtr.Zero ? mat : null;
+        }
+
+        /// <summary>
+        /// Calculates covariance matrix of a set of vectors.
+        /// </summary>
+        /// <param name="vects">
+        /// The input vectors, all of which must have the same type and the same size.
+        /// The vectors do not have to be 1D, they can be 2D (e.g., images) and so forth.
+        /// </param>
+        /// <param name="covMat">The output covariance matrix that should be floating-point and square.</param>
+        /// <param name="avg">
+        /// The input or output (depending on the flags) array containing the mean (average)
+        /// vector of the input vectors.
+        /// </param>
+        /// <param name="flags">A value specifying various operation flags.</param>
+        public static void CalcCovarMatrix(CvArr[] vects, CvArr covMat, CvArr avg, CovarianceFlags flags)
+        {
+            var pImages = new IntPtr[vects.Length];
+            for (int i = 0; i < vects.Length; i++)
+            {
+                pImages[i] = vects[i].DangerousGetHandle();
+            }
+
+            NativeMethods.cvCalcCovarMatrix(pImages, pImages.Length, covMat, avg, flags);
+        }
+
+        /// <summary>
+        /// Performs PCA analysis of the vector set.
+        /// </summary>
+        /// <param name="data">The input data array; each vector is either a single row or a single column.</param>
+        /// <param name="mean">The mean (average) vector.</param>
+        /// <param name="eigenvals">The output eigenvalues of covariance matrix.</param>
+        /// <param name="eigenvects">
+        /// The output eigenvectors of covariance matrix (i.e. principal components); one vector per row.
+        /// </param>
+        /// <param name="flags">A value specifying various operation flags.</param>
+        public static void CalcPCA(CvArr data, CvArr mean, CvArr eigenvals, CvArr eigenvects, PcaFlags flags)
+        {
+            NativeMethods.cvCalcPCA(data, mean, eigenvals, eigenvects, flags);
+        }
+
+        /// <summary>
+        /// Projects vectors to the specified subspace.
+        /// </summary>
+        /// <param name="data">The input data array; each vector is either a single row or a single column.</param>
+        /// <param name="mean">
+        /// The mean (average) vector. If it is a single-row vector, then inputs are stored as rows;
+        /// otherwise, it should be a single-column vector and inputs will be stored as columns.
+        /// </param>
+        /// <param name="eigenvects">The eigenvectors (principal components). One vector per row.</param>
+        /// <param name="result">The output matrix containing the projected vectors.</param>
+        public static void ProjectPCA(CvArr data, CvArr mean, CvArr eigenvects, CvArr result)
+        {
+            NativeMethods.cvProjectPCA(data, mean, eigenvects, result);
+        }
+
+        /// <summary>
+        /// Back projects vectors from the specified subspace.
+        /// </summary>
+        /// <param name="proj">The input data array; each vector is either a single row or a single column.</param>
+        /// <param name="mean">
+        /// The mean (average) vector. If it is a single-row vector, then inputs are stored as rows;
+        /// otherwise, it should be a single-column vector and inputs will be stored as columns.
+        /// </param>
+        /// <param name="eigenvects">The eigenvectors (principal components). One vector per row.</param>
+        /// <param name="result">The output matrix containing the back projected vectors.</param>
+        public static void BackProjectPCA(CvArr proj, CvArr mean, CvArr eigenvects, CvArr result)
+        {
+            NativeMethods.cvBackProjectPCA(proj, mean, eigenvects, result);
+        }
+
+        /// <summary>
+        /// Calculates the Mahalonobis distance between two vectors.
+        /// </summary>
+        /// <param name="vec1">The first 1D source vector.</param>
+        /// <param name="vec2">The second 1D source vector.</param>
+        /// <param name="mat">The inverse covariance matrix.</param>
+        /// <returns>The weighted Mahalanobis distance between two vectors.</returns>
+        public static double Mahalanobis(CvArr vec1, CvArr vec2, CvArr mat)
+        {
+            return NativeMethods.cvMahalanobis(vec1, vec2, mat);
         }
 
         #endregion

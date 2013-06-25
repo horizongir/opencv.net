@@ -385,6 +385,76 @@ namespace OpenCV.Net.Native
 
         #endregion
 
+        #region Matrix operations
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvCrossProduct(CvArr src1, CvArr src2, CvArr dst);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvGEMM(CvArr src1, CvArr src2, double alpha, CvArr src3, double beta, CvArr dst, GemmFlags tABC);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvTransform(CvArr src, CvArr dst, CvMat transmat, CvMat shiftvec);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvPerspectiveTransform(CvArr src, CvArr dst, CvMat mat);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvMulTransposed(CvArr src, CvArr dst, int order, CvArr delta, double scale);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvTranspose(CvArr src, CvArr dst);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvCompleteSymm(CvMat matrix, int LtoR);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvFlip(CvArr src, CvArr dst, FlipMode flipMode);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvSVD(CvArr A, CvArr W, CvArr U, CvArr V, SvdFlags flags);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvSVBkSb(CvArr W, CvArr U, CvArr V, CvArr B, CvArr X, SvdFlags flags);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern double cvInvert(CvArr src, CvArr dst, InversionMethod method);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int cvSolve(CvArr src1, CvArr src2, CvArr dst, InversionMethod method);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern double cvDet(CvArr mat);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern CvScalar cvTrace(CvArr mat);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvEigenVV(CvArr mat, CvArr evects, CvArr evals, double eps, int lowindex, int highindex);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvSetIdentity(CvArr mat, CvScalar value);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr cvRange(CvArr mat, double start, double end);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvCalcCovarMatrix(IntPtr[] vects, int count, CvArr covMat, CvArr avg, CovarianceFlags flags);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvCalcPCA(CvArr data, CvArr mean, CvArr eigenvals, CvArr eigenvects, PcaFlags flags);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvProjectPCA(CvArr data, CvArr mean, CvArr eigenvects, CvArr result);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvBackProjectPCA(CvArr proj, CvArr mean, CvArr eigenvects, CvArr result);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern double cvMahalanobis(CvArr vec1, CvArr vec2, CvArr mat);
+
+        #endregion
+
         #region Error handling
 
         [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
