@@ -8,9 +8,9 @@ namespace OpenCV.Net.UnitTests
     {
         CvMat mat;
 
-        protected override CvArr CreateCvArr()
+        protected override CvArr CreateCvArr(int channels, CvMatDepth depth, int dim0, int dim1)
         {
-            return mat = new CvMat(Dim0, Dim1, Depth, Channels);
+            return mat = new CvMat(dim0, dim1, depth, channels);
         }
 
         [TestMethod]
@@ -34,13 +34,13 @@ namespace OpenCV.Net.UnitTests
         [TestMethod]
         public void TestCvMatChannels()
         {
-            Assert.AreEqual(mat.NumChannels, Channels);
+            Assert.AreEqual(mat.Channels, 1);
         }
 
         [TestMethod]
         public void TestCvMatStep()
         {
-            Assert.AreEqual(mat.Step, mat.Cols * mat.ElementSize * mat.NumChannels);
+            Assert.AreEqual(mat.Step, mat.Cols * mat.ElementSize * mat.Channels);
         }
     }
 }

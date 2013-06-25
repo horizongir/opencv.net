@@ -47,13 +47,13 @@ namespace OpenCV.Net
         /// <summary>
         /// Gets the number of channels per matrix element.
         /// </summary>
-        public int NumChannels
+        public int Channels
         {
             get
             {
                 unsafe
                 {
-                    return MatHelper.GetMatNumChannels(((_CvSparseMat*)handle.ToPointer())->type);
+                    return MatHelper.GetMatChannels(((_CvSparseMat*)handle.ToPointer())->type);
                 }
             }
         }

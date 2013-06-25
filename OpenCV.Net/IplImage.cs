@@ -73,7 +73,7 @@ namespace OpenCV.Net
         /// <summary>
         /// Gets the number of channels per image pixel.
         /// </summary>
-        public int NumChannels
+        public int Channels
         {
             get
             {
@@ -108,21 +108,6 @@ namespace OpenCV.Net
                 unsafe
                 {
                     return ((_IplImage*)handle.ToPointer())->height;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Gets the pixel-accurate size of the image.
-        /// </summary>
-        public CvSize Size
-        {
-            get
-            {
-                unsafe
-                {
-                    return new CvSize(((_IplImage*)handle.ToPointer())->width,
-                                      ((_IplImage*)handle.ToPointer())->height);
                 }
             }
         }

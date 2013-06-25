@@ -53,6 +53,7 @@
     <Compile Include="CvScalar.cs" />
     <Compile Include="CvSize.cs" />
     <Compile Include="CvSparseMat.cs" />
+    <Compile Include="CvTermCriteria.cs" />
     <Compile Include="IplImage.cs" />
     <Compile Include="Native\core.cs" />
     <Compile Include="Native\types.cs" />

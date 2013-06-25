@@ -93,6 +93,14 @@ namespace OpenCV.Net
             return new CvScalar(b, g, r, 0);
         }
 
+        /// <summary>
+        /// Creates a <see cref="String"/> representation of this <see cref="CvScalar"/>
+        /// structure.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="String"/> containing the four tuple values of this
+        /// <see cref="CvScalar"/> structure.
+        /// </returns>
         public override string ToString()
         {
             return string.Format("({0}, {1}, {2}, {3})", Val0, Val1, Val2, Val3);

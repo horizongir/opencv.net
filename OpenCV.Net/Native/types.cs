@@ -118,7 +118,7 @@ namespace OpenCV.Net.Native
             return (CvMatDepth)(type & DepthMask);
         }
 
-        internal static int GetMatNumChannels(int type)
+        internal static int GetMatChannels(int type)
         {
             return ((type >> ChannelShift) & (MaxChannels - 1)) + 1;
         }
