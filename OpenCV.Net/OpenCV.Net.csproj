@@ -49,6 +49,8 @@
     <Compile Include="CvException.cs" />
     <Compile Include="CvMat.cs" />
     <Compile Include="CvMatND.cs" />
+    <Compile Include="CvPoint.cs" />
+    <Compile Include="CvPoint2D32f.cs" />
     <Compile Include="CvRect.cs" />
     <Compile Include="CvScalar.cs" />
     <Compile Include="CvSize.cs" />

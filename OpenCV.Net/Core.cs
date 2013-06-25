@@ -1138,5 +1138,155 @@ namespace OpenCV.Net
         }
 
         #endregion
+
+        #region Array Statistics
+
+        /// <summary>
+        /// Adds up array elements.
+        /// </summary>
+        /// <param name="arr">The source array.</param>
+        /// <returns>The sum of array elements, independently for each channel.</returns>
+        public static CvScalar Sum(CvArr arr)
+        {
+            return NativeMethods.cvSum(arr);
+        }
+
+        /// <summary>
+        /// Counts non-zero array elements.
+        /// </summary>
+        /// <param name="arr">
+        /// The source array. Must be a single-channel array or a multi-channel
+        /// image with COI set.
+        /// </param>
+        /// <returns>The number of non-zero elements in <paramref name="arr"/>.</returns>
+        public static int CountNonZero(CvArr arr)
+        {
+            return NativeMethods.cvCountNonZero(arr);
+        }
+
+        /// <summary>
+        /// Calculates average (mean) of array elements.
+        /// </summary>
+        /// <param name="arr">The source array.</param>
+        /// <param name="mask">The optional operation mask.</param>
+        /// <returns>The average value of array elements, independently for each channel.</returns>
+        public static CvScalar Avg(CvArr arr, CvArr mask = null)
+        {
+            return NativeMethods.cvAvg(arr, mask ?? CvArr.Null);
+        }
+
+        /// <summary>
+        /// Calculates average (mean) and standard deviation of array elements.
+        /// </summary>
+        /// <param name="arr">The source array.</param>
+        /// <param name="mean">The output average of array elements, independently for each channel.</param>
+        /// <param name="stdDev">The output standard deviation, independently for each channel.</param>
+        /// <param name="mask">The optional operation mask.</param>
+        public static void AvgSdv(CvArr arr, out CvScalar mean, out CvScalar stdDev, CvArr mask = null)
+        {
+            NativeMethods.cvAvgSdv(arr, out mean, out stdDev, mask ?? CvArr.Null);
+        }
+
+        /// <summary>
+        /// Finds global minimum and maximum in array or subarray.
+        /// </summary>
+        /// <param name="arr">The source array, single-channel or multi-channel with COI set.</param>
+        /// <param name="minValue">The returned minimum value.</param>
+        /// <param name="maxValue">The returned maximum value.</param>
+        public static void MinMaxLoc(
+            CvArr arr,
+            out double minValue,
+            out double maxValue)
+        {
+            CvPoint minLocation;
+            CvPoint maxLocation;
+            NativeMethods.cvMinMaxLoc(arr, out minValue, out maxValue, out minLocation, out maxLocation, CvArr.Null);
+        }
+
+        /// <summary>
+        /// Finds global minimum and maximum in array or subarray.
+        /// </summary>
+        /// <param name="arr">The source array, single-channel or multi-channel with COI set.</param>
+        /// <param name="minValue">The returned minimum value.</param>
+        /// <param name="maxValue">The returned maximum value.</param>
+        /// <param name="minLocation">The returned minimum location.</param>
+        public static void MinMaxLoc(
+            CvArr arr,
+            out double minValue,
+            out double maxValue,
+            out CvPoint minLocation)
+        {
+            CvPoint maxLocation;
+            NativeMethods.cvMinMaxLoc(arr, out minValue, out maxValue, out minLocation, out maxLocation, CvArr.Null);
+        }
+
+        /// <summary>
+        /// Finds global minimum and maximum in array or subarray.
+        /// </summary>
+        /// <param name="arr">The source array, single-channel or multi-channel with COI set.</param>
+        /// <param name="minValue">The returned minimum value.</param>
+        /// <param name="maxValue">The returned maximum value.</param>
+        /// <param name="minLocation">The returned minimum location.</param>
+        /// <param name="maxLocation">The returned maximum location.</param>
+        /// <param name="mask">The optional mask used to select a subarray.</param>
+        public static void MinMaxLoc(
+            CvArr arr,
+            out double minValue,
+            out double maxValue,
+            out CvPoint minLocation,
+            out CvPoint maxLocation,
+            CvArr mask = null)
+        {
+            NativeMethods.cvMinMaxLoc(arr, out minValue, out maxValue, out minLocation, out maxLocation, mask ?? CvArr.Null);
+        }
+
+        /// <summary>
+        /// Calculates absolute array norm, absolute difference norm, or relative difference norm.
+        /// </summary>
+        /// <param name="arr1">The first source image.</param>
+        /// <param name="arr2">
+        /// The second source image. If it is <b>null</b>, the absolute norm of <paramref name="arr1"/>
+        /// is calculated, otherwise the absolute or relative norm of
+        /// <paramref name="arr1"/>-<paramref name="arr2"/> is calculated.
+        /// </param>
+        /// <param name="normType">The type of array norm.</param>
+        /// <param name="mask">The optional operation mask.</param>
+        /// <returns>The absolute or relative array norm.</returns>
+        public static double Norm(CvArr arr1, CvArr arr2 = null, NormTypes normType = NormTypes.L2, CvArr mask = null)
+        {
+            return NativeMethods.cvNorm(arr1, arr2 ?? CvArr.Null, normType, mask ?? CvArr.Null);
+        }
+
+        /// <summary>
+        /// Normalizes the array norm or the range.
+        /// </summary>
+        /// <param name="src">The source array.</param>
+        /// <param name="dst">The destination array. Must have the same size as <paramref name="src"/>.</param>
+        /// <param name="a">The norm value to normalize to or the lower range boundary in the case of range normalization.</param>
+        /// <param name="b">The upper range boundary in the case of range normalization; not used for norm normalization.</param>
+        /// <param name="normType">The normalization type.</param>
+        /// <param name="mask">The optional operation mask.</param>
+        public static void Normalize(CvArr src, CvArr dst, double a = 1, double b = 0, NormTypes normType = NormTypes.L2, CvArr mask = null)
+        {
+            NativeMethods.cvNormalize(src, dst, a, b, normType, mask ?? CvArr.Null);
+        }
+
+        /// <summary>
+        /// Reduces a matrix to a vector.
+        /// </summary>
+        /// <param name="src">The input matrix.</param>
+        /// <param name="dst">The output single-row/single-column vector that accumulates all the matrix rows/columns.</param>
+        /// <param name="dim">
+        /// The dimension index along which the matrix is reduced. 0 means that the matrix is reduced
+        /// to a single row, 1 means that the matrix is reduced to a single column and -1 means that the
+        /// dimension is chosen automatically by analysing the <paramref name="dst"/> size.
+        /// </param>
+        /// <param name="op">The reduction operation.</param>
+        public static void Reduce(CvArr src, CvArr dst, int dim = -1, ReduceOperation op = ReduceOperation.Sum)
+        {
+            NativeMethods.cvReduce(src, dst, dim, op);
+        }
+
+        #endregion
     }
 }

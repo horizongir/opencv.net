@@ -455,6 +455,40 @@ namespace OpenCV.Net.Native
 
         #endregion
 
+        #region Array Statistics
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern CvScalar cvSum(CvArr arr);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int cvCountNonZero(CvArr arr);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern CvScalar cvAvg(CvArr arr, CvArr mask);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvAvgSdv(CvArr arr, out CvScalar mean, out CvScalar std_dev, CvArr mask);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvMinMaxLoc(
+            CvArr arr,
+            out double min_val,
+            out double max_val,
+            out CvPoint min_loc,
+            out CvPoint max_loc,
+            CvArr mask);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern double cvNorm(CvArr arr1, CvArr arr2, NormTypes norm_type, CvArr mask);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvNormalize(CvArr src, CvArr dst, double a, double b, NormTypes norm_type, CvArr mask);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvReduce(CvArr src, CvArr dst, int dim, ReduceOperation op);
+
+        #endregion
+
         #region Error handling
 
         [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]

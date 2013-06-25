@@ -409,4 +409,117 @@ namespace OpenCV.Net
         /// </summary>
         UseAvg = 2
     }
+
+    /// <summary>
+    /// Specifies flags for <see cref="cv.Norm"/> and <see cref="cv.Normalize"/>.
+    /// </summary>
+    [Flags]
+    public enum NormTypes : int
+    {
+        /// <summary>
+        /// Specifies the elementwise max norm.
+        /// </summary>
+        C = 1,
+
+        /// <summary>
+        /// Specifies the L1 or Manhattan norm.
+        /// </summary>
+        L1 = 2,
+
+        /// <summary>
+        /// Specifies the L2 or Euclidean norm.
+        /// </summary>
+        L2 = 4,
+
+        /// <summary>
+        /// Specifies a squared L2 norm.
+        /// </summary>
+        L2Sqr = 5,
+
+        /// <summary>
+        /// Specifies a Hamming distance norm.
+        /// </summary>
+        Hamming = 6,
+
+        /// <summary>
+        /// Specifies a Hamming2 norm.
+        /// </summary>
+        Hamming2 = 7,
+        
+        /// <summary>
+        /// The bitmask used to extract the norm type.
+        /// </summary>
+        NormMask = 7,
+
+        /// <summary>
+        /// Specifies that a relative difference norm should be computed.
+        /// </summary>
+        Relative = 8,
+
+        /// <summary>
+        /// Specifies that a difference norm should be computed.
+        /// </summary>
+        Diff = 16,
+
+        /// <summary>
+        /// Specifies that a range normalization should be computed.
+        /// </summary>
+        MinMax = 32,
+
+        /// <summary>
+        /// Specifies a difference elementwise max norm.
+        /// </summary>
+        DiffC = (Diff | C),
+
+        /// <summary>
+        /// Specifies a difference L1 norm.
+        /// </summary>
+        DiffL1 = (Diff | L1),
+
+        /// <summary>
+        /// Specifies a difference L2 norm.
+        /// </summary>
+        DiffL2 = (Diff | L2),
+
+        /// <summary>
+        /// Specifies a relative difference elementwise max norm.
+        /// </summary>
+        RelativeC = (Relative | C),
+
+        /// <summary>
+        /// Specifies a relative difference L1 norm.
+        /// </summary>
+        RelativeL1 = (Relative | L1),
+
+        /// <summary>
+        /// Specifies a relative difference L2 norm.
+        /// </summary>
+        RelativeL2 = (Relative | L2)
+    }
+
+    /// <summary>
+    /// Specifies the matrix reduction operation.
+    /// </summary>
+    public enum ReduceOperation : int
+    {
+        /// <summary>
+        /// Specifies that the output is the sum of all the matrix rows/columns.
+        /// </summary>
+        Sum,
+
+        /// <summary>
+        /// Specifies that the output is the mean vector of all of the matrix rows/columns.
+        /// </summary>
+        Avg,
+
+        /// <summary>
+        /// Specifies that the output is the maximum (column/row-wise) of all of the matrix rows/columns.
+        /// </summary>
+        Max,
+
+        /// <summary>
+        /// Specifies that the output is the minimum (column/row-wise) of all of the matrix rows/columns.
+        /// </summary>
+        Min
+    }
 }
