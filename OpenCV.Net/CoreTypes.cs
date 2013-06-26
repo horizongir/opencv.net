@@ -522,4 +522,41 @@ namespace OpenCV.Net
         /// </summary>
         Min
     }
+
+    /// <summary>
+    /// Specifies the operation of discrete linear transforms and related functions.
+    /// </summary>
+    [Flags]
+    public enum DiscreteTransformFlags : int
+    {
+        /// <summary>
+        /// Specifies that a forward 1D or 2D transform should be performed.
+        /// </summary>
+        Forward = 0,
+
+        /// <summary>
+        /// Specifies that an inverse 1D or 2D transform should be performed.
+        /// </summary>
+        Inverse = 1,
+
+        /// <summary>
+        /// Specifies that the result should be scaled by dividing it by the number of array elements.
+        /// </summary>
+        Scale = 2,
+
+        /// <summary>
+        /// A combination of <see cref="Inverse"/> and <see cref="Scale"/>.
+        /// </summary>
+        InverseScale = (Inverse + Scale),
+
+        /// <summary>
+        /// Specifies that each row of the array should be processed individually.
+        /// </summary>
+        Rows = 4,
+
+        /// <summary>
+        /// Specifies that the second array should be conjugated before the multiplication.
+        /// </summary>
+        MultiplyConjugate = 8
+    }
 }
