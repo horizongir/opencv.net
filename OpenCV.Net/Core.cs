@@ -1288,5 +1288,64 @@ namespace OpenCV.Net
         }
 
         #endregion
+
+        #region Discrete Linear Transforms and Related Functions
+
+        /// <summary>
+        /// Performs a forward or inverse Discrete Fourier transform of a 1D or 2D floating-point array.
+        /// </summary>
+        /// <param name="src">The source array, containing real or complex values.</param>
+        /// <param name="dst">The destination array of the same size and type as <paramref name="src"/>.</param>
+        /// <param name="flags">The transformation flags specifying the operation of the DFT.</param>
+        /// <param name="nonzeroRows">
+        /// The number of nonzero rows in the source array (in the case of a forward 2d transform),
+        /// or a number of rows of interest in the destination array (in the case of an inverse
+        /// 2d transform).
+        /// </param>
+        public static void DFT(CvArr src, CvArr dst, DiscreteTransformFlags flags, int nonzeroRows)
+        {
+            NativeMethods.cvDFT(src, dst, flags, nonzeroRows);
+        }
+
+        /// <summary>
+        /// Performs per-element multiplication of two Fourier spectrums.
+        /// </summary>
+        /// <param name="src1">The first source array.</param>
+        /// <param name="src2">The second source array.</param>
+        /// <param name="dst">The destination array of the same type and size as the source arrays.</param>
+        /// <param name="flags">
+        /// A combination of <see cref="DiscreteTransformFlags.Rows"/> and
+        /// <see cref="DiscreteTransformFlags.MultiplyConjugate"/>.
+        /// </param>
+        public static void MulSpectrums(CvArr src1, CvArr src2, CvArr dst, DiscreteTransformFlags flags)
+        {
+            NativeMethods.cvMulSpectrums(src1, src2, dst, flags);
+        }
+
+        /// <summary>
+        /// Returns optimal DFT size for a given vector size.
+        /// </summary>
+        /// <param name="size0">The vector size.</param>
+        /// <returns>
+        /// The minimum number N that is greater than or equal to <paramref name="size0"/>, such that
+        /// the DFT of a vector of size N can be computed fast.
+        /// </returns>
+        public static int GetOptimalDFTSize(int size0)
+        {
+            return NativeMethods.cvGetOptimalDFTSize(size0);
+        }
+
+        /// <summary>
+        /// Performs a forward or inverse Discrete Cosine transform of a 1D or 2D floating-point array.
+        /// </summary>
+        /// <param name="src">The source array, real 1D or 2D array.</param>
+        /// <param name="dst">Destination array of the same size and type as <paramref name="src"/>.</param>
+        /// <param name="flags">The transformation flags specifying the operation of the DCT.</param>
+        public static void DCT(CvArr src, CvArr dst, DiscreteTransformFlags flags)
+        {
+            NativeMethods.cvDCT(src, dst, flags);
+        }
+
+        #endregion
     }
 }

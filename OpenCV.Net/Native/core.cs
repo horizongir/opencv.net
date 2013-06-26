@@ -489,6 +489,22 @@ namespace OpenCV.Net.Native
 
         #endregion
 
+        #region Discrete Linear Transforms and Related Functions
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvDFT(CvArr src, CvArr dst, DiscreteTransformFlags flags, int nonzero_rows);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvMulSpectrums(CvArr src1, CvArr src2, CvArr dst, DiscreteTransformFlags flags);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int cvGetOptimalDFTSize(int size0);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvDCT(CvArr src, CvArr dst, DiscreteTransformFlags flags);
+
+        #endregion
+
         #region Error handling
 
         [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
