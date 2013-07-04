@@ -13,6 +13,11 @@ namespace OpenCV.Net
     {
         bool ownsData;
 
+        internal IplImage(bool ownsHandle)
+            : base(ownsHandle)
+        {
+        }
+
         internal IplImage(IntPtr handle, bool ownsHandle)
             : base(ownsHandle)
         {
@@ -180,6 +185,22 @@ namespace OpenCV.Net
         }
 
         /// <summary>
+        /// Creates a new <see cref="IplImage"/> from a subrectangle of the current instance.
+        /// No data is copied.
+        /// </summary>
+        /// <param name="rect">Zero-based coordinates of the rectangle of interest.</param>
+        /// <returns>
+        /// A new <see cref="IplImage"/> that corresponds to the specified rectangle of
+        /// the current image.
+        /// </returns>
+        public new IplImage GetSubRect(CvRect rect)
+        {
+            _CvMat subRect;
+            NativeMethods.cvGetSubRect(this, out subRect, rect);
+            return new IplImageSubRect(this, subRect);
+        }
+
+        /// <summary>
         /// Executes the code required to free the native <see cref="IplImage"/> handle.
         /// </summary>
         /// <returns>
@@ -196,6 +217,27 @@ namespace OpenCV.Net
             }
             else NativeMethods.cvReleaseImageHeader(ref pImage);
             return true;
+        }
+
+        class IplImageSubRect : IplImage
+        {
+            IplImage owner;
+
+            public IplImageSubRect(IplImage source, _CvMat subRect)
+                : base(true)
+            {
+                var pImage = NativeMethods.cvCreateImageHeader(new CvSize(subRect.cols, subRect.rows), source.Depth, source.Channels);
+                SetHandle(pImage);
+                SetData(subRect.data, subRect.step);
+                owner = source;
+            }
+
+            protected override bool ReleaseHandle()
+            {
+                base.ReleaseHandle();
+                owner = null;
+                return true;
+            }
         }
     }
 }
