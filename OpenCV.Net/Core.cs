@@ -1769,7 +1769,7 @@ namespace OpenCV.Net
         /// The look-up table array. Elements of <paramref name="src"/> are
         /// used as indices in this 256-element table.
         /// </param>
-        public static void Lut(CvArr src, CvArr dst, CvArr lut)
+        public static void LUT(CvArr src, CvArr dst, CvArr lut)
         {
             NativeMethods.cvLUT(src, dst, lut);
         }

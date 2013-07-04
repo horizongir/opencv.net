@@ -47,6 +47,8 @@
     <Compile Include="CoreTypes.cs" />
     <Compile Include="CvArr.cs" />
     <Compile Include="CvBox2D.cs" />
+    <Compile Include="CvChain.cs" />
+    <Compile Include="CvContour.cs" />
     <Compile Include="CvException.cs" />
     <Compile Include="CvFont.cs" />
     <Compile Include="CvGraph.cs" />
