@@ -46,7 +46,7 @@ namespace OpenCV.Net
         /// <param name="cols">The number of columns in the matrix.</param>
         /// <param name="depth">The bit depth of matrix elements.</param>
         /// <param name="channels">The number of channels per element.</param>
-        public CvMat(int rows, int cols, CvMatDepth depth, int channels)
+        public CvMat(int rows, int cols, CvDepth depth, int channels)
             : this(NativeMethods.cvCreateMat(rows, cols, MatHelper.GetMatType(depth, channels)), true)
         {
         }
@@ -64,7 +64,7 @@ namespace OpenCV.Net
         /// <param name="channels">The number of channels per matrix element.</param>
         /// <param name="data">A pointer to the matrix raw element data.</param>
         /// <param name="step">The full row length in bytes.</param>
-        public CvMat(int rows, int cols, CvMatDepth depth, int channels, IntPtr data, int step = AutoStep)
+        public CvMat(int rows, int cols, CvDepth depth, int channels, IntPtr data, int step = AutoStep)
             : base(true)
         {
             var type = MatHelper.GetMatType(depth, channels);
@@ -118,7 +118,7 @@ namespace OpenCV.Net
         /// <summary>
         /// Gets the bit depth of matrix elements.
         /// </summary>
-        public CvMatDepth Depth
+        public CvDepth Depth
         {
             get
             {
@@ -144,7 +144,7 @@ namespace OpenCV.Net
         }
 
         /// <summary>
-        /// Gets the size of each matrix element channel in bytes.
+        /// Gets the size of each matrix element in bytes.
         /// </summary>
         public int ElementSize
         {

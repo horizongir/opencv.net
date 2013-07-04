@@ -8,12 +8,12 @@ namespace OpenCV.Net.UnitTests
     {
         protected const int Dim0 = 240;
         protected const int Dim1 = 320;
-        protected const CvMatDepth Depth = CvMatDepth.F32;
+        protected const CvDepth Depth = CvDepth.F32;
         static readonly CvScalar TestElement = new CvScalar(4);
 
         CvArr arr;
 
-        protected abstract CvArr CreateCvArr(int channels = 1, CvMatDepth depth = Depth, int dim0 = Dim0, int dim1 = Dim1);
+        protected abstract CvArr CreateCvArr(int channels = 1, CvDepth depth = Depth, int dim0 = Dim0, int dim1 = Dim1);
 
         [TestInitialize]
         public void InitializeCvArr()
@@ -290,7 +290,7 @@ namespace OpenCV.Net.UnitTests
         public void TestConvertScaleAbs()
         {
             arr.Set(CvScalar.All(1));
-            using (var arr2 = CreateCvArr(1, CvMatDepth.U8))
+            using (var arr2 = CreateCvArr(1, CvDepth.U8))
             {
                 cv.ConvertScaleAbs(arr, arr2, 5, 1);
                 Assert.AreEqual(6, arr2[0, 0].Val0);

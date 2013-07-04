@@ -98,6 +98,82 @@ namespace OpenCV.Net.Native
         public int curidx;
     }
 
+    [StructLayout(LayoutKind.Sequential)]
+    struct _CvSeq
+    {
+        public int flags;
+        public int header_size;
+        public IntPtr h_prev;
+        public IntPtr h_next;
+        public IntPtr v_prev;
+        public IntPtr v_next;
+        public int total;
+        public int elem_size;
+        public IntPtr block_max;
+        public IntPtr ptr;
+        public int delta_elems;
+        public IntPtr storage;
+        public IntPtr free_blocks;
+        public IntPtr first;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    struct _CvSet
+    {
+        public int flags;
+        public int header_size;
+        public IntPtr h_prev;
+        public IntPtr h_next;
+        public IntPtr v_prev;
+        public IntPtr v_next;
+        public int total;
+        public int elem_size;
+        public IntPtr block_max;
+        public IntPtr ptr;
+        public int delta_elems;
+        public IntPtr storage;
+        public IntPtr free_blocks;
+        public IntPtr first;
+
+        public IntPtr free_elems;
+        public int active_count;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    struct _CvGraph
+    {
+        public int flags;
+        public int header_size;
+        public IntPtr h_prev;
+        public IntPtr h_next;
+        public IntPtr v_prev;
+        public IntPtr v_next;
+        public int total;
+        public int elem_size;
+        public IntPtr block_max;
+        public IntPtr ptr;
+        public int delta_elems;
+        public IntPtr storage;
+        public IntPtr free_blocks;
+        public IntPtr first;
+
+        public IntPtr free_elems;
+        public int active_count;
+
+        public IntPtr edges;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    struct _CvString
+    {
+        public int Len;
+        public IntPtr Ptr;
+    }
+
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    delegate int CvCmpFunc(IntPtr a, IntPtr b, IntPtr userdata);
+
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     delegate int CvErrorCallback(int status, string func_name, string err_msg, string file_name, int line, IntPtr userData);
 
     static class MatHelper
@@ -108,14 +184,14 @@ namespace OpenCV.Net.Native
         internal const int DepthMax = 1 << ChannelShift;
         internal const int DepthMask = DepthMax - 1;
 
-        internal static int GetMatType(CvMatDepth depth, int channels)
+        internal static int GetMatType(CvDepth depth, int channels)
         {
             return ((int)depth & DepthMask) + ((channels - 1) << ChannelShift);
         }
 
-        internal static CvMatDepth GetMatDepth(int type)
+        internal static CvDepth GetMatDepth(int type)
         {
-            return (CvMatDepth)(type & DepthMask);
+            return (CvDepth)(type & DepthMask);
         }
 
         internal static int GetMatChannels(int type)
@@ -123,9 +199,27 @@ namespace OpenCV.Net.Native
             return ((type >> ChannelShift) & (MaxChannels - 1)) + 1;
         }
 
-        internal static int GetElemSize(int type)
+        internal static int GetElemSize1(int type)
         {
             return ((((Marshal.SizeOf(typeof(UIntPtr)) << 28) | 0x8442211) >> (type & DepthMask) * 4) & 15);
         }
+
+        internal static int GetElemSize(int type)
+        {
+            return (GetMatChannels(type) << ((((Marshal.SizeOf(typeof(UIntPtr)) / 4 + 1) * 16384 | 0x3a50) >> (int)GetMatDepth(type) * 2) & 3));
+        }
+    }
+
+    static class SeqHelper
+    {
+        internal const int ElementTypeBits = 12;
+        internal const int KindBits = 2;
+        internal const int KindMask = (((1 << KindBits) - 1) << ElementTypeBits);
+        internal const int FlagShift = KindBits + ElementTypeBits;
+        internal const int FlagMask = ~((1 << FlagShift) - 1);
+
+        internal static readonly UIntPtr SeqHeaderSize = (UIntPtr)Marshal.SizeOf(typeof(_CvSeq));
+        internal static readonly int SetHeaderSize = Marshal.SizeOf(typeof(_CvSet));
+        internal static readonly int GraphHeaderSize = Marshal.SizeOf(typeof(_CvGraph));
     }
 }

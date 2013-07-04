@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OpenCV.Net.Native;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -63,9 +64,9 @@ namespace OpenCV.Net
     }
 
     /// <summary>
-    /// Specifies the available element bit depth formats for <see cref="CvMat"/> instances.
+    /// Specifies the available element bit depth formats for <see cref="CvMat"/> and <see cref="CvSeq"/> instances.
     /// </summary>
-    public enum CvMatDepth : int
+    public enum CvDepth : int
     {
         /// <summary>
         /// Specifies an unsigned 8-bit element depth.
@@ -100,7 +101,12 @@ namespace OpenCV.Net
         /// <summary>
         /// Specifies a floating point 64-bit element depth.
         /// </summary>
-        F64 = 6
+        F64 = 6,
+
+        /// <summary>
+        /// Specifies a user defined element pointer type.
+        /// </summary>
+        UserType = 7
     }
 
     /// <summary>
@@ -558,5 +564,129 @@ namespace OpenCV.Net
         /// Specifies that the second array should be conjugated before the multiplication.
         /// </summary>
         MultiplyConjugate = 8
+    }
+
+    /// <summary>
+    /// Specifies the most common sequence element types.
+    /// </summary>
+    public enum SequenceElementType : int
+    {
+        /// <summary>
+        /// Specifies a point in 2D space.
+        /// </summary>
+        Point = 12,
+
+        /// <summary>
+        /// Specifies a freeman code element.
+        /// </summary>
+        Code = CvDepth.U8,
+
+        /// <summary>
+        /// Specifies an undefined type of sequence element.
+        /// </summary>
+        Generic = 0,
+
+        /// <summary>
+        /// Specifies a pointer type of sequence element.
+        /// </summary>
+        Pointer = CvDepth.UserType,
+
+        /// <summary>
+        /// Specifies a pointer to an element of another sequence.
+        /// </summary>
+        PointPointer = Pointer,
+
+        /// <summary>
+        /// Specifies an index of an element of some other sequence.
+        /// </summary>
+        Index = CvDepth.S32,
+
+        /// <summary>
+        /// Specifies an edge of a graph.
+        /// </summary>
+        GraphEdge = 0,
+
+        /// <summary>
+        /// Specifies a vertex of a graph.
+        /// </summary>
+        GraphVertex = 0,
+
+        /// <summary>
+        /// Specifies a vertex of a binary tree.
+        /// </summary>
+        TreeVertex = 0,
+
+        /// <summary>
+        /// Specifies a connected component.
+        /// </summary>
+        ConnectedComponent = 0,
+
+        /// <summary>
+        /// Specifies a point in 3D space.
+        /// </summary>
+        Point3D = 13,
+    }
+
+    /// <summary>
+    /// Specifies the kind of <see cref="CvSeq"/> instances.
+    /// </summary>
+    public enum SequenceKind : int
+    {
+        /// <summary>
+        /// Specifies a generic array of elements.
+        /// </summary>
+        Generic = (0 << SeqHelper.ElementTypeBits),
+
+        /// <summary>
+        /// Specifies a sequence of elements that represents a geometrical curve.
+        /// </summary>
+        Curve = (1 << SeqHelper.ElementTypeBits),
+
+        /// <summary>
+        /// Specifies a binary tree of elements.
+        /// </summary>
+        BinaryTree = (2 << SeqHelper.ElementTypeBits),
+
+        /// <summary>
+        /// Specifies a graph of elements.
+        /// </summary>
+        Graph = (1 << SeqHelper.ElementTypeBits),
+
+        /// <summary>
+        /// Specifies a set of planar subdivisions.
+        /// </summary>
+        Subdiv2D = (2 << SeqHelper.ElementTypeBits)
+    }
+
+    /// <summary>
+    /// Specifies a set of operational flags for <see cref="CvSeq"/> instances.
+    /// </summary>
+    [Flags]
+    public enum SequenceFlags : int
+    {
+        /// <summary>
+        /// Specifies that the geometrical curve is closed.
+        /// </summary>
+        Closed = (1 << SeqHelper.FlagShift),
+
+        /// <summary>
+        /// Specifies a simple sequence of elements.
+        /// </summary>
+        Simple = (0 << SeqHelper.FlagShift),
+
+        /// <summary>
+        /// Specifies that the geometrical curve is convex.
+        /// </summary>
+        Convex = (0 << SeqHelper.FlagShift),
+
+        /// <summary>
+        /// Specifies that the geometrical curve represents a hole.
+        /// </summary>
+        Hole = (2 << SeqHelper.FlagShift),
+
+        /// <summary>
+        /// Specifies that a graph type sequence is oriented.
+        /// </summary>
+        Oriented = (1 << SeqHelper.FlagShift)
     }
 }

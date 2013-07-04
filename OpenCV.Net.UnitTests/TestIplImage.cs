@@ -8,30 +8,30 @@ namespace OpenCV.Net.UnitTests
     {
         IplImage image;
 
-        protected override CvArr CreateCvArr(int channels, CvMatDepth depth, int dim0, int dim1)
+        protected override CvArr CreateCvArr(int channels, CvDepth depth, int dim0, int dim1)
         {
             var iplDepth = IplDepth.F32;
             switch (depth)
             {
-                case CvMatDepth.U8:
+                case CvDepth.U8:
                     iplDepth = IplDepth.U8;
                     break;
-                case CvMatDepth.S8:
+                case CvDepth.S8:
                     iplDepth = IplDepth.S8;
                     break;
-                case CvMatDepth.U16:
+                case CvDepth.U16:
                     iplDepth = IplDepth.U16;
                     break;
-                case CvMatDepth.S16:
+                case CvDepth.S16:
                     iplDepth = IplDepth.S16;
                     break;
-                case CvMatDepth.S32:
+                case CvDepth.S32:
                     iplDepth = IplDepth.S32;
                     break;
-                case CvMatDepth.F32:
+                case CvDepth.F32:
                     iplDepth = IplDepth.F32;
                     break;
-                case CvMatDepth.F64:
+                case CvDepth.F64:
                     iplDepth = IplDepth.F64;
                     break;
                 default:
