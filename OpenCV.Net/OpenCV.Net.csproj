@@ -68,8 +68,10 @@
     <Compile Include="CvSlice.cs" />
     <Compile Include="CvSparseMat.cs" />
     <Compile Include="CvTermCriteria.cs" />
+    <Compile Include="ImgProc.cs" />
     <Compile Include="IplImage.cs" />
     <Compile Include="Native\core.cs" />
+    <Compile Include="Native\imgproc.cs" />
     <Compile Include="Native\types.cs" />
     <Compile Include="NumericAggregateConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
