@@ -46,7 +46,9 @@
     <Compile Include="Core.cs" />
     <Compile Include="CoreTypes.cs" />
     <Compile Include="CvArr.cs" />
+    <Compile Include="CvBox2D.cs" />
     <Compile Include="CvException.cs" />
+    <Compile Include="CvFont.cs" />
     <Compile Include="CvGraph.cs" />
     <Compile Include="CvMat.cs" />
     <Compile Include="CvMatND.cs" />
@@ -60,6 +62,7 @@
     <Compile Include="CvSeq.cs" />
     <Compile Include="CvSet.cs" />
     <Compile Include="CvSize.cs" />
+    <Compile Include="CvSize2D32f.cs" />
     <Compile Include="CvSlice.cs" />
     <Compile Include="CvSparseMat.cs" />
     <Compile Include="CvTermCriteria.cs" />

@@ -91,6 +91,12 @@ namespace OpenCV.Net.Native
         internal static extern IntPtr cvGetDiag(CvArr arr, out _CvMat submat, int diag);
 
         [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvScalarToRawData(ref CvScalar scalar, IntPtr data, int type, int extend_to_12);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvRawDataToScalar(IntPtr data, int type, out CvScalar scalar);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
         internal static extern IntPtr cvCreateMatNDHeader(int dims, int[] sizes, int type);
 
         [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
@@ -617,6 +623,148 @@ namespace OpenCV.Net.Native
 
         [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
         internal static extern CvGraph cvCloneGraph(CvGraph graph, CvMemStorage storage);
+
+        #endregion
+
+        #region Drawing
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvLine(
+            CvArr img,
+            CvPoint pt1,
+            CvPoint pt2,
+            CvScalar color,
+            int thickness,
+            LineType line_type,
+            int shift);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvRectangle(
+            CvArr img,
+            CvPoint pt1,
+            CvPoint pt2,
+            CvScalar color,
+            int thickness,
+            LineType line_type,
+            int shift);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvRectangleR(
+            CvArr img,
+            CvRect r,
+            CvScalar color,
+            int thickness,
+            LineType line_type,
+            int shift);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvCircle(
+            CvArr img,
+            CvPoint center,
+            int radius,
+            CvScalar color,
+            int thickness,
+            LineType line_type,
+            int shift);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvEllipse(
+            CvArr img,
+            CvPoint center,
+            CvSize axes,
+            double angle,
+            double start_angle,
+            double end_angle,
+            CvScalar color,
+            int thickness,
+            LineType line_type,
+            int shift);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvFillConvexPoly(
+            CvArr img,
+            CvPoint[] pts,
+            int npts,
+            CvScalar color,
+            LineType line_type,
+            int shift);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvFillPoly(
+            CvArr img,
+            IntPtr[] pts,
+            int[] npts,
+            int contours,
+            CvScalar color,
+            LineType line_type,
+            int shift);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvPolyLine(
+            CvArr img,
+            IntPtr[] pts,
+            int[] npts,
+            int contours,
+            int is_closed,
+            CvScalar color,
+            int thickness,
+            LineType line_type,
+            int shift);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int cvClipLine(CvSize img_size, ref CvPoint pt1, ref CvPoint pt2);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int cvInitLineIterator(
+            CvArr image,
+            CvPoint pt1,
+            CvPoint pt2,
+            out _CvLineIterator line_iterator,
+            int connectivity,
+            int left_to_right);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvInitFont(
+            IntPtr font,
+            FontFace font_face,
+            double hscale,
+            double vscale,
+            double shear,
+            int thickness,
+            LineType line_type);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        internal static extern void cvPutText(CvArr img, string text, CvPoint org, CvFont font, CvScalar color);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        internal static extern void cvGetTextSize(string text_string, CvFont font, out CvSize text_size, out int baseline);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern CvScalar cvColorToScalar(double packed_color, int arrtype);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int cvEllipse2Poly(
+            CvPoint center,
+            CvSize axes,
+            int angle,
+            int arc_start,
+            int arc_end,
+            CvPoint[] pts,
+            int delta);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvDrawContours(
+            CvArr img,
+            CvSeq contour,
+            CvScalar external_color,
+            CvScalar hole_color,
+            int max_level,
+            int thickness,
+            LineType line_type,
+            CvPoint offset);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvLUT(CvArr src, CvArr dst, CvArr lut);
 
         #endregion
 

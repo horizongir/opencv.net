@@ -689,4 +689,77 @@ namespace OpenCV.Net
         /// </summary>
         Oriented = (1 << SeqHelper.FlagShift)
     }
+
+    /// <summary>
+    /// Specifies the line drawing algorithm used for rasterizing.
+    /// </summary>
+    public enum LineType : int
+    {
+        /// <summary>
+        /// Specifies the 8-connected Bresenham algorithm.
+        /// </summary>
+        Connected8 = 8,
+
+        /// <summary>
+        /// Specifies the 4-connected Bresenham algorithm.
+        /// </summary>
+        Connected4 = 4,
+
+        /// <summary>
+        /// Specifies anti-aliased lines drawn using gaussian filtering.
+        /// </summary>
+        AntiAliased = 16
+    }
+
+    /// <summary>
+    /// Specifies font face flags for instances of <see cref="CvFont"/>.
+    /// </summary>
+    [Flags]
+    public enum FontFace : int
+    {
+        /// <summary>
+        /// Specifies a normal size sans-serif font.
+        /// </summary>
+        HersheySimplex = 0,
+
+        /// <summary>
+        /// Specifies a small size sans-serif font.
+        /// </summary>
+        HersheyPlain = 1,
+
+        /// <summary>
+        /// Specifies a normal size sans-serif font more complex than <see cref="HersheySimplex"/>.
+        /// </summary>
+        HersheyDuplex = 2,
+
+        /// <summary>
+        /// Specifies a normal size serif font.
+        /// </summary>
+        HersheyComplex = 3,
+
+        /// <summary>
+        /// Specifies a normal size serif font more complex than <see cref="HersheyComplex"/>.
+        /// </summary>
+        HersheyTriplex = 4,
+
+        /// <summary>
+        /// Specifies a smaller version of <see cref="HersheyComplex"/>.
+        /// </summary>
+        HersheyComplexSmall = 5,
+
+        /// <summary>
+        /// Specifies a hand-writing style font.
+        /// </summary>
+        HersheyScriptSimplex = 6,
+
+        /// <summary>
+        /// Specifies a more complex variant of <see cref="HersheyScriptSimplex"/>.
+        /// </summary>
+        HersheyScriptComplex = 7,
+
+        /// <summary>
+        /// Specifies that the font should be rendered in italic or oblique font.
+        /// </summary>
+        Italic = 16
+    }
 }

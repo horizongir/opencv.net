@@ -170,10 +170,37 @@ namespace OpenCV.Net.Native
         public IntPtr Ptr;
     }
 
+    [StructLayout(LayoutKind.Sequential)]
+    struct _CvLineIterator
+    {
+        public IntPtr ptr;
+        public int err;
+        public int plus_delta;
+        public int minus_delta;
+        public int plus_step;
+        public int minus_step;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    struct _CvFont
+    {
+        IntPtr nameFont;
+        CvScalar color;
+        int font_face;
+        IntPtr ascii;
+        IntPtr greek;
+        IntPtr cyrillic;
+        float hscale, vscale;
+        float shear;
+        int thickness;
+        float dx;
+        int line_type;
+    }
+
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     delegate int CvCmpFunc(IntPtr a, IntPtr b, IntPtr userdata);
 
-    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
     delegate int CvErrorCallback(int status, string func_name, string err_msg, string file_name, int line, IntPtr userData);
 
     static class MatHelper
