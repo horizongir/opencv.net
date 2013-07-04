@@ -36,6 +36,110 @@ namespace OpenCV.Net
         }
 
         /// <summary>
+        /// Creates a new <see cref="CvMat"/> from a subrectangle of the current instance.
+        /// No data is copied.
+        /// </summary>
+        /// <param name="rect">Zero-based coordinates of the rectangle of interest.</param>
+        /// <returns>
+        /// A new <see cref="CvMat"/> that corresponds to the specified rectangle of
+        /// the current matrix.
+        /// </returns>
+        public CvMat GetSubRect(CvRect rect)
+        {
+            _CvMat subRect;
+            NativeMethods.cvGetSubRect(this, out subRect, rect);
+            return new CvMatHeader(this, subRect);
+        }
+
+        /// <summary>
+        /// Returns a single row of the current matrix as a new <see cref="CvMat"/>.
+        /// No data is copied.
+        /// </summary>
+        /// <param name="row">Zero-based index of the selected row.</param>
+        /// <returns>
+        /// A new <see cref="CvMat"/> that corresponds to the selected row of
+        /// the current matrix.
+        /// </returns>
+        public CvMat GetRow(int row)
+        {
+            return GetRows(row, row + 1);
+        }
+
+        /// <summary>
+        /// Returns a row span of the current matrix as a new <see cref="CvMat"/>.
+        /// No data is copied.
+        /// </summary>
+        /// <param name="startRow">Zero-based index of the starting row (inclusive) of the span.</param>
+        /// <param name="endRow">Zero-based index of the ending row (exclusive) of the span</param>
+        /// <param name="deltaRow">Index step in the row span.</param>
+        /// <returns>The multi-row matrix containing the row span.</returns>
+        public CvMat GetRows(int startRow, int endRow, int deltaRow = 1)
+        {
+            _CvMat subMat;
+            NativeMethods.cvGetRows(this, out subMat, startRow, endRow, deltaRow);
+            return new CvMatHeader(this, subMat);
+        }
+
+        /// <summary>
+        /// Returns a single column of the current matrix as a new <see cref="CvMat"/>.
+        /// No data is copied.
+        /// </summary>
+        /// <param name="col">Zero-based index of the selected column.</param>
+        /// <returns>
+        /// A new <see cref="CvMat"/> that corresponds to the selected column of
+        /// the current matrix.
+        /// </returns>
+        public CvMat GetCol(int col)
+        {
+            return GetCols(col, col + 1);
+        }
+
+        /// <summary>
+        /// Returns a column span of the current matrix as a new <see cref="CvMat"/>.
+        /// No data is copied.
+        /// </summary>
+        /// <param name="startCol">Zero-based index of the starting column (inclusive) of the span.</param>
+        /// <param name="endCol">Zero-based index of the ending column (exclusive) of the span</param>
+        /// <returns>The multi-column matrix containing the column span.</returns>
+        public CvMat GetCols(int startCol, int endCol)
+        {
+            _CvMat subMat;
+            NativeMethods.cvGetCols(this, out subMat, startCol, endCol);
+            return new CvMatHeader(this, subMat);
+        }
+
+        /// <summary>
+        /// Returns the main diagonal of the current matrix.
+        /// </summary>
+        /// <returns>
+        /// A new <see cref="CvMat"/> that corresponds to the main diagonal
+        /// of the current matrix.
+        /// </returns>
+        public CvMat GetDiag()
+        {
+            return GetDiag(0);
+        }
+
+        /// <summary>
+        /// Returns a specified diagonal of the current matrix.
+        /// </summary>
+        /// <param name="diag">
+        /// The selected array diagonal. Zero corresponds to the main diagonal,
+        /// negative one corresponds to the diagonal above the main, positive one
+        /// corresponds to the diagonal below the main, and so forth.
+        /// </param>
+        /// <returns>
+        /// A new <see cref="CvMat"/> that corresponds to the specified diagonal
+        /// of the current matrix.
+        /// </returns>
+        public CvMat GetDiag(int diag)
+        {
+            _CvMat subMat;
+            NativeMethods.cvGetDiag(this, out subMat, diag);
+            return new CvMatHeader(this, subMat);
+        }
+
+        /// <summary>
         /// Returns the number of array dimensions and their sizes.
         /// </summary>
         /// <param name="sizes">
@@ -322,6 +426,20 @@ namespace OpenCV.Net
         }
 
         /// <summary>
+        /// Returns image header for arbitrary array.
+        /// </summary>
+        /// <returns>
+        /// An image header for the array which can be an image or matrix.
+        /// </returns>
+        public IplImage GetImage()
+        {
+            _IplImage header;
+            var pImage = NativeMethods.cvGetImage(this, out header);
+            if (pImage == handle) return (IplImage)this;
+            else return new IplImageHeader(this, header);
+        }
+
+        /// <summary>
         /// Changes shape of matrix/image without copying data.
         /// </summary>
         /// <param name="channels">
@@ -423,6 +541,27 @@ namespace OpenCV.Net
                 var pMat = NativeMethods.cvCreateMatHeader(subMat.rows, subMat.cols, subMat.type);
                 NativeMethods.cvInitMatHeader(pMat, subMat.rows, subMat.cols, subMat.type, subMat.data, subMat.step);
                 SetHandle(pMat);
+                owner = source;
+            }
+
+            protected override bool ReleaseHandle()
+            {
+                base.ReleaseHandle();
+                owner = null;
+                return true;
+            }
+        }
+
+        internal class IplImageHeader : IplImage
+        {
+            CvArr owner;
+
+            public IplImageHeader(CvArr source, _IplImage header)
+                : base(true)
+            {
+                var pImage = NativeMethods.cvCreateImageHeader(new CvSize(header.width, header.height), header.depth, header.nChannels);
+                SetHandle(pImage);
+                SetData(header.imageData, header.widthStep);
                 owner = source;
             }
 

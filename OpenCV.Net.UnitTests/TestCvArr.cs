@@ -175,6 +175,13 @@ namespace OpenCV.Net.UnitTests
         }
 
         [TestMethod]
+        public void TestGetImage()
+        {
+            var image = arr.GetImage();
+            Assert.AreEqual(Dim0, image.Height);
+        }
+
+        [TestMethod]
         public void TestReshape()
         {
             var mat = arr.Reshape(2);
