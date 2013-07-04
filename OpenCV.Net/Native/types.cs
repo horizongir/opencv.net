@@ -164,6 +164,52 @@ namespace OpenCV.Net.Native
     }
 
     [StructLayout(LayoutKind.Sequential)]
+    struct _CvChain
+    {
+        public int flags;
+        public int header_size;
+        public IntPtr h_prev;
+        public IntPtr h_next;
+        public IntPtr v_prev;
+        public IntPtr v_next;
+        public int total;
+        public int elem_size;
+        public IntPtr block_max;
+        public IntPtr ptr;
+        public int delta_elems;
+        public IntPtr storage;
+        public IntPtr free_blocks;
+        public IntPtr first;
+
+        public CvPoint origin;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    struct _CvContour
+    {
+        public int flags;
+        public int header_size;
+        public IntPtr h_prev;
+        public IntPtr h_next;
+        public IntPtr v_prev;
+        public IntPtr v_next;
+        public int total;
+        public int elem_size;
+        public IntPtr block_max;
+        public IntPtr ptr;
+        public int delta_elems;
+        public IntPtr storage;
+        public IntPtr free_blocks;
+        public IntPtr first;
+
+        public CvRect rect;
+        public int color;
+        public int reserved0;
+        public int reserved1;
+        public int reserved2;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
     struct _CvString
     {
         public int Len;
