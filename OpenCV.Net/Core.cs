@@ -1347,5 +1347,433 @@ namespace OpenCV.Net
         }
 
         #endregion
+
+        #region Drawing
+
+        /// <summary>
+        /// Draws a line segment connecting two points.
+        /// </summary>
+        /// <param name="img">The image on which to draw.</param>
+        /// <param name="pt1">The first point of the line segment.</param>
+        /// <param name="pt2">The second point of the line segment.</param>
+        /// <param name="color">The color of the line.</param>
+        /// <param name="thickness">The thickness of the line.</param>
+        /// <param name="lineType">The algorithm used to draw the line.</param>
+        /// <param name="shift">The number of fractional bits in the point coordinates.</param>
+        public static void Line(
+            CvArr img,
+            CvPoint pt1,
+            CvPoint pt2,
+            CvScalar color,
+            int thickness = 1,
+            LineType lineType = LineType.Connected8,
+            int shift = 0)
+        {
+            NativeMethods.cvLine(img, pt1, pt2, color, thickness, lineType, shift);
+        }
+
+        /// <summary>
+        /// Draws a simple, thick, or filled rectangle with the two opposite corners
+        /// <paramref name="pt1"/> and <paramref name="pt2"/>.
+        /// </summary>
+        /// <param name="img">The image on which to draw.</param>
+        /// <param name="pt1">The first point of the line segment.</param>
+        /// <param name="pt2">The second point of the line segment.</param>
+        /// <param name="color">The color of the rectangle.</param>
+        /// <param name="thickness">
+        /// The thickness of the lines that make up the rectangle if positive, otherwise this
+        /// indicates that a filled rectangle is to be drawn.
+        /// </param>
+        /// <param name="lineType">The algorithm used to draw the rectangle outline.</param>
+        /// <param name="shift">The number of fractional bits in the point coordinates.</param>
+        public static void Rectangle(
+            CvArr img,
+            CvPoint pt1,
+            CvPoint pt2,
+            CvScalar color,
+            int thickness = 1,
+            LineType lineType = LineType.Connected8,
+            int shift = 0)
+        {
+            NativeMethods.cvRectangle(img, pt1, pt2, color, thickness, lineType, shift);
+        }
+
+        /// <summary>
+        /// Draws a simple, thick, or filled rectangle specified by a <see cref="CvRect"/>
+        /// structure.
+        /// </summary>
+        /// <param name="img">The image on which to draw.</param>
+        /// <param name="rectangle">The rectangle to draw.</param>
+        /// <param name="color">The color of the rectangle.</param>
+        /// <param name="thickness">
+        /// The thickness of the lines that make up the rectangle if positive, otherwise this
+        /// indicates that a filled rectangle is to be drawn.
+        /// </param>
+        /// <param name="lineType">The algorithm used to draw the rectangle outline.</param>
+        /// <param name="shift">The number of fractional bits in the rectangle coordinates.</param>
+        public static void Rectangle(
+            CvArr img,
+            CvRect rectangle,
+            CvScalar color,
+            int thickness = 1,
+            LineType lineType = LineType.Connected8,
+            int shift = 0)
+        {
+            NativeMethods.cvRectangleR(img, rectangle, color, thickness, lineType, shift);
+        }
+
+        /// <summary>
+        /// Draws a circle with the specified <paramref name="center"/> and <paramref name="radius"/>.
+        /// </summary>
+        /// <param name="img">The image on which to draw.</param>
+        /// <param name="center">The center of the circle.</param>
+        /// <param name="radius">The radius of the circle.</param>
+        /// <param name="color">The color of the circle.</param>
+        /// <param name="thickness">
+        /// The thickness of the circle outline if positive, otherwise this indicates that a filled
+        /// circle is to be drawn.
+        /// </param>
+        /// <param name="lineType">The algorithm used to draw the circle boundary.</param>
+        /// <param name="shift">The number of fractional bits in the center coordinates and radius value.</param>
+        public static void Circle(
+            CvArr img,
+            CvPoint center,
+            int radius,
+            CvScalar color,
+            int thickness = 1,
+            LineType lineType = LineType.Connected8,
+            int shift = 0)
+        {
+            NativeMethods.cvCircle(img, center, radius, color, thickness, lineType, shift);
+        }
+
+        /// <summary>
+        /// Draws ellipse outline, filled ellipse, elliptic arc or filled elliptic sector,
+        /// depending on <paramref name="thickness"/>, <paramref name="startAngle"/> and
+        /// <paramref name="endAngle"/> parameters. The resultant figure is rotated by
+        /// <paramref name="angle"/>. All the angles are in degrees.
+        /// </summary>
+        /// <param name="img">The image on which to draw.</param>
+        /// <param name="center">The center of the ellipse.</param>
+        /// <param name="axes">The length of the ellipse axes.</param>
+        /// <param name="angle">The rotation angle.</param>
+        /// <param name="startAngle">The starting angle of the elliptic arc.</param>
+        /// <param name="endAngle">The ending angle of the elliptic arc.</param>
+        /// <param name="color">The color of the ellipse.</param>
+        /// <param name="thickness">
+        /// The thickness of the ellipse boundary if positive, otherwise this indicates that
+        /// a filled ellipse sector is to be drawn.
+        /// </param>
+        /// <param name="lineType">The algorithm used to draw the ellipse boundary.</param>
+        /// <param name="shift">The number of fractional bits in the center coordinates and axes' values.</param>
+        public static void Ellipse(
+            CvArr img,
+            CvPoint center,
+            CvSize axes,
+            double angle,
+            double startAngle,
+            double endAngle,
+            CvScalar color,
+            int thickness = 1,
+            LineType lineType = LineType.Connected8,
+            int shift = 0)
+        {
+            NativeMethods.cvEllipse(img, center, axes, angle, startAngle, endAngle, color, thickness, lineType, shift);
+        }
+
+        /// <summary>
+        /// Draws a simple or thick ellipse from the specified enclosing <paramref name="box"/>.
+        /// </summary>
+        /// <param name="img">The image on which to draw.</param>
+        /// <param name="box">The enclosing box of the ellipse.</param>
+        /// <param name="color">The color of the ellipse.</param>
+        /// <param name="thickness">
+        /// The thickness of the ellipse boundary if positive, otherwise this indicates that
+        /// a filled ellipse is to be drawn.
+        /// </param>
+        /// <param name="lineType">The algorithm used to draw the ellipse boundary.</param>
+        /// <param name="shift">The number of fractional bits in the center coordinates and axes' values.</param>
+        public static void EllipseBox(
+            CvArr img,
+            CvBox2D box,
+            CvScalar color,
+            int thickness = 1,
+            LineType lineType = LineType.Connected8,
+            int shift = 0)
+        {
+            CvSize axes;
+            axes.Width = (int)Math.Round(box.Size.Width * 0.5);
+            axes.Height = (int)Math.Round(box.Size.Height * 0.5);
+            Ellipse(img, new CvPoint(box.Center), axes, box.Angle, 0, 360, color, thickness, lineType, shift);
+        }
+
+        /// <summary>
+        /// Fills a convex polygon.
+        /// </summary>
+        /// <param name="img">The image on which to draw.</param>
+        /// <param name="pts">The array of points specifying a single convex polygon.</param>
+        /// <param name="color">The color of the polygon.</param>
+        /// <param name="lineType">The algorithm used to draw the polygon boundaries.</param>
+        /// <param name="shift">The number of fractional bits in the vertex coordinates.</param>
+        public static void FillConvexPoly(
+            CvArr img,
+            CvPoint[] pts,
+            CvScalar color,
+            LineType lineType = LineType.Connected8,
+            int shift = 0)
+        {
+            NativeMethods.cvFillConvexPoly(img, pts, pts.Length, color, lineType, shift);
+        }
+
+        /// <summary>
+        /// Fills an area bounded by several polygonal contours.
+        /// </summary>
+        /// <param name="img">The image on which to draw.</param>
+        /// <param name="pts">The array of polygons bounding the area to fill.</param>
+        /// <param name="color">The color of the filled area.</param>
+        /// <param name="lineType">The algorithm used to draw the polygon boundaries.</param>
+        /// <param name="shift">The number of fractional bits in the vertex coordinates.</param>
+        public static void FillPoly(
+            CvArr img,
+            CvPoint[][] pts,
+            CvScalar color,
+            LineType lineType = LineType.Connected8,
+            int shift = 0)
+        {
+            var npts = Array.ConvertAll(pts, poly => poly.Length);
+            var handles = Array.ConvertAll(pts, poly => GCHandle.Alloc(poly, GCHandleType.Pinned));
+            try
+            {
+                var pPts = Array.ConvertAll(handles, handle => handle.AddrOfPinnedObject());
+                NativeMethods.cvFillPoly(img, pPts, npts, pts.Length, color, lineType, shift);
+            }
+            finally { Array.ForEach(handles, handle => handle.Free()); }
+        }
+
+        /// <summary>
+        /// Draws one or more polygonal curves.
+        /// </summary>
+        /// <param name="img">The image on which to draw.</param>
+        /// <param name="pts">The array of polygons to draw.</param>
+        /// <param name="isClosed">
+        /// A value indicating whether the polylines must be drawn closed. If closed, the function
+        /// draws the line from the last vertex of every contour to the first vertex.
+        /// </param>
+        /// <param name="color">The color of the polygons.</param>
+        /// <param name="thickness">The thickness of the polyline edges.</param>
+        /// <param name="lineType">The algorithm used to draw the polygon boundaries.</param>
+        /// <param name="shift">The number of fractional bits in the vertex coordinates.</param>
+        public static void PolyLine(
+            CvArr img,
+            CvPoint[][] pts,
+            bool isClosed,
+            CvScalar color,
+            int thickness = 1,
+            LineType lineType = LineType.Connected8,
+            int shift = 0)
+        {
+            var npts = Array.ConvertAll(pts, poly => poly.Length);
+            var handles = Array.ConvertAll(pts, poly => GCHandle.Alloc(poly, GCHandleType.Pinned));
+            try
+            {
+                var pPts = Array.ConvertAll(handles, handle => handle.AddrOfPinnedObject());
+                NativeMethods.cvPolyLine(img, pPts, npts, pts.Length, isClosed ? 1 : 0, color, thickness, lineType, shift);
+            }
+            finally { Array.ForEach(handles, handle => handle.Free()); }
+        }
+
+        /// <summary>
+        /// Clips the line against the image rectangle.
+        /// </summary>
+        /// <param name="imgSize">The size of the image.</param>
+        /// <param name="pt1">The first ending point of the line segment.</param>
+        /// <param name="pt2">The second ending point of the line segment.</param>
+        /// <returns>
+        /// <b>true</b> if some portion of the line segment is inside the image, otherwise <b>false</b>.
+        /// </returns>
+        public static bool ClipLine(CvSize imgSize, ref CvPoint pt1, ref CvPoint pt2)
+        {
+            return NativeMethods.cvClipLine(imgSize, ref pt1, ref pt2) != 0;
+        }
+
+        /// <summary>
+        /// Steps through all image points on the raster line between <paramref name="pt1"/> and <paramref name="pt2"/>.
+        /// </summary>
+        /// <param name="image">The image to sample the line from.</param>
+        /// <param name="pt1">The first ending point of the line segment.</param>
+        /// <param name="pt2">The second ending point of the line segment.</param>
+        /// <param name="connectivity">The scanned line connectivity for Bresenham's algorithm, either 4 or 8.</param>
+        /// <param name="leftToRight">
+        /// If <b>true</b> the line is scanned from the leftmost point to the rightmost point, otherwise it
+        /// will be scanned in the specified order, from <paramref name="pt1"/> to <paramref name="pt2"/>.
+        /// </param>
+        /// <returns>
+        /// An <see cref="IEnumerable{CvScalar}"/> whose elements are the result of scanning the image points
+        /// along the raster line between <paramref name="pt1"/> and <paramref name="pt2"/>.
+        /// </returns>
+        public static IEnumerable<CvScalar> LineIterator(
+            CvArr image,
+            CvPoint pt1,
+            CvPoint pt2,
+            int connectivity = 8,
+            bool leftToRight = false)
+        {
+            CvScalar value;
+            _CvLineIterator iterator;
+            int elementType = image.ElementType;
+            var count = NativeMethods.cvInitLineIterator(image, pt1, pt2, out iterator, connectivity, leftToRight ? 1 : 0);
+            for (int i = 0; i < count; i++)
+            {
+                NativeMethods.cvRawDataToScalar(iterator.ptr, elementType, out value);
+                yield return value;
+
+                // Next line point
+                var iteratorMask = iterator.err < 0 ? -1 : 0;
+                iterator.err += iterator.minus_delta + (iterator.plus_delta & iteratorMask);
+                iterator.ptr += iterator.minus_step + (iterator.plus_step & iteratorMask);
+            }
+        }
+
+        /// <summary>
+        /// Renders text strokes with the specified <paramref name="font"/> and <paramref name="color"/>
+        /// at the specified location.
+        /// </summary>
+        /// <param name="img">The image on which to draw.</param>
+        /// <param name="text">The text string to print.</param>
+        /// <param name="origin">The coordinates of the bottom-left corner of the first letter.</param>
+        /// <param name="font">The font style used to render the text strokes.</param>
+        /// <param name="color">The color of the text.</param>
+        public static void PutText(CvArr img, string text, CvPoint origin, CvFont font, CvScalar color)
+        {
+            NativeMethods.cvPutText(img, text, origin, font, color);
+        }
+
+        /// <summary>
+        /// Retrieves the width and height of a text string.
+        /// </summary>
+        /// <param name="text">The input string that is to be measured.</param>
+        /// <param name="font">The font style used to render the text strokes.</param>
+        /// <param name="textSize">
+        /// The resultant size of the text string. Height of the text does not include the height
+        /// of character parts that are below the baseline.
+        /// </param>
+        /// <param name="baseline">
+        /// The y-coordinate of the baseline relative to the bottom-most text point.
+        /// </param>
+        public static void GetTextSize(string text, CvFont font, out CvSize textSize, out int baseline)
+        {
+            NativeMethods.cvGetTextSize(text, font, out textSize, out baseline);
+        }
+
+        /// <summary>
+        /// Returns the polygon points which make up the given ellipse.
+        /// </summary>
+        /// <param name="center">The center of the ellipse.</param>
+        /// <param name="axes">The length of the ellipse axes.</param>
+        /// <param name="angle">The rotation angle.</param>
+        /// <param name="startAngle">The starting angle of the elliptic arc.</param>
+        /// <param name="endAngle">The ending angle of the elliptic arc.</param>
+        /// <param name="pts">
+        /// The array of points that define the polygon. The array must be large enough
+        /// to hold the result.
+        /// </param>
+        /// <param name="delta">
+        /// The angle between the subsequent polyline vertices. It defines the
+        /// approximation accuracy.
+        /// </param>
+        /// <returns>The total number of points stored into <paramref name="pts"/>.</returns>
+        public static int EllipseToPoly(
+            CvPoint center,
+            CvSize axes,
+            int angle,
+            int startAngle,
+            int endAngle,
+            CvPoint[] pts,
+            int delta)
+        {
+            return NativeMethods.cvEllipse2Poly(center, axes, angle, startAngle, endAngle, pts, delta);
+        }
+
+        /// <summary>
+        /// Draws contour outlines or filled interiors in an image.
+        /// </summary>
+        /// <param name="img">The image where the contours are to be drawn.</param>
+        /// <param name="contour">The first contour to draw.</param>
+        /// <param name="externalColor">The color of the external contours.</param>
+        /// <param name="holeColor">The color of the internal holes.</param>
+        /// <param name="maxLevel">
+        /// The maximal level for drawn contours. If 0, only <paramref name="contour"/> is drawn. If 1, the
+        /// <paramref name="contour"/> and all contours following it on the same level are drawn. If 2, all
+        /// contours following <paramref name="contour"/> and all contours one level below the contours are drawn,
+        /// and so forth. If the value is negative, the function does not draw the contours following
+        /// <paramref name="contour"/> contour but draws the child contours of <paramref name="contour"/> up to the
+        /// max level minus one.
+        /// </param>
+        /// <param name="thickness">
+        /// The thickness of the lines the contours are drawn with. If negative, the contour interiors
+        /// are drawn.
+        /// </param>
+        /// <param name="lineType">The algorithm used to draw the contour boundaries.</param>
+        public static void DrawContours(
+            CvArr img,
+            CvSeq contour,
+            CvScalar externalColor,
+            CvScalar holeColor,
+            int maxLevel,
+            int thickness = 1,
+            LineType lineType = LineType.Connected8)
+        {
+            DrawContours(img, contour, externalColor, holeColor, maxLevel, thickness, lineType, CvPoint.Zero);
+        }
+
+        /// <summary>
+        /// Draws contour outlines or filled interiors in an image.
+        /// </summary>
+        /// <param name="img">The image where the contours are to be drawn.</param>
+        /// <param name="contour">The first contour to draw.</param>
+        /// <param name="externalColor">The color of the external contours.</param>
+        /// <param name="holeColor">The color of the internal holes.</param>
+        /// <param name="maxLevel">
+        /// The maximal level for drawn contours. If 0, only <paramref name="contour"/> is drawn. If 1, the
+        /// <paramref name="contour"/> and all contours following it on the same level are drawn. If 2, all
+        /// contours following <paramref name="contour"/> and all contours one level below the contours are drawn,
+        /// and so forth. If the value is negative, the function does not draw the contours following
+        /// <paramref name="contour"/> contour but draws the child contours of <paramref name="contour"/> up to the
+        /// max level minus one.
+        /// </param>
+        /// <param name="thickness">
+        /// The thickness of the lines the contours are drawn with. If negative, the contour interiors
+        /// are drawn.
+        /// </param>
+        /// <param name="lineType">The algorithm used to draw the contour boundaries.</param>
+        /// <param name="offset">An offset to apply to all contour vertices.</param>
+        public static void DrawContours(
+            CvArr img,
+            CvSeq contour,
+            CvScalar externalColor,
+            CvScalar holeColor,
+            int maxLevel,
+            int thickness,
+            LineType lineType,
+            CvPoint offset)
+        {
+            NativeMethods.cvDrawContours(img, contour, externalColor, holeColor, maxLevel, thickness, lineType, offset);
+        }
+
+        /// <summary>
+        /// Performs a look-up transformation of the source array.
+        /// </summary>
+        /// <param name="src">The input array.</param>
+        /// <param name="dst">The destination array.</param>
+        /// <param name="lut">
+        /// The look-up table array. Elements of <paramref name="src"/> are
+        /// used as indices in this 256-element table.
+        /// </param>
+        public static void Lut(CvArr src, CvArr dst, CvArr lut)
+        {
+            NativeMethods.cvLUT(src, dst, lut);
+        }
+
+        #endregion
     }
 }
