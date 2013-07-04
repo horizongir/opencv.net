@@ -53,6 +53,8 @@
     <Compile Include="TestCore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestCvMat.cs" />
+    <Compile Include="TestCvMemStorage.cs" />
+    <Compile Include="TestCvSeq.cs" />
     <Compile Include="TestCvSparseMat.cs" />
     <Compile Include="TestIplImage.cs" />
     <Compile Include="TestCvArr.cs" />

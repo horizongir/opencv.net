@@ -8,7 +8,7 @@ namespace OpenCV.Net.UnitTests
     {
         CvMatND mat;
 
-        protected override CvArr CreateCvArr(int channels, CvMatDepth depth, int dim0, int dim1)
+        protected override CvArr CreateCvArr(int channels, CvDepth depth, int dim0, int dim1)
         {
             return mat = new CvMatND(new[] { dim0, dim1 }, depth, channels);
         }

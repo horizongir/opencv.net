@@ -41,7 +41,7 @@ namespace OpenCV.Net
         /// <param name="dimSizes">The size of each of the multi-dimensional array dimensions.</param>
         /// <param name="depth">The bit depth of matrix elements.</param>
         /// <param name="channels">The number of channels per element.</param>
-        public CvMatND(int[] dimSizes, CvMatDepth depth, int channels)
+        public CvMatND(int[] dimSizes, CvDepth depth, int channels)
             : this(NativeMethods.cvCreateMatND(dimSizes.Length, dimSizes, MatHelper.GetMatType(depth, channels)), true)
         {
         }
@@ -56,7 +56,7 @@ namespace OpenCV.Net
         /// <param name="depth">The bit depth of matrix elements.</param>
         /// <param name="channels">The number of channels per element.</param>
         /// <param name="data">A pointer to the matrix raw element data.</param>
-        public CvMatND(int[] dimSizes, CvMatDepth depth, int channels, IntPtr data)
+        public CvMatND(int[] dimSizes, CvDepth depth, int channels, IntPtr data)
             : base(true)
         {
             var type = MatHelper.GetMatType(depth, channels);
@@ -68,7 +68,7 @@ namespace OpenCV.Net
         /// <summary>
         /// Gets the bit depth of matrix elements.
         /// </summary>
-        public CvMatDepth Depth
+        public CvDepth Depth
         {
             get
             {
@@ -94,7 +94,7 @@ namespace OpenCV.Net
         }
 
         /// <summary>
-        /// Gets the size of each matrix element channel in bytes.
+        /// Gets the size of each matrix element in bytes.
         /// </summary>
         public int ElementSize
         {
