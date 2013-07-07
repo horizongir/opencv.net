@@ -52,11 +52,13 @@
     <Compile Include="CvException.cs" />
     <Compile Include="CvFont.cs" />
     <Compile Include="CvGraph.cs" />
+    <Compile Include="CvHuMoments.cs" />
     <Compile Include="CvMat.cs" />
     <Compile Include="CvMatND.cs" />
     <Compile Include="CvMemBlock.cs" />
     <Compile Include="CvMemStorage.cs" />
     <Compile Include="CvMemStoragePos.cs" />
+    <Compile Include="CvMoments.cs" />
     <Compile Include="CvPoint.cs" />
     <Compile Include="CvPoint2D32f.cs" />
     <Compile Include="CvRect.cs" />
@@ -69,6 +71,8 @@
     <Compile Include="CvSparseMat.cs" />
     <Compile Include="CvTermCriteria.cs" />
     <Compile Include="ImgProc.cs" />
+    <Compile Include="ImgProcTypes.cs" />
+    <Compile Include="IplConvKernel.cs" />
     <Compile Include="IplImage.cs" />
     <Compile Include="Native\core.cs" />
     <Compile Include="Native\imgproc.cs" />

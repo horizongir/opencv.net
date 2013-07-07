@@ -20,6 +20,11 @@ namespace OpenCV.Net
         /// </summary>
         public const int AutoStep = 0x7fffffff;
 
+        internal CvMat()
+            : base(false)
+        {
+        }
+
         internal CvMat(bool ownsHandle)
             : base(ownsHandle)
         {
@@ -178,13 +183,12 @@ namespace OpenCV.Net
         /// </returns>
         protected override bool ReleaseHandle()
         {
-            var pMat = handle;
             if (ownsData)
             {
                 GC.RemoveMemoryPressure(Step * Rows);
             }
 
-            NativeMethods.cvReleaseMat(ref pMat);
+            NativeMethods.cvReleaseMat(ref handle);
             return true;
         }
 

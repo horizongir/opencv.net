@@ -209,13 +209,12 @@ namespace OpenCV.Net
         /// </returns>
         protected override bool ReleaseHandle()
         {
-            var pImage = handle;
             if (ownsData)
             {
                 GC.RemoveMemoryPressure(WidthStep * Height);
-                NativeMethods.cvReleaseImage(ref pImage);
+                NativeMethods.cvReleaseImage(ref handle);
             }
-            else NativeMethods.cvReleaseImageHeader(ref pImage);
+            else NativeMethods.cvReleaseImageHeader(ref handle);
             return true;
         }
 

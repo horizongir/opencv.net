@@ -18,7 +18,7 @@ namespace OpenCV.Net
         /// <summary>
         /// Gets the previous memory storage block.
         /// </summary>
-        public CvMemBlock Previous
+        public CvMemBlock Prev
         {
             get
             {

@@ -127,13 +127,12 @@ namespace OpenCV.Net
         /// </returns>
         protected override bool ReleaseHandle()
         {
-            var pMat = handle;
             if (ownsData)
             {
                 GC.RemoveMemoryPressure(bytesAllocated);
             }
 
-            NativeMethods.cvReleaseMat(ref pMat);
+            NativeMethods.cvReleaseMat(ref handle);
             return true;
         }
     }
