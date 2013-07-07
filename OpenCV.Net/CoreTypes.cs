@@ -64,6 +64,33 @@ namespace OpenCV.Net
     }
 
     /// <summary>
+    /// Specifies the type of border to create around a copied image.
+    /// </summary>
+    public enum IplBorder : int
+    {
+        /// <summary>
+        /// Specifies that the border is filled with a fixed value.
+        /// </summary>
+        Constant,
+
+        /// <summary>
+        /// Specifies that the pixels from the top and bottom rows, the left-most and right-most
+        /// columns are replicated to fill the border.
+        /// </summary>
+        Replicate,
+
+        /// <summary>
+        /// This border type is currently unsupported.
+        /// </summary>
+        Reflect,
+
+        /// <summary>
+        /// This border type is currently unsupported.
+        /// </summary>
+        Wrap
+    }
+
+    /// <summary>
     /// Specifies the available element bit depth formats for <see cref="CvMat"/> and <see cref="CvSeq"/> instances.
     /// </summary>
     public enum CvDepth : int

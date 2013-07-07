@@ -176,7 +176,7 @@ namespace OpenCV.Net
         /// <summary>
         /// Gets the previous sequence on the same hierarchical level.
         /// </summary>
-        public CvSeq HorizontalPrevious
+        public CvSeq HPrev
         {
             get
             {
@@ -203,7 +203,7 @@ namespace OpenCV.Net
         /// <summary>
         /// Gets the next sequence on the same hierarchical level.
         /// </summary>
-        public CvSeq HorizontalNext
+        public CvSeq HNext
         {
             get
             {
@@ -230,7 +230,7 @@ namespace OpenCV.Net
         /// <summary>
         /// Gets the parent of the sequence in the hierarchy.
         /// </summary>
-        public CvSeq VerticalPrevious
+        public CvSeq VPrev
         {
             get
             {
@@ -257,7 +257,7 @@ namespace OpenCV.Net
         /// <summary>
         /// Gets the first child of the sequence in the hierarchy.
         /// </summary>
-        public CvSeq VerticalNext
+        public CvSeq VNext
         {
             get
             {

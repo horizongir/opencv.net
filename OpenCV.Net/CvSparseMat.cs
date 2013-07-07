@@ -126,8 +126,7 @@ namespace OpenCV.Net
         /// </returns>
         protected override bool ReleaseHandle()
         {
-            var pMat = handle;
-            NativeMethods.cvReleaseSparseMat(ref pMat);
+            NativeMethods.cvReleaseSparseMat(ref handle);
             return true;
         }
     }

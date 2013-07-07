@@ -243,6 +243,17 @@ namespace OpenCV.Net.Native
         int line_type;
     }
 
+    [StructLayout(LayoutKind.Sequential)]
+    struct _IplConvKernel
+    {
+        public int nCols;
+        public int nRows;
+        public int anchorX;
+        public int anchorY;
+        public IntPtr values;
+        public int nShiftR;
+    }
+
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     delegate int CvCmpFunc(IntPtr a, IntPtr b, IntPtr userdata);
 

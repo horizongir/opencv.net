@@ -114,8 +114,7 @@ namespace OpenCV.Net
         protected override bool ReleaseHandle()
         {
             owner = null;
-            var pStorage = handle;
-            NativeMethods.cvReleaseMemStorage(ref pStorage);
+            NativeMethods.cvReleaseMemStorage(ref handle);
             return true;
         }
 
