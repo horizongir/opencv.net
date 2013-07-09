@@ -303,5 +303,12 @@ namespace OpenCV.Net.UnitTests
                 Assert.AreEqual(6, arr2[0, 0].Val0);
             }
         }
+
+        [TestMethod]
+        public void TestSampleLine()
+        {
+            var buf = cv.SampleLine<float>(arr, new CvPoint(0, 0), new CvPoint(Dim1 + 100, 1));
+            Assert.AreEqual(Dim1, buf.Length);
+        }
     }
 }

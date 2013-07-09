@@ -592,7 +592,7 @@ namespace OpenCV.Net.Native
         internal static extern void cvSeqRemoveSlice(CvSeq seq, CvSlice slice);
 
         [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void cvSeqInsertSlice(CvSeq seq, int before_index, SafeHandle from_arr);
+        internal static extern void cvSeqInsertSlice(CvSeq seq, int before_index, CvHandle from_arr);
 
         [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void cvSeqSort(CvSeq seq, CvCmpFunc func, IntPtr userdata);

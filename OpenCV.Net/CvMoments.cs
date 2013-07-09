@@ -40,7 +40,7 @@ namespace OpenCV.Net
         /// If <b>true</b>, all non-zero image pixels are treated as one.
         /// Used for images only.
         /// </param>
-        public CvMoments(SafeHandle arr, bool binary = false)
+        public CvMoments(CvHandle arr, bool binary = false)
         {
             NativeMethods.cvMoments(arr, out this, binary ? 1 : 0);
         }

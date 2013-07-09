@@ -1213,4 +1213,126 @@ namespace OpenCV.Net
         /// </summary>
         Huber = 7
     }
+
+    /// <summary>
+    /// Specifies the available contour retrieval modes.
+    /// </summary>
+    public enum ContourRetrieval : int
+    {
+        /// <summary>
+        /// Specifies that only the extreme outer contours should be retrieved.
+        /// </summary>
+        External = 0,
+
+        /// <summary>
+        /// Specifies that all the contours should be retrieved and stored in a list.
+        /// </summary>
+        List = 1,
+
+        /// <summary>
+        /// Specifies that all the contours should be retrieved and organized into a two-level
+        /// hierarchy: on the top level are the external boundaries of the components, on the
+        /// second level are the boundaries of the holes.
+        /// </summary>
+        ConnectedComponent = 2,
+
+        /// <summary>
+        /// Specifies that all the contours should be retrieved with the full hierarchy of nested contours.
+        /// </summary>
+        Tree = 3,
+
+        /// <summary>
+        /// Specifies that all the contours should be retrieved using the flood fill algorithm.
+        /// </summary>
+        FloodFill = 4
+    }
+
+    /// <summary>
+    /// Specifies the available contour approximation methods.
+    /// </summary>
+    public enum ContourApproximation : int
+    {
+        /// <summary>
+        /// Specifies that contours should be output in the Freeman chain code.
+        /// </summary>
+        ChainCode = 0,
+
+        /// <summary>
+        /// Specifies that all the elements of the chain code should be translated into points.
+        /// </summary>
+        ChainApproxNone = 1,
+
+        /// <summary>
+        /// Specifies that all horizontal, vertical, and diagonal segments should be compressed,
+        /// leaving only their end points.
+        /// </summary>
+        ChainApproxSimple = 2,
+
+        /// <summary>
+        /// Specifies that Teh-Chin's L1 chain approximation algorithm should be used.
+        /// </summary>
+        ChainApproxTC89L1 = 3,
+
+        /// <summary>
+        /// Specifies that Teh-Chin's K cosines chain approximation algorithm should be used.
+        /// </summary>
+        ChainApproxTC89KCos = 4,
+
+        /// <summary>
+        /// Specifies a completely different contour retrieval algorithm by linking horizontal segments of ones.
+        /// Only the <see cref="ContourRetrieval.List"/> retrieval mode can be used with this method.
+        /// </summary>
+        LinkRuns = 5
+    }
+
+    /// <summary>
+    /// Specifies the available polygon approximation algorithms.
+    /// </summary>
+    public enum PolygonApproximation : int
+    {
+        /// <summary>
+        /// Specifies that the Douglas-Peucker polygon approximation algorithm should be used.
+        /// </summary>
+        DouglasPeucker = 0
+    }
+
+    /// <summary>
+    /// Specifies the available shape comparison methods.
+    /// </summary>
+    public enum ShapeMatchingMethod : int
+    {
+        /// <summary>
+        /// Specifies that the match should be computed as I2(A,B) = sum{i}(|1/miA - 1/miB|).
+        /// mi = sign(hi).log(hi) where hi is the ith Hu moment.
+        /// </summary>
+        MatchI1 = 1,
+
+        /// <summary>
+        /// Specifies that the match should be computed as I2(A,B) = sum{i}(|miA - miB|).
+        /// mi = sign(hi).log(hi) where hi is the ith Hu moment.
+        /// </summary>
+        MatchI2 = 2,
+
+        /// <summary>
+        /// Specifies that the match should be computed as I2(A,B) = sum{i}(|miA - miB| / |miA|).
+        /// mi = sign(hi).log(hi) where hi is the ith Hu moment.
+        /// </summary>
+        MatchI3 = 3
+    }
+
+    /// <summary>
+    /// Specifies the desired orientation of the convex hull.
+    /// </summary>
+    public enum ShapeOrientation
+    {
+        /// <summary>
+        /// Specifies that the convex hull should be oriented clockwise.
+        /// </summary>
+        Clockwise = 1,
+
+        /// <summary>
+        /// Specifies that the convex hull should be oriented counterclockwise.
+        /// </summary>
+        CounterClockwise = 2
+    }
 }

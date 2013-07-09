@@ -41,5 +41,23 @@ namespace OpenCV.Net
             chain.SetHandle(seq.DangerousGetHandle());
             return chain;
         }
+
+        /// <summary>
+        /// Translates in sequence all of the points in the Freeman chain code.
+        /// </summary>
+        /// <returns>
+        /// An <see cref="IEnumerable{CvPoint}"/> whose elements are the result of translating
+        /// the Freeman chain code into points.
+        /// </returns>
+        public IEnumerable<CvPoint> ReadChainPoints()
+        {
+            _CvChainPtReader reader;
+            NativeMethods.cvStartReadChainPoints(this, out reader);
+
+            for (int i = 0; i < Count; i++)
+            {
+                yield return NativeMethods.cvReadChainPoint(ref reader);
+            }
+        }
     }
 }
