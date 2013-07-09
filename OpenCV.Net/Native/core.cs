@@ -638,7 +638,7 @@ namespace OpenCV.Net.Native
             CvPoint pt2,
             CvScalar color,
             int thickness,
-            LineType line_type,
+            LineFlags line_type,
             int shift);
 
         [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
@@ -648,7 +648,7 @@ namespace OpenCV.Net.Native
             CvPoint pt2,
             CvScalar color,
             int thickness,
-            LineType line_type,
+            LineFlags line_type,
             int shift);
 
         [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
@@ -657,7 +657,7 @@ namespace OpenCV.Net.Native
             CvRect r,
             CvScalar color,
             int thickness,
-            LineType line_type,
+            LineFlags line_type,
             int shift);
 
         [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
@@ -667,7 +667,7 @@ namespace OpenCV.Net.Native
             int radius,
             CvScalar color,
             int thickness,
-            LineType line_type,
+            LineFlags line_type,
             int shift);
 
         [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
@@ -680,7 +680,7 @@ namespace OpenCV.Net.Native
             double end_angle,
             CvScalar color,
             int thickness,
-            LineType line_type,
+            LineFlags line_type,
             int shift);
 
         [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
@@ -689,7 +689,7 @@ namespace OpenCV.Net.Native
             CvPoint[] pts,
             int npts,
             CvScalar color,
-            LineType line_type,
+            LineFlags line_type,
             int shift);
 
         [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
@@ -699,7 +699,7 @@ namespace OpenCV.Net.Native
             int[] npts,
             int contours,
             CvScalar color,
-            LineType line_type,
+            LineFlags line_type,
             int shift);
 
         [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
@@ -711,7 +711,7 @@ namespace OpenCV.Net.Native
             int is_closed,
             CvScalar color,
             int thickness,
-            LineType line_type,
+            LineFlags line_type,
             int shift);
 
         [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
@@ -723,7 +723,7 @@ namespace OpenCV.Net.Native
             CvPoint pt1,
             CvPoint pt2,
             out _CvLineIterator line_iterator,
-            int connectivity,
+            LineType connectivity,
             int left_to_right);
 
         [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
@@ -734,7 +734,7 @@ namespace OpenCV.Net.Native
             double vscale,
             double shear,
             int thickness,
-            LineType line_type);
+            LineFlags line_type);
 
         [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         internal static extern void cvPutText(CvArr img, string text, CvPoint org, CvFont font, CvScalar color);
@@ -763,7 +763,7 @@ namespace OpenCV.Net.Native
             CvScalar hole_color,
             int max_level,
             int thickness,
-            LineType line_type,
+            LineFlags line_type,
             CvPoint offset);
 
         [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]

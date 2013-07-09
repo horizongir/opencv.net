@@ -1131,4 +1131,86 @@ namespace OpenCV.Net
         /// </summary>
         Custom = 100
     }
+
+    /// <summary>
+    /// Specifies the way the template is compared with image regions in <see cref="cv.MatchTemplate"/>.
+    /// </summary>
+    public enum TemplateMatchingMethod : int
+    {
+        /// <summary>
+        /// Specifies that the sum of squared differences between region and template will be used.
+        /// </summary>
+        SquareDifference = 0,
+
+        /// <summary>
+        /// Specifies that the normed sum of squared differences between region and template will be used.
+        /// </summary>
+        SquareDifferenceNormed = 1,
+
+        /// <summary>
+        /// Specifies that the cross correlation between region and template will be used.
+        /// </summary>
+        CrossCorrelation = 2,
+
+        /// <summary>
+        /// Specifies that the normed cross correlation between region and template will be used.
+        /// </summary>
+        CrossCorrelationNormed = 3,
+
+        /// <summary>
+        /// Specifies that the correlaton coefficient between region and template will be used.
+        /// </summary>
+        CorrelationCoefficient = 4,
+
+        /// <summary>
+        /// Specifies that the normed correlaton coefficient between region and template will be used.
+        /// </summary>
+        CorrelationCoefficientNormed = 5
+    }
+
+    /// <summary>
+    /// Specifies the available types of distance functions.
+    /// </summary>
+    public enum DistanceType : int
+    {
+        /// <summary>
+        /// Specifies that a user defined distance should be used.
+        /// </summary>
+        User = -1,
+
+        /// <summary>
+        /// Specifies the L1 or Manhattan distance.
+        /// </summary>
+        L1 = 1,
+
+        /// <summary>
+        /// Specifies the L2 or Euclidean distance.
+        /// </summary>
+        L2 = 2,
+
+        /// <summary>
+        /// Specifies the elementwise max distance.
+        /// </summary>
+        C = 3,
+
+        /// <summary>
+        /// Specifies the L1-L2 metric.
+        /// </summary>
+        L12 = 4,
+
+        /// <summary>
+        /// Specifies the Fair metric given by c^2(|x|/c-log(1+|x|/c)), c = 1.3998.
+        /// </summary>
+        Fair = 5,
+
+        /// <summary>
+        /// Specifies the Welsch metric given by distance = c^2/2(1-exp(-(x/c)^2)), c = 2.9846.
+        /// </summary>
+        Welsch = 6,
+
+        /// <summary>
+        /// Specifies the Huber metric given by distance = x^2/2 if |x| is less than c, else c(|x|-c/2), c=1.345.
+        /// </summary>
+        Huber = 7
+    }
 }

@@ -718,9 +718,26 @@ namespace OpenCV.Net
     }
 
     /// <summary>
-    /// Specifies the line drawing algorithm used for rasterizing.
+    /// Specifies the type of connectivity used for line rasterizing.
     /// </summary>
     public enum LineType : int
+    {
+        /// <summary>
+        /// Specifies the 8-connected Bresenham algorithm.
+        /// </summary>
+        Connected8 = 8,
+
+        /// <summary>
+        /// Specifies the 4-connected Bresenham algorithm.
+        /// </summary>
+        Connected4 = 4,
+    }
+
+    /// <summary>
+    /// Specifies flags for the line drawing algorithm used for rasterizing.
+    /// </summary>
+    [Flags]
+    public enum LineFlags : int
     {
         /// <summary>
         /// Specifies the 8-connected Bresenham algorithm.
