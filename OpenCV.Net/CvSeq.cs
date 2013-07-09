@@ -11,7 +11,7 @@ namespace OpenCV.Net
     /// <summary>
     /// Represents a growable sequence of elements.
     /// </summary>
-    public class CvSeq : SafeHandleZeroOrMinusOneIsInvalid
+    public class CvSeq : CvHandle
     {
         static readonly CvSeq Null = new CvSeqNull();
         CvMemStorage owner;

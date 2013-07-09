@@ -11,7 +11,7 @@ namespace OpenCV.Net
     /// <summary>
     /// Represents a growing memory storage.
     /// </summary>
-    public class CvMemStorage : SafeHandleZeroOrMinusOneIsInvalid
+    public class CvMemStorage : CvHandle
     {
         CvMemStorage owner;
         internal static readonly CvMemStorage Null = new CvMemStorageNull();

@@ -254,6 +254,38 @@ namespace OpenCV.Net.Native
         public int nShiftR;
     }
 
+    [StructLayout(LayoutKind.Sequential)]
+    struct _CvChainPtReader
+    {
+        public int header_size;
+        public IntPtr seq;
+        public IntPtr block;
+        public IntPtr ptr;
+        public IntPtr block_min;
+        public IntPtr block_max;
+        public int delta_index;
+        public IntPtr prev_elem;
+
+        public byte code;
+        public CvPoint pt;
+        public byte deltas00;
+        public byte deltas01;
+        public byte deltas10;
+        public byte deltas11;
+        public byte deltas20;
+        public byte deltas21;
+        public byte deltas30;
+        public byte deltas31;
+        public byte deltas40;
+        public byte deltas41;
+        public byte deltas50;
+        public byte deltas51;
+        public byte deltas60;
+        public byte deltas61;
+        public byte deltas70;
+        public byte deltas71;
+    }
+
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     delegate int CvCmpFunc(IntPtr a, IntPtr b, IntPtr userdata);
 
@@ -308,5 +340,6 @@ namespace OpenCV.Net.Native
         internal static readonly UIntPtr SeqHeaderSize = (UIntPtr)Marshal.SizeOf(typeof(_CvSeq));
         internal static readonly int SetHeaderSize = Marshal.SizeOf(typeof(_CvSet));
         internal static readonly int GraphHeaderSize = Marshal.SizeOf(typeof(_CvGraph));
+        internal static readonly int ContourHeaderSize = Marshal.SizeOf(typeof(_CvContour));
     }
 }

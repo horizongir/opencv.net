@@ -846,5 +846,421 @@ namespace OpenCV.Net
         }
 
         #endregion
+
+        #region Contours retrieving
+
+        /// <summary>
+        /// Finds the contours in a binary image.
+        /// </summary>
+        /// <param name="image">
+        /// The source image, 8-bit single channel. Non-zero pixels are treated as ones,
+        /// zero pixels remain zero, i.e. the image is treated as binary.
+        /// </param>
+        /// <param name="storage">Container of the retrieved contours.</param>
+        /// <param name="firstContour">The reference to the first outer contour.</param>
+        /// <returns>The number of retrieved contours.</returns>
+        public static int FindContours(
+            CvArr image,
+            CvMemStorage storage,
+            out CvSeq firstContour)
+        {
+            return FindContours(image, storage, out firstContour, SeqHelper.ContourHeaderSize);
+        }
+
+        /// <summary>
+        /// Finds the contours in a binary image.
+        /// </summary>
+        /// <param name="image">
+        /// The source image, 8-bit single channel. Non-zero pixels are treated as ones,
+        /// zero pixels remain zero, i.e. the image is treated as binary.
+        /// </param>
+        /// <param name="storage">Container of the retrieved contours.</param>
+        /// <param name="firstContour">The reference to the first outer contour.</param>
+        /// <param name="headerSize">Size of the sequence header.</param>
+        /// <param name="mode">Specifies the contour retrieval mode.</param>
+        /// <param name="method">Specifies the contour approximation method.</param>
+        /// <returns>The number of retrieved contours.</returns>
+        public static int FindContours(
+            CvArr image,
+            CvMemStorage storage,
+            out CvSeq firstContour,
+            int headerSize,
+            ContourRetrieval mode = ContourRetrieval.List,
+            ContourApproximation method = ContourApproximation.ChainApproxSimple)
+        {
+            return FindContours(image, storage, out firstContour, headerSize, mode, method, new CvPoint(0, 0));
+        }
+
+        /// <summary>
+        /// Finds the contours in a binary image.
+        /// </summary>
+        /// <param name="image">The 8-bit, single channel, binary source image.</param>
+        /// <param name="storage">Container of the retrieved contours.</param>
+        /// <param name="firstContour">The reference to the first outer contour.</param>
+        /// <param name="headerSize">Size of the sequence header.</param>
+        /// <param name="mode">Specifies the contour retrieval mode.</param>
+        /// <param name="method">Specifies the contour approximation method.</param>
+        /// <param name="offset">
+        /// An offset, by which every contour point is shifted. This is useful if the
+        /// contours are extracted from an image ROI but should then be analyzed in
+        /// the whole image context.
+        /// </param>
+        /// <returns>The number of retrieved contours.</returns>
+        public static int FindContours(
+            CvArr image,
+            CvMemStorage storage,
+            out CvSeq firstContour,
+            int headerSize,
+            ContourRetrieval mode,
+            ContourApproximation method,
+            CvPoint offset)
+        {
+            var result = NativeMethods.cvFindContours(image, storage, out firstContour, headerSize, mode, method, offset);
+            if (result > 0)
+            {
+                firstContour.SetOwnerStorage(storage);
+            }
+            else firstContour = null;
+            return result;
+        }
+
+        /// <summary>
+        /// Initializes the contour scanning process.
+        /// </summary>
+        /// <param name="image">The 8-bit, single channel, binary source image.</param>
+        /// <param name="storage">Container of the retrieved contours.</param>
+        /// <param name="headerSize">Size of the sequence header.</param>
+        /// <param name="mode">Specifies the contour retrieval mode.</param>
+        /// <param name="method">Specifies the contour approximation method.</param>
+        /// <param name="offset">
+        /// An offset, by which every contour point is shifted. This is useful if the
+        /// contours are extracted from an image ROI but should then be analyzed in
+        /// the whole image context.
+        /// </param>
+        /// <returns>
+        /// A reference to the <see cref="CvContourScanner"/> instance that can be
+        /// used to iterate over the retrieved contours.
+        /// </returns>
+        public static CvContourScanner StartFindContours(
+            CvArr image,
+            CvMemStorage storage,
+            int headerSize,
+            ContourRetrieval mode,
+            ContourApproximation method,
+            CvPoint offset)
+        {
+            var scanner = NativeMethods.cvStartFindContours(image, storage, headerSize, mode, method, offset);
+            scanner.SetOwnerStorage(storage);
+            return scanner;
+        }
+
+        /// <summary>
+        /// Approximates Freeman chain(s) with a polygonal curve.
+        /// </summary>
+        /// <param name="srcSeq">The Freeman chain that can refer to other chains.</param>
+        /// <param name="storage">Storage location for the resulting polylines.</param>
+        /// <param name="method">Specifies the contour approximation method.</param>
+        /// <param name="parameter">Not used.</param>
+        /// <param name="minimalPerimeter">
+        /// Approximates only those contours whose perimeters are greater or equal than <paramref name="minimalPerimeter"/>.
+        /// Other chains are removed from the resulting structure.
+        /// </param>
+        /// <param name="recursive">
+        /// If <b>true</b>, the function approximates all chains that can be accessed from
+        /// <paramref name="srcSeq"/> by using either <see cref="CvSeq.HNext"/> or <see cref="CvSeq.VPrev"/>
+        /// links; otherwise, the single chain is approximated.
+        /// </param>
+        /// <returns>The function returns the reference to the first resultant contour.</returns>
+        public static CvSeq ApproxChains(
+            CvSeq srcSeq,
+            CvMemStorage storage,
+            ContourApproximation method,
+            double parameter,
+            int minimalPerimeter,
+            bool recursive)
+        {
+            var chain = NativeMethods.cvApproxChains(srcSeq, storage, method, parameter, minimalPerimeter, recursive ? 1 : 0);
+            chain.SetOwnerStorage(storage);
+            return chain;
+        }
+
+        #endregion
+
+        #region Contour Processing and Shape Analysis
+
+        /// <summary>
+        /// Approximates polygonal curve(s) with the specified precision.
+        /// </summary>
+        /// <param name="srcSeq">The input sequence.</param>
+        /// <param name="headerSize">Header size of the approximated curve(s).</param>
+        /// <param name="storage">
+        /// Container for the approximated contours. If <b>null</b>, the input sequence
+        /// storage is used.
+        /// </param>
+        /// <param name="method">The polygon approximation method.</param>
+        /// <param name="parameter">
+        /// Method-specific parameter. In case of <see cref="PolygonApproximation.DouglasPeucker"/>
+        /// it is a desired approximation accuracy.
+        /// </param>
+        /// <param name="parameter2">
+        /// Indicates whether the single sequence should be approximated, or all the sequences
+        /// on the same level and below <paramref name="srcSeq"/>.
+        /// </param>
+        /// <returns>
+        /// A reference to the first approximated curve.
+        /// </returns>
+        public static CvSeq ApproxPoly(
+            CvSeq srcSeq,
+            int headerSize,
+            CvMemStorage storage,
+            PolygonApproximation method,
+            double parameter,
+            bool parameter2 = false)
+        {
+            var poly = NativeMethods.cvApproxPoly(srcSeq, headerSize, storage ?? CvMemStorage.Null, method, parameter, parameter2 ? 1 : 0);
+            poly.SetOwnerStorage(storage ?? srcSeq.Storage);
+            return poly;
+        }
+
+        /// <summary>
+        /// Calculates the contour perimeter or the curve length.
+        /// </summary>
+        /// <param name="curve">Sequence or array of the curve points.</param>
+        /// <returns>
+        /// The length of the curve as the sum of the lengths of segments between subsequent points.
+        /// </returns>
+        public static double ArcLength(CvHandle curve)
+        {
+            return ArcLength(curve, CvSlice.WholeSeq);
+        }
+
+        /// <summary>
+        /// Calculates the contour perimeter or the curve length.
+        /// </summary>
+        /// <param name="curve">Sequence or array of the curve points.</param>
+        /// <param name="slice">
+        /// Starting and ending points of the curve. By default, the whole curve length is calculated.
+        /// </param>
+        /// <param name="isClosed">
+        /// Indicates whether or not the curve is closed. If <b>null</b> and the input is a sequence,
+        /// the sequence flags are examined to determine whether the curve is closed. Otherwise,
+        /// it is assumed unclosed.
+        /// </param>
+        /// <returns>
+        /// The length of the curve as the sum of the lengths of segments between subsequent points.
+        /// </returns>
+        public static double ArcLength(CvHandle curve, CvSlice slice, bool? isClosed = null)
+        {
+            return NativeMethods.cvArcLength(curve, slice, isClosed.HasValue ? (isClosed.Value ? 1 : 0) : -1);
+        }
+
+        /// <summary>
+        /// Calculates the contour perimeter.
+        /// </summary>
+        /// <param name="contour">Sequence or array of the contour points.</param>
+        /// <returns>
+        /// The perimeter of the closed contour as the sum of the lengths of segments between
+        /// subsequent points.
+        /// </returns>
+        public static double ContourPerimeter(CvHandle contour)
+        {
+            return NativeMethods.cvArcLength(contour, CvSlice.WholeSeq, 1);
+        }
+
+        /// <summary>
+        /// Calculates the up-right bounding rectangle of a point set.
+        /// </summary>
+        /// <param name="points">Sequence or array of points.</param>
+        /// <param name="update">
+        /// Indicates whether or not to update the <see cref="CvContour.Rect"/> field.
+        /// </param>
+        /// <returns>The up-right bounding rectangle for a 2d point set.</returns>
+        public static CvRect BoundingRect(CvHandle points, bool update = false)
+        {
+            return NativeMethods.cvBoundingRect(points, update ? 1 : 0);
+        }
+
+        /// <summary>
+        /// Calculates the area of a whole contour or contour section.
+        /// </summary>
+        /// <param name="contour">Sequence or array of vertices.</param>
+        /// <returns>The area of the whole contour or contour section.</returns>
+        public static double ContourArea(CvHandle contour)
+        {
+            return ContourArea(contour, CvSlice.WholeSeq);
+        }
+
+        /// <summary>
+        /// Calculates the area of a whole contour or contour section.
+        /// </summary>
+        /// <param name="contour">Sequence or array of vertices.</param>
+        /// <param name="slice">
+        /// Starting and ending points of the contour section of interest. By default, the
+        /// area of the whole contour is calculated.
+        /// </param>
+        /// <param name="oriented">
+        /// If <b>false</b>, the absolute area will be returned; otherwise the returned value
+        /// might be negative.
+        /// </param>
+        /// <returns>The area of the whole contour or contour section.</returns>
+        public static double ContourArea(CvHandle contour, CvSlice slice, bool oriented = false)
+        {
+            return NativeMethods.cvContourArea(contour, slice, oriented ? 1 : 0);
+        }
+
+        /// <summary>
+        /// Finds the circumscribed rectangle of minimal area for a given 2D point set.
+        /// </summary>
+        /// <param name="points">Sequence or array of points.</param>
+        /// <param name="storage">Optional temporary memory storage.</param>
+        /// <returns>The oriented rectangle with minimal area for the specified <paramref name="points"/>.</returns>
+        public static CvBox2D MinAreaRect2(CvHandle points, CvMemStorage storage = null)
+        {
+            return NativeMethods.cvMinAreaRect2(points, storage ?? CvMemStorage.Null);
+        }
+
+        /// <summary>
+        /// Finds the circumscribed circle of minimal area for a given 2D point set.
+        /// </summary>
+        /// <param name="points">Sequence or array of points.</param>
+        /// <param name="center">Output parameter; the center of the enclosing circle.</param>
+        /// <param name="radius">Output parameter; the radius of the enclosing circle.</param>
+        /// <returns>
+        /// <b>true</b> if the resulting circle contains all the input points and <b>false</b>
+        /// otherwise.
+        /// </returns>
+        public static bool MinEnclosingCircle(CvHandle points, out CvPoint2D32f center, out float radius)
+        {
+            return NativeMethods.cvMinEnclosingCircle(points, out center, out radius) != 0;
+        }
+
+        /// <summary>
+        /// Compares two shapes using their Hu moments.
+        /// </summary>
+        /// <param name="object1">First contour or grayscale image.</param>
+        /// <param name="object2">Second contour or grayscale image.</param>
+        /// <param name="method">The shape comparison method.</param>
+        /// <param name="parameter">Method-specific parameter (not used).</param>
+        /// <returns>The distance between the two shapes.</returns>
+        public static double MatchShapes(CvHandle object1, CvHandle object2, ShapeMatchingMethod method, double parameter = 0)
+        {
+            return NativeMethods.cvMatchShapes(object1, object2, method, parameter);
+        }
+
+        /// <summary>
+        /// Finds the convex hull of a point set.
+        /// </summary>
+        /// <param name="input">Sequence or array of points.</param>
+        /// <param name="hullStorage">The array or memory storage that will store the convex hull.</param>
+        /// <param name="orientation">Desired orientation of the convex hull.</param>
+        /// <param name="returnPoints">
+        /// If <b>true</b>, the points themselves will be stored in the hull instead of the indices.
+        /// </param>
+        /// <returns>A sequence containing the points in the convex hull.</returns>
+        public static CvSeq ConvexHull2(
+            CvHandle input,
+            CvHandle hullStorage = null,
+            ShapeOrientation orientation = ShapeOrientation.Clockwise,
+            bool returnPoints = false)
+        {
+            var hull = NativeMethods.cvConvexHull2(input, hullStorage ?? CvMemStorage.Null, orientation, returnPoints ? 1 : 0);
+            if (hull.IsInvalid) return null;
+            hull.SetOwnerStorage((CvMemStorage)hullStorage);
+            return hull;
+        }
+
+        /// <summary>
+        /// Tests contour convexity. The contour must be simple, without self-intersections.
+        /// </summary>
+        /// <param name="contour">Sequence or array of points.</param>
+        /// <returns>
+        /// A value indicating whether or not the <paramref name="contour"/> is convex.
+        /// </returns>
+        public static bool CheckContourConvexity(CvHandle contour)
+        {
+            return NativeMethods.cvCheckContourConvexity(contour) != 0;
+        }
+
+        /// <summary>
+        /// Finds the convexity defects of a contour.
+        /// </summary>
+        /// <param name="contour">Input contour.</param>
+        /// <param name="convexhull">
+        /// Convex hull obtained using <see cref="ConvexHull2"/> that should contain pointers or indices
+        /// to the contour points, not the hull points themselves (i.e. the returnPoints of <see cref="ConvexHull2"/>
+        /// parameter should be <b>false</b>).
+        /// </param>
+        /// <param name="storage">Container for the output sequence of convexity defects.</param>
+        /// <returns>A sequence of <see cref="CvConvexityDefect"/> structures.</returns>
+        public static CvSeq ConvexityDefects(CvHandle contour, CvSeq convexhull, CvMemStorage storage = null)
+        {
+            var defects = NativeMethods.cvConvexityDefects(contour, convexhull, storage ?? CvMemStorage.Null);
+            if (storage == null)
+            {
+                var seq = contour as CvSeq;
+                if (seq != null) storage = seq.Storage;
+                else storage = convexhull.Storage;
+            }
+
+            defects.SetOwnerStorage(storage);
+            return defects;
+        }
+
+        /// <summary>
+        /// Fits an ellipse around a set of 2D points.
+        /// </summary>
+        /// <param name="points">Sequence or array of points.</param>
+        /// <returns>
+        /// The rotated rectangle representing the ellipse best fit around the point set.
+        /// The size of the box represents the full lengths of the ellipse axes.
+        /// </returns>
+        public static CvBox2D FitEllipse2(CvHandle points)
+        {
+            return NativeMethods.cvFitEllipse2(points);
+        }
+
+        /// <summary>
+        /// Finds minimum rectangle containing two given rectangles.
+        /// </summary>
+        /// <param name="rect1">The first rectangle.</param>
+        /// <param name="rect2">The second rectangle.</param>
+        /// <returns>
+        /// The minimum rectangle containing <paramref name="rect1"/> and <paramref name="rect2"/>.
+        /// </returns>
+        public static CvRect MaxRect(CvRect rect1, CvRect rect2)
+        {
+            return NativeMethods.cvMaxRect(ref rect1, ref rect2);
+        }
+
+        /// <summary>
+        /// Finds the box vertices.
+        /// </summary>
+        /// <param name="box">The input rotated rectangle.</param>
+        /// <param name="pt">The array of box vertices.</param>
+        public static void BoxPoints(CvBox2D box, CvPoint2D32f[] pt)
+        {
+            NativeMethods.cvBoxPoints(box, pt);
+        }
+
+        /// <summary>
+        /// Point in contour test.
+        /// </summary>
+        /// <param name="contour">Input contour.</param>
+        /// <param name="pt">The point to be tested against the <paramref name="contour"/>.</param>
+        /// <param name="measureDist">
+        /// If <b>true</b> the method estimates the distance from the point to the nearest
+        /// contour edge. Otherwise, only the test result itself is stored.
+        /// </param>
+        /// <returns>
+        /// If <paramref name="measureDist"/> is <b>true</b>, the return value is a signed distance
+        /// between the point and the nearest contour edge. Otherwise, +1, -1 and 0 are returned,
+        /// respectively, when the point is inside the contour, outside or lies on an edge.
+        /// </returns>
+        public static double PointPolygonTest(CvHandle contour, CvPoint2D32f pt, bool measureDist)
+        {
+            return NativeMethods.cvPointPolygonTest(contour, pt, measureDist ? 1 : 0);
+        }
+
+        #endregion
     }
 }

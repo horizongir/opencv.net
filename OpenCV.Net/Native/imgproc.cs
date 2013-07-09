@@ -169,7 +169,7 @@ namespace OpenCV.Net.Native
             int iterations);
 
         [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void cvMoments(SafeHandle arr, out CvMoments moments, int binary);
+        internal static extern void cvMoments(CvHandle arr, out CvMoments moments, int binary);
 
         [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
         internal static extern double cvGetSpatialMoment(ref CvMoments moments, int x_order, int y_order);
@@ -209,6 +209,108 @@ namespace OpenCV.Net.Native
             CvArr flow,
             ref float lower_bound,
             IntPtr userdata);
+
+        #endregion
+
+        #region Contours retrieving
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int cvFindContours(
+            CvArr image,
+            CvMemStorage storage,
+            out CvSeq first_contour,
+            int header_size,
+            ContourRetrieval mode,
+            ContourApproximation method,
+            CvPoint offset);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern CvContourScanner cvStartFindContours(
+            CvArr image,
+            CvMemStorage storage,
+            int header_size,
+            ContourRetrieval mode,
+            ContourApproximation method,
+            CvPoint offset);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern CvSeq cvFindNextContour(CvContourScanner scanner);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvSubstituteContour(CvContourScanner scanner, CvSeq new_contour);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern CvSeq cvEndFindContours(ref IntPtr scanner);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern CvSeq cvApproxChains(
+            CvSeq src_seq,
+            CvMemStorage storage,
+            ContourApproximation method,
+            double parameter,
+            int minimal_perimeter,
+            int recursive);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvStartReadChainPoints(CvChain chain, out _CvChainPtReader reader);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern CvPoint cvReadChainPoint(ref _CvChainPtReader reader);
+
+        #endregion
+
+        #region Contour Processing and Shape Analysis
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern CvSeq cvApproxPoly(
+            CvSeq src_seq,
+            int header_size,
+            CvMemStorage storage,
+            PolygonApproximation method,
+            double parameter,
+            int parameter2);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern double cvArcLength(CvHandle curve, CvSlice slice, int is_closed);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern CvRect cvBoundingRect(CvHandle points, int update);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern double cvContourArea(CvHandle contour, CvSlice slice, int oriented);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern CvBox2D cvMinAreaRect2(CvHandle points, CvMemStorage storage);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int cvMinEnclosingCircle(CvHandle points, out CvPoint2D32f center, out float radius);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern double cvMatchShapes(CvHandle object1, CvHandle object2, ShapeMatchingMethod method, double parameter);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern CvSeq cvConvexHull2(CvHandle input, CvHandle hull_storage, ShapeOrientation orientation, int return_points);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int cvCheckContourConvexity(CvHandle contour);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern CvSeq cvConvexityDefects(CvHandle contour, CvHandle convexhull, CvMemStorage storage);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern CvBox2D cvFitEllipse2(CvHandle points);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern CvRect cvMaxRect(ref CvRect rect1, ref CvRect rect2);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvBoxPoints(CvBox2D box, CvPoint2D32f[] pt);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern CvSeq cvPointSeqFromMat(int seq_kind, CvArr mat, CvContour contour_header, IntPtr block);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern double cvPointPolygonTest(CvHandle contour, CvPoint2D32f pt, int measure_dist);
 
         #endregion
     }

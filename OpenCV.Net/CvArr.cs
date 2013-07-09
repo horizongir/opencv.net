@@ -10,7 +10,7 @@ namespace OpenCV.Net
     /// <summary>
     /// Represents an arbitrary array-like data structure.
     /// </summary>
-    public abstract class CvArr : SafeHandleZeroOrMinusOneIsInvalid
+    public abstract class CvArr : CvHandle
     {
         internal static readonly CvArr Null = new CvArrNull();
 
