@@ -184,5 +184,32 @@ namespace OpenCV.Net.Native
         internal static extern void cvGetHuMoments(ref CvMoments moments, out CvHuMoments hu_moments);
 
         #endregion
+
+        #region Data sampling
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int cvSampleLine(CvArr image, CvPoint pt1, CvPoint pt2, IntPtr buffer, LineType connectivity);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvGetRectSubPix(CvArr src, CvArr dst, CvPoint2D32f center);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvGetQuadrangleSubPix(CvArr src, CvArr dst, CvMat map_matrix);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvMatchTemplate(CvArr image, CvArr templ, CvArr result, TemplateMatchingMethod method);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern float cvCalcEMD2(
+            CvArr signature1,
+            CvArr signature2,
+            DistanceType distance_type,
+            CvDistanceFunction distance_func,
+            CvArr cost_matrix,
+            CvArr flow,
+            ref float lower_bound,
+            IntPtr userdata);
+
+        #endregion
     }
 }

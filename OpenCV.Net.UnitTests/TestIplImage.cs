@@ -40,5 +40,12 @@ namespace OpenCV.Net.UnitTests
 
             return image = new IplImage(new CvSize(dim1, dim0), iplDepth, channels);
         }
+
+        [TestMethod]
+        public void TestSample()
+        {
+            var buf = cv.SampleLine<float>(image, new CvPoint(0, 0), new CvPoint(Dim1 + 100, 1));
+            Assert.AreEqual(Dim1, buf.Length);
+        }
     }
 }

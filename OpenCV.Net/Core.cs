@@ -1366,7 +1366,7 @@ namespace OpenCV.Net
             CvPoint pt2,
             CvScalar color,
             int thickness = 1,
-            LineType lineType = LineType.Connected8,
+            LineFlags lineType = LineFlags.Connected8,
             int shift = 0)
         {
             NativeMethods.cvLine(img, pt1, pt2, color, thickness, lineType, shift);
@@ -1392,7 +1392,7 @@ namespace OpenCV.Net
             CvPoint pt2,
             CvScalar color,
             int thickness = 1,
-            LineType lineType = LineType.Connected8,
+            LineFlags lineType = LineFlags.Connected8,
             int shift = 0)
         {
             NativeMethods.cvRectangle(img, pt1, pt2, color, thickness, lineType, shift);
@@ -1416,7 +1416,7 @@ namespace OpenCV.Net
             CvRect rectangle,
             CvScalar color,
             int thickness = 1,
-            LineType lineType = LineType.Connected8,
+            LineFlags lineType = LineFlags.Connected8,
             int shift = 0)
         {
             NativeMethods.cvRectangleR(img, rectangle, color, thickness, lineType, shift);
@@ -1441,7 +1441,7 @@ namespace OpenCV.Net
             int radius,
             CvScalar color,
             int thickness = 1,
-            LineType lineType = LineType.Connected8,
+            LineFlags lineType = LineFlags.Connected8,
             int shift = 0)
         {
             NativeMethods.cvCircle(img, center, radius, color, thickness, lineType, shift);
@@ -1475,7 +1475,7 @@ namespace OpenCV.Net
             double endAngle,
             CvScalar color,
             int thickness = 1,
-            LineType lineType = LineType.Connected8,
+            LineFlags lineType = LineFlags.Connected8,
             int shift = 0)
         {
             NativeMethods.cvEllipse(img, center, axes, angle, startAngle, endAngle, color, thickness, lineType, shift);
@@ -1498,7 +1498,7 @@ namespace OpenCV.Net
             CvBox2D box,
             CvScalar color,
             int thickness = 1,
-            LineType lineType = LineType.Connected8,
+            LineFlags lineType = LineFlags.Connected8,
             int shift = 0)
         {
             CvSize axes;
@@ -1519,7 +1519,7 @@ namespace OpenCV.Net
             CvArr img,
             CvPoint[] pts,
             CvScalar color,
-            LineType lineType = LineType.Connected8,
+            LineFlags lineType = LineFlags.Connected8,
             int shift = 0)
         {
             NativeMethods.cvFillConvexPoly(img, pts, pts.Length, color, lineType, shift);
@@ -1537,7 +1537,7 @@ namespace OpenCV.Net
             CvArr img,
             CvPoint[][] pts,
             CvScalar color,
-            LineType lineType = LineType.Connected8,
+            LineFlags lineType = LineFlags.Connected8,
             int shift = 0)
         {
             var npts = Array.ConvertAll(pts, poly => poly.Length);
@@ -1569,7 +1569,7 @@ namespace OpenCV.Net
             bool isClosed,
             CvScalar color,
             int thickness = 1,
-            LineType lineType = LineType.Connected8,
+            LineFlags lineType = LineFlags.Connected8,
             int shift = 0)
         {
             var npts = Array.ConvertAll(pts, poly => poly.Length);
@@ -1615,7 +1615,7 @@ namespace OpenCV.Net
             CvArr image,
             CvPoint pt1,
             CvPoint pt2,
-            int connectivity = 8,
+            LineType connectivity = LineType.Connected8,
             bool leftToRight = false)
         {
             CvScalar value;
@@ -1721,7 +1721,7 @@ namespace OpenCV.Net
             CvScalar holeColor,
             int maxLevel,
             int thickness = 1,
-            LineType lineType = LineType.Connected8)
+            LineFlags lineType = LineFlags.Connected8)
         {
             DrawContours(img, contour, externalColor, holeColor, maxLevel, thickness, lineType, CvPoint.Zero);
         }
@@ -1754,7 +1754,7 @@ namespace OpenCV.Net
             CvScalar holeColor,
             int maxLevel,
             int thickness,
-            LineType lineType,
+            LineFlags lineType,
             CvPoint offset)
         {
             NativeMethods.cvDrawContours(img, contour, externalColor, holeColor, maxLevel, thickness, lineType, offset);

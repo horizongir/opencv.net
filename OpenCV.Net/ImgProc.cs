@@ -690,5 +690,161 @@ namespace OpenCV.Net
         }
 
         #endregion
+
+        #region Data sampling
+
+        /// <summary>
+        /// Samples the raster line elements.
+        /// </summary>
+        /// <typeparam name="TElement">The type of the elements in the image.</typeparam>
+        /// <param name="image">The image to sample the line from.</param>
+        /// <param name="pt1">Starting line point.</param>
+        /// <param name="pt2">Ending line point.</param>
+        /// <param name="connectivity">The scanned line connectivity for Bresenham's algorithm, either 4 or 8.</param>
+        /// <returns>The buffer containing the sampled line elements.</returns>
+        public static TElement[] SampleLine<TElement>(
+            CvArr image,
+            CvPoint pt1,
+            CvPoint pt2,
+            LineType connectivity = LineType.Connected8)
+            where TElement : struct
+        {
+            int bufferSize = 0;
+            switch (connectivity)
+            {
+                case LineType.Connected8:
+                    bufferSize = Math.Max(Math.Abs(pt2.X - pt1.X) + 1, Math.Abs(pt2.Y - pt1.Y) + 1);
+                    break;
+                case LineType.Connected4:
+                    bufferSize = Math.Abs(pt2.X - pt1.X) + Math.Abs(pt2.Y - pt1.Y) + 1;
+                    break;
+            }
+
+            var buffer = new TElement[bufferSize];
+            var bufferHandle = GCHandle.Alloc(buffer, GCHandleType.Pinned);
+            try
+            {
+                var count = NativeMethods.cvSampleLine(image, pt1, pt2, bufferHandle.AddrOfPinnedObject(), connectivity);
+                if (count != buffer.Length)
+                {
+                    Array.Resize(ref buffer, count);
+                }
+
+                return buffer;
+            }
+            finally { bufferHandle.Free(); }
+        }
+
+        /// <summary>
+        /// Retrieves the pixel rectangle from an image with sub-pixel accuracy.
+        /// </summary>
+        /// <param name="src">The source image.</param>
+        /// <param name="dst">The destination image containing the extracted rectangle.</param>
+        /// <param name="center">
+        /// Floating point coordinates of the extracted rectangle center within the source image.
+        /// The center must be inside the image.
+        /// </param>
+        public static void GetRectSubPix(CvArr src, CvArr dst, CvPoint2D32f center)
+        {
+            NativeMethods.cvGetRectSubPix(src, dst, center);
+        }
+
+        /// <summary>
+        /// Retrieves the pixel quadrangle from an image with sub-pixel accuracy.
+        /// </summary>
+        /// <param name="src">The source image.</param>
+        /// <param name="dst">The destination image containing the extracted quadrangle.</param>
+        /// <param name="mapMatrix">The 2 x 3 transformation matrix.</param>
+        public static void GetQuadrangleSubPix(CvArr src, CvArr dst, CvMat mapMatrix)
+        {
+            NativeMethods.cvGetQuadrangleSubPix(src, dst, mapMatrix);
+        }
+
+        /// <summary>
+        /// Compares a template against overlapped image regions.
+        /// </summary>
+        /// <param name="image">The image where the search is running; should be 8-bit or 32-bit floating-point.</param>
+        /// <param name="templ">
+        /// Searched template; must not be greater than <paramref name="image"/> and have the same data type.
+        /// </param>
+        /// <param name="result">A map of comparison results; single-channel 32-bit floating-point.</param>
+        /// <param name="method">Specifies the way the template must be compared with the image regions.</param>
+        public static void MatchTemplate(CvArr image, CvArr templ, CvArr result, TemplateMatchingMethod method)
+        {
+            NativeMethods.cvMatchTemplate(image, templ, result, method);
+        }
+
+        /// <summary>
+        /// Computes the earth mover distance between two weighted point sets (signatures).
+        /// </summary>
+        /// <param name="signature1">
+        /// The first signature array. Must be floating-point and consist of rows containing the
+        /// histogram bin count followed by its coordinates.
+        /// </param>
+        /// <param name="signature2">
+        /// The second signature array. Must be floating-point and consist of rows containing the
+        /// histogram bin count followed by its coordinates.
+        /// </param>
+        /// <param name="distanceType">The type of metric to use for computing the earth mover distance.</param>
+        /// <param name="distanceFunc">The custom distance function used for computing the earth mover distance.</param>
+        /// <param name="costMatrix">The user-defined cost matrix.</param>
+        /// <param name="flow">The resultant flow matrix.</param>
+        /// <returns>The earth mover distance between the two signatures.</returns>
+        public static float CalcEMD2(
+            CvArr signature1,
+            CvArr signature2,
+            DistanceType distanceType,
+            Func<float, float, float> distanceFunc = null,
+            CvArr costMatrix = null,
+            CvArr flow = null)
+        {
+            float lowerBound = 0;
+            return CalcEMD2(signature1, signature2, distanceType, distanceFunc, costMatrix, flow, ref lowerBound);
+        }
+
+        /// <summary>
+        /// Computes the earth mover distance between two weighted point sets (signatures).
+        /// </summary>
+        /// <param name="signature1">
+        /// The first signature array. Must be floating-point and consist of rows containing the
+        /// histogram bin count followed by its coordinates.
+        /// </param>
+        /// <param name="signature2">
+        /// The second signature array. Must be floating-point and consist of rows containing the
+        /// histogram bin count followed by its coordinates.
+        /// </param>
+        /// <param name="distanceType">The type of metric to use for computing the earth mover distance.</param>
+        /// <param name="distanceFunc">The custom distance function used for computing the earth mover distance.</param>
+        /// <param name="costMatrix">The user-defined cost matrix.</param>
+        /// <param name="flow">The resultant flow matrix.</param>
+        /// <param name="lowerBound">
+        /// The optional lower boundary of the distance between the two signatures that is a distance between
+        /// mass centers.
+        /// </param>
+        /// <returns>The earth mover distance between the two signatures.</returns>
+        public static float CalcEMD2(
+            CvArr signature1,
+            CvArr signature2,
+            DistanceType distanceType,
+            Func<float, float, float> distanceFunc,
+            CvArr costMatrix,
+            CvArr flow,
+            ref float lowerBound)
+        {
+            unsafe
+            {
+                return NativeMethods.cvCalcEMD2(
+                    signature1,
+                    signature2,
+                    distanceType,
+                    distanceFunc == null ? (CvDistanceFunction)null : (a, b, userData) => distanceFunc(*a, *b),
+                    costMatrix ?? CvArr.Null,
+                    flow ?? CvArr.Null,
+                    ref lowerBound,
+                    IntPtr.Zero);
+            }
+        }
+
+        #endregion
     }
 }

@@ -20,7 +20,7 @@ namespace OpenCV.Net
         /// <param name="scale">The scale factor for the font.</param>
         /// <param name="thickness">The thickness of the text strokes.</param>
         public CvFont(double scale, int thickness = 1)
-            : this(FontFace.HersheyPlain, scale, scale, 0, thickness, LineType.AntiAliased)
+            : this(FontFace.HersheyPlain, scale, scale, 0, thickness, LineFlags.AntiAliased)
         {
         }
 
@@ -37,7 +37,7 @@ namespace OpenCV.Net
         /// </param>
         /// <param name="thickness">The thickness of the text strokes.</param>
         /// <param name="lineType">The algorithm used to draw the text strokes.</param>
-        public CvFont(FontFace fontFace, double hscale, double vscale, double shear = 0, int thickness = 1, LineType lineType = LineType.Connected8)
+        public CvFont(FontFace fontFace, double hscale, double vscale, double shear = 0, int thickness = 1, LineFlags lineType = LineFlags.Connected8)
             : base(true)
         {
             var pFont = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(_CvFont)));

@@ -257,6 +257,9 @@ namespace OpenCV.Net.Native
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     delegate int CvCmpFunc(IntPtr a, IntPtr b, IntPtr userdata);
 
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    unsafe delegate float CvDistanceFunction(float* a, float* b, void* user_param);
+
     [UnmanagedFunctionPointer(CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
     delegate int CvErrorCallback(int status, string func_name, string err_msg, string file_name, int line, IntPtr userData);
 
