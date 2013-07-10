@@ -1262,5 +1262,218 @@ namespace OpenCV.Net
         }
 
         #endregion
+
+        #region Histogram functions
+
+        /// <summary>
+        /// Calculates bayesian probabilistic histograms.
+        /// </summary>
+        /// <param name="src">The source histograms.</param>
+        /// <param name="dst">The destination histograms.</param>
+        public static void CalcBayesianProb(CvHistogram[] src, CvHistogram[] dst)
+        {
+            var pSrc = Array.ConvertAll(src, hist => hist.DangerousGetHandle());
+            var pDst = Array.ConvertAll(dst, hist => hist.DangerousGetHandle());
+            NativeMethods.cvCalcBayesianProb(pSrc, pSrc.Length, pDst);
+            GC.KeepAlive(src);
+            GC.KeepAlive(dst);
+        }
+
+        /// <summary>
+        /// Equalizes the histogram of a grayscale image.
+        /// </summary>
+        /// <param name="src">Source 8-bit single channel image.</param>
+        /// <param name="dst">Destination image of the same size and type as <paramref name="src"/>.</param>
+        public static void EqualizeHist(CvArr src, CvArr dst)
+        {
+            NativeMethods.cvEqualizeHist(src, dst);
+        }
+
+        /// <summary>
+        /// Calculates the distance to the closest zero pixel for all non-zero pixels of the source image.
+        /// </summary>
+        /// <param name="src">8-bit, single-channel (binary) source image.</param>
+        /// <param name="dst">Output image with calculated distances (32-bit floating-point, single-channel).</param>
+        /// <param name="distanceType">The type of distance to use.</param>
+        /// <param name="maskSize">Size of the distance transform mask; can be 3 or 5.</param>
+        /// <param name="mask">
+        /// User-defined mask in the case of a user-defined distance. It consists of 2 numbers
+        /// (horizontal/vertical shift cost, diagonal shift cost) in the case of a 3x3 mask and 3 numbers
+        /// (horizontal/vertical shift cost, diagonal shift cost, knight’s move cost) in the case of a 5x5 mask.
+        /// </param>
+        /// <param name="labels">
+        /// The optional output 2d array of integer type labels, the same size as <paramref name="src"/>
+        /// and <paramref name="dst"/>.
+        /// </param>
+        /// <param name="labelType">Specifies the content of the output label array.</param>
+        public static void DistTransform(
+            CvArr src,
+            CvArr dst,
+            DistanceType distanceType = DistanceType.L2,
+            int maskSize = 3,
+            float[] mask = null,
+            CvArr labels = null,
+            DistanceLabel labelType = DistanceLabel.ConnectedComponent)
+        {
+            NativeMethods.cvDistTransform(src, dst, distanceType, maskSize, mask, labels ?? CvArr.Null, labelType);
+        }
+
+        /// <summary>
+        /// Applies a fixed-level threshold to array elements.
+        /// </summary>
+        /// <param name="src">Source array.</param>
+        /// <param name="dst">Destination array; must be either the same type as <paramref name="src"/> or 8-bit.</param>
+        /// <param name="threshold">Threshold value.</param>
+        /// <param name="maxValue">
+        /// Maximum value to use with <see cref="ThresholdTypes.Binary"/> and <see cref="ThresholdTypes.BinaryInv"/>.
+        /// </param>
+        /// <param name="thresholdType">The type of threshold to apply.</param>
+        /// <returns>The computed threshold value in case <see cref="ThresholdTypes.Otsu"/> is used.</returns>
+        public static double Threshold(
+            CvArr src,
+            CvArr dst,
+            double threshold,
+            double maxValue,
+            ThresholdTypes thresholdType)
+        {
+            return NativeMethods.cvThreshold(src, dst, threshold, maxValue, thresholdType);
+        }
+
+        /// <summary>
+        /// Applies an adaptive threshold to an array.
+        /// </summary>
+        /// <param name="src">Source 8-bit single-channel image.</param>
+        /// <param name="dst">Destination image; will have the same size and the same type as <paramref name="src"/>.</param>
+        /// <param name="maxValue">The non-zero value assigned to the pixels for which the condition is satisfied.</param>
+        /// <param name="adaptiveMethod">The adaptive thresholding algorithm to use.</param>
+        /// <param name="thresholdType">The type of threshold to apply.</param>
+        /// <param name="blockSize">
+        /// The size of a pixel neighborhood that is used to calculate a threshold value for the pixel, must be
+        /// an odd number greater or equal to 3.
+        /// </param>
+        /// <param name="C">The constant subtracted from the mean or weighted mean.</param>
+        public static void AdaptiveThreshold(
+            CvArr src,
+            CvArr dst,
+            double maxValue,
+            AdaptiveThresholdMethod adaptiveMethod = AdaptiveThresholdMethod.MeanC,
+            ThresholdTypes thresholdType = ThresholdTypes.Binary,
+            int blockSize = 3,
+            double C = 5)
+        {
+            NativeMethods.cvAdaptiveThreshold(src, dst, maxValue, adaptiveMethod, thresholdType, blockSize, C);
+        }
+
+        /// <summary>
+        /// Fills a connected component with the given color.
+        /// </summary>
+        /// <param name="image">
+        /// Input/output 1- or 3-channel, 8-bit or floating-point image. It is modified by the
+        /// function unless <see cref="FloodFillFlags.MaskOnly"/> is set.
+        /// </param>
+        /// <param name="seedPoint">The starting point.</param>
+        /// <param name="newVal">New value of the repainted domain pixels.</param>
+        public static void FloodFill(
+            CvArr image,
+            CvPoint seedPoint,
+            CvScalar newVal)
+        {
+            FloodFill(image, seedPoint, newVal, CvScalar.All(0));
+        }
+
+        /// <summary>
+        /// Fills a connected component with the given color.
+        /// </summary>
+        /// <param name="image">
+        /// Input/output 1- or 3-channel, 8-bit or floating-point image. It is modified by the
+        /// function unless <see cref="FloodFillFlags.MaskOnly"/> is set.
+        /// </param>
+        /// <param name="seedPoint">The starting point.</param>
+        /// <param name="newVal">New value of the repainted domain pixels.</param>
+        /// <param name="lowerDiff">
+        /// Maximal lower brightness/color difference between the currently observed pixel and
+        /// one of its neighbors belonging to the component, or a seed pixel being added to the
+        /// component.
+        /// </param>
+        public static void FloodFill(
+            CvArr image,
+            CvPoint seedPoint,
+            CvScalar newVal,
+            CvScalar lowerDiff)
+        {
+            FloodFill(image, seedPoint, newVal, lowerDiff, CvScalar.All(0));
+        }
+
+        /// <summary>
+        /// Fills a connected component with the given color.
+        /// </summary>
+        /// <param name="image">
+        /// Input/output 1- or 3-channel, 8-bit or floating-point image. It is modified by the
+        /// function unless <see cref="FloodFillFlags.MaskOnly"/> is set.
+        /// </param>
+        /// <param name="seedPoint">The starting point.</param>
+        /// <param name="newVal">New value of the repainted domain pixels.</param>
+        /// <param name="lowerDiff">
+        /// Maximal lower brightness/color difference between the currently observed pixel and
+        /// one of its neighbors belonging to the component, or a seed pixel being added to the
+        /// component.
+        /// </param>
+        /// <param name="upperDiff">
+        /// Maximal upper brightness/color difference between the currently observed pixel and
+        /// one of its neighbors belonging to the component, or a seed pixel being added to the
+        /// component.
+        /// </param>
+        public static void FloodFill(
+            CvArr image,
+            CvPoint seedPoint,
+            CvScalar newVal,
+            CvScalar lowerDiff,
+            CvScalar upperDiff)
+        {
+            CvConnectedComp comp;
+            FloodFill(image, seedPoint, newVal, lowerDiff, upperDiff, out comp);
+        }
+
+        /// <summary>
+        /// Fills a connected component with the given color.
+        /// </summary>
+        /// <param name="image">
+        /// Input/output 1- or 3-channel, 8-bit or floating-point image. It is modified by the
+        /// function unless <see cref="FloodFillFlags.MaskOnly"/> is set.
+        /// </param>
+        /// <param name="seedPoint">The starting point.</param>
+        /// <param name="newVal">New value of the repainted domain pixels.</param>
+        /// <param name="lowerDiff">
+        /// Maximal lower brightness/color difference between the currently observed pixel and
+        /// one of its neighbors belonging to the component, or a seed pixel being added to the
+        /// component.
+        /// </param>
+        /// <param name="upperDiff">
+        /// Maximal upper brightness/color difference between the currently observed pixel and
+        /// one of its neighbors belonging to the component, or a seed pixel being added to the
+        /// component.
+        /// </param>
+        /// <param name="comp">
+        /// Output parameter that will be initialized with information about the repainted domain.
+        /// </param>
+        /// <param name="flags">The operation flags.</param>
+        /// <param name="mask">
+        /// Operation mask, should be a single-channel 8-bit image, 2 pixels wider and 2 pixels taller
+        /// than <paramref name="image"/>.
+        /// </param>
+        public static void FloodFill(
+            CvArr image,
+            CvPoint seedPoint,
+            CvScalar newVal,
+            CvScalar lowerDiff,
+            CvScalar upperDiff,
+            out CvConnectedComp comp,
+            FloodFillFlags flags = FloodFillFlags.Connected4,
+            CvArr mask = null)
+        {
+            NativeMethods.cvFloodFill(image, seedPoint, newVal, lowerDiff, upperDiff, out comp, flags, mask ?? CvArr.Null);
+        }
+
+        #endregion
     }
 }

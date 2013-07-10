@@ -286,6 +286,16 @@ namespace OpenCV.Net.Native
         public byte deltas71;
     }
 
+    [StructLayout(LayoutKind.Sequential)]
+    unsafe struct _CvHistogram
+    {
+        public int type;
+        public IntPtr bins;
+        public fixed float thresh[MatHelper.MaxDim * 2];
+        public IntPtr thresh2;
+        public IntPtr mat;
+    }
+
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     delegate int CvCmpFunc(IntPtr a, IntPtr b, IntPtr userdata);
 

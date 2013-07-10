@@ -1335,4 +1335,164 @@ namespace OpenCV.Net
         /// </summary>
         CounterClockwise = 2
     }
+
+    /// <summary>
+    /// Specifies the available histogram types.
+    /// </summary>
+    public enum HistogramType : int
+    {
+        /// <summary>
+        /// Specifies that histogram data is represented as a multi-dimensional dense array <see cref="CvMatND"/>.
+        /// </summary>
+        Array = 0,
+
+        /// <summary>
+        /// Specifies that histogram data is represented as a multi-dimensional sparse array <see cref="CvSparseMat"/>.
+        /// </summary>
+        Sparse = 1,
+
+        /// <summary>
+        /// Specifies that histogram data is represented as a multi-dimensional sparse array <see cref="CvSparseMat"/>.
+        /// </summary>
+        Tree = Sparse
+    }
+
+    /// <summary>
+    /// Specifies the available histogram comparison methods.
+    /// </summary>
+    public enum HistogramComparison : int
+    {
+        /// <summary>
+        /// Specifies that the histograms should be compared using a correlation measure.
+        /// </summary>
+        Correlation = 0,
+
+        /// <summary>
+        /// Specifies that the histograms should be compared using a chi-squared statistic.
+        /// </summary>
+        ChiSquare = 1,
+
+        /// <summary>
+        /// Specifies that the histograms should be compared using bin intersection.
+        /// </summary>
+        Intersection = 2,
+
+        /// <summary>
+        /// Specifies that the histograms should be compared using the Bhattacharyya distance.
+        /// This method only works on normalized histograms.
+        /// </summary>
+        Bhattacharyya = 3,
+
+        /// <summary>
+        /// Specifies that the histograms should be compared using the Bhattacharyya distance.
+        /// This method only works on normalized histograms.
+        /// </summary>
+        Hellinger = Bhattacharyya
+    }
+
+    /// <summary>
+    /// Specifies the available threshold types.
+    /// </summary>
+    [Flags]
+    public enum ThresholdTypes : int
+    {
+        /// <summary>
+        /// Specifies that all values above threshold should be set to a fixed max value
+        /// while all other values should be set to 0.
+        /// </summary>
+        Binary = 0,
+
+        /// <summary>
+        /// Specifies that all values above threshold should be set to 0 while all other
+        /// values should be set to a fixed max value.
+        /// </summary>
+        BinaryInv = 1,
+
+        /// <summary>
+        /// Specifies that all values above threshold should be set to the threshold value
+        /// while all other values should be left as they are.
+        /// </summary>
+        Truncate = 2,
+
+        /// <summary>
+        /// Specifies that all values above threshold should be left as they are while all
+        /// other values should be set to 0.
+        /// </summary>
+        ToZero = 3,
+
+        /// <summary>
+        /// Specifies that all values above threshold should be set to 0 while all other
+        /// values should be left as they are.
+        /// </summary>
+        ToZeroInv = 4,
+
+        /// <summary>
+        /// Specifies that the Otsu algorithm should be used to choose the optimal
+        /// threshold value. Combine the flag with one of the other values.
+        /// </summary>
+        Otsu = 8
+    }
+
+    /// <summary>
+    /// Specifies the content of the output label array in <see cref="cv.DistTransform"/>.
+    /// </summary>
+    public enum DistanceLabel : int
+    {
+        /// <summary>
+        /// Specifies that the content of the output label array are connected components.
+        /// </summary>
+        ConnectedComponent = 0,
+
+        /// <summary>
+        /// Specifies that the content of the output label array are pixel values.
+        /// </summary>
+        Pixel = 1
+    }
+
+    /// <summary>
+    /// Specifies the available adaptive threshold methods.
+    /// </summary>
+    public enum AdaptiveThresholdMethod : int
+    {
+        /// <summary>
+        /// Specifies that the threshold value is the mean of the pixel neighborhood
+        /// minus a constant.
+        /// </summary>
+        MeanC = 0,
+
+        /// <summary>
+        /// Specifies that the threshold value is the weighted sum (i.e. cross-correlation
+        /// with a Gaussian window) of the pixel neighborhood minus a constant.
+        /// </summary>
+        GaussianC = 1
+    }
+
+    /// <summary>
+    /// Specifies flags for the flood fill algorithm.
+    /// </summary>
+    [Flags]
+    public enum FloodFillFlags : int
+    {
+        /// <summary>
+        /// Specifies the 8-connected flood fill algorithm.
+        /// </summary>
+        Connected8 = 8,
+
+        /// <summary>
+        /// Specifies the 4-connected flood fill algorithm.
+        /// </summary>
+        Connected4 = 4,
+
+        /// <summary>
+        /// Specifies that the difference between the current pixel and seed pixel is
+        /// considered for flooding. Otherwise, the difference between neighbor pixels
+        /// is considered (i.e. the range is floating).
+        /// </summary>
+        FixedRange = (1 << 16),
+
+        /// <summary>
+        /// Specifies that the method does not change the image but fills the mask.
+        /// </summary>
+        MaskOnly = (1 << 17)
+    }
 }

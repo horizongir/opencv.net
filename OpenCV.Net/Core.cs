@@ -1071,13 +1071,9 @@ namespace OpenCV.Net
         /// <param name="flags">A value specifying various operation flags.</param>
         public static void CalcCovarMatrix(CvArr[] vects, CvArr covMat, CvArr avg, CovarianceFlags flags)
         {
-            var pImages = new IntPtr[vects.Length];
-            for (int i = 0; i < vects.Length; i++)
-            {
-                pImages[i] = vects[i].DangerousGetHandle();
-            }
-
-            NativeMethods.cvCalcCovarMatrix(pImages, pImages.Length, covMat, avg, flags);
+            var pVects = Array.ConvertAll(vects, vect => vect.DangerousGetHandle());
+            NativeMethods.cvCalcCovarMatrix(pVects, pVects.Length, covMat, avg, flags);
+            GC.KeepAlive(vects);
         }
 
         /// <summary>
