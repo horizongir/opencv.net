@@ -313,5 +313,117 @@ namespace OpenCV.Net.Native
         internal static extern double cvPointPolygonTest(CvHandle contour, CvPoint2D32f pt, int measure_dist);
 
         #endregion
+
+        #region Histogram functions
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr cvCreateHist(int dims, int[] sizes, HistogramType type, IntPtr[] ranges, int uniform);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvSetHistBinRanges(CvHistogram hist, IntPtr[] ranges, int uniform);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr cvMakeHistHeaderForArray(
+            int dims,
+            int[] sizes,
+            IntPtr hist,
+            float[] data,
+            IntPtr[] ranges,
+            int uniform);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvReleaseHist(ref IntPtr hist);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvClearHist(CvHistogram hist);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvGetMinMaxHistValue(
+            CvHistogram hist,
+            out float min_value,
+            out float max_value,
+            int[] min_idx,
+            int[] max_idx);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvNormalizeHist(CvHistogram hist, double factor);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvThreshHist(CvHistogram hist, double threshold);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern double cvCompareHist(CvHistogram hist1, CvHistogram hist2, HistogramComparison method);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvCopyHist(CvHistogram src, out CvHistogram dst);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvCalcBayesianProb(IntPtr[] src, int number, IntPtr[] dst);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvCalcArrHist(IntPtr[] arr, CvHistogram hist, int accumulate, CvArr mask);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvCalcArrBackProject(IntPtr[] image, CvArr dst, CvHistogram hist);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvCalcArrBackProjectPatch(
+            IntPtr[] image,
+            CvArr dst,
+            CvSize range,
+            CvHistogram hist,
+            HistogramComparison method,
+            double factor);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvCalcProbDensity(
+            CvHistogram hist1,
+            CvHistogram hist2,
+            CvHistogram dst_hist,
+            double scale);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvEqualizeHist(CvArr src, CvArr dst);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvDistTransform(
+            CvArr src,
+            CvArr dst,
+            DistanceType distance_type,
+            int mask_size,
+            float[] mask,
+            CvArr labels,
+            DistanceLabel labelType);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern double cvThreshold(
+            CvArr src,
+            CvArr dst,
+            double threshold,
+            double max_value,
+            ThresholdTypes threshold_type);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvAdaptiveThreshold(
+            CvArr src,
+            CvArr dst,
+            double maxValue,
+            AdaptiveThresholdMethod adaptiveMethod,
+            ThresholdTypes thresholdType,
+            int blockSize,
+            double param1);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvFloodFill(
+            CvArr image,
+            CvPoint seed_point,
+            CvScalar new_val,
+            CvScalar lo_diff,
+            CvScalar up_diff,
+            out CvConnectedComp comp,
+            FloodFillFlags flags,
+            CvArr mask);
+
+        #endregion
     }
 }

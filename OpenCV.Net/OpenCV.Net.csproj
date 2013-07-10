@@ -48,6 +48,7 @@
     <Compile Include="CvArr.cs" />
     <Compile Include="CvBox2D.cs" />
     <Compile Include="CvChain.cs" />
+    <Compile Include="CvConnectedComp.cs" />
     <Compile Include="CvContour.cs" />
     <Compile Include="CvContourScanner.cs" />
     <Compile Include="CvConvexityDefect.cs" />
@@ -55,6 +56,7 @@
     <Compile Include="CvFont.cs" />
     <Compile Include="CvGraph.cs" />
     <Compile Include="CvHandle.cs" />
+    <Compile Include="CvHistogram.cs" />
     <Compile Include="CvHuMoments.cs" />
     <Compile Include="CvMat.cs" />
     <Compile Include="CvMatND.cs" />
