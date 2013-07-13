@@ -1475,5 +1475,326 @@ namespace OpenCV.Net
         }
 
         #endregion
+
+        #region Feature detection
+
+        /// <summary>
+        /// Implements the Canny algorithm for edge detection.
+        /// </summary>
+        /// <param name="image">Input image.</param>
+        /// <param name="edges">Single-channel image to store the edges found by the function.</param>
+        /// <param name="threshold1">
+        /// The first threshold. The smallest value between <paramref name="threshold1"/> and
+        /// <paramref name="threshold2"/> is used for edge linking, the largest value is used
+        /// to find the initial segments of strong edges.
+        /// </param>
+        /// <param name="threshold2">
+        /// The second threshold. The smallest value between <paramref name="threshold1"/> and
+        /// <paramref name="threshold2"/> is used for edge linking, the largest value is used
+        /// to find the initial segments of strong edges.
+        /// </param>
+        /// <param name="apertureSize">
+        /// Aperture parameter for the Sobel operator (see <see cref="Sobel"/>).
+        /// </param>
+        public static void Canny(CvArr image, CvArr edges, double threshold1, double threshold2, int apertureSize = 3)
+        {
+            NativeMethods.cvCanny(image, edges, threshold1, threshold2, apertureSize);
+        }
+
+        /// <summary>
+        /// Calculates the feature map for corner detection.
+        /// </summary>
+        /// <param name="image">Input image.</param>
+        /// <param name="corners">Image to store the corner candidates.</param>
+        /// <param name="apertureSize">
+        /// Aperture parameter for the Sobel operator (see <see cref="Sobel"/>).
+        /// </param>
+        public static void PreCornerDetect(CvArr image, CvArr corners, int apertureSize=3)
+        {
+            NativeMethods.cvPreCornerDetect(image, corners, apertureSize);
+        }
+
+        /// <summary>
+        /// Calculates eigenvalues and eigenvectors of image blocks for corner detection.
+        /// </summary>
+        /// <param name="image">Input image.</param>
+        /// <param name="eigenvv">Image to store the results. It must be 6 times wider than the input image.</param>
+        /// <param name="blockSize">
+        /// The pixel neighborhood size. The method calculates the covariance matrix of derivatives
+        /// over the neighborhood and finds its eigenvectors and eigenvalues.
+        /// </param>
+        /// <param name="apertureSize">
+        /// Aperture parameter for the Sobel operator (see <see cref="Sobel"/>).
+        /// </param>
+        public static void CornerEigenValsAndVecs(CvArr image, CvArr eigenvv, int blockSize, int apertureSize=3)
+        {
+            NativeMethods.cvCornerEigenValsAndVecs(image, eigenvv, blockSize, apertureSize);
+        }
+
+        /// <summary>
+        /// Calculates the minimal eigenvalue of gradient matrices for corner detection.
+        /// </summary>
+        /// <param name="image">Input image.</param>
+        /// <param name="eigenval">
+        /// Image to store the minimal eigenvalues. Should have the same size as <paramref name="image"/>.
+        /// </param>
+        /// <param name="blockSize">
+        /// The pixel neighborhood size (see <see cref="CornerEigenValsAndVecs"/>).
+        /// </param>
+        /// <param name="apertureSize">
+        /// Aperture parameter for the Sobel operator (see <see cref="Sobel"/>).
+        /// </param>
+        public static void CornerMinEigenVal(CvArr image, CvArr eigenval, int blockSize, int apertureSize=3)
+        {
+            NativeMethods.cvCornerMinEigenVal(image, eigenval, blockSize, apertureSize);
+        }
+
+        /// <summary>
+        /// Implements the Harris edge detector.
+        /// </summary>
+        /// <param name="image">Input image.</param>
+        /// <param name="harrisResponse">
+        /// Image to store the Harris detector responses. Should have the same size as <paramref name="image"/>.
+        /// </param>
+        /// <param name="blockSize">
+        /// The pixel neighborhood size (see <see cref="CornerEigenValsAndVecs"/>).
+        /// </param>
+        /// <param name="apertureSize">
+        /// Aperture parameter for the Sobel operator (see <see cref="Sobel"/>).
+        /// </param>
+        /// <param name="k">Harris detector free parameter.</param>
+        public static void CornerHarris(
+            CvArr image,
+            CvArr harrisResponse,
+            int blockSize,
+            int apertureSize = 3,
+            double k = 0.04)
+        {
+            NativeMethods.cvCornerHarris(image, harrisResponse, blockSize, apertureSize, k);
+        }
+
+        /// <summary>
+        /// Refines the corner locations.
+        /// </summary>
+        /// <param name="image">Input image.</param>
+        /// <param name="corners">Initial coordinates of the input corners; refined coordinates on output.</param>
+        /// <param name="win">Half of the side length of the search window.</param>
+        /// <param name="zeroZone">
+        /// Half of the size of the dead region in the middle of the search zone over which the summation
+        /// is not done. It is used sometimes to avoid possible singularities of the autocorrelation matrix.
+        /// The value of (-1,-1) indicates that there is no such size.
+        /// </param>
+        /// <param name="criteria">
+        /// Criteria for termination of the iterative process of corner refinement.
+        /// </param>
+        public static void FindCornerSubPix(
+            CvArr image,
+            CvPoint2D32f[] corners,
+            CvSize win,
+            CvSize zeroZone,
+            CvTermCriteria criteria)
+        {
+            NativeMethods.cvFindCornerSubPix(image, corners, corners.Length, win, zeroZone, criteria);
+        }
+
+        /// <summary>
+        /// Determines strong corners on an image.
+        /// </summary>
+        /// <param name="image">The source 8-bit or floating-point 32-bit, single-channel image.</param>
+        /// <param name="eigImage">
+        /// Temporary floating-point 32-bit image, the same size as <paramref name="image"/>.
+        /// </param>
+        /// <param name="tempImage">
+        /// Another temporary image, the same size and format as <paramref name="eigImage"/>.
+        /// </param>
+        /// <param name="corners">Output parameter; detected corners.</param>
+        /// <param name="cornerCount">Output parameter; number of detected corners.</param>
+        /// <param name="qualityLevel">
+        /// Multiplier for the max/min eigenvalue; specifies the minimal accepted quality of image corners.
+        /// </param>
+        /// <param name="minDistance">
+        /// Limit, specifying the minimum possible distance between the returned corners; Euclidian distance
+        /// is used.
+        /// </param>
+        /// <param name="mask">
+        /// Region of interest. The function selects points either in the specified region or in the whole
+        /// image if the mask is <b>null</b>.
+        /// </param>
+        /// <param name="blockSize">
+        /// Size of the averaging block, passed to the underlying corner detection method.
+        /// </param>
+        /// <param name="useHarris">
+        /// If <b>true</b>, Harris operator (<see cref="CornerHarris"/>) is used instead of default
+        /// (<see cref="CornerMinEigenVal"/>).
+        /// </param>
+        /// <param name="k">
+        /// Free parameter of Harris detector; used only if <paramref name="useHarris"/> is <b>true</b>.
+        /// </param>
+        public static void GoodFeaturesToTrack(
+            CvArr image,
+            CvArr eigImage,
+            CvArr tempImage,
+            CvPoint2D32f[] corners,
+            out int cornerCount,
+            double qualityLevel,
+            double minDistance,
+            CvArr mask = null,
+            int blockSize = 3,
+            bool useHarris = false,
+            double k = 0.04)
+        {
+            cornerCount = corners.Length;
+            NativeMethods.cvGoodFeaturesToTrack(
+                image,
+                eigImage,
+                tempImage,
+                corners,
+                ref cornerCount,
+                qualityLevel,
+                minDistance,
+                mask ?? CvArr.Null,
+                blockSize,
+                useHarris ? 1 : 0,
+                k);
+        }
+
+        /// <summary>
+        /// Finds lines in a binary image using a Hough transform.
+        /// </summary>
+        /// <param name="image">
+        /// The 8-bit, single-channel, binary source image. In the case of a probabilistic method,
+        /// the image is modified by the function.
+        /// </param>
+        /// <param name="lineStorage">
+        /// The storage for the lines that are detected. It can be a memory storage (in this case
+        /// a sequence of lines is created in the storage and returned by the function) or single
+        /// row/single column matrix (<see cref="CvMat"/>) of a particular type.
+        /// </param>
+        /// <param name="method">The Hough transform variant.</param>
+        /// <param name="rho">Distance resolution in pixel-related units.</param>
+        /// <param name="theta">Angle resolution measured in radians.</param>
+        /// <param name="threshold">
+        /// Threshold parameter. A line is returned by the function if the corresponding accumulator
+        /// value is greater than <paramref name="threshold"/>.
+        /// </param>
+        /// <param name="param1">
+        /// The first method-dependent parameter. For the classical Hough transform it is not used.
+        /// For the probabilistic Hough transform it is the minimum line length. For the multi-scale
+        /// Hough transform it is the divisor for the distance resolution <paramref name="rho"/>.
+        /// </param>
+        /// <param name="param2">
+        /// The second method-dependent parameter. For the classical Hough transform it is not used.
+        /// For the probabilistic Hough transform it is the maximum gap between line segments lying on
+        /// the same line to treat them as a single line segment (i.e. to join them). For the multi-scale
+        /// Hough transform it is the divisor for the angle resolution <paramref name="theta"/>.
+        /// </param>
+        /// <returns>
+        /// A sequence of lines in case <paramref name="lineStorage"/> is a memory storage.
+        /// </returns>
+        public static CvSeq HoughLines2(
+            CvArr image,
+            CvHandle lineStorage,
+            HoughLinesMethod method,
+            double rho,
+            double theta,
+            int threshold,
+            double param1,
+            double param2)
+        {
+            var lines = NativeMethods.cvHoughLines2(image, lineStorage, method, rho, theta, threshold, param1, param2);
+            if (lines.IsInvalid) return null;
+            lines.SetOwnerStorage((CvMemStorage)lineStorage);
+            return lines;
+        }
+
+        /// <summary>
+        /// Finds circles in a grayscale image using a Hough transform.
+        /// </summary>
+        /// <param name="image">The 8-bit, single-channel, grayscale input image.</param>
+        /// <param name="circleStorage">
+        /// The storage for the circles that are detected. It can be a memory storage (in this case
+        /// a sequence of circles is created in the storage and returned by the function) or single
+        /// row/single column matrix (<see cref="CvMat"/>) of a particular type.
+        /// </param>
+        /// <param name="method">
+        /// The Hough transform method. Currently, only <see cref="HoughCirclesMethod.Gradient"/>
+        /// is implemented.
+        /// </param>
+        /// <param name="dp">
+        /// The inverse ratio of the accumulator resolution to the image resolution. For example, if
+        /// <paramref name="dp"/> = 1, the accumulator will have the same resolution as the input image,
+        /// if <paramref name="dp"/> = 2 the accumulator will have half as big width and height, etc.
+        /// </param>
+        /// <param name="minDist">
+        /// Minimum distance between the centers of the detected circles. If the parameter is too small,
+        /// multiple neighbor circles may be falsely detected in addition to a true one. If it is too large,
+        /// some circles may be missed.
+        /// </param>
+        /// <param name="param1">
+        /// The first method-specific parameter. in the case of <see cref="HoughCirclesMethod.Gradient"/>
+        /// it is the higher threshold of the two passed to the canny edge detector (the lower one will be
+        /// twice smaller).
+        /// </param>
+        /// <param name="param2">
+        /// The second method-specific parameter. in the case of <see cref="HoughCirclesMethod.Gradient"/>
+        /// it is the accumulator threshold at the center detection stage. The smaller it is, the more false
+        /// circles may be detected. Circles, corresponding to the larger accumulator values, will be
+        /// returned first.
+        /// </param>
+        /// <param name="minRadius">Minimum circle radius.</param>
+        /// <param name="maxRadius">Maximum circle radius.</param>
+        /// <returns>
+        /// A sequence of lines in case <paramref name="circleStorage"/> is a memory storage.
+        /// </returns>
+        public static CvSeq HoughCircles(
+            CvArr image,
+            CvHandle circleStorage,
+            HoughCirclesMethod method,
+            double dp,
+            double minDist,
+            double param1,
+            double param2,
+            int minRadius,
+            int maxRadius)
+        {
+            var circles = NativeMethods.cvHoughCircles(image, circleStorage, method, dp, minDist, param1, param2, minRadius, maxRadius);
+            if (circles.IsInvalid) return null;
+            circles.SetOwnerStorage((CvMemStorage)circleStorage);
+            return circles;
+        }
+
+        /// <summary>
+        /// Fits line to 2D or 3D point set.
+        /// </summary>
+        /// <param name="points">
+        /// Sequence or array of 2D or 3D points with 32-bit integer or floating-point coordinates.
+        /// </param>
+        /// <param name="distType">The distance used for fitting.</param>
+        /// <param name="param">
+        /// Numerical parameter (C) for some types of distances, if 0 then some optimal value is chosen.
+        /// </param>
+        /// <param name="reps">
+        /// Sufficient accuracy for radius (distance between the coordinate origin and the line);
+        /// 0.01 would be a good default.
+        /// </param>
+        /// <param name="aeps">Sufficient accuracy for angle; 0.01 would be a good default.</param>
+        /// <param name="line">
+        /// The output line parameters. In case of 2D fitting it is an array of 4 floats (vx, vy, x0, y0)
+        /// where (vx, vy) is a normalized vector collinear to the line and (x0, y0) is some point on the line.
+        /// In case of 3D fitting it is an array of 6 floats (vx, vy, vz, x0, y0, z0) where (vx, vy, vz) is a
+        /// normalized vector collinear to the line and (x0, y0, z0) is some point on the line.
+        /// </param>
+        public static void FitLine(
+            CvArr points,
+            DistanceType distType,
+            double param,
+            double reps,
+            double aeps,
+            float[] line)
+        {
+            NativeMethods.cvFitLine(points, distType, param, reps, aeps, line);
+        }
+
+        #endregion
     }
 }

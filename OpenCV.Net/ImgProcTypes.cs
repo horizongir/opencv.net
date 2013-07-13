@@ -1495,4 +1495,42 @@ namespace OpenCV.Net
         /// </summary>
         MaskOnly = (1 << 17)
     }
+
+    /// <summary>
+    /// Specifies available Hough transform variants for line detection.
+    /// </summary>
+    public enum HoughLinesMethod : int
+    {
+        /// <summary>
+        /// Classical or standard Hough transform. Every line is represented by two
+        /// floating-point numbers rho and theta, where rho is a distance between (0,0)
+        /// point and the line, and theta is the angle between x-axis and the normal to
+        /// the line.
+        /// </summary>
+        Standard = 0,
+
+        /// <summary>
+        /// Probabilistic Hough transform (more efficient in case the picture contains
+        /// a few long linear segments). It returns line segments rather than the whole
+        /// line. Each segment is represented by starting and ending points.
+        /// </summary>
+        Probabilistic = 1,
+
+        /// <summary>
+        /// Multi-scale variant of the classical Hough transform. The lines are encoded
+        /// the same way as <see cref="Standard"/>.
+        /// </summary>
+        MultiScale = 2,
+    }
+
+    /// <summary>
+    /// Specifies available Hough transform variants for circle detection.
+    /// </summary>
+    public enum HoughCirclesMethod : int
+    {
+        /// <summary>
+        /// Implements the 2-1 Hough Transform for circle detection.
+        /// </summary>
+        Gradient = 3
+    }
 }
