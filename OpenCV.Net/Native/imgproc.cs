@@ -425,5 +425,84 @@ namespace OpenCV.Net.Native
             CvArr mask);
 
         #endregion
+
+        #region Feature detection
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvCanny(CvArr image, CvArr edges, double threshold1, double threshold2, int aperture_size);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvPreCornerDetect(CvArr image, CvArr corners, int aperture_size);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvCornerEigenValsAndVecs(CvArr image, CvArr eigenvv, int block_size, int aperture_size);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvCornerMinEigenVal(CvArr image, CvArr eigenval, int block_size, int aperture_size);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvCornerHarris(
+            CvArr image,
+            CvArr harris_responce,
+            int block_size,
+            int aperture_size,
+            double k);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvFindCornerSubPix(
+            CvArr image,
+            [Out]CvPoint2D32f[] corners,
+            int count,
+            CvSize win,
+            CvSize zero_zone,
+            CvTermCriteria criteria);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvGoodFeaturesToTrack(
+            CvArr image,
+            CvArr eig_image,
+            CvArr temp_image,
+            [Out]CvPoint2D32f[] corners,
+            ref int corner_count,
+            double quality_level,
+            double min_distance,
+            CvArr mask,
+            int block_size,
+            int use_harris,
+            double k);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern CvSeq cvHoughLines2(
+            CvArr image,
+            CvHandle line_storage,
+            HoughLinesMethod method,
+            double rho,
+            double theta,
+            int threshold,
+            double param1,
+            double param2);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern CvSeq cvHoughCircles(
+            CvArr image,
+            CvHandle circle_storage,
+            HoughCirclesMethod method,
+            double dp,
+            double min_dist,
+            double param1,
+            double param2,
+            int min_radius,
+            int max_radius);
+
+        [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvFitLine(
+            CvArr points,
+            DistanceType dist_type,
+            double param,
+            double reps,
+            double aeps,
+            [Out]float[] line);
+
+        #endregion
     }
 }
