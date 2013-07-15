@@ -56,6 +56,7 @@
     <Compile Include="TestCvMemStorage.cs" />
     <Compile Include="TestCvSeq.cs" />
     <Compile Include="TestCvSparseMat.cs" />
+    <Compile Include="TestHighGui.cs" />
     <Compile Include="TestIplImage.cs" />
     <Compile Include="TestCvArr.cs" />
     <Compile Include="TestCvMatND.cs" />

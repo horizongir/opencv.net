@@ -75,13 +75,18 @@
     <Compile Include="CvSlice.cs" />
     <Compile Include="CvSparseMat.cs" />
     <Compile Include="CvTermCriteria.cs" />
+    <Compile Include="HighGui.cs" />
+    <Compile Include="HighGuiTypes.cs" />
     <Compile Include="ImgProc.cs" />
     <Compile Include="ImgProcTypes.cs" />
     <Compile Include="IplConvKernel.cs" />
     <Compile Include="IplImage.cs" />
+    <Compile Include="NamedWindow.cs" />
     <Compile Include="Native\core.cs" />
+    <Compile Include="Native\highgui.cs" />
+    <Compile Include="Native\highguitypes.cs" />
     <Compile Include="Native\imgproc.cs" />
-    <Compile Include="Native\types.cs" />
+    <Compile Include="Native\coretypes.cs" />
     <Compile Include="NumericAggregateConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
