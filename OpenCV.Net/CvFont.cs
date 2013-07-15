@@ -28,7 +28,7 @@ namespace OpenCV.Net
         /// Initializes a new instance of the <see cref="CvFont"/> class with the specified
         /// parameters.
         /// </summary>
-        /// <param name="fontFace"></param>
+        /// <param name="fontFace">The font name identifier.</param>
         /// <param name="hscale">The width scale factor for the font.</param>
         /// <param name="vscale">The height scale factor for the font.</param>
         /// <param name="shear">
@@ -42,6 +42,46 @@ namespace OpenCV.Net
         {
             var pFont = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(_CvFont)));
             NativeMethods.cvInitFont(pFont, fontFace, hscale, vscale, shear, thickness, lineType);
+            SetHandle(pFont);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CvFont"/> class using Qt based glyphs.
+        /// </summary>
+        /// <param name="nameFont">
+        /// Name of the font. The name should match the name of a system font (such as Times).
+        /// If the font is not found, a default one is used.
+        /// </param>
+        /// <param name="pointSize">
+        /// Size of the font. If not specified, equal zero or negative, the point size of the
+        /// font is set to a system-dependent default value. Generally, this is 12 points.
+        /// </param>
+        public CvFont(string nameFont, int pointSize = -1)
+            : this(nameFont, pointSize, CvScalar.All(0))
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CvFont"/> class using Qt based glyphs.
+        /// </summary>
+        /// <param name="nameFont">
+        /// Name of the font. The name should match the name of a system font (such as Times).
+        /// If the font is not found, a default one is used.
+        /// </param>
+        /// <param name="pointSize">
+        /// Size of the font. If not specified, equal zero or negative, the point size of the
+        /// font is set to a system-dependent default value. Generally, this is 12 points.
+        /// </param>
+        /// <param name="color">Color of the font.</param>
+        /// <param name="weight">Font weight.</param>
+        /// <param name="style">Font style.</param>
+        /// <param name="spacing">Spacing between characters. It can be negative or positive.</param>
+        public CvFont(string nameFont, int pointSize, CvScalar color, FontWeight weight = FontWeight.Normal, FontStyle style = FontStyle.Normal, int spacing = 0)
+            : base(true)
+        {
+            var font = NativeMethods.cvFontQt(nameFont, pointSize, color, weight, style, spacing);
+            var pFont = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(_CvFont)));
+            Marshal.StructureToPtr(font, pFont, false);
             SetHandle(pFont);
         }
 

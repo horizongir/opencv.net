@@ -46,6 +46,17 @@ namespace OpenCV.Net.Native
     }
 
     [StructLayout(LayoutKind.Sequential)]
+    struct _IplConvKernel
+    {
+        public int nCols;
+        public int nRows;
+        public int anchorX;
+        public int anchorY;
+        public IntPtr values;
+        public int nShiftR;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
     struct _CvMat
     {
         public int type;
@@ -96,6 +107,27 @@ namespace OpenCV.Net.Native
         unsafe public _CvSparseMat* mat;
         unsafe public _CvSparseNode* node;
         public int curidx;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    unsafe struct _CvHistogram
+    {
+        public int type;
+        public IntPtr bins;
+        public fixed float thresh[MatHelper.MaxDim * 2];
+        public IntPtr thresh2;
+        public IntPtr mat;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    struct _CvLineIterator
+    {
+        public IntPtr ptr;
+        public int err;
+        public int plus_delta;
+        public int minus_delta;
+        public int plus_step;
+        public int minus_step;
     }
 
     [StructLayout(LayoutKind.Sequential)]
@@ -185,76 +217,6 @@ namespace OpenCV.Net.Native
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    struct _CvContour
-    {
-        public int flags;
-        public int header_size;
-        public IntPtr h_prev;
-        public IntPtr h_next;
-        public IntPtr v_prev;
-        public IntPtr v_next;
-        public int total;
-        public int elem_size;
-        public IntPtr block_max;
-        public IntPtr ptr;
-        public int delta_elems;
-        public IntPtr storage;
-        public IntPtr free_blocks;
-        public IntPtr first;
-
-        public CvRect rect;
-        public int color;
-        public int reserved0;
-        public int reserved1;
-        public int reserved2;
-    }
-
-    [StructLayout(LayoutKind.Sequential)]
-    struct _CvString
-    {
-        public int Len;
-        public IntPtr Ptr;
-    }
-
-    [StructLayout(LayoutKind.Sequential)]
-    struct _CvLineIterator
-    {
-        public IntPtr ptr;
-        public int err;
-        public int plus_delta;
-        public int minus_delta;
-        public int plus_step;
-        public int minus_step;
-    }
-
-    [StructLayout(LayoutKind.Sequential)]
-    struct _CvFont
-    {
-        IntPtr nameFont;
-        CvScalar color;
-        int font_face;
-        IntPtr ascii;
-        IntPtr greek;
-        IntPtr cyrillic;
-        float hscale, vscale;
-        float shear;
-        int thickness;
-        float dx;
-        int line_type;
-    }
-
-    [StructLayout(LayoutKind.Sequential)]
-    struct _IplConvKernel
-    {
-        public int nCols;
-        public int nRows;
-        public int anchorX;
-        public int anchorY;
-        public IntPtr values;
-        public int nShiftR;
-    }
-
-    [StructLayout(LayoutKind.Sequential)]
     struct _CvChainPtReader
     {
         public int header_size;
@@ -287,13 +249,51 @@ namespace OpenCV.Net.Native
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    unsafe struct _CvHistogram
+    struct _CvContour
     {
-        public int type;
-        public IntPtr bins;
-        public fixed float thresh[MatHelper.MaxDim * 2];
-        public IntPtr thresh2;
-        public IntPtr mat;
+        public int flags;
+        public int header_size;
+        public IntPtr h_prev;
+        public IntPtr h_next;
+        public IntPtr v_prev;
+        public IntPtr v_next;
+        public int total;
+        public int elem_size;
+        public IntPtr block_max;
+        public IntPtr ptr;
+        public int delta_elems;
+        public IntPtr storage;
+        public IntPtr free_blocks;
+        public IntPtr first;
+
+        public CvRect rect;
+        public int color;
+        public int reserved0;
+        public int reserved1;
+        public int reserved2;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    struct _CvString
+    {
+        public int Len;
+        public IntPtr Ptr;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    struct _CvFont
+    {
+        IntPtr nameFont;
+        CvScalar color;
+        int font_face;
+        IntPtr ascii;
+        IntPtr greek;
+        IntPtr cyrillic;
+        float hscale, vscale;
+        float shear;
+        int thickness;
+        float dx;
+        int line_type;
     }
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
