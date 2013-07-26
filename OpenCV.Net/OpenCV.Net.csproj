@@ -47,6 +47,7 @@
     <Compile Include="CoreTypes.cs" />
     <Compile Include="CvArr.cs" />
     <Compile Include="CvBox2D.cs" />
+    <Compile Include="CvCapture.cs" />
     <Compile Include="CvChain.cs" />
     <Compile Include="CvConnectedComp.cs" />
     <Compile Include="CvContour.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="CvSlice.cs" />
     <Compile Include="CvSparseMat.cs" />
     <Compile Include="CvTermCriteria.cs" />
+    <Compile Include="CvVideoWriter.cs" />
     <Compile Include="HighGui.cs" />
     <Compile Include="HighGuiTypes.cs" />
     <Compile Include="ImgProc.cs" />
