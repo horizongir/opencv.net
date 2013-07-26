@@ -146,5 +146,45 @@ namespace OpenCV.Net.Native
         internal static extern void cvUpdateWindow(string window_name);
 
         #endregion
+
+        #region Working with Video Files and Cameras
+
+        [DllImport(highguiLib, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        internal static extern CvCapture cvCreateFileCapture(string filename);
+
+        [DllImport(highguiLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern CvCapture cvCreateCameraCapture(int index);
+
+        [DllImport(highguiLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int cvGrabFrame(CvCapture capture);
+
+        [DllImport(highguiLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr cvRetrieveFrame(CvCapture capture, int streamIdx);
+
+        [DllImport(highguiLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr cvQueryFrame(CvCapture capture);
+
+        [DllImport(highguiLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvReleaseCapture(ref IntPtr capture);
+
+        [DllImport(highguiLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern double cvGetCaptureProperty(CvCapture capture, CaptureProperty property_id);
+
+        [DllImport(highguiLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int cvSetCaptureProperty(CvCapture capture, CaptureProperty property_id, double value);
+
+        [DllImport(highguiLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern CaptureDomain cvGetCaptureDomain(CvCapture capture);
+
+        [DllImport(highguiLib, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        internal static extern IntPtr cvCreateVideoWriter(string filename, int fourcc, double fps, CvSize frame_size, int is_color);
+
+        [DllImport(highguiLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int cvWriteFrame(CvVideoWriter writer, IplImage image);
+
+        [DllImport(highguiLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvReleaseVideoWriter(ref IntPtr capture);
+
+        #endregion
     }
 }
