@@ -15,10 +15,13 @@ namespace OpenCV.Net
     public struct CvPoint : IEquatable<CvPoint>
     {
         /// <summary>
-        /// Represents a <see cref="CvPoint"/> that has <see cref="X"/> and
+        /// Returns a <see cref="CvPoint"/> that has <see cref="X"/> and
         /// <see cref="Y"/> values set to zero.
         /// </summary>
-        public static readonly CvPoint Zero = new CvPoint();
+        public static CvPoint Zero
+        {
+            get { return new CvPoint(); }
+        }
 
         /// <summary>
         /// The x-coordinate of the point.

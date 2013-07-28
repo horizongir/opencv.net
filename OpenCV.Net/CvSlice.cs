@@ -19,9 +19,12 @@ namespace OpenCV.Net
         public const int WholeSeqEndIndex = 0x3fffffff;
 
         /// <summary>
-        /// Represents a <see cref="CvSlice"/> that is set to encompass the whole sequence.
+        /// Returns a <see cref="CvSlice"/> that is set to encompass the whole sequence.
         /// </summary>
-        public static readonly CvSlice WholeSeq = new CvSlice(0, WholeSeqEndIndex);
+        public static CvSlice WholeSeq
+        {
+            get { return new CvSlice(0, WholeSeqEndIndex); }
+        }
 
         /// <summary>
         /// The inclusive start index of the slice.

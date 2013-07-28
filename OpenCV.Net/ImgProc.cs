@@ -1131,7 +1131,7 @@ namespace OpenCV.Net
         /// </returns>
         public static bool MinEnclosingCircle(CvHandle points, out CvPoint2D32f center, out float radius)
         {
-            return NativeMethods.cvMinEnclosingCircle(points, out center, out radius) != 0;
+            return NativeMethods.cvMinEnclosingCircle(points, out center, out radius) > 0;
         }
 
         /// <summary>
@@ -1178,7 +1178,7 @@ namespace OpenCV.Net
         /// </returns>
         public static bool CheckContourConvexity(CvHandle contour)
         {
-            return NativeMethods.cvCheckContourConvexity(contour) != 0;
+            return NativeMethods.cvCheckContourConvexity(contour) > 0;
         }
 
         /// <summary>

@@ -8,17 +8,20 @@ using System.Text;
 namespace OpenCV.Net
 {
     /// <summary>
-    /// Represents a 2D point with floating-point coordinates.
+    /// Represents a 2D point with single-precision floating-point coordinates.
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     [TypeConverter(typeof(NumericAggregateConverter))]
     public struct CvPoint2D32f : IEquatable<CvPoint2D32f>
     {
         /// <summary>
-        /// Represents a <see cref="CvPoint2D32f"/> that has <see cref="X"/> and
+        /// Returns a <see cref="CvPoint2D32f"/> that has <see cref="X"/> and
         /// <see cref="Y"/> values set to zero.
         /// </summary>
-        public static readonly CvPoint2D32f Zero = new CvPoint2D32f();
+        public static CvPoint2D32f Zero
+        {
+            get { return new CvPoint2D32f(); }
+        }
 
         /// <summary>
         /// The x-coordinate of the point.
