@@ -15,6 +15,15 @@ namespace OpenCV.Net
     public struct CvSize : IEquatable<CvSize>
     {
         /// <summary>
+        /// Returns a <see cref="CvSize"/> that has <see cref="Width"/> and
+        /// <see cref="Height"/> values set to zero.
+        /// </summary>
+        public static CvSize Zero
+        {
+            get { return new CvSize(); }
+        }
+
+        /// <summary>
         /// The width of the rectangle.
         /// </summary>
         public int Width;

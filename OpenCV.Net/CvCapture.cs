@@ -83,7 +83,7 @@ namespace OpenCV.Net
         /// <returns>A value indicating whether a new frame was grabbed.</returns>
         public bool GrabFrame()
         {
-            return NativeMethods.cvGrabFrame(this) != 0;
+            return NativeMethods.cvGrabFrame(this) > 0;
         }
 
         /// <summary>

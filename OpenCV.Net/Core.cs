@@ -684,7 +684,7 @@ namespace OpenCV.Net
         /// <returns><b>true</b> if all array elements are valid and within range; <b>false</b> otherwise.</returns>
         public static bool CheckArr(CvArr arr, CheckArrayFlags flags, double min_val, double max_val)
         {
-            return NativeMethods.cvCheckArr(arr, flags, min_val, max_val) != 0;
+            return NativeMethods.cvCheckArr(arr, flags, min_val, max_val) > 0;
         }
 
         /// <summary>
@@ -985,7 +985,7 @@ namespace OpenCV.Net
         /// </returns>
         public static bool Solve(CvArr src1, CvArr src2, CvArr dst, InversionMethod method = InversionMethod.LU)
         {
-            return NativeMethods.cvSolve(src1, src2, dst, method) != 0;
+            return NativeMethods.cvSolve(src1, src2, dst, method) > 0;
         }
 
         /// <summary>
@@ -1589,7 +1589,7 @@ namespace OpenCV.Net
         /// </returns>
         public static bool ClipLine(CvSize imgSize, ref CvPoint pt1, ref CvPoint pt2)
         {
-            return NativeMethods.cvClipLine(imgSize, ref pt1, ref pt2) != 0;
+            return NativeMethods.cvClipLine(imgSize, ref pt1, ref pt2) > 0;
         }
 
         /// <summary>

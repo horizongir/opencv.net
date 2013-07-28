@@ -51,7 +51,7 @@ namespace OpenCV.Net
         /// <returns><b>True</b> if the frame was written successfully; false, otherwise.</returns>
         public bool WriteFrame(IplImage image)
         {
-            return NativeMethods.cvWriteFrame(this, image) != 0;
+            return NativeMethods.cvWriteFrame(this, image) > 0;
         }
 
         /// <summary>

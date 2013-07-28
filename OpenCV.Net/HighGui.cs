@@ -40,8 +40,8 @@ namespace OpenCV.Net
             ButtonType buttonType = ButtonType.PushButton,
             bool initialButtonState = false)
         {
-            _CvButtonCallback callback = onChange != null ? (state, userdata) => onChange(state != 0 ? true : false) : (_CvButtonCallback)null;
-            return NativeMethods.cvCreateButton(buttonName, callback, IntPtr.Zero, buttonType, initialButtonState ? 1 : 0) != 0;
+            _CvButtonCallback callback = onChange != null ? (state, userdata) => onChange(state > 0 ? true : false) : (_CvButtonCallback)null;
+            return NativeMethods.cvCreateButton(buttonName, callback, IntPtr.Zero, buttonType, initialButtonState ? 1 : 0) > 0;
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace OpenCV.Net
         /// </returns>
         public static bool SaveImage(string fileName, CvArr image, params int[] parameters)
         {
-            return NativeMethods.cvSaveImage(fileName, image, parameters) != 0;
+            return NativeMethods.cvSaveImage(fileName, image, parameters) > 0;
         }
 
         /// <summary>
