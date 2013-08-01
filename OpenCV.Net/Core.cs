@@ -1771,5 +1771,78 @@ namespace OpenCV.Net
         }
 
         #endregion
+
+        #region Data Persistence
+
+        /// <summary>
+        /// Saves an object to a file.
+        /// </summary>
+        /// <typeparam name="TElement">The type of object to save.</typeparam>
+        /// <param name="fileName">The file path to be saved.</param>
+        /// <param name="element">The object to save.</param>
+        /// <param name="name">
+        /// Optional object name. If it is <b>null</b>, the name will be formed from <paramref name="fileName"/>.
+        /// </param>
+        /// <param name="comment">Optional comment to put in the beginning of the file.</param>
+        /// <param name="attributes">A list of attributes used to customize the writing procedure.</param>
+        public static void Save<TElement>(
+            string fileName,
+            TElement element,
+            string name = null,
+            string comment = null,
+            CvAttrList attributes = default(CvAttrList)) where TElement : CvHandle
+        {
+            NativeMethods.cvSave(fileName, element, name, comment, attributes);
+        }
+
+        /// <summary>
+        /// Loads an object from a file.
+        /// </summary>
+        /// <typeparam name="TElement">The type of object to load.</typeparam>
+        /// <param name="fileName">The file path to be loaded.</param>
+        /// <param name="storage">
+        /// Memory storage for dynamic structures, such as <see cref="CvSeq"/> or <see cref="CvGraph"/>.
+        /// It is not used for matrices or images.
+        /// </param>
+        /// <param name="name">
+        /// Optional object name. If it is <b>null</b>, the first top-level object in the storage will be loaded.
+        /// </param>
+        /// <returns>The loaded object instance.</returns>
+        public static TElement Load<TElement>(string fileName, CvMemStorage storage = null, string name = null) where TElement : CvHandle
+        {
+            string realName;
+            return Load<TElement>(fileName, storage, name, out realName);
+        }
+
+        /// <summary>
+        /// Loads an object from a file.
+        /// </summary>
+        /// <typeparam name="TElement">The type of object to load.</typeparam>
+        /// <param name="fileName">The file path to be loaded.</param>
+        /// <param name="storage">
+        /// Memory storage for dynamic structures, such as <see cref="CvSeq"/> or <see cref="CvGraph"/>.
+        /// It is not used for matrices or images.
+        /// </param>
+        /// <param name="name">
+        /// Optional object name. If it is <b>null</b>, the first top-level object in the storage will be loaded.
+        /// </param>
+        /// <param name="realName">Optional output parameter that will contain the name of the loaded object.</param>
+        /// <returns>The loaded object instance.</returns>
+        public static TElement Load<TElement>(string fileName, CvMemStorage storage, string name, out string realName) where TElement : CvHandle
+        {
+            IntPtr realNamePtr;
+            var handle = NativeMethods.cvLoad(fileName, storage ?? CvMemStorage.Null, name, out realNamePtr);
+            realName = Marshal.PtrToStringAnsi(realNamePtr);
+            var result = (TElement)Activator.CreateInstance(
+                typeof(TElement),
+                System.Reflection.BindingFlags.Instance |
+                System.Reflection.BindingFlags.NonPublic,
+                null,
+                new object[] { handle },
+                null);
+            return result;
+        }
+
+        #endregion
     }
 }

@@ -45,6 +45,9 @@
   <ItemGroup>
     <Compile Include="Calib3D.cs" />
     <Compile Include="Calib3DTypes.cs" />
+    <Compile Include="CvAttrList.cs" />
+    <Compile Include="CvFileStorage.cs" />
+    <Compile Include="CvHaarClassifierCascade.cs" />
     <Compile Include="CvPoint2D64f.cs" />
     <Compile Include="CvPoint3D64f.cs" />
     <Compile Include="Core.cs" />
@@ -98,7 +101,9 @@
     <Compile Include="Native\highguitypes.cs" />
     <Compile Include="Native\imgproc.cs" />
     <Compile Include="Native\coretypes.cs" />
+    <Compile Include="Native\objdetect.cs" />
     <Compile Include="NumericAggregateConverter.cs" />
+    <Compile Include="ObjDetectTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
