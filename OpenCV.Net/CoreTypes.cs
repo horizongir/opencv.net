@@ -806,4 +806,70 @@ namespace OpenCV.Net
         /// </summary>
         Italic = 16
     }
+
+    /// <summary>
+    /// Specifies available flags for creating <see cref="CvFileStorage"/> instances.
+    /// </summary>
+    [Flags]
+    public enum StorageFlags : int
+    {
+        /// <summary>
+        /// Specifies that the file should be open for reading.
+        /// </summary>
+        Read = 0,
+
+        /// <summary>
+        /// Specifies that the file should be open for writing.
+        /// </summary>
+        Write = 1,
+
+        /// <summary>
+        /// Specifies that the file should be open for appending.
+        /// </summary>
+        Append = 2,
+
+        /// <summary>
+        /// Specifies that all data in the file should be read or that write operations should
+        /// target internal memory buffers.
+        /// </summary>
+        Memory = 4,
+
+        /// <summary>
+        /// Specifies that the file format should be automatically determined.
+        /// </summary>
+        FormatAuto = 0,
+
+        /// <summary>
+        /// Specifies that the XML file format should be used.
+        /// </summary>
+        FormatXml = 8,
+
+        /// <summary>
+        /// Specifies that the YAML file format should be used.
+        /// </summary>
+        FormatYaml = 16,
+    }
+
+    /// <summary>
+    /// Specifies type flags for writing compound structures to a <see cref="CvFileStorage"/> instance.
+    /// </summary>
+    [Flags]
+    public enum StructStorageFlags : int
+    {
+        /// <summary>
+        /// Specifies that the written structure is a sequence, that is, its elements do not have a name.
+        /// </summary>
+        Seq = 5,
+
+        /// <summary>
+        /// Specifies that the written structure is a map, that is, all its elements have names.
+        /// </summary>
+        Map = 6,
+
+        /// <summary>
+        /// Specifies that the structure is written as a flow (not as a block), which is more compact.
+        /// This is an optional flag that is used only for YAML streams.
+        /// </summary>
+        Flow = 8
+    }
 }

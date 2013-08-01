@@ -296,6 +296,14 @@ namespace OpenCV.Net.Native
         int line_type;
     }
 
+    [StructLayout(LayoutKind.Sequential)]
+    struct _CvFileNode
+    {
+        public int tag;
+        public IntPtr info;
+        public _CvString str;
+    }
+
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     delegate int CvCmpFunc(IntPtr a, IntPtr b, IntPtr userdata);
 

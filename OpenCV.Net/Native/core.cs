@@ -771,6 +771,66 @@ namespace OpenCV.Net.Native
 
         #endregion
 
+        #region Data Persistence
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        internal static extern IntPtr cvOpenFileStorage(string filename, CvMemStorage memstorage, StorageFlags flags, string encoding);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvReleaseFileStorage(ref IntPtr fs);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        internal static extern string cvAttrValue(ref CvAttrList attr, string attr_name);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        internal static extern void cvStartWriteStruct(
+            CvFileStorage fs,
+            string name,
+            StructStorageFlags struct_flags,
+            string type_name,
+            CvAttrList attributes);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvEndWriteStruct(CvFileStorage fs);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        internal static extern void cvWriteInt(CvFileStorage fs, string name, int value);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        internal static extern void cvWriteReal(CvFileStorage fs, string name, double value);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        internal static extern void cvWriteString(CvFileStorage fs, string name, string str, int quote);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        internal static extern void cvWriteComment(CvFileStorage fs, string comment, int eol_comment);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        internal static extern void cvWrite(CvFileStorage fs, string name, CvHandle ptr, CvAttrList attributes);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvStartNextStream(CvFileStorage fs);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        internal static extern void cvWriteRawData(CvFileStorage fs, IntPtr src, int len, string dt);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        internal static extern void cvSave(
+            string filename,
+            CvHandle struct_ptr,
+            string name,
+            string comment,
+            CvAttrList attributes);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        internal static extern IntPtr cvLoad(
+            string filename,
+            CvMemStorage memstorage,
+            string name,
+            out IntPtr real_name);
+
+        #endregion
+
         #region Error handling
 
         [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
@@ -786,7 +846,7 @@ namespace OpenCV.Net.Native
         internal static extern IntPtr cvErrorStr(int status);
 
         [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern IntPtr cvRedirectError([MarshalAs(UnmanagedType.FunctionPtr)]CvErrorCallback error_handler, IntPtr userdata, out IntPtr prevUserdata);
+        internal static extern IntPtr cvRedirectError(CvErrorCallback error_handler, IntPtr userdata, out IntPtr prevUserdata);
 
         internal static CvErrorCallback CvErrorCallback;
 

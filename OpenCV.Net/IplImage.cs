@@ -18,6 +18,11 @@ namespace OpenCV.Net
         {
         }
 
+        internal IplImage(IntPtr handle)
+            : this(handle, true)
+        {
+        }
+
         internal IplImage(IntPtr handle, bool ownsHandle)
             : base(ownsHandle)
         {

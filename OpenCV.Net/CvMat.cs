@@ -30,6 +30,11 @@ namespace OpenCV.Net
         {
         }
 
+        internal CvMat(IntPtr handle)
+            : this(handle, true)
+        {
+        }
+
         internal CvMat(IntPtr handle, bool ownsHandle)
             : base(ownsHandle)
         {
