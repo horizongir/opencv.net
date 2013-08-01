@@ -46,9 +46,12 @@
     <Compile Include="Calib3D.cs" />
     <Compile Include="Calib3DTypes.cs" />
     <Compile Include="CvAttrList.cs" />
+    <Compile Include="CvAvgComp.cs" />
     <Compile Include="CvFileStorage.cs" />
     <Compile Include="CvHaarClassifierCascade.cs" />
     <Compile Include="CvKalman.cs" />
+    <Compile Include="CvLatentSvmDetector.cs" />
+    <Compile Include="CvObjectDetection.cs" />
     <Compile Include="CvPoint2D64f.cs" />
     <Compile Include="CvPoint3D64f.cs" />
     <Compile Include="Core.cs" />
