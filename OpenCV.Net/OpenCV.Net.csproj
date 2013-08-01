@@ -103,10 +103,13 @@
     <Compile Include="Native\imgproc.cs" />
     <Compile Include="Native\coretypes.cs" />
     <Compile Include="Native\objdetect.cs" />
+    <Compile Include="Native\photo.cs" />
     <Compile Include="Native\video.cs" />
     <Compile Include="Native\videotypes.cs" />
     <Compile Include="NumericAggregateConverter.cs" />
     <Compile Include="ObjDetectTypes.cs" />
+    <Compile Include="Photo.cs" />
+    <Compile Include="PhotoTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Video.cs" />
     <Compile Include="VideoTypes.cs" />
