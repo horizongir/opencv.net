@@ -27,5 +27,23 @@ namespace OpenCV.Net.Native
             CvSize max_size);
 
         #endregion
+
+        #region Object Detection using Latent SVM
+
+        [DllImport(objdetectLib, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        internal static extern CvLatentSvmDetector cvLoadLatentSvmDetector(string filename);
+
+        [DllImport(objdetectLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cvReleaseLatentSvmDetector(ref IntPtr detector);
+
+        [DllImport(objdetectLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern CvSeq cvLatentSvmDetectObjects(
+            IplImage image,
+            CvLatentSvmDetector detector,
+            CvMemStorage storage,
+            float overlap_threshold,
+            int numThreads);
+
+        #endregion
     }
 }
