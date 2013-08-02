@@ -161,6 +161,16 @@ namespace OpenCV.Net
         }
 
         /// <summary>
+        /// Converts one array to another.
+        /// </summary>
+        /// <param name="src">The source array.</param>
+        /// <param name="dst">The destination array.</param>
+        public static void Convert(CvArr src, CvArr dst)
+        {
+            ConvertScale(src, dst);
+        }
+
+        /// <summary>
         /// Converts input array elements to an 8-bit unsigned integer array
         /// with optional linear transformation.
         /// </summary>
