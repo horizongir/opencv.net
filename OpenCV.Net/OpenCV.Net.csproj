@@ -47,6 +47,7 @@
     <Compile Include="Calib3DTypes.cs" />
     <Compile Include="CvAttrList.cs" />
     <Compile Include="CvAvgComp.cs" />
+    <Compile Include="CvFileNode.cs" />
     <Compile Include="CvFileStorage.cs" />
     <Compile Include="CvHaarClassifierCascade.cs" />
     <Compile Include="CvKalman.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="CvSlice.cs" />
     <Compile Include="CvSparseMat.cs" />
     <Compile Include="CvStereoBMState.cs" />
+    <Compile Include="CvStringHashNode.cs" />
     <Compile Include="CvTermCriteria.cs" />
     <Compile Include="CvVideoWriter.cs" />
     <Compile Include="HighGui.cs" />

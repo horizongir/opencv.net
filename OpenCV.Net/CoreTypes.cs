@@ -851,6 +851,42 @@ namespace OpenCV.Net
     }
 
     /// <summary>
+    /// Specifies the available types of file storage node values.
+    /// </summary>
+    public enum FileNodeType : int
+    {
+        /// <summary>
+        /// Specifies an integer type value.
+        /// </summary>
+        Integer = 1,
+
+        /// <summary>
+        /// Specifies a floating-point type value.
+        /// </summary>
+        Real = 2,
+
+        /// <summary>
+        /// Specifies a text string type value.
+        /// </summary>
+        String = 3,
+
+        /// <summary>
+        /// Specifies a reference type value.
+        /// </summary>
+        Ref = 4,
+
+        /// <summary>
+        /// Specifies a sequence node value.
+        /// </summary>
+        Seq = 5,
+
+        /// <summary>
+        /// Specifies a map node value.
+        /// </summary>
+        Map = 6,
+    }
+
+    /// <summary>
     /// Specifies type flags for writing compound structures to a <see cref="CvFileStorage"/> instance.
     /// </summary>
     [Flags]

@@ -101,7 +101,7 @@ namespace OpenCV.Net
         /// <returns>The pointer to the copy of the string in storage.</returns>
         public IntPtr AllocString(string value)
         {
-            return NativeMethods.cvMemStorageAllocString(this, value, -1).Ptr;
+            return NativeMethods.cvMemStorageAllocString(this, value, -1).ptr;
         }
 
         /// <summary>

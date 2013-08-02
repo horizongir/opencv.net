@@ -575,7 +575,7 @@ namespace OpenCV.Net
 
         class CvArrNull : CvArr
         {
-            public CvArrNull() : base(false) { }
+            internal CvArrNull() : base(false) { }
 
             protected override bool ReleaseHandle()
             {
