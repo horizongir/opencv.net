@@ -13,6 +13,14 @@ namespace OpenCV.Net
     public class CvChain : CvSeq
     {
         /// <summary>
+        /// Gets the size of the <see cref="CvChain"/> header, in bytes.
+        /// </summary>
+        public static new int HeaderSize
+        {
+            get { return SeqHelper.ChainHeaderSize; }
+        }
+
+        /// <summary>
         /// Gets the origin of the Freeman chain.
         /// </summary>
         public CvPoint Origin

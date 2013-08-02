@@ -16,6 +16,14 @@ namespace OpenCV.Net
         }
 
         /// <summary>
+        /// Gets the size of the <see cref="CvGraph"/> header, in bytes.
+        /// </summary>
+        public static new int HeaderSize
+        {
+            get { return SeqHelper.GraphHeaderSize; }
+        }
+
+        /// <summary>
         /// Gets the total number of vertices in the graph.
         /// </summary>
         public int VertexCount
