@@ -89,6 +89,7 @@
     <Compile Include="CvSize2D32f.cs" />
     <Compile Include="CvSlice.cs" />
     <Compile Include="CvSparseMat.cs" />
+    <Compile Include="CvSparseNode.cs" />
     <Compile Include="CvStereoBMState.cs" />
     <Compile Include="CvStringHashNode.cs" />
     <Compile Include="CvTermCriteria.cs" />

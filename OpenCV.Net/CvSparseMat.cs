@@ -106,14 +106,22 @@ namespace OpenCV.Net
             }
         }
 
-        public IEnumerable<IntPtr> GetSparseNodes()
+        /// <summary>
+        /// Returns an <see cref="System.Collections.IEnumerable"/> that supports iteration over the element nodes
+        /// of the sparse array.
+        /// </summary>
+        /// <returns>
+        /// An <see cref="System.Collections.IEnumerable"/> that supports iteration over the element nodes
+        /// of the sparse array.
+        /// </returns>
+        public IEnumerable<CvSparseNode> GetSparseNodes()
         {
             _CvSparseMatIterator iterator;
             for (var node = NativeMethods.cvInitSparseMatIterator(this, out iterator);
                  node != IntPtr.Zero;
                  node = GetNextSparseNode(ref iterator))
             {
-                yield return node;
+                yield return new CvSparseNode(node, this);
             }
         }
 

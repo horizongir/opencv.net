@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using OpenCV.Net.Native;
+using System.Runtime.InteropServices;
 
 namespace OpenCV.Net
 {
@@ -168,6 +169,20 @@ namespace OpenCV.Net
         }
 
         /// <summary>
+        /// Gets a pointer to the aligned matrix data.
+        /// </summary>
+        public IntPtr Data
+        {
+            get
+            {
+                unsafe
+                {
+                    return ((_CvMat*)handle.ToPointer())->data;
+                }
+            }
+        }
+
+        /// <summary>
         /// Creates a new <see cref="CvMat"/> that is a copy of the current instance.
         /// </summary>
         /// <returns>
@@ -177,6 +192,366 @@ namespace OpenCV.Net
         public CvMat Clone()
         {
             return new CvMat(NativeMethods.cvCloneMat(this), true);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CvMat"/> class that is a wrapper header for
+        /// the specified <paramref name="data"/>. The reference to <paramref name="data"/> will be
+        /// pinned in the garbage collector until the matrix header is released.
+        /// </summary>
+        /// <param name="data">The array to be wrapped.</param>
+        /// <returns>
+        /// A new <see cref="CvMat"/> instance that is a wrapper header around <paramref name="data"/>.
+        /// </returns>
+        public static CvMat CreateMatHeader(byte[] data)
+        {
+            return new CvMatDataHandle(1, data.Length, CvDepth.U8, 1, data);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CvMat"/> class that is a wrapper header for
+        /// the specified <paramref name="data"/>. The reference to <paramref name="data"/> will be
+        /// pinned in the garbage collector until the matrix header is released.
+        /// </summary>
+        /// <param name="data">The array to be wrapped.</param>
+        /// <returns>
+        /// A new <see cref="CvMat"/> instance that is a wrapper header around <paramref name="data"/>.
+        /// </returns>
+        public static CvMat CreateMatHeader(byte[,] data)
+        {
+            return new CvMatDataHandle(data.GetLength(0), data.GetLength(1), CvDepth.U8, 1, data);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CvMat"/> class that is a wrapper header for
+        /// the specified <paramref name="data"/>. The reference to <paramref name="data"/> will be
+        /// pinned in the garbage collector until the matrix header is released.
+        /// </summary>
+        /// <param name="data">The array to be wrapped.</param>
+        /// <returns>
+        /// A new <see cref="CvMat"/> instance that is a wrapper header around <paramref name="data"/>.
+        /// </returns>
+        public static CvMat CreateMatHeader(short[] data)
+        {
+            return new CvMatDataHandle(1, data.Length, CvDepth.S16, 1, data);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CvMat"/> class that is a wrapper header for
+        /// the specified <paramref name="data"/>. The reference to <paramref name="data"/> will be
+        /// pinned in the garbage collector until the matrix header is released.
+        /// </summary>
+        /// <param name="data">The array to be wrapped.</param>
+        /// <returns>
+        /// A new <see cref="CvMat"/> instance that is a wrapper header around <paramref name="data"/>.
+        /// </returns>
+        public static CvMat CreateMatHeader(short[,] data)
+        {
+            return new CvMatDataHandle(data.GetLength(0), data.GetLength(1), CvDepth.S16, 1, data);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CvMat"/> class that is a wrapper header for
+        /// the specified <paramref name="data"/>. The reference to <paramref name="data"/> will be
+        /// pinned in the garbage collector until the matrix header is released.
+        /// </summary>
+        /// <param name="data">The array to be wrapped.</param>
+        /// <returns>
+        /// A new <see cref="CvMat"/> instance that is a wrapper header around <paramref name="data"/>.
+        /// </returns>
+        public static CvMat CreateMatHeader(ushort[] data)
+        {
+            return new CvMatDataHandle(1, data.Length, CvDepth.U16, 1, data);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CvMat"/> class that is a wrapper header for
+        /// the specified <paramref name="data"/>. The reference to <paramref name="data"/> will be
+        /// pinned in the garbage collector until the matrix header is released.
+        /// </summary>
+        /// <param name="data">The array to be wrapped.</param>
+        /// <returns>
+        /// A new <see cref="CvMat"/> instance that is a wrapper header around <paramref name="data"/>.
+        /// </returns>
+        public static CvMat CreateMatHeader(ushort[,] data)
+        {
+            return new CvMatDataHandle(data.GetLength(0), data.GetLength(1), CvDepth.U16, 1, data);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CvMat"/> class that is a wrapper header for
+        /// the specified <paramref name="data"/>. The reference to <paramref name="data"/> will be
+        /// pinned in the garbage collector until the matrix header is released.
+        /// </summary>
+        /// <param name="data">The array to be wrapped.</param>
+        /// <returns>
+        /// A new <see cref="CvMat"/> instance that is a wrapper header around <paramref name="data"/>.
+        /// </returns>
+        public static CvMat CreateMatHeader(int[] data)
+        {
+            return new CvMatDataHandle(1, data.Length, CvDepth.S32, 1, data);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CvMat"/> class that is a wrapper header for
+        /// the specified <paramref name="data"/>. The reference to <paramref name="data"/> will be
+        /// pinned in the garbage collector until the matrix header is released.
+        /// </summary>
+        /// <param name="data">The array to be wrapped.</param>
+        /// <returns>
+        /// A new <see cref="CvMat"/> instance that is a wrapper header around <paramref name="data"/>.
+        /// </returns>
+        public static CvMat CreateMatHeader(int[,] data)
+        {
+            return new CvMatDataHandle(data.GetLength(0), data.GetLength(1), CvDepth.S32, 1, data);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CvMat"/> class that is a wrapper header for
+        /// the specified <paramref name="data"/>. The reference to <paramref name="data"/> will be
+        /// pinned in the garbage collector until the matrix header is released.
+        /// </summary>
+        /// <param name="data">The array to be wrapped.</param>
+        /// <returns>
+        /// A new <see cref="CvMat"/> instance that is a wrapper header around <paramref name="data"/>.
+        /// </returns>
+        public static CvMat CreateMatHeader(float[] data)
+        {
+            return new CvMatDataHandle(1, data.Length, CvDepth.F32, 1, data);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CvMat"/> class that is a wrapper header for
+        /// the specified <paramref name="data"/>. The reference to <paramref name="data"/> will be
+        /// pinned in the garbage collector until the matrix header is released.
+        /// </summary>
+        /// <param name="data">The array to be wrapped.</param>
+        /// <returns>
+        /// A new <see cref="CvMat"/> instance that is a wrapper header around <paramref name="data"/>.
+        /// </returns>
+        public static CvMat CreateMatHeader(float[,] data)
+        {
+            return new CvMatDataHandle(data.GetLength(0), data.GetLength(1), CvDepth.F32, 1, data);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CvMat"/> class that is a wrapper header for
+        /// the specified <paramref name="data"/>. The reference to <paramref name="data"/> will be
+        /// pinned in the garbage collector until the matrix header is released.
+        /// </summary>
+        /// <param name="data">The array to be wrapped.</param>
+        /// <returns>
+        /// A new <see cref="CvMat"/> instance that is a wrapper header around <paramref name="data"/>.
+        /// </returns>
+        public static CvMat CreateMatHeader(double[] data)
+        {
+            return new CvMatDataHandle(1, data.Length, CvDepth.F64, 1, data);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CvMat"/> class that is a wrapper header for
+        /// the specified <paramref name="data"/>. The reference to <paramref name="data"/> will be
+        /// pinned in the garbage collector until the matrix header is released.
+        /// </summary>
+        /// <param name="data">The array to be wrapped.</param>
+        /// <returns>
+        /// A new <see cref="CvMat"/> instance that is a wrapper header around <paramref name="data"/>.
+        /// </returns>
+        public static CvMat CreateMatHeader(double[,] data)
+        {
+            return new CvMatDataHandle(data.GetLength(0), data.GetLength(1), CvDepth.F64, 1, data);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CvMat"/> class that is a copy of
+        /// the specified managed array <paramref name="data"/>.
+        /// </summary>
+        /// <param name="data">The array that is to be converted to a <see cref="CvMat"/>.</param>
+        /// <returns>
+        /// A new <see cref="CvMat"/> instance that is a copy of the <paramref name="data"/> array.
+        /// </returns>
+        public static CvMat FromArray(byte[] data)
+        {
+            using (var dataHeader = CreateMatHeader(data))
+            {
+                return dataHeader.Clone();
+            }
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CvMat"/> class that is a copy of
+        /// the specified managed array <paramref name="data"/>.
+        /// </summary>
+        /// <param name="data">The array that is to be converted to a <see cref="CvMat"/>.</param>
+        /// <returns>
+        /// A new <see cref="CvMat"/> instance that is a copy of the <paramref name="data"/> array.
+        /// </returns>
+        public static CvMat FromArray(byte[,] data)
+        {
+            using (var dataHeader = CreateMatHeader(data))
+            {
+                return dataHeader.Clone();
+            }
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CvMat"/> class that is a copy of
+        /// the specified managed array <paramref name="data"/>.
+        /// </summary>
+        /// <param name="data">The array that is to be converted to a <see cref="CvMat"/>.</param>
+        /// <returns>
+        /// A new <see cref="CvMat"/> instance that is a copy of the <paramref name="data"/> array.
+        /// </returns>
+        public static CvMat FromArray(short[] data)
+        {
+            using (var dataHeader = CreateMatHeader(data))
+            {
+                return dataHeader.Clone();
+            }
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CvMat"/> class that is a copy of
+        /// the specified managed array <paramref name="data"/>.
+        /// </summary>
+        /// <param name="data">The array that is to be converted to a <see cref="CvMat"/>.</param>
+        /// <returns>
+        /// A new <see cref="CvMat"/> instance that is a copy of the <paramref name="data"/> array.
+        /// </returns>
+        public static CvMat FromArray(short[,] data)
+        {
+            using (var dataHeader = CreateMatHeader(data))
+            {
+                return dataHeader.Clone();
+            }
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CvMat"/> class that is a copy of
+        /// the specified managed array <paramref name="data"/>.
+        /// </summary>
+        /// <param name="data">The array that is to be converted to a <see cref="CvMat"/>.</param>
+        /// <returns>
+        /// A new <see cref="CvMat"/> instance that is a copy of the <paramref name="data"/> array.
+        /// </returns>
+        public static CvMat FromArray(ushort[] data)
+        {
+            using (var dataHeader = CreateMatHeader(data))
+            {
+                return dataHeader.Clone();
+            }
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CvMat"/> class that is a copy of
+        /// the specified managed array <paramref name="data"/>.
+        /// </summary>
+        /// <param name="data">The array that is to be converted to a <see cref="CvMat"/>.</param>
+        /// <returns>
+        /// A new <see cref="CvMat"/> instance that is a copy of the <paramref name="data"/> array.
+        /// </returns>
+        public static CvMat FromArray(ushort[,] data)
+        {
+            using (var dataHeader = CreateMatHeader(data))
+            {
+                return dataHeader.Clone();
+            }
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CvMat"/> class that is a copy of
+        /// the specified managed array <paramref name="data"/>.
+        /// </summary>
+        /// <param name="data">The array that is to be converted to a <see cref="CvMat"/>.</param>
+        /// <returns>
+        /// A new <see cref="CvMat"/> instance that is a copy of the <paramref name="data"/> array.
+        /// </returns>
+        public static CvMat FromArray(int[] data)
+        {
+            using (var dataHeader = CreateMatHeader(data))
+            {
+                return dataHeader.Clone();
+            }
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CvMat"/> class that is a copy of
+        /// the specified managed array <paramref name="data"/>.
+        /// </summary>
+        /// <param name="data">The array that is to be converted to a <see cref="CvMat"/>.</param>
+        /// <returns>
+        /// A new <see cref="CvMat"/> instance that is a copy of the <paramref name="data"/> array.
+        /// </returns>
+        public static CvMat FromArray(int[,] data)
+        {
+            using (var dataHeader = CreateMatHeader(data))
+            {
+                return dataHeader.Clone();
+            }
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CvMat"/> class that is a copy of
+        /// the specified managed array <paramref name="data"/>.
+        /// </summary>
+        /// <param name="data">The array that is to be converted to a <see cref="CvMat"/>.</param>
+        /// <returns>
+        /// A new <see cref="CvMat"/> instance that is a copy of the <paramref name="data"/> array.
+        /// </returns>
+        public static CvMat FromArray(float[] data)
+        {
+            using (var dataHeader = CreateMatHeader(data))
+            {
+                return dataHeader.Clone();
+            }
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CvMat"/> class that is a copy of
+        /// the specified managed array <paramref name="data"/>.
+        /// </summary>
+        /// <param name="data">The array that is to be converted to a <see cref="CvMat"/>.</param>
+        /// <returns>
+        /// A new <see cref="CvMat"/> instance that is a copy of the <paramref name="data"/> array.
+        /// </returns>
+        public static CvMat FromArray(float[,] data)
+        {
+            using (var dataHeader = CreateMatHeader(data))
+            {
+                return dataHeader.Clone();
+            }
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CvMat"/> class that is a copy of
+        /// the specified managed array <paramref name="data"/>.
+        /// </summary>
+        /// <param name="data">The array that is to be converted to a <see cref="CvMat"/>.</param>
+        /// <returns>
+        /// A new <see cref="CvMat"/> instance that is a copy of the <paramref name="data"/> array.
+        /// </returns>
+        public static CvMat FromArray(double[] data)
+        {
+            using (var dataHeader = CreateMatHeader(data))
+            {
+                return dataHeader.Clone();
+            }
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CvMat"/> class that is a copy of
+        /// the specified managed array <paramref name="data"/>.
+        /// </summary>
+        /// <param name="data">The array that is to be converted to a <see cref="CvMat"/>.</param>
+        /// <returns>
+        /// A new <see cref="CvMat"/> instance that is a copy of the <paramref name="data"/> array.
+        /// </returns>
+        public static CvMat FromArray(double[,] data)
+        {
+            using (var dataHeader = CreateMatHeader(data))
+            {
+                return dataHeader.Clone();
+            }
         }
 
         /// <summary>
@@ -195,6 +570,29 @@ namespace OpenCV.Net
 
             NativeMethods.cvReleaseMat(ref handle);
             return true;
+        }
+
+        class CvMatDataHandle : CvMat
+        {
+            GCHandle dataHandle;
+
+            public CvMatDataHandle(int rows, int cols, CvDepth depth, int channels, object data)
+                : this(rows, cols, depth, channels, GCHandle.Alloc(data, GCHandleType.Pinned))
+            {
+            }
+
+            private CvMatDataHandle(int rows, int cols, CvDepth depth, int channels, GCHandle dataHandle)
+                : base(rows, cols, depth, channels, dataHandle.AddrOfPinnedObject())
+            {
+                this.dataHandle = dataHandle;
+            }
+
+            protected override bool ReleaseHandle()
+            {
+                base.ReleaseHandle();
+                dataHandle.Free();
+                return true;
+            }
         }
 
         class CvMatNull : CvMat
