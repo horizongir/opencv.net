@@ -531,6 +531,25 @@ namespace OpenCV.Net
             NativeMethods.cvSetZero(this);
         }
 
+        /// <summary>
+        /// Checks that every array element is neither NaN nor Infinity. It can also check
+        /// whether the elements are within a specified range.
+        /// </summary>
+        /// <param name="flags">
+        /// The operation flags. A combination of <see cref="CheckArrayFlags.CheckNanInfinity"/>
+        /// and <see cref="CheckArrayFlags.CheckRange"/>. If the latter is set, the function
+        /// checks whether every value of the array is greater than or equal to <paramref name="minVal"/>
+        /// and less than <paramref name="maxVal"/>. If <see cref="CheckArrayFlags.CheckQuiet"/> is set,
+        /// the function does not raise an error if an element is invalid or out of range.
+        /// </param>
+        /// <param name="minVal">The inclusive lower boundary of valid values range.</param>
+        /// <param name="maxVal">The exclusive upper boundary of valid values range.</param>
+        /// <returns><b>true</b> if all array elements are valid and within range; <b>false</b> otherwise.</returns>
+        public bool CheckRange(CheckArrayFlags flags, double minVal, double maxVal)
+        {
+            return NativeMethods.cvCheckArr(this, flags, minVal, maxVal) > 0;
+        }
+
         internal class CvMatHeader : CvMat
         {
             CvArr owner;
