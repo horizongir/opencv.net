@@ -44,7 +44,7 @@ namespace OpenCV.Net
         /// <param name="newContour">The substituting contour.</param>
         public void SubstituteContour(CvSeq newContour)
         {
-            NativeMethods.cvSubstituteContour(this, newContour);
+            NativeMethods.cvSubstituteContour(this, newContour ?? CvSeq.Null);
         }
 
         /// <summary>
