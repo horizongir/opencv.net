@@ -204,6 +204,15 @@ namespace OpenCV.Net.Native
         internal static extern IntPtr cvGetImage(CvArr arr, out _IplImage image_header);
 
         [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr cvReshapeMatND(
+            CvArr arr,
+            int sizeof_header,
+            CvArr header,
+            int new_cn,
+            int new_dims,
+            int[] new_sizes);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
         internal static extern IntPtr cvReshape(
             CvArr arr,
             out _CvMat header,

@@ -298,12 +298,12 @@ namespace OpenCV.Net
         /// Calculates the sum of a multiple of an array with another array.
         /// </summary>
         /// <param name="A">The first input array.</param>
-        /// <param name="real_scalar">The scale factor for the first array.</param>
+        /// <param name="realScalar">The scale factor for the first array.</param>
         /// <param name="B">The second input array.</param>
         /// <param name="C">The destination array.</param>
-        public static void AXPY(CvArr A, double real_scalar, CvArr B, CvArr C)
+        public static void AXPY(CvArr A, double realScalar, CvArr B, CvArr C)
         {
-            ScaleAdd(A, CvScalar.Real(real_scalar), B, C);
+            ScaleAdd(A, CvScalar.Real(realScalar), B, C);
         }
 
         /// <summary>
@@ -464,12 +464,12 @@ namespace OpenCV.Net
         /// <param name="src1">The first input array.</param>
         /// <param name="src2">The second input array. Both input arrays must have a single channel.</param>
         /// <param name="dst">The destination array. It must have U8 or S8 type.</param>
-        /// <param name="cmp_op">
+        /// <param name="cmpOp">
         /// The comparison operation used to test the relation between the elements to be checked.
         /// </param>
-        public static void Cmp(CvArr src1, CvArr src2, CvArr dst, ComparisonOperation cmp_op)
+        public static void Cmp(CvArr src1, CvArr src2, CvArr dst, ComparisonOperation cmpOp)
         {
-            NativeMethods.cvCmp(src2, src2, dst, cmp_op);
+            NativeMethods.cvCmp(src2, src2, dst, cmpOp);
         }
 
         /// <summary>
@@ -665,26 +665,6 @@ namespace OpenCV.Net
         public static float Cbrt(float value)
         {
             return NativeMethods.cvCbrt(value);
-        }
-
-        /// <summary>
-        /// Checks that every array element is neither NaN nor Infinity. It can also check
-        /// whether the elements are within a specified range.
-        /// </summary>
-        /// <param name="arr">The source array to check.</param>
-        /// <param name="flags">
-        /// The operation flags. A combination of <see cref="CheckArrayFlags.CheckNanInfinity"/>
-        /// and <see cref="CheckArrayFlags.CheckRange"/>. If the latter is set, the function
-        /// checks whether every value of the array is greater than or equal to <paramref name="min_val"/>
-        /// and less than <paramref name="max_val"/>. If <see cref="CheckArrayFlags.CheckQuiet"/> is set,
-        /// the function does not raise an error if an element is invalid or out of range.
-        /// </param>
-        /// <param name="min_val">The inclusive lower boundary of valid values range.</param>
-        /// <param name="max_val">The exclusive upper boundary of valid values range.</param>
-        /// <returns><b>true</b> if all array elements are valid and within range; <b>false</b> otherwise.</returns>
-        public static bool CheckArr(CvArr arr, CheckArrayFlags flags, double min_val, double max_val)
-        {
-            return NativeMethods.cvCheckArr(arr, flags, min_val, max_val) > 0;
         }
 
         /// <summary>

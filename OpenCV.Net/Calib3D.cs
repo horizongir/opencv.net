@@ -250,12 +250,12 @@ namespace OpenCV.Net
         /// <summary>
         /// Finds the perspective transformation between two planes.
         /// </summary>
-        /// <param name="src_points">
+        /// <param name="srcPoints">
         /// Coordinates of the points in the original plane, 2xN, Nx2, 3xN or Nx3 1-channel array (the latter two are
         /// for representation in homogeneous coordinates), where N is the number of points. 1xN or Nx1 2- or 3-channel
         /// array can also be passed.
         /// </param>
-        /// <param name="dst_points">
+        /// <param name="dstPoints">
         /// Point coordinates in the destination plane, 2xN, Nx2, 3xN or Nx3 1-channel, or 1xN or Nx1 2- or 3-channel array.
         /// </param>
         /// <param name="homography">The output 3x3 homography matrix.</param>
@@ -269,14 +269,14 @@ namespace OpenCV.Net
         /// </param>
         /// <returns>A value indicating whether the homography matrix calculation was successful.</returns>
         public static bool FindHomography(
-            CvMat src_points,
-            CvMat dst_points,
+            CvMat srcPoints,
+            CvMat dstPoints,
             CvMat homography,
             FindHomographyMethod method = FindHomographyMethod.Regular,
             double ransacReprojThreshold = 3,
             CvMat mask = null)
         {
-            return NativeMethods.cvFindHomography(src_points, dst_points, homography, method, ransacReprojThreshold, mask ?? CvMat.Null) > 0;
+            return NativeMethods.cvFindHomography(srcPoints, dstPoints, homography, method, ransacReprojThreshold, mask ?? CvMat.Null) > 0;
         }
 
         /// <summary>
@@ -686,160 +686,160 @@ namespace OpenCV.Net
         /// <summary>
         /// Computes useful camera characteristics from the camera matrix.
         /// </summary>
-        /// <param name="camera_matrix">
+        /// <param name="cameraMatrix">
         /// Input camera matrix that can be estimated by <see cref="CalibrateCamera2(CvMat,CvMat,CvMat,CvSize,CvMat,CvMat,CvMat,CvMat,CameraCalibrationFlags,CvTermCriteria)"/>
         /// or <see cref="StereoCalibrate(CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvSize,CvMat,CvMat,CvMat,CvMat,CvTermCriteria,StereoCalibrationFlags)"/>.
         /// </param>
-        /// <param name="image_size">Input image size in pixels.</param>
-        /// <param name="aperture_width">Physical width of the sensor.</param>
-        /// <param name="aperture_height">Physical height of the sensor.</param>
+        /// <param name="imageSize">Input image size in pixels.</param>
+        /// <param name="apertureWidth">Physical width of the sensor.</param>
+        /// <param name="apertureHeight">Physical height of the sensor.</param>
         public static void CalibrationMatrixValues(
-            CvMat camera_matrix,
-            CvSize image_size,
-            double aperture_width = 0,
-            double aperture_height = 0)
+            CvMat cameraMatrix,
+            CvSize imageSize,
+            double apertureWidth = 0,
+            double apertureHeight = 0)
         {
             double fovx;
-            CalibrationMatrixValues(camera_matrix, image_size, aperture_width, aperture_height, out fovx);
+            CalibrationMatrixValues(cameraMatrix, imageSize, apertureWidth, apertureHeight, out fovx);
         }
 
         /// <summary>
         /// Computes useful camera characteristics from the camera matrix.
         /// </summary>
-        /// <param name="camera_matrix">
+        /// <param name="cameraMatrix">
         /// Input camera matrix that can be estimated by <see cref="CalibrateCamera2(CvMat,CvMat,CvMat,CvSize,CvMat,CvMat,CvMat,CvMat,CameraCalibrationFlags,CvTermCriteria)"/>
         /// or <see cref="StereoCalibrate(CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvSize,CvMat,CvMat,CvMat,CvMat,CvTermCriteria,StereoCalibrationFlags)"/>.
         /// </param>
-        /// <param name="image_size">Input image size in pixels.</param>
-        /// <param name="aperture_width">Physical width of the sensor.</param>
-        /// <param name="aperture_height">Physical height of the sensor.</param>
+        /// <param name="imageSize">Input image size in pixels.</param>
+        /// <param name="apertureWidth">Physical width of the sensor.</param>
+        /// <param name="apertureHeight">Physical height of the sensor.</param>
         /// <param name="fovx">Output field of view in degrees along the horizontal sensor axis.</param>
         public static void CalibrationMatrixValues(
-            CvMat camera_matrix,
-            CvSize image_size,
-            double aperture_width,
-            double aperture_height,
+            CvMat cameraMatrix,
+            CvSize imageSize,
+            double apertureWidth,
+            double apertureHeight,
             out double fovx)
         {
             double fovy;
             CalibrationMatrixValues(
-                camera_matrix, image_size, aperture_width, aperture_height,
+                cameraMatrix, imageSize, apertureWidth, apertureHeight,
                 out fovx, out fovy);
         }
 
         /// <summary>
         /// Computes useful camera characteristics from the camera matrix.
         /// </summary>
-        /// <param name="camera_matrix">
+        /// <param name="cameraMatrix">
         /// Input camera matrix that can be estimated by <see cref="CalibrateCamera2(CvMat,CvMat,CvMat,CvSize,CvMat,CvMat,CvMat,CvMat,CameraCalibrationFlags,CvTermCriteria)"/>
         /// or <see cref="StereoCalibrate(CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvSize,CvMat,CvMat,CvMat,CvMat,CvTermCriteria,StereoCalibrationFlags)"/>.
         /// </param>
-        /// <param name="image_size">Input image size in pixels.</param>
-        /// <param name="aperture_width">Physical width of the sensor.</param>
-        /// <param name="aperture_height">Physical height of the sensor.</param>
+        /// <param name="imageSize">Input image size in pixels.</param>
+        /// <param name="apertureWidth">Physical width of the sensor.</param>
+        /// <param name="apertureHeight">Physical height of the sensor.</param>
         /// <param name="fovx">Output field of view in degrees along the horizontal sensor axis.</param>
         /// <param name="fovy">Output field of view in degrees along the vertical sensor axis.</param>
         public static void CalibrationMatrixValues(
-            CvMat camera_matrix,
-            CvSize image_size,
-            double aperture_width,
-            double aperture_height,
+            CvMat cameraMatrix,
+            CvSize imageSize,
+            double apertureWidth,
+            double apertureHeight,
             out double fovx,
             out double fovy)
         {
-            double focal_length;
+            double focalLength;
             CalibrationMatrixValues(
-                camera_matrix, image_size, aperture_width, aperture_height,
-                out fovx, out fovy, out focal_length);
+                cameraMatrix, imageSize, apertureWidth, apertureHeight,
+                out fovx, out fovy, out focalLength);
         }
 
         /// <summary>
         /// Computes useful camera characteristics from the camera matrix.
         /// </summary>
-        /// <param name="camera_matrix">
+        /// <param name="cameraMatrix">
         /// Input camera matrix that can be estimated by <see cref="CalibrateCamera2(CvMat,CvMat,CvMat,CvSize,CvMat,CvMat,CvMat,CvMat,CameraCalibrationFlags,CvTermCriteria)"/>
         /// or <see cref="StereoCalibrate(CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvSize,CvMat,CvMat,CvMat,CvMat,CvTermCriteria,StereoCalibrationFlags)"/>.
         /// </param>
-        /// <param name="image_size">Input image size in pixels.</param>
-        /// <param name="aperture_width">Physical width of the sensor.</param>
-        /// <param name="aperture_height">Physical height of the sensor.</param>
+        /// <param name="imageSize">Input image size in pixels.</param>
+        /// <param name="apertureWidth">Physical width of the sensor.</param>
+        /// <param name="apertureHeight">Physical height of the sensor.</param>
         /// <param name="fovx">Output field of view in degrees along the horizontal sensor axis.</param>
         /// <param name="fovy">Output field of view in degrees along the vertical sensor axis.</param>
-        /// <param name="focal_length">Focal length of the lens in mm.</param>
+        /// <param name="focalLength">Focal length of the lens in mm.</param>
         public static void CalibrationMatrixValues(
-            CvMat camera_matrix,
-            CvSize image_size,
-            double aperture_width,
-            double aperture_height,
+            CvMat cameraMatrix,
+            CvSize imageSize,
+            double apertureWidth,
+            double apertureHeight,
             out double fovx,
             out double fovy,
-            out double focal_length)
+            out double focalLength)
         {
-            CvPoint2D64f principal_point;
+            CvPoint2D64f principalPoint;
             CalibrationMatrixValues(
-                camera_matrix, image_size, aperture_width, aperture_height,
-                out fovx, out fovy, out focal_length, out principal_point);
+                cameraMatrix, imageSize, apertureWidth, apertureHeight,
+                out fovx, out fovy, out focalLength, out principalPoint);
         }
 
         /// <summary>
         /// Computes useful camera characteristics from the camera matrix.
         /// </summary>
-        /// <param name="camera_matrix">
+        /// <param name="cameraMatrix">
         /// Input camera matrix that can be estimated by <see cref="CalibrateCamera2(CvMat,CvMat,CvMat,CvSize,CvMat,CvMat,CvMat,CvMat,CameraCalibrationFlags,CvTermCriteria)"/>
         /// or <see cref="StereoCalibrate(CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvSize,CvMat,CvMat,CvMat,CvMat,CvTermCriteria,StereoCalibrationFlags)"/>.
         /// </param>
-        /// <param name="image_size">Input image size in pixels.</param>
-        /// <param name="aperture_width">Physical width of the sensor.</param>
-        /// <param name="aperture_height">Physical height of the sensor.</param>
+        /// <param name="imageSize">Input image size in pixels.</param>
+        /// <param name="apertureWidth">Physical width of the sensor.</param>
+        /// <param name="apertureHeight">Physical height of the sensor.</param>
         /// <param name="fovx">Output field of view in degrees along the horizontal sensor axis.</param>
         /// <param name="fovy">Output field of view in degrees along the vertical sensor axis.</param>
-        /// <param name="focal_length">Focal length of the lens in mm.</param>
-        /// <param name="principal_point">Principal point in pixels.</param>
+        /// <param name="focalLength">Focal length of the lens in mm.</param>
+        /// <param name="principalPoint">Principal point in pixels.</param>
         public static void CalibrationMatrixValues(
-            CvMat camera_matrix,
-            CvSize image_size,
-            double aperture_width,
-            double aperture_height,
+            CvMat cameraMatrix,
+            CvSize imageSize,
+            double apertureWidth,
+            double apertureHeight,
             out double fovx,
             out double fovy,
-            out double focal_length,
-            out CvPoint2D64f principal_point)
+            out double focalLength,
+            out CvPoint2D64f principalPoint)
         {
-            double pixel_aspect_ratio;
+            double pixelAspectRatio;
             CalibrationMatrixValues(
-                camera_matrix, image_size, aperture_width, aperture_height,
-                out fovx, out fovy, out focal_length, out principal_point, out pixel_aspect_ratio);
+                cameraMatrix, imageSize, apertureWidth, apertureHeight,
+                out fovx, out fovy, out focalLength, out principalPoint, out pixelAspectRatio);
         }
 
         /// <summary>
         /// Computes useful camera characteristics from the camera matrix.
         /// </summary>
-        /// <param name="camera_matrix">
+        /// <param name="cameraMatrix">
         /// Input camera matrix that can be estimated by <see cref="CalibrateCamera2(CvMat,CvMat,CvMat,CvSize,CvMat,CvMat,CvMat,CvMat,CameraCalibrationFlags,CvTermCriteria)"/>
         /// or <see cref="StereoCalibrate(CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvSize,CvMat,CvMat,CvMat,CvMat,CvTermCriteria,StereoCalibrationFlags)"/>.
         /// </param>
-        /// <param name="image_size">Input image size in pixels.</param>
-        /// <param name="aperture_width">Physical width of the sensor.</param>
-        /// <param name="aperture_height">Physical height of the sensor.</param>
+        /// <param name="imageSize">Input image size in pixels.</param>
+        /// <param name="apertureWidth">Physical width of the sensor.</param>
+        /// <param name="apertureHeight">Physical height of the sensor.</param>
         /// <param name="fovx">Output field of view in degrees along the horizontal sensor axis.</param>
         /// <param name="fovy">Output field of view in degrees along the vertical sensor axis.</param>
-        /// <param name="focal_length">Focal length of the lens in mm.</param>
-        /// <param name="principal_point">Principal point in pixels.</param>
-        /// <param name="pixel_aspect_ratio">The aspect ratio of a pixel, given by fy / fx.</param>
+        /// <param name="focalLength">Focal length of the lens in mm.</param>
+        /// <param name="principalPoint">Principal point in pixels.</param>
+        /// <param name="pixelAspectRatio">The aspect ratio of a pixel, given by fy / fx.</param>
         public static void CalibrationMatrixValues(
-            CvMat camera_matrix,
-            CvSize image_size,
-            double aperture_width,
-            double aperture_height,
+            CvMat cameraMatrix,
+            CvSize imageSize,
+            double apertureWidth,
+            double apertureHeight,
             out double fovx,
             out double fovy,
-            out double focal_length,
-            out CvPoint2D64f principal_point,
-            out double pixel_aspect_ratio)
+            out double focalLength,
+            out CvPoint2D64f principalPoint,
+            out double pixelAspectRatio)
         {
             NativeMethods.cvCalibrationMatrixValues(
-                camera_matrix, image_size, aperture_width, aperture_height,
-                out fovx, out fovy, out focal_length, out principal_point, out pixel_aspect_ratio);
+                cameraMatrix, imageSize, apertureWidth, apertureHeight,
+                out fovx, out fovy, out focalLength, out principalPoint, out pixelAspectRatio);
         }
 
         /// <summary>
@@ -1059,11 +1059,11 @@ namespace OpenCV.Net
             double alpha,
             CvSize newImageSize)
         {
-            CvRect valid_pix_ROI1;
+            CvRect validPixROI1;
             StereoRectify(
                 cameraMatrix1, cameraMatrix2, distCoeffs1, distCoeffs2,
                 imageSize, R, T, R1, R2, P1, P2, Q, flags, alpha,
-                newImageSize, out valid_pix_ROI1);
+                newImageSize, out validPixROI1);
         }
 
         /// <summary>
@@ -1121,11 +1121,11 @@ namespace OpenCV.Net
             CvSize newImageSize,
             out CvRect validPixelROI1)
         {
-            CvRect valid_pix_ROI2;
+            CvRect validPixROI2;
             StereoRectify(
                 cameraMatrix1, cameraMatrix2, distCoeffs1, distCoeffs2,
                 imageSize, R, T, R1, R2, P1, P2, Q, flags, alpha,
-                newImageSize, out validPixelROI1, out valid_pix_ROI2);
+                newImageSize, out validPixelROI1, out validPixROI2);
         }
 
         /// <summary>
