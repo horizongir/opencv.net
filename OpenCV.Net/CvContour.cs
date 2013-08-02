@@ -12,6 +12,14 @@ namespace OpenCV.Net
     public class CvContour : CvSeq
     {
         /// <summary>
+        /// Gets the size of the <see cref="CvContour"/> header, in bytes.
+        /// </summary>
+        public static new int HeaderSize
+        {
+            get { return SeqHelper.ContourHeaderSize; }
+        }
+
+        /// <summary>
         /// Gets the bounding rectangle of the contour.
         /// </summary>
         public CvRect Rect

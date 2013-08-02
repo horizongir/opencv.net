@@ -124,6 +124,14 @@ namespace OpenCV.Net
         }
 
         /// <summary>
+        /// Gets the size of the <see cref="CvSeq"/> header, in bytes.
+        /// </summary>
+        public static int HeaderSize
+        {
+            get { return (int)SeqHelper.SeqHeaderSize; }
+        }
+
+        /// <summary>
         /// Gets the <see cref="CvMemStorage"/> where the sequence is stored.
         /// </summary>
         public CvMemStorage Storage

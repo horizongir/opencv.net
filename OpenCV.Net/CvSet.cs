@@ -23,6 +23,14 @@ namespace OpenCV.Net
         }
 
         /// <summary>
+        /// Gets the size of the <see cref="CvSet"/> header, in bytes.
+        /// </summary>
+        public static new int HeaderSize
+        {
+            get { return SeqHelper.SetHeaderSize; }
+        }
+
+        /// <summary>
         /// Removes all elements from the set.
         /// </summary>
         public override void Clear()

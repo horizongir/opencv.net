@@ -367,5 +367,6 @@ namespace OpenCV.Net.Native
         internal static readonly int SetHeaderSize = Marshal.SizeOf(typeof(_CvSet));
         internal static readonly int GraphHeaderSize = Marshal.SizeOf(typeof(_CvGraph));
         internal static readonly int ContourHeaderSize = Marshal.SizeOf(typeof(_CvContour));
+        internal static readonly int ChainHeaderSize = Marshal.SizeOf(typeof(_CvChain));
     }
 }
