@@ -200,7 +200,7 @@ namespace OpenCV.Net
     }
 
     /// <summary>
-    /// Specifies operation flags for <see cref="cv.CheckArr"/>.
+    /// Specifies operation flags for <see cref="CvArr.CheckRange"/>.
     /// </summary>
     [Flags]
     public enum CheckArrayFlags : int

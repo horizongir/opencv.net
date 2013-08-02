@@ -84,8 +84,7 @@ namespace OpenCV.Net
         /// <param name="whichImage">Index of the image (1 or 2) that contains the points.</param>
         /// <param name="fundamentalMatrix">
         /// The fundamental matrix that can be estimated using <see cref="FindFundamentalMat"/> or
-        /// <see cref="StereoRectify(CvMat,CvMat,CvMat,CvMat,CvSize,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,
-        /// CvMat,StereoRectificationFlags,double,CvSize)"/>.
+        /// <see cref="StereoRectify(CvMat,CvMat,CvMat,CvMat,CvSize,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,StereoRectificationFlags,double,CvSize)"/>.
         /// </param>
         /// <param name="correspondentLines">
         /// The output epilines, a 3xN or Nx3 array. Each line ax + by + c = 0 is encoded by 3 numbers (a, b, c).
@@ -147,8 +146,7 @@ namespace OpenCV.Net
         /// <param name="alpha">
         /// The free scaling parameter between 0 (when all the pixels in the undistorted image will be valid) and 1
         /// (when all the source image pixels will be retained in the undistorted image); see
-        /// <see cref="StereoRectify(CvMat,CvMat,CvMat,CvMat,CvSize,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,
-        /// CvMat,StereoRectificationFlags,double,CvSize)"/>.
+        /// <see cref="StereoRectify(CvMat,CvMat,CvMat,CvMat,CvSize,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,StereoRectificationFlags,double,CvSize)"/>.
         /// </param>
         /// <param name="newCameraMatrix">The output new camera matrix.</param>
         public static void GetOptimalNewCameraMatrix(
@@ -173,8 +171,7 @@ namespace OpenCV.Net
         /// <param name="alpha">
         /// The free scaling parameter between 0 (when all the pixels in the undistorted image will be valid) and 1
         /// (when all the source image pixels will be retained in the undistorted image); see
-        /// <see cref="StereoRectify(CvMat,CvMat,CvMat,CvMat,CvSize,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,
-        /// CvMat,StereoRectificationFlags,double,CvSize)"/>.
+        /// <see cref="StereoRectify(CvMat,CvMat,CvMat,CvMat,CvSize,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,StereoRectificationFlags,double,CvSize)"/>.
         /// </param>
         /// <param name="newCameraMatrix">The output new camera matrix.</param>
         /// <param name="newImageSize">
@@ -204,8 +201,7 @@ namespace OpenCV.Net
         /// <param name="alpha">
         /// The free scaling parameter between 0 (when all the pixels in the undistorted image will be valid) and 1
         /// (when all the source image pixels will be retained in the undistorted image); see
-        /// <see cref="StereoRectify(CvMat,CvMat,CvMat,CvMat,CvSize,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,
-        /// CvMat,StereoRectificationFlags,double,CvSize)"/>.
+        /// <see cref="StereoRectify(CvMat,CvMat,CvMat,CvMat,CvSize,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,StereoRectificationFlags,double,CvSize)"/>.
         /// </param>
         /// <param name="newCameraMatrix">The output new camera matrix.</param>
         /// <param name="newImageSize">
@@ -1242,8 +1238,7 @@ namespace OpenCV.Net
         /// </param>
         /// <param name="Q">
         /// The 4x4 perspective transformation matrix that can be obtained with
-        /// <see cref="StereoRectify(CvMat,CvMat,CvMat,CvMat,CvSize,CvMat,CvMat,
-        /// CvMat,CvMat,CvMat,CvMat,CvMat,StereoRectificationFlags,double)"/>.
+        /// <see cref="StereoRectify(CvMat,CvMat,CvMat,CvMat,CvSize,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,StereoRectificationFlags,double)"/>.
         /// </param>
         /// <param name="handleMissingValues">
         /// If <b>true</b>, the pixels with the minimal disparity (which correspond to the
