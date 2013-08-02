@@ -16,9 +16,14 @@ namespace OpenCV.Net.UnitTests
         [TestMethod]
         public void TestCvSparseMatIterator()
         {
-            foreach (var node in mat.GetSparseNodes())
+            using (var mat = new CvSparseMat(new[] { 3, 3 }, CvDepth.F32, 2))
             {
-                Assert.AreNotEqual(node, IntPtr.Zero);
+                var testValue = new CvScalar(3, 5);
+                mat[1, 1] = testValue;
+                foreach (var node in mat.GetSparseNodes())
+                {
+                    Assert.AreEqual(testValue, node.Value);
+                }
             }
         }
     }
