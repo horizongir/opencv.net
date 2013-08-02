@@ -13,7 +13,7 @@ namespace OpenCV.Net
     /// </summary>
     public class CvSeq : CvHandle
     {
-        static readonly CvSeq Null = new CvSeqNull();
+        internal static readonly CvSeq Null = new CvSeqNull();
         CvMemStorage owner;
 
         internal CvSeq()
