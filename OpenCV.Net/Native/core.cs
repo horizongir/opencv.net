@@ -815,6 +815,38 @@ namespace OpenCV.Net.Native
         internal static extern void cvWriteRawData(CvFileStorage fs, IntPtr src, int len, string dt);
 
         [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        internal static extern CvStringHashNode cvGetHashedKey(
+            CvFileStorage fs,
+            string name,
+            int len,
+            int create_missing);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern CvFileNode cvGetRootFileNode(CvFileStorage fs, int stream_index);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern CvFileNode cvGetFileNode(
+            CvFileStorage fs,
+            CvFileNode map,
+            CvStringHashNode key,
+            int create_missing);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        internal static extern CvFileNode cvGetFileNodeByName(CvFileStorage fs, CvFileNode map, string name);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr cvRead(CvFileStorage fs, CvFileNode node, IntPtr attributes);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        internal static extern void cvReadRawData(CvFileStorage fs, CvFileNode src, IntPtr dst, string dt);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        internal static extern void cvWriteFileNode(CvFileStorage fs, string new_node_name, CvFileNode node, int embed);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        internal static extern IntPtr cvGetFileNodeName(CvFileNode node);
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         internal static extern void cvSave(
             string filename,
             CvHandle struct_ptr,

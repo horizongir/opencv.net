@@ -276,24 +276,32 @@ namespace OpenCV.Net.Native
     [StructLayout(LayoutKind.Sequential)]
     struct _CvString
     {
-        public int Len;
-        public IntPtr Ptr;
+        public int len;
+        public IntPtr ptr;
     }
 
     [StructLayout(LayoutKind.Sequential)]
     struct _CvFont
     {
-        IntPtr nameFont;
-        CvScalar color;
-        int font_face;
-        IntPtr ascii;
-        IntPtr greek;
-        IntPtr cyrillic;
-        float hscale, vscale;
-        float shear;
-        int thickness;
-        float dx;
-        int line_type;
+        public IntPtr nameFont;
+        public CvScalar color;
+        public int font_face;
+        public IntPtr ascii;
+        public IntPtr greek;
+        public IntPtr cyrillic;
+        public float hscale, vscale;
+        public float shear;
+        public int thickness;
+        public float dx;
+        public int line_type;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    struct _CvStringHashNode
+    {
+        public uint hashval;
+        public _CvString str;
+        public IntPtr next;
     }
 
     [StructLayout(LayoutKind.Sequential)]
