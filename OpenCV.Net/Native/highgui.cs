@@ -16,13 +16,13 @@ namespace OpenCV.Net.Native
         internal static extern _CvFont cvFontQt(
             string nameFont,
             int pointSize,
-            CvScalar color,
+            Scalar color,
             FontWeight weight,
             FontStyle style,
             int spacing);
 
         [DllImport(highguiLib, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        internal static extern void cvAddText(CvArr img, string text, CvPoint org, CvFont arg2);
+        internal static extern void cvAddText(Arr img, string text, Point org, Font arg2);
 
         [DllImport(highguiLib, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         internal static extern void cvDisplayOverlay(string name, string text, int delayms);
@@ -66,7 +66,7 @@ namespace OpenCV.Net.Native
         internal static extern double cvGetWindowProperty(string name, WindowProperty prop_id);
 
         [DllImport(highguiLib, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        internal static extern void cvShowImage(string name, CvArr image);
+        internal static extern void cvShowImage(string name, Arr image);
 
         [DllImport(highguiLib, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         internal static extern void cvResizeWindow(string name, int width, int height);
@@ -92,7 +92,7 @@ namespace OpenCV.Net.Native
             string window_name,
             ref int value,
             int count,
-            CvTrackbarCallback on_change);
+            TrackbarCallback on_change);
 
         [DllImport(highguiLib, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         internal static extern int cvCreateTrackbar2(
@@ -116,22 +116,22 @@ namespace OpenCV.Net.Native
         internal static extern IplImage cvLoadImage(string filename, LoadImageFlags iscolor);
 
         [DllImport(highguiLib, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        internal static extern CvMat cvLoadImageM(string filename, LoadImageFlags iscolor);
+        internal static extern Mat cvLoadImageM(string filename, LoadImageFlags iscolor);
 
         [DllImport(highguiLib, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        internal static extern int cvSaveImage(string filename, CvArr image, int[] parameters);
+        internal static extern int cvSaveImage(string filename, Arr image, int[] parameters);
 
         [DllImport(highguiLib, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern IplImage cvDecodeImage(CvMat buf, LoadImageFlags iscolor);
+        internal static extern IplImage cvDecodeImage(Mat buf, LoadImageFlags iscolor);
 
         [DllImport(highguiLib, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern CvMat cvDecodeImageM(CvMat buf, LoadImageFlags iscolor);
+        internal static extern Mat cvDecodeImageM(Mat buf, LoadImageFlags iscolor);
 
         [DllImport(highguiLib, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        internal static extern CvMat cvEncodeImage(string ext, CvArr image, int[] parameters);
+        internal static extern Mat cvEncodeImage(string ext, Arr image, int[] parameters);
 
         [DllImport(highguiLib, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void cvConvertImage(CvArr src, CvArr dst, ConvertImageFlags flags);
+        internal static extern void cvConvertImage(Arr src, Arr dst, ConvertImageFlags flags);
 
         [DllImport(highguiLib, CallingConvention = CallingConvention.Cdecl)]
         internal static extern int cvWaitKey(int delay);
@@ -150,37 +150,37 @@ namespace OpenCV.Net.Native
         #region Working with Video Files and Cameras
 
         [DllImport(highguiLib, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        internal static extern CvCapture cvCreateFileCapture(string filename);
+        internal static extern Capture cvCreateFileCapture(string filename);
 
         [DllImport(highguiLib, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern CvCapture cvCreateCameraCapture(int index);
+        internal static extern Capture cvCreateCameraCapture(int index);
 
         [DllImport(highguiLib, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern int cvGrabFrame(CvCapture capture);
+        internal static extern int cvGrabFrame(Capture capture);
 
         [DllImport(highguiLib, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern IntPtr cvRetrieveFrame(CvCapture capture, int streamIdx);
+        internal static extern IntPtr cvRetrieveFrame(Capture capture, int streamIdx);
 
         [DllImport(highguiLib, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern IntPtr cvQueryFrame(CvCapture capture);
+        internal static extern IntPtr cvQueryFrame(Capture capture);
 
         [DllImport(highguiLib, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void cvReleaseCapture(ref IntPtr capture);
 
         [DllImport(highguiLib, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern double cvGetCaptureProperty(CvCapture capture, CaptureProperty property_id);
+        internal static extern double cvGetCaptureProperty(Capture capture, CaptureProperty property_id);
 
         [DllImport(highguiLib, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern int cvSetCaptureProperty(CvCapture capture, CaptureProperty property_id, double value);
+        internal static extern int cvSetCaptureProperty(Capture capture, CaptureProperty property_id, double value);
 
         [DllImport(highguiLib, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern CaptureDomain cvGetCaptureDomain(CvCapture capture);
+        internal static extern CaptureDomain cvGetCaptureDomain(Capture capture);
 
         [DllImport(highguiLib, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        internal static extern IntPtr cvCreateVideoWriter(string filename, int fourcc, double fps, CvSize frame_size, int is_color);
+        internal static extern IntPtr cvCreateVideoWriter(string filename, int fourcc, double fps, Size frame_size, int is_color);
 
         [DllImport(highguiLib, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern int cvWriteFrame(CvVideoWriter writer, IplImage image);
+        internal static extern int cvWriteFrame(VideoWriter writer, IplImage image);
 
         [DllImport(highguiLib, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void cvReleaseVideoWriter(ref IntPtr capture);

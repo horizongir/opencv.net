@@ -5,41 +5,41 @@ using System.Runtime.InteropServices;
 namespace OpenCV.Net.UnitTests
 {
     [TestClass]
-    public class TestIplImage : TestCvArr
+    public class TestIplImage : TestArr
     {
         IplImage image;
 
-        protected override CvArr CreateCvArr(int channels, CvDepth depth, int dim0, int dim1)
+        protected override Arr CreateArr(int channels, Depth depth, int dim0, int dim1)
         {
             var iplDepth = IplDepth.F32;
             switch (depth)
             {
-                case CvDepth.U8:
+                case Depth.U8:
                     iplDepth = IplDepth.U8;
                     break;
-                case CvDepth.S8:
+                case Depth.S8:
                     iplDepth = IplDepth.S8;
                     break;
-                case CvDepth.U16:
+                case Depth.U16:
                     iplDepth = IplDepth.U16;
                     break;
-                case CvDepth.S16:
+                case Depth.S16:
                     iplDepth = IplDepth.S16;
                     break;
-                case CvDepth.S32:
+                case Depth.S32:
                     iplDepth = IplDepth.S32;
                     break;
-                case CvDepth.F32:
+                case Depth.F32:
                     iplDepth = IplDepth.F32;
                     break;
-                case CvDepth.F64:
+                case Depth.F64:
                     iplDepth = IplDepth.F64;
                     break;
                 default:
                     break;
             }
 
-            return image = new IplImage(new CvSize(dim1, dim0), iplDepth, channels);
+            return image = new IplImage(new Size(dim1, dim0), iplDepth, channels);
         }
 
         [TestMethod]
@@ -47,7 +47,7 @@ namespace OpenCV.Net.UnitTests
         {
             var data = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
             var dataHandle = GCHandle.Alloc(data, GCHandleType.Pinned);
-            using (var image = new IplImage(new CvSize(3, 3), IplDepth.S32, 1, dataHandle.AddrOfPinnedObject()))
+            using (var image = new IplImage(new Size(3, 3), IplDepth.S32, 1, dataHandle.AddrOfPinnedObject()))
             {
                 Assert.AreEqual(data[7], image[2, 1].Val0);
             }
@@ -57,10 +57,10 @@ namespace OpenCV.Net.UnitTests
         [TestMethod]
         public void TestClone()
         {
-            using (var image = new IplImage(new CvSize(3, 3), IplDepth.F32, 1))
+            using (var image = new IplImage(new Size(3, 3), IplDepth.F32, 1))
             {
                 image.SetZero();
-                image[1, 1] = CvScalar.All(3);
+                image[1, 1] = Scalar.All(3);
                 Assert.AreEqual(3, image[1, 1].Val0);
                 using (var clone = image.Clone())
                 {
@@ -73,10 +73,10 @@ namespace OpenCV.Net.UnitTests
         [TestMethod]
         public void TestImageCoi()
         {
-            using (var image = new IplImage(new CvSize(3, 3), IplDepth.F32, 3))
+            using (var image = new IplImage(new Size(3, 3), IplDepth.F32, 3))
             {
                 image.SetZero();
-                image[1, 1] = new CvScalar(0, 1, 0, 0);
+                image[1, 1] = new Scalar(0, 1, 0, 0);
                 using (var mask = new IplImage(image.Size, image.Depth, 1))
                 {
                     image.ChannelOfInterest = 2;

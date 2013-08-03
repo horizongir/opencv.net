@@ -6,7 +6,7 @@ using System.Text;
 namespace OpenCV.Net
 {
     /// <summary>
-    /// Specifies available operation flags for <see cref="CvHaarClassifierCascade.DetectObjects"/>.
+    /// Specifies available operation flags for <see cref="HaarClassifierCascade.DetectObjects"/>.
     /// </summary>
     [Flags]
     public enum HaarDetectObjectFlags : int

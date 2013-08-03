@@ -22,7 +22,7 @@ namespace OpenCV.Net.Native
         public int speckleWindowSize;
         public int speckleRange;
         public int trySmallerWindows;
-        public CvRect roi1, roi2;
+        public Rect roi1, roi2;
         public int disp12MaxDiff;
 
         public IntPtr preFilteredImg0;

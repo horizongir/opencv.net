@@ -45,7 +45,7 @@ namespace OpenCV.Net
         /// </summary>
         /// <param name="src">The source array.</param>
         /// <param name="dst">The destination array.</param>
-        public static void Repeat(CvArr src, CvArr dst)
+        public static void Repeat(Arr src, Arr dst)
         {
             NativeMethods.cvRepeat(src, dst);
         }
@@ -59,9 +59,9 @@ namespace OpenCV.Net
         /// Optional operation mask, 8-bit single-channel array specifying the
         /// elements that should be changed on <paramref name="dst"/>.
         /// </param>
-        public static void Copy(CvArr src, CvArr dst, CvArr mask = null)
+        public static void Copy(Arr src, Arr dst, Arr mask = null)
         {
-            NativeMethods.cvCopy(src, dst, mask ?? CvArr.Null);
+            NativeMethods.cvCopy(src, dst, mask ?? Arr.Null);
         }
 
         /// <summary>
@@ -84,9 +84,9 @@ namespace OpenCV.Net
         /// instance, <see cref="Copy"/> with COI set can also be used to extract a
         /// single channel from the image.
         /// </remarks>
-        public static void Split(CvArr src, CvArr dst0, CvArr dst1, CvArr dst2, CvArr dst3)
+        public static void Split(Arr src, Arr dst0, Arr dst1, Arr dst2, Arr dst3)
         {
-            NativeMethods.cvSplit(src, dst0 ?? CvArr.Null, dst1 ?? CvArr.Null, dst2 ?? CvArr.Null, dst3 ?? CvArr.Null);
+            NativeMethods.cvSplit(src, dst0 ?? Arr.Null, dst1 ?? Arr.Null, dst2 ?? Arr.Null, dst3 ?? Arr.Null);
         }
 
         /// <summary>
@@ -108,9 +108,9 @@ namespace OpenCV.Net
         /// For an <see cref="IplImage"/> instance, <see cref="Copy"/> with COI set
         /// can also be used to insert a single channel into the image.
         /// </remarks>
-        public static void Merge(CvArr src0, CvArr src1, CvArr src2, CvArr src3, CvArr dst)
+        public static void Merge(Arr src0, Arr src1, Arr src2, Arr src3, Arr dst)
         {
-            NativeMethods.cvMerge(src0 ?? CvArr.Null, src1 ?? CvArr.Null, src2 ?? CvArr.Null, src3 ?? CvArr.Null, dst);
+            NativeMethods.cvMerge(src0 ?? Arr.Null, src1 ?? Arr.Null, src2 ?? Arr.Null, src3 ?? Arr.Null, dst);
         }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace OpenCV.Net
         /// add/remove alpha channel, extract or insert a single plane or multiple
         /// planes, etc.
         /// </remarks>
-        public static void MixChannels(CvArr[] src, CvArr[] dst, int[] fromTo)
+        public static void MixChannels(Arr[] src, Arr[] dst, int[] fromTo)
         {
             var srcHandles = Array.ConvertAll(src, arr => arr.DangerousGetHandle());
             var dstHandles = Array.ConvertAll(dst, arr => arr.DangerousGetHandle());
@@ -155,7 +155,7 @@ namespace OpenCV.Net
         /// The optional scale factor applied independently to all element channels.
         /// </param>
         /// <param name="shift">The optional value added to scaled array elements.</param>
-        public static void ConvertScale(CvArr src, CvArr dst, double scale = 1, double shift = 0)
+        public static void ConvertScale(Arr src, Arr dst, double scale = 1, double shift = 0)
         {
             NativeMethods.cvConvertScale(src, dst, scale, shift);
         }
@@ -165,7 +165,7 @@ namespace OpenCV.Net
         /// </summary>
         /// <param name="src">The source array.</param>
         /// <param name="dst">The destination array.</param>
-        public static void Convert(CvArr src, CvArr dst)
+        public static void Convert(Arr src, Arr dst)
         {
             ConvertScale(src, dst);
         }
@@ -184,7 +184,7 @@ namespace OpenCV.Net
         /// This function is similar to <see cref="ConvertScale"/>, but stores absolute
         /// values after the conversion results.
         /// </remarks>
-        public static void ConvertScaleAbs(CvArr src, CvArr dst, double scale = 1, double shift = 0)
+        public static void ConvertScaleAbs(Arr src, Arr dst, double scale = 1, double shift = 0)
         {
             NativeMethods.cvConvertScaleAbs(src, dst, scale, shift);
         }
@@ -203,9 +203,9 @@ namespace OpenCV.Net
         /// Optional operation mask, 8-bit single-channel array specifying the
         /// elements that should be changed on <paramref name="dst"/>.
         /// </param>
-        public static void Add(CvArr src1, CvArr src2, CvArr dst, CvArr mask = null)
+        public static void Add(Arr src1, Arr src2, Arr dst, Arr mask = null)
         {
-            NativeMethods.cvAdd(src1, src2, dst, mask ?? CvArr.Null);
+            NativeMethods.cvAdd(src1, src2, dst, mask ?? Arr.Null);
         }
 
         /// <summary>
@@ -218,9 +218,9 @@ namespace OpenCV.Net
         /// Optional operation mask, 8-bit single-channel array specifying the
         /// elements that should be changed on <paramref name="dst"/>.
         /// </param>
-        public static void AddS(CvArr src, CvScalar value, CvArr dst, CvArr mask = null)
+        public static void AddS(Arr src, Scalar value, Arr dst, Arr mask = null)
         {
-            NativeMethods.cvAddS(src, value, dst, mask ?? CvArr.Null);
+            NativeMethods.cvAddS(src, value, dst, mask ?? Arr.Null);
         }
 
         /// <summary>
@@ -233,9 +233,9 @@ namespace OpenCV.Net
         /// Optional operation mask, 8-bit single-channel array specifying the
         /// elements that should be changed on <paramref name="dst"/>.
         /// </param>
-        public static void Sub(CvArr src1, CvArr src2, CvArr dst, CvArr mask = null)
+        public static void Sub(Arr src1, Arr src2, Arr dst, Arr mask = null)
         {
-            NativeMethods.cvSub(src1, src2, dst, mask ?? CvArr.Null);
+            NativeMethods.cvSub(src1, src2, dst, mask ?? Arr.Null);
         }
 
         /// <summary>
@@ -248,9 +248,9 @@ namespace OpenCV.Net
         /// Optional operation mask, 8-bit single-channel array specifying the
         /// elements that should be changed on <paramref name="dst"/>.
         /// </param>
-        public static void SubS(CvArr src, CvScalar value, CvArr dst, CvArr mask = null)
+        public static void SubS(Arr src, Scalar value, Arr dst, Arr mask = null)
         {
-            AddS(src, new CvScalar(-value.Val0, -value.Val1, -value.Val2, -value.Val3), dst, mask);
+            AddS(src, new Scalar(-value.Val0, -value.Val1, -value.Val2, -value.Val3), dst, mask);
         }
 
         /// <summary>
@@ -263,9 +263,9 @@ namespace OpenCV.Net
         /// Optional operation mask, 8-bit single-channel array specifying the
         /// elements that should be changed on <paramref name="dst"/>.
         /// </param>
-        public static void SubRS(CvArr src, CvScalar value, CvArr dst, CvArr mask = null)
+        public static void SubRS(Arr src, Scalar value, Arr dst, Arr mask = null)
         {
-            NativeMethods.cvSubRS(src, value, dst, mask ?? CvArr.Null);
+            NativeMethods.cvSubRS(src, value, dst, mask ?? Arr.Null);
         }
 
         /// <summary>
@@ -275,7 +275,7 @@ namespace OpenCV.Net
         /// <param name="src2">The second input array.</param>
         /// <param name="dst">The destination array.</param>
         /// <param name="scale">An optional scale factor.</param>
-        public static void Mul(CvArr src1, CvArr src2, CvArr dst, double scale = 1)
+        public static void Mul(Arr src1, Arr src2, Arr dst, double scale = 1)
         {
             NativeMethods.cvMul(src1, src2, dst, scale);
         }
@@ -287,9 +287,9 @@ namespace OpenCV.Net
         /// <param name="src2">The second input array.</param>
         /// <param name="dst">The destination array.</param>
         /// <param name="scale">An optional scale factor.</param>
-        public static void Div(CvArr src1, CvArr src2, CvArr dst, double scale = 1)
+        public static void Div(Arr src1, Arr src2, Arr dst, double scale = 1)
         {
-            NativeMethods.cvDiv(src1 ?? CvArr.Null, src2, dst, scale);
+            NativeMethods.cvDiv(src1 ?? Arr.Null, src2, dst, scale);
         }
 
         /// <summary>
@@ -299,7 +299,7 @@ namespace OpenCV.Net
         /// <param name="scale">The scale factor for the first array.</param>
         /// <param name="src2">The second input array.</param>
         /// <param name="dst">The destination array.</param>
-        public static void ScaleAdd(CvArr src1, CvScalar scale, CvArr src2, CvArr dst)
+        public static void ScaleAdd(Arr src1, Scalar scale, Arr src2, Arr dst)
         {
             NativeMethods.cvScaleAdd(src1, scale, src2, dst);
         }
@@ -311,9 +311,9 @@ namespace OpenCV.Net
         /// <param name="realScalar">The scale factor for the first array.</param>
         /// <param name="B">The second input array.</param>
         /// <param name="C">The destination array.</param>
-        public static void AXPY(CvArr A, double realScalar, CvArr B, CvArr C)
+        public static void AXPY(Arr A, double realScalar, Arr B, Arr C)
         {
-            ScaleAdd(A, CvScalar.Real(realScalar), B, C);
+            ScaleAdd(A, Scalar.Real(realScalar), B, C);
         }
 
         /// <summary>
@@ -325,7 +325,7 @@ namespace OpenCV.Net
         /// <param name="beta">The weight for the second array elements.</param>
         /// <param name="gamma">A scalar that is added to each sum.</param>
         /// <param name="dst">The destination array.</param>
-        public static void AddWeighted(CvArr src1, double alpha, CvArr src2, double beta, double gamma, CvArr dst)
+        public static void AddWeighted(Arr src1, double alpha, Arr src2, double beta, double gamma, Arr dst)
         {
             NativeMethods.cvAddWeighted(src1, alpha, src2, beta, gamma, dst);
         }
@@ -339,7 +339,7 @@ namespace OpenCV.Net
         /// The Euclidean dot product of the two arrays. In the case of multiple
         /// channel arrays, the results for all channels are accumulated.
         /// </returns>
-        public static double DotProduct(CvArr src1, CvArr src2)
+        public static double DotProduct(Arr src1, Arr src2)
         {
             return NativeMethods.cvDotProduct(src1, src2);
         }
@@ -354,9 +354,9 @@ namespace OpenCV.Net
         /// Optional operation mask, 8-bit single-channel array specifying the
         /// elements that should be changed on <paramref name="dst"/>.
         /// </param>
-        public static void And(CvArr src1, CvArr src2, CvArr dst, CvArr mask = null)
+        public static void And(Arr src1, Arr src2, Arr dst, Arr mask = null)
         {
-            NativeMethods.cvAnd(src1, src2, dst, mask ?? CvArr.Null);
+            NativeMethods.cvAnd(src1, src2, dst, mask ?? Arr.Null);
         }
 
         /// <summary>
@@ -369,9 +369,9 @@ namespace OpenCV.Net
         /// Optional operation mask, 8-bit single-channel array specifying the
         /// elements that should be changed on <paramref name="dst"/>.
         /// </param>
-        public static void AndS(CvArr src, CvScalar value, CvArr dst, CvArr mask = null)
+        public static void AndS(Arr src, Scalar value, Arr dst, Arr mask = null)
         {
-            NativeMethods.cvAndS(src, value, dst, mask ?? CvArr.Null);
+            NativeMethods.cvAndS(src, value, dst, mask ?? Arr.Null);
         }
 
         /// <summary>
@@ -384,9 +384,9 @@ namespace OpenCV.Net
         /// Optional operation mask, 8-bit single-channel array specifying the
         /// elements that should be changed on <paramref name="dst"/>.
         /// </param>
-        public static void Or(CvArr src1, CvArr src2, CvArr dst, CvArr mask = null)
+        public static void Or(Arr src1, Arr src2, Arr dst, Arr mask = null)
         {
-            NativeMethods.cvOr(src1, src2, dst, mask ?? CvArr.Null);
+            NativeMethods.cvOr(src1, src2, dst, mask ?? Arr.Null);
         }
 
         /// <summary>
@@ -399,9 +399,9 @@ namespace OpenCV.Net
         /// Optional operation mask, 8-bit single-channel array specifying the
         /// elements that should be changed on <paramref name="dst"/>.
         /// </param>
-        public static void OrS(CvArr src, CvScalar value, CvArr dst, CvArr mask = null)
+        public static void OrS(Arr src, Scalar value, Arr dst, Arr mask = null)
         {
-            NativeMethods.cvOrS(src, value, dst, mask ?? CvArr.Null);
+            NativeMethods.cvOrS(src, value, dst, mask ?? Arr.Null);
         }
 
         /// <summary>
@@ -414,9 +414,9 @@ namespace OpenCV.Net
         /// Optional operation mask, 8-bit single-channel array specifying the
         /// elements that should be changed on <paramref name="dst"/>.
         /// </param>
-        public static void Xor(CvArr src1, CvArr src2, CvArr dst, CvArr mask = null)
+        public static void Xor(Arr src1, Arr src2, Arr dst, Arr mask = null)
         {
-            NativeMethods.cvXor(src1, src2, dst, mask ?? CvArr.Null);
+            NativeMethods.cvXor(src1, src2, dst, mask ?? Arr.Null);
         }
 
         /// <summary>
@@ -429,9 +429,9 @@ namespace OpenCV.Net
         /// Optional operation mask, 8-bit single-channel array specifying the
         /// elements that should be changed on <paramref name="dst"/>.
         /// </param>
-        public static void XorS(CvArr src, CvScalar value, CvArr dst, CvArr mask = null)
+        public static void XorS(Arr src, Scalar value, Arr dst, Arr mask = null)
         {
-            NativeMethods.cvXorS(src, value, dst, mask ?? CvArr.Null);
+            NativeMethods.cvXorS(src, value, dst, mask ?? Arr.Null);
         }
 
         /// <summary>
@@ -439,7 +439,7 @@ namespace OpenCV.Net
         /// </summary>
         /// <param name="src">The input array.</param>
         /// <param name="dst">The destination array.</param>
-        public static void Not(CvArr src, CvArr dst)
+        public static void Not(Arr src, Arr dst)
         {
             NativeMethods.cvNot(src, dst);
         }
@@ -451,7 +451,7 @@ namespace OpenCV.Net
         /// <param name="lower">The inclusive lower boundary array.</param>
         /// <param name="upper">The exclusive upper boundary array.</param>
         /// <param name="dst">The destination array. It must have U8 or S8 type.</param>
-        public static void InRange(CvArr src, CvArr lower, CvArr upper, CvArr dst)
+        public static void InRange(Arr src, Arr lower, Arr upper, Arr dst)
         {
             NativeMethods.cvInRange(src, lower, upper, dst);
         }
@@ -463,7 +463,7 @@ namespace OpenCV.Net
         /// <param name="lower">The inclusive lower boundary.</param>
         /// <param name="upper">The exclusive upper boundary.</param>
         /// <param name="dst">The destination array. It must have U8 or S8 type.</param>
-        public static void InRangeS(CvArr src, CvScalar lower, CvScalar upper, CvArr dst)
+        public static void InRangeS(Arr src, Scalar lower, Scalar upper, Arr dst)
         {
             NativeMethods.cvInRangeS(src, lower, upper, dst);
         }
@@ -477,7 +477,7 @@ namespace OpenCV.Net
         /// <param name="cmpOp">
         /// The comparison operation used to test the relation between the elements to be checked.
         /// </param>
-        public static void Cmp(CvArr src1, CvArr src2, CvArr dst, ComparisonOperation cmpOp)
+        public static void Cmp(Arr src1, Arr src2, Arr dst, ComparisonOperation cmpOp)
         {
             NativeMethods.cvCmp(src2, src2, dst, cmpOp);
         }
@@ -491,7 +491,7 @@ namespace OpenCV.Net
         /// <param name="cmpOp">
         /// The comparison operation used to test the relation between the elements to be checked.
         /// </param>
-        public static void CmpS(CvArr src, double value, CvArr dst, ComparisonOperation cmpOp)
+        public static void CmpS(Arr src, double value, Arr dst, ComparisonOperation cmpOp)
         {
             NativeMethods.cvCmpS(src, value, dst, cmpOp);
         }
@@ -502,7 +502,7 @@ namespace OpenCV.Net
         /// <param name="src1">The first input array.</param>
         /// <param name="src2">The second input array.</param>
         /// <param name="dst">The destination array.</param>
-        public static void Min(CvArr src1, CvArr src2, CvArr dst)
+        public static void Min(Arr src1, Arr src2, Arr dst)
         {
             NativeMethods.cvMin(src1, src2, dst);
         }
@@ -513,7 +513,7 @@ namespace OpenCV.Net
         /// <param name="src1">The first input array.</param>
         /// <param name="src2">The second input array.</param>
         /// <param name="dst">The destination array.</param>
-        public static void Max(CvArr src1, CvArr src2, CvArr dst)
+        public static void Max(Arr src1, Arr src2, Arr dst)
         {
             NativeMethods.cvMax(src1, src2, dst);
         }
@@ -524,7 +524,7 @@ namespace OpenCV.Net
         /// <param name="src">The input array.</param>
         /// <param name="value">The scalar input value.</param>
         /// <param name="dst">The destination array.</param>
-        public static void MinS(CvArr src, double value, CvArr dst)
+        public static void MinS(Arr src, double value, Arr dst)
         {
             NativeMethods.cvMinS(src, value, dst);
         }
@@ -535,7 +535,7 @@ namespace OpenCV.Net
         /// <param name="src">The input array.</param>
         /// <param name="value">The scalar input value.</param>
         /// <param name="dst">The destination array.</param>
-        public static void MaxS(CvArr src, double value, CvArr dst)
+        public static void MaxS(Arr src, double value, Arr dst)
         {
             NativeMethods.cvMaxS(src, value, dst);
         }
@@ -546,7 +546,7 @@ namespace OpenCV.Net
         /// <param name="src1">The first input array.</param>
         /// <param name="src2">The second input array.</param>
         /// <param name="dst">The destination array.</param>
-        public static void AbsDiff(CvArr src1, CvArr src2, CvArr dst)
+        public static void AbsDiff(Arr src1, Arr src2, Arr dst)
         {
             NativeMethods.cvAbsDiff(src1, src2, dst);
         }
@@ -557,7 +557,7 @@ namespace OpenCV.Net
         /// <param name="src">The input array.</param>
         /// <param name="value">The scalar input value.</param>
         /// <param name="dst">The destination array.</param>
-        public static void AbsDiffS(CvArr src, CvArr dst, CvScalar value)
+        public static void AbsDiffS(Arr src, Arr dst, Scalar value)
         {
             NativeMethods.cvAbsDiffS(src, dst, value);
         }
@@ -567,9 +567,9 @@ namespace OpenCV.Net
         /// </summary>
         /// <param name="src">The input array.</param>
         /// <param name="dst">The destination array.</param>
-        public static void Abs(CvArr src, CvArr dst)
+        public static void Abs(Arr src, Arr dst)
         {
-            AbsDiffS(src, dst, CvScalar.All(0));
+            AbsDiffS(src, dst, Scalar.All(0));
         }
 
         #endregion
@@ -592,9 +592,9 @@ namespace OpenCV.Net
         /// A value indicating whether the angles are measured in radians, which is the
         /// default mode, or in degrees.
         /// </param>
-        public static void CartToPolar(CvArr x, CvArr y, CvArr magnitude, CvArr angle = null, bool angleInDegrees = false)
+        public static void CartToPolar(Arr x, Arr y, Arr magnitude, Arr angle = null, bool angleInDegrees = false)
         {
-            NativeMethods.cvCartToPolar(x, y, magnitude ?? CvArr.Null, angle ?? CvArr.Null, angleInDegrees ? 1 : 0);
+            NativeMethods.cvCartToPolar(x, y, magnitude ?? Arr.Null, angle ?? Arr.Null, angleInDegrees ? 1 : 0);
         }
 
         /// <summary>
@@ -610,9 +610,9 @@ namespace OpenCV.Net
         /// A value indicating whether the angles are measured in radians, which is the
         /// default mode, or in degrees.
         /// </param>
-        public static void PolarToCart(CvArr magnitude, CvArr angle, CvArr x, CvArr y, bool angleInDegrees = false)
+        public static void PolarToCart(Arr magnitude, Arr angle, Arr x, Arr y, bool angleInDegrees = false)
         {
-            NativeMethods.cvPolarToCart(magnitude ?? CvArr.Null, angle, x ?? CvArr.Null, y ?? CvArr.Null, angleInDegrees ? 1 : 0);
+            NativeMethods.cvPolarToCart(magnitude ?? Arr.Null, angle, x ?? Arr.Null, y ?? Arr.Null, angleInDegrees ? 1 : 0);
         }
 
         /// <summary>
@@ -621,7 +621,7 @@ namespace OpenCV.Net
         /// <param name="src">The source array.</param>
         /// <param name="dst">The destination array, should be the same type as the source.</param>
         /// <param name="power">The exponent of power.</param>
-        public static void Pow(CvArr src, CvArr dst, double power)
+        public static void Pow(Arr src, Arr dst, double power)
         {
             NativeMethods.cvPow(src, dst, power);
         }
@@ -634,7 +634,7 @@ namespace OpenCV.Net
         /// The destination array, it should have double type or the same type
         /// as <paramref name="src"/>.
         /// </param>
-        public static void Exp(CvArr src, CvArr dst)
+        public static void Exp(Arr src, Arr dst)
         {
             NativeMethods.cvExp(src, dst);
         }
@@ -647,7 +647,7 @@ namespace OpenCV.Net
         /// The destination array, it should have double type or the same type
         /// as <paramref name="src"/>.
         /// </param>
-        public static void Log(CvArr src, CvArr dst)
+        public static void Log(Arr src, Arr dst)
         {
             NativeMethods.cvLog(src, dst);
         }
@@ -733,7 +733,7 @@ namespace OpenCV.Net
         /// the exclusive upper boundary of the random numbers range. In the case of a normal
         /// distribution it is the standard deviation of the random numbers.
         /// </param>
-        public static void RandArr(ref ulong rng, CvArr arr, CvRandDistribution distType, CvScalar param1, CvScalar param2)
+        public static void RandArr(ref ulong rng, Arr arr, RandDistribution distType, Scalar param1, Scalar param2)
         {
             NativeMethods.cvRandArr(ref rng, arr, distType, param1, param2);
         }
@@ -744,7 +744,7 @@ namespace OpenCV.Net
         /// <param name="mat">The source and destination array. The array is shuffled in place.</param>
         /// <param name="rng">The random number generator state initialized by <see cref="Rng"/>.</param>
         /// <param name="iterFactor">The scale factor that determines the number of random swap operations.</param>
-        public static void RandShuffle(CvArr mat, ref ulong rng, double iterFactor = 1)
+        public static void RandShuffle(Arr mat, ref ulong rng, double iterFactor = 1)
         {
             NativeMethods.cvRandShuffle(mat, ref rng, iterFactor);
         }
@@ -759,7 +759,7 @@ namespace OpenCV.Net
         /// The operation flags indicating whether to sort rows or columns and whether to use ascending
         /// or descending order.
         /// </param>
-        public static void Sort(CvArr src, CvArr dst, CvArr indices, SortFlags flags)
+        public static void Sort(Arr src, Arr dst, Arr indices, SortFlags flags)
         {
             NativeMethods.cvSort(src, dst, indices, flags);
         }
@@ -770,7 +770,7 @@ namespace OpenCV.Net
         /// <param name="coeffs">The equation coefficients, an array of 3 or 4 elements.</param>
         /// <param name="roots">The output array of real roots which should have 3 elements.</param>
         /// <returns>The number of real roots found.</returns>
-        public static int SolveCubic(CvMat coeffs, CvMat roots)
+        public static int SolveCubic(Mat coeffs, Mat roots)
         {
             return NativeMethods.cvSolveCubic(coeffs, roots);
         }
@@ -782,7 +782,7 @@ namespace OpenCV.Net
         /// <param name="roots2">The destination (complex) array of roots.</param>
         /// <param name="maxIter">The maximum number of iterations to perform.</param>
         /// <param name="fig">The required figures of precision.</param>
-        public static void SolvePoly(CvMat coeffs, CvMat roots2, int maxIter = 20, int fig = 100)
+        public static void SolvePoly(Mat coeffs, Mat roots2, int maxIter = 20, int fig = 100)
         {
             NativeMethods.cvSolvePoly(coeffs, roots2, maxIter, fig);
         }
@@ -797,7 +797,7 @@ namespace OpenCV.Net
         /// <param name="src1">The first source vector.</param>
         /// <param name="src2">The second source vector.</param>
         /// <param name="dst">The destination vector.</param>
-        public static void CrossProduct(CvArr src1, CvArr src2, CvArr dst)
+        public static void CrossProduct(Arr src1, Arr src2, Arr dst)
         {
             NativeMethods.cvCrossProduct(src1, src2, dst);
         }
@@ -811,7 +811,7 @@ namespace OpenCV.Net
         /// The third source array (shift). Can be <b>null</b>, if there is no shift.
         /// </param>
         /// <param name="dst">The destination array.</param>
-        public static void MatMulAdd(CvArr src1, CvArr src2, CvArr src3, CvArr dst)
+        public static void MatMulAdd(Arr src1, Arr src2, Arr src3, Arr dst)
         {
             GEMM(src1, src2, 1, src3, 1, dst, 0);
         }
@@ -822,9 +822,9 @@ namespace OpenCV.Net
         /// <param name="src1">The first source array.</param>
         /// <param name="src2">The second source array.</param>
         /// <param name="dst">The destination array.</param>
-        public static void MatMul(CvArr src1, CvArr src2, CvArr dst)
+        public static void MatMul(Arr src1, Arr src2, Arr dst)
         {
-            MatMulAdd(src1, src2, CvArr.Null, dst);
+            MatMulAdd(src1, src2, Arr.Null, dst);
         }
 
         /// <summary>
@@ -841,9 +841,9 @@ namespace OpenCV.Net
         /// <param name="tABC">
         /// The operation flags, used to indicate whether any of the inputs should be transposed.
         /// </param>
-        public static void GEMM(CvArr src1, CvArr src2, double alpha, CvArr src3, double beta, CvArr dst, GemmFlags tABC = 0)
+        public static void GEMM(Arr src1, Arr src2, double alpha, Arr src3, double beta, Arr dst, GemmFlags tABC = 0)
         {
-            NativeMethods.cvGEMM(src1, src2, alpha, src3 ?? CvArr.Null, beta, dst, tABC);
+            NativeMethods.cvGEMM(src1, src2, alpha, src3 ?? Arr.Null, beta, dst, tABC);
         }
 
         /// <summary>
@@ -853,9 +853,9 @@ namespace OpenCV.Net
         /// <param name="dst">The destination array.</param>
         /// <param name="transmat">The transformation matrix to apply to elements of the source array.</param>
         /// <param name="shiftvec">The optional shift vector.</param>
-        public static void Transform(CvArr src, CvArr dst, CvMat transmat, CvMat shiftvec = null)
+        public static void Transform(Arr src, Arr dst, Mat transmat, Mat shiftvec = null)
         {
-            NativeMethods.cvTransform(src, dst, transmat, shiftvec ?? CvMat.Null);
+            NativeMethods.cvTransform(src, dst, transmat, shiftvec ?? Mat.Null);
         }
 
         /// <summary>
@@ -864,7 +864,7 @@ namespace OpenCV.Net
         /// <param name="src">The source three-channel floating-point array.</param>
         /// <param name="dst">The destination three-channel floating-point array.</param>
         /// <param name="mat">The 3x3 or 4x4 transformation matrix.</param>
-        public static void PerspectiveTransform(CvArr src, CvArr dst, CvMat mat)
+        public static void PerspectiveTransform(Arr src, Arr dst, Mat mat)
         {
             NativeMethods.cvPerspectiveTransform(src, dst, mat);
         }
@@ -877,9 +877,9 @@ namespace OpenCV.Net
         /// <param name="order">The order of multipliers.</param>
         /// <param name="delta">An optional array, subtracted from <paramref name="src"/> before multiplication.</param>
         /// <param name="scale">An optional scale factor.</param>
-        public static void MulTransposed(CvArr src, CvArr dst, int order, CvArr delta = null, double scale = 1)
+        public static void MulTransposed(Arr src, Arr dst, int order, Arr delta = null, double scale = 1)
         {
-            NativeMethods.cvMulTransposed(src, dst, order, delta ?? CvArr.Null, scale);
+            NativeMethods.cvMulTransposed(src, dst, order, delta ?? Arr.Null, scale);
         }
 
         /// <summary>
@@ -887,7 +887,7 @@ namespace OpenCV.Net
         /// </summary>
         /// <param name="src">The source matrix.</param>
         /// <param name="dst">The destination matrix.</param>
-        public static void Transpose(CvArr src, CvArr dst)
+        public static void Transpose(Arr src, Arr dst)
         {
             NativeMethods.cvTranspose(src, dst);
         }
@@ -900,7 +900,7 @@ namespace OpenCV.Net
         /// If <b>true</b>, the lower half is copied to the upper half, otherwise
         /// the upper half is copied to the lower half.
         /// </param>
-        public static void CompleteSymm(CvMat matrix, bool lowerToUpper = false)
+        public static void CompleteSymm(Mat matrix, bool lowerToUpper = false)
         {
             NativeMethods.cvCompleteSymm(matrix, lowerToUpper ? 1 : 0);
         }
@@ -911,9 +911,9 @@ namespace OpenCV.Net
         /// <param name="src">The source array.</param>
         /// <param name="dst">The destination array. If it is <b>null</b>, the flipping is done in place.</param>
         /// <param name="flipMode">A value that specifies how to flip the array.</param>
-        public static void Flip(CvArr src, CvArr dst = null, FlipMode flipMode = FlipMode.Vertical)
+        public static void Flip(Arr src, Arr dst = null, FlipMode flipMode = FlipMode.Vertical)
         {
-            NativeMethods.cvFlip(src, dst ?? CvArr.Null, flipMode);
+            NativeMethods.cvFlip(src, dst ?? Arr.Null, flipMode);
         }
 
         /// <summary>
@@ -924,9 +924,9 @@ namespace OpenCV.Net
         /// <param name="U">The optional left orthogonal matrix.</param>
         /// <param name="V">The optional right orthogonal matrix.</param>
         /// <param name="flags">The operation flags that can be used to speed up the processing.</param>
-        public static void SVD(CvArr A, CvArr W, CvArr U = null, CvArr V = null, SvdFlags flags = 0)
+        public static void SVD(Arr A, Arr W, Arr U = null, Arr V = null, SvdFlags flags = 0)
         {
-            NativeMethods.cvSVD(A, W, U ?? CvArr.Null, V ?? CvArr.Null, flags);
+            NativeMethods.cvSVD(A, W, U ?? Arr.Null, V ?? Arr.Null, flags);
         }
 
         /// <summary>
@@ -941,9 +941,9 @@ namespace OpenCV.Net
         /// </param>
         /// <param name="X">The destination matrix for the result of back substitution.</param>
         /// <param name="flags">The operation flags that were used to compute the singular values.</param>
-        public static void SVBkSb(CvArr W, CvArr U, CvArr V, CvArr B, CvArr X, SvdFlags flags)
+        public static void SVBkSb(Arr W, Arr U, Arr V, Arr B, Arr X, SvdFlags flags)
         {
-            NativeMethods.cvSVBkSb(W, U, V, B ?? CvArr.Null, X, flags);
+            NativeMethods.cvSVBkSb(W, U, V, B ?? Arr.Null, X, flags);
         }
 
         /// <summary>
@@ -956,7 +956,7 @@ namespace OpenCV.Net
         /// The inversed condition of <paramref name="src"/> (ratio of the smallest singular value
         /// to the largest singular value) or 0 if <paramref name="src"/> is all zeros.
         /// </returns>
-        public static double Invert(CvArr src, CvArr dst, InversionMethod method = InversionMethod.LU)
+        public static double Invert(Arr src, Arr dst, InversionMethod method = InversionMethod.LU)
         {
             return NativeMethods.cvInvert(src, dst, method);
         }
@@ -973,7 +973,7 @@ namespace OpenCV.Net
         /// is non-singular and <b>false</b> otherwise; in the latter case, <paramref name="dst"/> is not
         /// valid.
         /// </returns>
-        public static bool Solve(CvArr src1, CvArr src2, CvArr dst, InversionMethod method = InversionMethod.LU)
+        public static bool Solve(Arr src1, Arr src2, Arr dst, InversionMethod method = InversionMethod.LU)
         {
             return NativeMethods.cvSolve(src1, src2, dst, method) > 0;
         }
@@ -983,7 +983,7 @@ namespace OpenCV.Net
         /// </summary>
         /// <param name="mat">The source matrix.</param>
         /// <returns>The determinant of the square matrix <paramref name="mat"/>.</returns>
-        public static double Det(CvArr mat)
+        public static double Det(Arr mat)
         {
             return NativeMethods.cvDet(mat);
         }
@@ -993,7 +993,7 @@ namespace OpenCV.Net
         /// </summary>
         /// <param name="mat">The source matrix.</param>
         /// <returns>The sum of the diagonal elements of the matrix <paramref name="mat"/>.</returns>
-        public static CvScalar Trace(CvArr mat)
+        public static Scalar Trace(Arr mat)
         {
             return NativeMethods.cvTrace(mat);
         }
@@ -1007,7 +1007,7 @@ namespace OpenCV.Net
         /// <param name="eps">Accuracy of diagonalization.</param>
         /// <param name="lowindex">Optional index of largest eigenvalue/-vector to calculate.</param>
         /// <param name="highindex">Optional index of smallest eigenvalue/-vector to calculate.</param>
-        public static void EigenVV(CvArr mat, CvArr evects, CvArr evals, double eps = 0, int lowindex = -1, int highindex = -1)
+        public static void EigenVV(Arr mat, Arr evects, Arr evals, double eps = 0, int lowindex = -1, int highindex = -1)
         {
             NativeMethods.cvEigenVV(mat, evects, evals, eps, lowindex, highindex);
         }
@@ -1016,9 +1016,9 @@ namespace OpenCV.Net
         /// Initializes a scaled identity matrix.
         /// </summary>
         /// <param name="mat">The matrix to initialize (not necessarily square).</param>
-        public static void SetIdentity(CvArr mat)
+        public static void SetIdentity(Arr mat)
         {
-            SetIdentity(mat, CvScalar.Real(1));
+            SetIdentity(mat, Scalar.Real(1));
         }
 
         /// <summary>
@@ -1026,7 +1026,7 @@ namespace OpenCV.Net
         /// </summary>
         /// <param name="mat">The matrix to initialize (not necessarily square).</param>
         /// <param name="value">The value to assign to the diagonal elements.</param>
-        public static void SetIdentity(CvArr mat, CvScalar value)
+        public static void SetIdentity(Arr mat, Scalar value)
         {
             NativeMethods.cvSetIdentity(mat, value);
         }
@@ -1041,7 +1041,7 @@ namespace OpenCV.Net
         /// <param name="start">The lower inclusive boundary of the range.</param>
         /// <param name="end">The upper exclusive boundary of the range.</param>
         /// <returns>The source matrix if the operation was successful, <b>null</b> otherwise.</returns>
-        public static CvArr Range(CvArr mat, double start, double end)
+        public static Arr Range(Arr mat, double start, double end)
         {
             return NativeMethods.cvRange(mat, start, end) != IntPtr.Zero ? mat : null;
         }
@@ -1059,7 +1059,7 @@ namespace OpenCV.Net
         /// vector of the input vectors.
         /// </param>
         /// <param name="flags">A value specifying various operation flags.</param>
-        public static void CalcCovarMatrix(CvArr[] vects, CvArr covMat, CvArr avg, CovarianceFlags flags)
+        public static void CalcCovarMatrix(Arr[] vects, Arr covMat, Arr avg, CovarianceFlags flags)
         {
             var pVects = Array.ConvertAll(vects, vect => vect.DangerousGetHandle());
             NativeMethods.cvCalcCovarMatrix(pVects, pVects.Length, covMat, avg, flags);
@@ -1076,7 +1076,7 @@ namespace OpenCV.Net
         /// The output eigenvectors of covariance matrix (i.e. principal components); one vector per row.
         /// </param>
         /// <param name="flags">A value specifying various operation flags.</param>
-        public static void CalcPCA(CvArr data, CvArr mean, CvArr eigenvals, CvArr eigenvects, PcaFlags flags)
+        public static void CalcPCA(Arr data, Arr mean, Arr eigenvals, Arr eigenvects, PcaFlags flags)
         {
             NativeMethods.cvCalcPCA(data, mean, eigenvals, eigenvects, flags);
         }
@@ -1091,7 +1091,7 @@ namespace OpenCV.Net
         /// </param>
         /// <param name="eigenvects">The eigenvectors (principal components). One vector per row.</param>
         /// <param name="result">The output matrix containing the projected vectors.</param>
-        public static void ProjectPCA(CvArr data, CvArr mean, CvArr eigenvects, CvArr result)
+        public static void ProjectPCA(Arr data, Arr mean, Arr eigenvects, Arr result)
         {
             NativeMethods.cvProjectPCA(data, mean, eigenvects, result);
         }
@@ -1106,7 +1106,7 @@ namespace OpenCV.Net
         /// </param>
         /// <param name="eigenvects">The eigenvectors (principal components). One vector per row.</param>
         /// <param name="result">The output matrix containing the back projected vectors.</param>
-        public static void BackProjectPCA(CvArr proj, CvArr mean, CvArr eigenvects, CvArr result)
+        public static void BackProjectPCA(Arr proj, Arr mean, Arr eigenvects, Arr result)
         {
             NativeMethods.cvBackProjectPCA(proj, mean, eigenvects, result);
         }
@@ -1118,7 +1118,7 @@ namespace OpenCV.Net
         /// <param name="vec2">The second 1D source vector.</param>
         /// <param name="mat">The inverse covariance matrix.</param>
         /// <returns>The weighted Mahalanobis distance between two vectors.</returns>
-        public static double Mahalanobis(CvArr vec1, CvArr vec2, CvArr mat)
+        public static double Mahalanobis(Arr vec1, Arr vec2, Arr mat)
         {
             return NativeMethods.cvMahalanobis(vec1, vec2, mat);
         }
@@ -1132,7 +1132,7 @@ namespace OpenCV.Net
         /// </summary>
         /// <param name="arr">The source array.</param>
         /// <returns>The sum of array elements, independently for each channel.</returns>
-        public static CvScalar Sum(CvArr arr)
+        public static Scalar Sum(Arr arr)
         {
             return NativeMethods.cvSum(arr);
         }
@@ -1145,7 +1145,7 @@ namespace OpenCV.Net
         /// image with COI set.
         /// </param>
         /// <returns>The number of non-zero elements in <paramref name="arr"/>.</returns>
-        public static int CountNonZero(CvArr arr)
+        public static int CountNonZero(Arr arr)
         {
             return NativeMethods.cvCountNonZero(arr);
         }
@@ -1156,9 +1156,9 @@ namespace OpenCV.Net
         /// <param name="arr">The source array.</param>
         /// <param name="mask">The optional operation mask.</param>
         /// <returns>The average value of array elements, independently for each channel.</returns>
-        public static CvScalar Avg(CvArr arr, CvArr mask = null)
+        public static Scalar Avg(Arr arr, Arr mask = null)
         {
-            return NativeMethods.cvAvg(arr, mask ?? CvArr.Null);
+            return NativeMethods.cvAvg(arr, mask ?? Arr.Null);
         }
 
         /// <summary>
@@ -1168,9 +1168,9 @@ namespace OpenCV.Net
         /// <param name="mean">The output average of array elements, independently for each channel.</param>
         /// <param name="stdDev">The output standard deviation, independently for each channel.</param>
         /// <param name="mask">The optional operation mask.</param>
-        public static void AvgSdv(CvArr arr, out CvScalar mean, out CvScalar stdDev, CvArr mask = null)
+        public static void AvgSdv(Arr arr, out Scalar mean, out Scalar stdDev, Arr mask = null)
         {
-            NativeMethods.cvAvgSdv(arr, out mean, out stdDev, mask ?? CvArr.Null);
+            NativeMethods.cvAvgSdv(arr, out mean, out stdDev, mask ?? Arr.Null);
         }
 
         /// <summary>
@@ -1180,13 +1180,13 @@ namespace OpenCV.Net
         /// <param name="minValue">The returned minimum value.</param>
         /// <param name="maxValue">The returned maximum value.</param>
         public static void MinMaxLoc(
-            CvArr arr,
+            Arr arr,
             out double minValue,
             out double maxValue)
         {
-            CvPoint minLocation;
-            CvPoint maxLocation;
-            NativeMethods.cvMinMaxLoc(arr, out minValue, out maxValue, out minLocation, out maxLocation, CvArr.Null);
+            Point minLocation;
+            Point maxLocation;
+            NativeMethods.cvMinMaxLoc(arr, out minValue, out maxValue, out minLocation, out maxLocation, Arr.Null);
         }
 
         /// <summary>
@@ -1197,13 +1197,13 @@ namespace OpenCV.Net
         /// <param name="maxValue">The returned maximum value.</param>
         /// <param name="minLocation">The returned minimum location.</param>
         public static void MinMaxLoc(
-            CvArr arr,
+            Arr arr,
             out double minValue,
             out double maxValue,
-            out CvPoint minLocation)
+            out Point minLocation)
         {
-            CvPoint maxLocation;
-            NativeMethods.cvMinMaxLoc(arr, out minValue, out maxValue, out minLocation, out maxLocation, CvArr.Null);
+            Point maxLocation;
+            NativeMethods.cvMinMaxLoc(arr, out minValue, out maxValue, out minLocation, out maxLocation, Arr.Null);
         }
 
         /// <summary>
@@ -1216,14 +1216,14 @@ namespace OpenCV.Net
         /// <param name="maxLocation">The returned maximum location.</param>
         /// <param name="mask">The optional mask used to select a subarray.</param>
         public static void MinMaxLoc(
-            CvArr arr,
+            Arr arr,
             out double minValue,
             out double maxValue,
-            out CvPoint minLocation,
-            out CvPoint maxLocation,
-            CvArr mask = null)
+            out Point minLocation,
+            out Point maxLocation,
+            Arr mask = null)
         {
-            NativeMethods.cvMinMaxLoc(arr, out minValue, out maxValue, out minLocation, out maxLocation, mask ?? CvArr.Null);
+            NativeMethods.cvMinMaxLoc(arr, out minValue, out maxValue, out minLocation, out maxLocation, mask ?? Arr.Null);
         }
 
         /// <summary>
@@ -1238,9 +1238,9 @@ namespace OpenCV.Net
         /// <param name="normType">The type of array norm.</param>
         /// <param name="mask">The optional operation mask.</param>
         /// <returns>The absolute or relative array norm.</returns>
-        public static double Norm(CvArr arr1, CvArr arr2 = null, NormTypes normType = NormTypes.L2, CvArr mask = null)
+        public static double Norm(Arr arr1, Arr arr2 = null, NormTypes normType = NormTypes.L2, Arr mask = null)
         {
-            return NativeMethods.cvNorm(arr1, arr2 ?? CvArr.Null, normType, mask ?? CvArr.Null);
+            return NativeMethods.cvNorm(arr1, arr2 ?? Arr.Null, normType, mask ?? Arr.Null);
         }
 
         /// <summary>
@@ -1252,9 +1252,9 @@ namespace OpenCV.Net
         /// <param name="b">The upper range boundary in the case of range normalization; not used for norm normalization.</param>
         /// <param name="normType">The normalization type.</param>
         /// <param name="mask">The optional operation mask.</param>
-        public static void Normalize(CvArr src, CvArr dst, double a = 1, double b = 0, NormTypes normType = NormTypes.L2, CvArr mask = null)
+        public static void Normalize(Arr src, Arr dst, double a = 1, double b = 0, NormTypes normType = NormTypes.L2, Arr mask = null)
         {
-            NativeMethods.cvNormalize(src, dst, a, b, normType, mask ?? CvArr.Null);
+            NativeMethods.cvNormalize(src, dst, a, b, normType, mask ?? Arr.Null);
         }
 
         /// <summary>
@@ -1268,7 +1268,7 @@ namespace OpenCV.Net
         /// dimension is chosen automatically by analysing the <paramref name="dst"/> size.
         /// </param>
         /// <param name="op">The reduction operation.</param>
-        public static void Reduce(CvArr src, CvArr dst, int dim = -1, ReduceOperation op = ReduceOperation.Sum)
+        public static void Reduce(Arr src, Arr dst, int dim = -1, ReduceOperation op = ReduceOperation.Sum)
         {
             NativeMethods.cvReduce(src, dst, dim, op);
         }
@@ -1288,7 +1288,7 @@ namespace OpenCV.Net
         /// or a number of rows of interest in the destination array (in the case of an inverse
         /// 2d transform).
         /// </param>
-        public static void DFT(CvArr src, CvArr dst, DiscreteTransformFlags flags, int nonzeroRows)
+        public static void DFT(Arr src, Arr dst, DiscreteTransformFlags flags, int nonzeroRows)
         {
             NativeMethods.cvDFT(src, dst, flags, nonzeroRows);
         }
@@ -1303,7 +1303,7 @@ namespace OpenCV.Net
         /// A combination of <see cref="DiscreteTransformFlags.Rows"/> and
         /// <see cref="DiscreteTransformFlags.MultiplyConjugate"/>.
         /// </param>
-        public static void MulSpectrums(CvArr src1, CvArr src2, CvArr dst, DiscreteTransformFlags flags)
+        public static void MulSpectrums(Arr src1, Arr src2, Arr dst, DiscreteTransformFlags flags)
         {
             NativeMethods.cvMulSpectrums(src1, src2, dst, flags);
         }
@@ -1327,7 +1327,7 @@ namespace OpenCV.Net
         /// <param name="src">The source array, real 1D or 2D array.</param>
         /// <param name="dst">Destination array of the same size and type as <paramref name="src"/>.</param>
         /// <param name="flags">The transformation flags specifying the operation of the DCT.</param>
-        public static void DCT(CvArr src, CvArr dst, DiscreteTransformFlags flags)
+        public static void DCT(Arr src, Arr dst, DiscreteTransformFlags flags)
         {
             NativeMethods.cvDCT(src, dst, flags);
         }
@@ -1347,10 +1347,10 @@ namespace OpenCV.Net
         /// <param name="lineType">The algorithm used to draw the line.</param>
         /// <param name="shift">The number of fractional bits in the point coordinates.</param>
         public static void Line(
-            CvArr img,
-            CvPoint pt1,
-            CvPoint pt2,
-            CvScalar color,
+            Arr img,
+            Point pt1,
+            Point pt2,
+            Scalar color,
             int thickness = 1,
             LineFlags lineType = LineFlags.Connected8,
             int shift = 0)
@@ -1373,10 +1373,10 @@ namespace OpenCV.Net
         /// <param name="lineType">The algorithm used to draw the rectangle outline.</param>
         /// <param name="shift">The number of fractional bits in the point coordinates.</param>
         public static void Rectangle(
-            CvArr img,
-            CvPoint pt1,
-            CvPoint pt2,
-            CvScalar color,
+            Arr img,
+            Point pt1,
+            Point pt2,
+            Scalar color,
             int thickness = 1,
             LineFlags lineType = LineFlags.Connected8,
             int shift = 0)
@@ -1385,7 +1385,7 @@ namespace OpenCV.Net
         }
 
         /// <summary>
-        /// Draws a simple, thick, or filled rectangle specified by a <see cref="CvRect"/>
+        /// Draws a simple, thick, or filled rectangle specified by a <see cref="Rect"/>
         /// structure.
         /// </summary>
         /// <param name="img">The image on which to draw.</param>
@@ -1398,9 +1398,9 @@ namespace OpenCV.Net
         /// <param name="lineType">The algorithm used to draw the rectangle outline.</param>
         /// <param name="shift">The number of fractional bits in the rectangle coordinates.</param>
         public static void Rectangle(
-            CvArr img,
-            CvRect rectangle,
-            CvScalar color,
+            Arr img,
+            Rect rectangle,
+            Scalar color,
             int thickness = 1,
             LineFlags lineType = LineFlags.Connected8,
             int shift = 0)
@@ -1422,10 +1422,10 @@ namespace OpenCV.Net
         /// <param name="lineType">The algorithm used to draw the circle boundary.</param>
         /// <param name="shift">The number of fractional bits in the center coordinates and radius value.</param>
         public static void Circle(
-            CvArr img,
-            CvPoint center,
+            Arr img,
+            Point center,
             int radius,
-            CvScalar color,
+            Scalar color,
             int thickness = 1,
             LineFlags lineType = LineFlags.Connected8,
             int shift = 0)
@@ -1453,13 +1453,13 @@ namespace OpenCV.Net
         /// <param name="lineType">The algorithm used to draw the ellipse boundary.</param>
         /// <param name="shift">The number of fractional bits in the center coordinates and axes' values.</param>
         public static void Ellipse(
-            CvArr img,
-            CvPoint center,
-            CvSize axes,
+            Arr img,
+            Point center,
+            Size axes,
             double angle,
             double startAngle,
             double endAngle,
-            CvScalar color,
+            Scalar color,
             int thickness = 1,
             LineFlags lineType = LineFlags.Connected8,
             int shift = 0)
@@ -1480,17 +1480,17 @@ namespace OpenCV.Net
         /// <param name="lineType">The algorithm used to draw the ellipse boundary.</param>
         /// <param name="shift">The number of fractional bits in the center coordinates and axes' values.</param>
         public static void EllipseBox(
-            CvArr img,
-            CvBox2D box,
-            CvScalar color,
+            Arr img,
+            RotatedRect box,
+            Scalar color,
             int thickness = 1,
             LineFlags lineType = LineFlags.Connected8,
             int shift = 0)
         {
-            CvSize axes;
+            Size axes;
             axes.Width = (int)Math.Round(box.Size.Width * 0.5);
             axes.Height = (int)Math.Round(box.Size.Height * 0.5);
-            Ellipse(img, new CvPoint(box.Center), axes, box.Angle, 0, 360, color, thickness, lineType, shift);
+            Ellipse(img, new Point(box.Center), axes, box.Angle, 0, 360, color, thickness, lineType, shift);
         }
 
         /// <summary>
@@ -1502,9 +1502,9 @@ namespace OpenCV.Net
         /// <param name="lineType">The algorithm used to draw the polygon boundaries.</param>
         /// <param name="shift">The number of fractional bits in the vertex coordinates.</param>
         public static void FillConvexPoly(
-            CvArr img,
-            CvPoint[] pts,
-            CvScalar color,
+            Arr img,
+            Point[] pts,
+            Scalar color,
             LineFlags lineType = LineFlags.Connected8,
             int shift = 0)
         {
@@ -1520,9 +1520,9 @@ namespace OpenCV.Net
         /// <param name="lineType">The algorithm used to draw the polygon boundaries.</param>
         /// <param name="shift">The number of fractional bits in the vertex coordinates.</param>
         public static void FillPoly(
-            CvArr img,
-            CvPoint[][] pts,
-            CvScalar color,
+            Arr img,
+            Point[][] pts,
+            Scalar color,
             LineFlags lineType = LineFlags.Connected8,
             int shift = 0)
         {
@@ -1550,10 +1550,10 @@ namespace OpenCV.Net
         /// <param name="lineType">The algorithm used to draw the polygon boundaries.</param>
         /// <param name="shift">The number of fractional bits in the vertex coordinates.</param>
         public static void PolyLine(
-            CvArr img,
-            CvPoint[][] pts,
+            Arr img,
+            Point[][] pts,
             bool isClosed,
-            CvScalar color,
+            Scalar color,
             int thickness = 1,
             LineFlags lineType = LineFlags.Connected8,
             int shift = 0)
@@ -1577,7 +1577,7 @@ namespace OpenCV.Net
         /// <returns>
         /// <b>true</b> if some portion of the line segment is inside the image, otherwise <b>false</b>.
         /// </returns>
-        public static bool ClipLine(CvSize imgSize, ref CvPoint pt1, ref CvPoint pt2)
+        public static bool ClipLine(Size imgSize, ref Point pt1, ref Point pt2)
         {
             return NativeMethods.cvClipLine(imgSize, ref pt1, ref pt2) > 0;
         }
@@ -1594,17 +1594,17 @@ namespace OpenCV.Net
         /// will be scanned in the specified order, from <paramref name="pt1"/> to <paramref name="pt2"/>.
         /// </param>
         /// <returns>
-        /// An <see cref="IEnumerable{CvScalar}"/> whose elements are the result of scanning the image points
+        /// An <see cref="IEnumerable{Scalar}"/> whose elements are the result of scanning the image points
         /// along the raster line between <paramref name="pt1"/> and <paramref name="pt2"/>.
         /// </returns>
-        public static IEnumerable<CvScalar> LineIterator(
-            CvArr image,
-            CvPoint pt1,
-            CvPoint pt2,
+        public static IEnumerable<Scalar> LineIterator(
+            Arr image,
+            Point pt1,
+            Point pt2,
             LineType connectivity = LineType.Connected8,
             bool leftToRight = false)
         {
-            CvScalar value;
+            Scalar value;
             _CvLineIterator iterator;
             int elementType = image.ElementType;
             var count = NativeMethods.cvInitLineIterator(image, pt1, pt2, out iterator, connectivity, leftToRight ? 1 : 0);
@@ -1629,7 +1629,7 @@ namespace OpenCV.Net
         /// <param name="origin">The coordinates of the bottom-left corner of the first letter.</param>
         /// <param name="font">The font style used to render the text strokes.</param>
         /// <param name="color">The color of the text.</param>
-        public static void PutText(CvArr img, string text, CvPoint origin, CvFont font, CvScalar color)
+        public static void PutText(Arr img, string text, Point origin, Font font, Scalar color)
         {
             NativeMethods.cvPutText(img, text, origin, font, color);
         }
@@ -1646,7 +1646,7 @@ namespace OpenCV.Net
         /// <param name="baseline">
         /// The y-coordinate of the baseline relative to the bottom-most text point.
         /// </param>
-        public static void GetTextSize(string text, CvFont font, out CvSize textSize, out int baseline)
+        public static void GetTextSize(string text, Font font, out Size textSize, out int baseline)
         {
             NativeMethods.cvGetTextSize(text, font, out textSize, out baseline);
         }
@@ -1669,12 +1669,12 @@ namespace OpenCV.Net
         /// </param>
         /// <returns>The total number of points stored into <paramref name="pts"/>.</returns>
         public static int EllipseToPoly(
-            CvPoint center,
-            CvSize axes,
+            Point center,
+            Size axes,
             int angle,
             int startAngle,
             int endAngle,
-            CvPoint[] pts,
+            Point[] pts,
             int delta)
         {
             return NativeMethods.cvEllipse2Poly(center, axes, angle, startAngle, endAngle, pts, delta);
@@ -1701,15 +1701,15 @@ namespace OpenCV.Net
         /// </param>
         /// <param name="lineType">The algorithm used to draw the contour boundaries.</param>
         public static void DrawContours(
-            CvArr img,
-            CvSeq contour,
-            CvScalar externalColor,
-            CvScalar holeColor,
+            Arr img,
+            Seq contour,
+            Scalar externalColor,
+            Scalar holeColor,
             int maxLevel,
             int thickness = 1,
             LineFlags lineType = LineFlags.Connected8)
         {
-            DrawContours(img, contour, externalColor, holeColor, maxLevel, thickness, lineType, CvPoint.Zero);
+            DrawContours(img, contour, externalColor, holeColor, maxLevel, thickness, lineType, Point.Zero);
         }
 
         /// <summary>
@@ -1734,14 +1734,14 @@ namespace OpenCV.Net
         /// <param name="lineType">The algorithm used to draw the contour boundaries.</param>
         /// <param name="offset">An offset to apply to all contour vertices.</param>
         public static void DrawContours(
-            CvArr img,
-            CvSeq contour,
-            CvScalar externalColor,
-            CvScalar holeColor,
+            Arr img,
+            Seq contour,
+            Scalar externalColor,
+            Scalar holeColor,
             int maxLevel,
             int thickness,
             LineFlags lineType,
-            CvPoint offset)
+            Point offset)
         {
             NativeMethods.cvDrawContours(img, contour, externalColor, holeColor, maxLevel, thickness, lineType, offset);
         }
@@ -1755,7 +1755,7 @@ namespace OpenCV.Net
         /// The look-up table array. Elements of <paramref name="src"/> are
         /// used as indices in this 256-element table.
         /// </param>
-        public static void LUT(CvArr src, CvArr dst, CvArr lut)
+        public static void LUT(Arr src, Arr dst, Arr lut)
         {
             NativeMethods.cvLUT(src, dst, lut);
         }
@@ -1780,7 +1780,7 @@ namespace OpenCV.Net
             TElement element,
             string name = null,
             string comment = null,
-            CvAttrList attributes = default(CvAttrList)) where TElement : CvHandle
+            AttrList attributes = default(AttrList)) where TElement : CVHandle
         {
             NativeMethods.cvSave(fileName, element, name, comment, attributes);
         }
@@ -1791,14 +1791,14 @@ namespace OpenCV.Net
         /// <typeparam name="TElement">The type of object to load.</typeparam>
         /// <param name="fileName">The file path to be loaded.</param>
         /// <param name="storage">
-        /// Memory storage for dynamic structures, such as <see cref="CvSeq"/> or <see cref="CvGraph"/>.
+        /// Memory storage for dynamic structures, such as <see cref="Seq"/> or <see cref="Graph"/>.
         /// It is not used for matrices or images.
         /// </param>
         /// <param name="name">
         /// Optional object name. If it is <b>null</b>, the first top-level object in the storage will be loaded.
         /// </param>
         /// <returns>The loaded object instance.</returns>
-        public static TElement Load<TElement>(string fileName, CvMemStorage storage = null, string name = null) where TElement : CvHandle
+        public static TElement Load<TElement>(string fileName, MemStorage storage = null, string name = null) where TElement : CVHandle
         {
             string realName;
             return Load<TElement>(fileName, storage, name, out realName);
@@ -1810,7 +1810,7 @@ namespace OpenCV.Net
         /// <typeparam name="TElement">The type of object to load.</typeparam>
         /// <param name="fileName">The file path to be loaded.</param>
         /// <param name="storage">
-        /// Memory storage for dynamic structures, such as <see cref="CvSeq"/> or <see cref="CvGraph"/>.
+        /// Memory storage for dynamic structures, such as <see cref="Seq"/> or <see cref="Graph"/>.
         /// It is not used for matrices or images.
         /// </param>
         /// <param name="name">
@@ -1818,10 +1818,10 @@ namespace OpenCV.Net
         /// </param>
         /// <param name="realName">Optional output parameter that will contain the name of the loaded object.</param>
         /// <returns>The loaded object instance.</returns>
-        public static TElement Load<TElement>(string fileName, CvMemStorage storage, string name, out string realName) where TElement : CvHandle
+        public static TElement Load<TElement>(string fileName, MemStorage storage, string name, out string realName) where TElement : CVHandle
         {
             IntPtr realNamePtr;
-            var handle = NativeMethods.cvLoad(fileName, storage ?? CvMemStorage.Null, name, out realNamePtr);
+            var handle = NativeMethods.cvLoad(fileName, storage ?? MemStorage.Null, name, out realNamePtr);
             realName = Marshal.PtrToStringAnsi(realNamePtr);
             var result = (TElement)Activator.CreateInstance(
                 typeof(TElement),

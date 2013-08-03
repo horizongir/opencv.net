@@ -62,7 +62,7 @@ namespace OpenCV.Net
     /// Represents the method that will be called when the button changes state.
     /// </summary>
     /// <param name="state">The new state of the button.</param>
-    public delegate void CvButtonCallback(bool state);
+    public delegate void ButtonCallback(bool state);
 
     /// <summary>
     /// Specifies the available GUI button types.
@@ -165,7 +165,7 @@ namespace OpenCV.Net
     /// </summary>
     /// <param name="pos">The new position of the trackbar.</param>
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public delegate void CvTrackbarCallback(int pos);
+    public delegate void TrackbarCallback(int pos);
 
     /// <summary>
     /// Specifies mouse event categories.
@@ -267,7 +267,7 @@ namespace OpenCV.Net
     /// <param name="x">The x-coordinate of the mouse during the generating mouse event.</param>
     /// <param name="y">The y-coordinate of the mouse during the generating mouse event.</param>
     /// <param name="flags">The mouse event modifier flags.</param>
-    public delegate void CvMouseCallback(MouseEvent evt, int x, int y, MouseEventFlags flags);
+    public delegate void MouseCallback(MouseEvent evt, int x, int y, MouseEventFlags flags);
 
     /// <summary>
     /// Specifies the color type of a loaded image.
@@ -386,7 +386,7 @@ namespace OpenCV.Net
     /// <summary>
     /// Represents the method that will draw OpenGL on top of the image display.
     /// </summary>
-    public delegate void CvOpenGlDrawCallback();
+    public delegate void OpenGLDrawCallback();
 
     /// <summary>
     /// Specifies the available camera or video capture domains.
@@ -607,7 +607,7 @@ namespace OpenCV.Net
 
         /// <summary>
         /// Specifies the format of the <see cref="IplImage"/> objects returned by
-        /// <see cref="CvCapture.RetrieveFrame"/>.
+        /// <see cref="Capture.RetrieveFrame"/>.
         /// </summary>
         Format = 8,
 

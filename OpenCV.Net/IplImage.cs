@@ -9,7 +9,7 @@ namespace OpenCV.Net
     /// <summary>
     /// Represents an IPL image header.
     /// </summary>
-    public class IplImage : CvArr
+    public class IplImage : Arr
     {
         bool ownsData;
 
@@ -43,7 +43,7 @@ namespace OpenCV.Net
         /// <param name="size">The pixel-accurate size of the <see cref="IplImage"/>.</param>
         /// <param name="depth">The bit depth of image pixels.</param>
         /// <param name="channels">The number of channels per pixel.</param>
-        public IplImage(CvSize size, IplDepth depth, int channels)
+        public IplImage(Size size, IplDepth depth, int channels)
             : this(NativeMethods.cvCreateImage(size, depth, channels), true)
         {
         }
@@ -58,7 +58,7 @@ namespace OpenCV.Net
         /// <param name="depth">The bit depth of image pixels.</param>
         /// <param name="channels">The number of channels per pixel.</param>
         /// <param name="data">A pointer to the image raw pixel data.</param>
-        public IplImage(CvSize size, IplDepth depth, int channels, IntPtr data)
+        public IplImage(Size size, IplDepth depth, int channels, IntPtr data)
             : base(true)
         {
             var pImage = NativeMethods.cvCreateImageHeader(size, depth, channels);
@@ -163,7 +163,7 @@ namespace OpenCV.Net
         /// <summary>
         /// Gets or sets the image region of interest.
         /// </summary>
-        public CvRect RegionOfInterest
+        public Rect RegionOfInterest
         {
             get { return NativeMethods.cvGetImageROI(this); }
             set { NativeMethods.cvSetImageROI(this, value); }
@@ -198,7 +198,7 @@ namespace OpenCV.Net
         /// A new <see cref="IplImage"/> that corresponds to the specified rectangle of
         /// the current image.
         /// </returns>
-        public new IplImage GetSubRect(CvRect rect)
+        public new IplImage GetSubRect(Rect rect)
         {
             _CvMat subRect;
             NativeMethods.cvGetSubRect(this, out subRect, rect);
@@ -230,7 +230,7 @@ namespace OpenCV.Net
             public IplImageSubRect(IplImage source, _CvMat subRect)
                 : base(true)
             {
-                var pImage = NativeMethods.cvCreateImageHeader(new CvSize(subRect.cols, subRect.rows), source.Depth, source.Channels);
+                var pImage = NativeMethods.cvCreateImageHeader(new Size(subRect.cols, subRect.rows), source.Depth, source.Channels);
                 SetHandle(pImage);
                 SetData(subRect.data, subRect.step);
                 owner = source;

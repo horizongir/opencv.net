@@ -16,31 +16,31 @@ namespace OpenCV.Net.Native
         internal static extern void cvReleaseHaarClassifierCascade(ref IntPtr cascade);
 
         [DllImport(objdetectLib, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern CvSeq cvHaarDetectObjects(
-            CvArr image,
-            CvHaarClassifierCascade cascade,
-            CvMemStorage storage,
+        internal static extern Seq cvHaarDetectObjects(
+            Arr image,
+            HaarClassifierCascade cascade,
+            MemStorage storage,
             double scale_factor,
             int min_neighbors,
             HaarDetectObjectFlags flags,
-            CvSize min_size,
-            CvSize max_size);
+            Size min_size,
+            Size max_size);
 
         #endregion
 
         #region Object Detection using Latent SVM
 
         [DllImport(objdetectLib, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        internal static extern CvLatentSvmDetector cvLoadLatentSvmDetector(string filename);
+        internal static extern LatentSvmDetector cvLoadLatentSvmDetector(string filename);
 
         [DllImport(objdetectLib, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void cvReleaseLatentSvmDetector(ref IntPtr detector);
 
         [DllImport(objdetectLib, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern CvSeq cvLatentSvmDetectObjects(
+        internal static extern Seq cvLatentSvmDetectObjects(
             IplImage image,
-            CvLatentSvmDetector detector,
-            CvMemStorage storage,
+            LatentSvmDetector detector,
+            MemStorage storage,
             float overlap_threshold,
             int numThreads);
 

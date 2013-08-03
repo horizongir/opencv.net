@@ -44,17 +44,17 @@ namespace OpenCV.Net
         /// </param>
         /// <param name="flags">Specifies operation flags.</param>
         public static void CalcOpticalFlowPyrLK(
-            CvArr prev,
-            CvArr curr,
-            CvArr prevPyr,
-            CvArr currPyr,
-            CvPoint2D32f[] prevFeatures,
-            CvPoint2D32f[] currFeatures,
-            CvSize winSize,
+            Arr prev,
+            Arr curr,
+            Arr prevPyr,
+            Arr currPyr,
+            Point2f[] prevFeatures,
+            Point2f[] currFeatures,
+            Size winSize,
             int level,
             byte[] status,
             float[] trackError,
-            CvTermCriteria criteria,
+            TermCriteria criteria,
             LKFlowFlags flags)
         {
             NativeMethods.cvCalcOpticalFlowPyrLK(
@@ -112,18 +112,18 @@ namespace OpenCV.Net
         /// </param>
         /// <param name="flags">Specifies operation flags.</param>
         public static void CalcAffineFlowPyrLK(
-            CvArr prev,
-            CvArr curr,
-            CvArr prevPyr,
-            CvArr currPyr,
-            CvPoint2D32f[] prevFeatures,
-            CvPoint2D32f[] currFeatures,
+            Arr prev,
+            Arr curr,
+            Arr prevPyr,
+            Arr currPyr,
+            Point2f[] prevFeatures,
+            Point2f[] currFeatures,
             float[] matrices,
-            CvSize winSize,
+            Size winSize,
             int level,
             byte[] status,
             float[] trackError,
-            CvTermCriteria criteria,
+            TermCriteria criteria,
             LKFlowFlags flags)
         {
             NativeMethods.cvCalcAffineFlowPyrLK(
@@ -147,7 +147,7 @@ namespace OpenCV.Net
         /// Estimates the optimal affine transformation between two images or two point sets.
         /// </summary>
         /// <param name="A">
-        /// First input 2D point set stored as a <see cref="CvMat"/>, or an image.
+        /// First input 2D point set stored as a <see cref="Mat"/>, or an image.
         /// </param>
         /// <param name="B">
         /// Second input 2D point set of the same size and the same type as <paramref name="A"/>, or another image.
@@ -161,7 +161,7 @@ namespace OpenCV.Net
         /// <returns>
         /// <b>true</b> if the optimal affine transformation was successfully found; <b>false</b> otherwise.
         /// </returns>
-        public static bool EstimateRigidTransform(CvArr A, CvArr B, CvMat M, bool fullAffine)
+        public static bool EstimateRigidTransform(Arr A, Arr B, Mat M, bool fullAffine)
         {
             return NativeMethods.cvEstimateRigidTransform(A, B, M, fullAffine ? 1 : 0) > 0;
         }
@@ -199,9 +199,9 @@ namespace OpenCV.Net
         /// </param>
         /// <param name="flags">Specifies operation flags.</param>
         public static void CalcOpticalFlowFarneback(
-            CvArr prev,
-            CvArr next,
-            CvArr flow,
+            Arr prev,
+            Arr next,
+            Arr flow,
             double pyrScale,
             int levels,
             int winSize,
@@ -236,7 +236,7 @@ namespace OpenCV.Net
         /// </param>
         /// <param name="timestamp">Current time in milliseconds or other units.</param>
         /// <param name="duration">Maximal duration of the motion track in the same units as <paramref name="timestamp"/>.</param>
-        public static void UpdateMotionHistory(CvArr silhouette, CvArr mhi, double timestamp, double duration)
+        public static void UpdateMotionHistory(Arr silhouette, Arr mhi, double timestamp, double duration)
         {
             NativeMethods.cvUpdateMotionHistory(silhouette, mhi, timestamp, duration);
         }
@@ -259,9 +259,9 @@ namespace OpenCV.Net
         /// Aperture size of derivative operators used by the function. See <see cref="Sobel"/>.
         /// </param>
         public static void CalcMotionGradient(
-            CvArr mhi,
-            CvArr mask,
-            CvArr orientation,
+            Arr mhi,
+            Arr mask,
+            Arr orientation,
             double delta1,
             double delta2,
             int apertureSize = 3)
@@ -284,9 +284,9 @@ namespace OpenCV.Net
         /// The general motion direction angle in the selected region, between 0 degrees and 360 degrees.
         /// </returns>
         public static double CalcGlobalOrientation(
-            CvArr orientation,
-            CvArr mask,
-            CvArr mhi,
+            Arr orientation,
+            Arr mask,
+            Arr mhi,
             double timestamp,
             double duration)
         {
@@ -307,14 +307,14 @@ namespace OpenCV.Net
         /// Segmentation threshold; recommended to be equal to the interval between motion history “steps” or greater.
         /// </param>
         /// <returns>
-        /// A sequence of <see cref="CvConnectedComp"/> structures, one for each motion component. The motion direction
+        /// A sequence of <see cref="ConnectedComp"/> structures, one for each motion component. The motion direction
         /// for every component can be calculated with <see cref="CalcGlobalOrientation"/> using the extracted mask of
         /// the particular component.
         /// </returns>
-        public static CvSeq SegmentMotion(
-            CvArr mhi,
-            CvArr segMask,
-            CvMemStorage storage,
+        public static Seq SegmentMotion(
+            Arr mhi,
+            Arr segMask,
+            MemStorage storage,
             double timestamp,
             double segThresh)
         {
@@ -331,42 +331,42 @@ namespace OpenCV.Net
         /// <summary>
         /// Finds the object center, size, and orientation.
         /// </summary>
-        /// <param name="probImage">Back projection of object histogram (see <see cref="CvHistogram.CalcArrBackProject"/>).</param>
+        /// <param name="probImage">Back projection of object histogram (see <see cref="Histogram.CalcArrBackProject"/>).</param>
         /// <param name="window">Initial search window.</param>
         /// <param name="criteria">Criteria applied to determine when the window search should be finished.</param>
         /// <param name="comp">
-        /// Resultant structure that contains the converged search window coordinates (<see cref="CvConnectedComp.Rect"/> field)
-        /// and the sum of all of the pixels inside the window (<see cref="CvConnectedComp.Area"/> field).
+        /// Resultant structure that contains the converged search window coordinates (<see cref="ConnectedComp.Rect"/> field)
+        /// and the sum of all of the pixels inside the window (<see cref="ConnectedComp.Area"/> field).
         /// </param>
         /// <returns><b>true</b> if the search was successful; <b>false</b> otherwise.</returns>
         public static bool CamShift(
-            CvArr probImage,
-            CvRect window,
-            CvTermCriteria criteria,
-            out CvConnectedComp comp)
+            Arr probImage,
+            Rect window,
+            TermCriteria criteria,
+            out ConnectedComp comp)
         {
-            CvBox2D box;
+            RotatedRect box;
             return NativeMethods.cvCamShift(probImage, window, criteria, out comp, out box) > 0;
         }
 
         /// <summary>
         /// Finds the object center, size, and orientation.
         /// </summary>
-        /// <param name="probImage">Back projection of object histogram (see <see cref="CvHistogram.CalcArrBackProject"/>).</param>
+        /// <param name="probImage">Back projection of object histogram (see <see cref="Histogram.CalcArrBackProject"/>).</param>
         /// <param name="window">Initial search window.</param>
         /// <param name="criteria">Criteria applied to determine when the window search should be finished.</param>
         /// <param name="comp">
-        /// Resultant structure that contains the converged search window coordinates (<see cref="CvConnectedComp.Rect"/> field)
-        /// and the sum of all of the pixels inside the window (<see cref="CvConnectedComp.Area"/> field).
+        /// Resultant structure that contains the converged search window coordinates (<see cref="ConnectedComp.Rect"/> field)
+        /// and the sum of all of the pixels inside the window (<see cref="ConnectedComp.Area"/> field).
         /// </param>
         /// <param name="box">Circumscribed box for the object.</param>
         /// <returns><b>true</b> if the search was successful; <b>false</b> otherwise.</returns>
         public static bool CamShift(
-            CvArr probImage,
-            CvRect window,
-            CvTermCriteria criteria,
-            out CvConnectedComp comp,
-            out CvBox2D box)
+            Arr probImage,
+            Rect window,
+            TermCriteria criteria,
+            out ConnectedComp comp,
+            out RotatedRect box)
         {
             return NativeMethods.cvCamShift(probImage, window, criteria, out comp, out box) > 0;
         }
@@ -374,15 +374,15 @@ namespace OpenCV.Net
         /// <summary>
         /// Finds the object center on back projection.
         /// </summary>
-        /// <param name="probImage">Back projection of object histogram (see <see cref="CvHistogram.CalcArrBackProject"/>).</param>
+        /// <param name="probImage">Back projection of object histogram (see <see cref="Histogram.CalcArrBackProject"/>).</param>
         /// <param name="window">Initial search window.</param>
         /// <param name="criteria">Criteria applied to determine when the window search should be finished.</param>
         /// <param name="comp">
-        /// Resultant structure that contains the converged search window coordinates (<see cref="CvConnectedComp.Rect"/> field)
-        /// and the sum of all of the pixels inside the window (<see cref="CvConnectedComp.Area"/> field).
+        /// Resultant structure that contains the converged search window coordinates (<see cref="ConnectedComp.Rect"/> field)
+        /// and the sum of all of the pixels inside the window (<see cref="ConnectedComp.Area"/> field).
         /// </param>
         /// <returns><b>true</b> if the search was successful; <b>false</b> otherwise.</returns>
-        public static bool MeanShift(CvArr probImage, CvRect window, CvTermCriteria criteria, out CvConnectedComp comp)
+        public static bool MeanShift(Arr probImage, Rect window, TermCriteria criteria, out ConnectedComp comp)
         {
             return NativeMethods.cvMeanShift(probImage, window, criteria, out comp) > 0;
         }

@@ -17,7 +17,7 @@ namespace OpenCV.Net
         /// <param name="text">Text to write on the image.</param>
         /// <param name="location">The point where the text should start on the image.</param>
         /// <param name="font">Font used to draw the text.</param>
-        public static void AddText(CvArr img, string text, CvPoint location, CvFont font)
+        public static void AddText(Arr img, string text, Point location, Font font)
         {
             NativeMethods.cvAddText(img, text, location, font);
         }
@@ -36,7 +36,7 @@ namespace OpenCV.Net
         /// </returns>
         public static bool CreateButton(
             string buttonName = null,
-            CvButtonCallback onChange = null,
+            ButtonCallback onChange = null,
             ButtonType buttonType = ButtonType.PushButton,
             bool initialButtonState = false)
         {
@@ -56,12 +56,12 @@ namespace OpenCV.Net
         }
 
         /// <summary>
-        /// Loads an image from a file as a <see cref="CvMat"/>.
+        /// Loads an image from a file as a <see cref="Mat"/>.
         /// </summary>
         /// <param name="fileName">Name of file to be loaded.</param>
         /// <param name="colorType">Specific color type of the loaded image.</param>
         /// <returns>The newly loaded image.</returns>
-        public static CvMat LoadImageM(string fileName, LoadImageFlags colorType)
+        public static Mat LoadImageM(string fileName, LoadImageFlags colorType)
         {
             return NativeMethods.cvLoadImageM(fileName, colorType);
         }
@@ -75,7 +75,7 @@ namespace OpenCV.Net
         /// <returns>
         /// <b>true</b> if the image was saved successfully; otherwise, <b>false</b>.
         /// </returns>
-        public static bool SaveImage(string fileName, CvArr image, params int[] parameters)
+        public static bool SaveImage(string fileName, Arr image, params int[] parameters)
         {
             return NativeMethods.cvSaveImage(fileName, image, parameters) > 0;
         }
@@ -86,18 +86,18 @@ namespace OpenCV.Net
         /// <param name="buf">Input array of bytes.</param>
         /// <param name="colorType">Specific color type of the loaded image.</param>
         /// <returns>The newly loaded image.</returns>
-        public static IplImage DecodeImage(CvMat buf, LoadImageFlags colorType)
+        public static IplImage DecodeImage(Mat buf, LoadImageFlags colorType)
         {
             return NativeMethods.cvDecodeImage(buf, colorType);
         }
 
         /// <summary>
-        /// Reads an image from a buffer in memory as a <see cref="CvMat"/>.
+        /// Reads an image from a buffer in memory as a <see cref="Mat"/>.
         /// </summary>
         /// <param name="buf">Input array of bytes.</param>
         /// <param name="colorType">Specific color type of the loaded image.</param>
         /// <returns>The newly loaded image.</returns>
-        public static CvMat DecodeImageM(CvMat buf, LoadImageFlags colorType)
+        public static Mat DecodeImageM(Mat buf, LoadImageFlags colorType)
         {
             return NativeMethods.cvDecodeImageM(buf, colorType);
         }
@@ -109,9 +109,9 @@ namespace OpenCV.Net
         /// <param name="image">Image to be written.</param>
         /// <param name="parameters">Optional image compression parameters.</param>
         /// <returns>
-        /// A newly created <see cref="CvMat"/> containing the encoded image bytes.
+        /// A newly created <see cref="Mat"/> containing the encoded image bytes.
         /// </returns>
-        public static CvMat EncodeImage(string ext, CvArr image, params int[] parameters)
+        public static Mat EncodeImage(string ext, Arr image, params int[] parameters)
         {
             return NativeMethods.cvEncodeImage(ext, image, parameters);
         }
@@ -122,7 +122,7 @@ namespace OpenCV.Net
         /// <param name="src">Source image.</param>
         /// <param name="dst">Destination image.</param>
         /// <param name="flags">The operation flags.</param>
-        public static void ConvertImage(CvArr src, CvArr dst, ConvertImageFlags flags = ConvertImageFlags.None)
+        public static void ConvertImage(Arr src, Arr dst, ConvertImageFlags flags = ConvertImageFlags.None)
         {
             NativeMethods.cvConvertImage(src, dst, flags);
         }
