@@ -9,9 +9,9 @@ namespace OpenCV.Net.UnitTests
         [TestMethod]
         public void TestEncodeImage()
         {
-            var image = new IplImage(new CvSize(320, 240), IplDepth.U8, 3);
+            var image = new IplImage(new Size(320, 240), IplDepth.U8, 3);
             image.SetZero();
-            cv.Circle(image, new CvPoint(100, 100), 50, CvScalar.Rgb(255, 0, 0));
+            cv.Circle(image, new Point(100, 100), 50, Scalar.Rgb(255, 0, 0));
             var result = cv.EncodeImage(".jpg", image);
             Assert.AreEqual(1, result.Channels);
         }

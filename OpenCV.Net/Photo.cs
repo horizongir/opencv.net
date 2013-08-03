@@ -20,7 +20,7 @@ namespace OpenCV.Net
         /// Radius of a circular neighborhood of each point inpainted that is considered by the algorithm.
         /// </param>
         /// <param name="flags">Specifies the inpainting method.</param>
-        public static void Inpaint(CvArr src, CvArr inpaintMask, CvArr dst, double inpaintRange, InpaintMethod flags)
+        public static void Inpaint(Arr src, Arr inpaintMask, Arr dst, double inpaintRange, InpaintMethod flags)
         {
             NativeMethods.cvInpaint(src, inpaintMask, dst, inpaintRange, flags);
         }

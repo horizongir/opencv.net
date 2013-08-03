@@ -15,7 +15,7 @@ namespace OpenCV.Net
         readonly string name;
         _CvMouseCallback mouseCallback;
         _CvOpenGlDrawCallback drawCallback;
-        List<CvTrackbarCallback> trackbars;
+        List<TrackbarCallback> trackbars;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="NamedWindow"/> class from the
@@ -130,7 +130,7 @@ namespace OpenCV.Net
         /// Displays the image in the specified window.
         /// </summary>
         /// <param name="image">The image to be shown.</param>
-        public void ShowImage(CvArr image)
+        public void ShowImage(Arr image)
         {
             NativeMethods.cvShowImage(name, image);
         }
@@ -172,11 +172,11 @@ namespace OpenCV.Net
         /// <param name="onChanged">
         /// The callback method that will be called every time the slider changes position.
         /// </param>
-        public void CreateTrackbar(string trackbarName, ref int value, int count, CvTrackbarCallback onChanged = null)
+        public void CreateTrackbar(string trackbarName, ref int value, int count, TrackbarCallback onChanged = null)
         {
             if (trackbars == null)
             {
-                trackbars = new List<CvTrackbarCallback>();
+                trackbars = new List<TrackbarCallback>();
             }
 
             if (onChanged != null)
@@ -212,7 +212,7 @@ namespace OpenCV.Net
         /// <param name="onMouse">
         /// The callback method that will handle mouse events of this named window.
         /// </param>
-        public void SetMouseCallback(CvMouseCallback onMouse)
+        public void SetMouseCallback(MouseCallback onMouse)
         {
             mouseCallback = (evt, x, y, flags, param) => onMouse(evt, x, y, flags);
             NativeMethods.cvSetMouseCallback(name, mouseCallback, IntPtr.Zero);
@@ -225,7 +225,7 @@ namespace OpenCV.Net
         /// <param name="callback">
         /// The callback method that will be called every frame.
         /// </param>
-        public void SetOpenGLDrawCallback(CvOpenGlDrawCallback callback)
+        public void SetOpenGLDrawCallback(OpenGLDrawCallback callback)
         {
             drawCallback = userdata => callback();
             NativeMethods.cvSetOpenGlDrawCallback(name, drawCallback, IntPtr.Zero);

@@ -1342,17 +1342,17 @@ namespace OpenCV.Net
     public enum HistogramType : int
     {
         /// <summary>
-        /// Specifies that histogram data is represented as a multi-dimensional dense array <see cref="CvMatND"/>.
+        /// Specifies that histogram data is represented as a multi-dimensional dense array <see cref="MatND"/>.
         /// </summary>
         Array = 0,
 
         /// <summary>
-        /// Specifies that histogram data is represented as a multi-dimensional sparse array <see cref="CvSparseMat"/>.
+        /// Specifies that histogram data is represented as a multi-dimensional sparse array <see cref="SparseMat"/>.
         /// </summary>
         Sparse = 1,
 
         /// <summary>
-        /// Specifies that histogram data is represented as a multi-dimensional sparse array <see cref="CvSparseMat"/>.
+        /// Specifies that histogram data is represented as a multi-dimensional sparse array <see cref="SparseMat"/>.
         /// </summary>
         Tree = Sparse
     }

@@ -23,9 +23,9 @@ namespace OpenCV.Net
         /// 64-bit floating-point.
         /// </param>
         /// <param name="mask">Optional operation mask.</param>
-        public static void Acc(CvArr image, CvArr sum, CvArr mask = null)
+        public static void Acc(Arr image, Arr sum, Arr mask = null)
         {
-            NativeMethods.cvAcc(image, sum, mask ?? CvArr.Null);
+            NativeMethods.cvAcc(image, sum, mask ?? Arr.Null);
         }
 
         /// <summary>
@@ -40,9 +40,9 @@ namespace OpenCV.Net
         /// 64-bit floating-point.
         /// </param>
         /// <param name="mask">Optional operation mask.</param>
-        public static void SquareAcc(CvArr image, CvArr sqsum, CvArr mask = null)
+        public static void SquareAcc(Arr image, Arr sqsum, Arr mask = null)
         {
-            NativeMethods.cvSquareAcc(image, sqsum, mask ?? CvArr.Null);
+            NativeMethods.cvSquareAcc(image, sqsum, mask ?? Arr.Null);
         }
 
         /// <summary>
@@ -58,9 +58,9 @@ namespace OpenCV.Net
         /// 64-bit floating-point.
         /// </param>
         /// <param name="mask">Optional operation mask.</param>
-        public static void MultiplyAcc(CvArr image1, CvArr image2, CvArr acc, CvArr mask = null)
+        public static void MultiplyAcc(Arr image1, Arr image2, Arr acc, Arr mask = null)
         {
-            NativeMethods.cvMultiplyAcc(image1, image2, acc, mask ?? CvArr.Null);
+            NativeMethods.cvMultiplyAcc(image1, image2, acc, mask ?? Arr.Null);
         }
 
         /// <summary>
@@ -81,9 +81,9 @@ namespace OpenCV.Net
         /// forgets about previous frames.
         /// </param>
         /// <param name="mask">Optional operation mask.</param>
-        public static void RunningAvg(CvArr image, CvArr acc, double alpha, CvArr mask = null)
+        public static void RunningAvg(Arr image, Arr acc, double alpha, Arr mask = null)
         {
-            NativeMethods.cvRunningAvg(image, acc, alpha, mask ?? CvArr.Null);
+            NativeMethods.cvRunningAvg(image, acc, alpha, mask ?? Arr.Null);
         }
 
         #endregion
@@ -100,9 +100,9 @@ namespace OpenCV.Net
         /// of the destination image rectangle where the source image (or its ROI) is copied.
         /// </param>
         /// <param name="borderType">Type of the border to create around the copied source image rectangle.</param>
-        public static void CopyMakeBorder(CvArr src, CvArr dst, CvPoint offset, IplBorder borderType)
+        public static void CopyMakeBorder(Arr src, Arr dst, Point offset, IplBorder borderType)
         {
-            CopyMakeBorder(src, dst, offset, borderType, CvScalar.All(0));
+            CopyMakeBorder(src, dst, offset, borderType, Scalar.All(0));
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace OpenCV.Net
         /// <param name="value">
         /// Value of the border pixels if <paramref name="borderType"/> is <see cref="IplBorder.Constant"/>.
         /// </param>
-        public static void CopyMakeBorder(CvArr src, CvArr dst, CvPoint offset, IplBorder borderType, CvScalar value)
+        public static void CopyMakeBorder(Arr src, Arr dst, Point offset, IplBorder borderType, Scalar value)
         {
             NativeMethods.cvCopyMakeBorder(src, dst, offset, borderType, value);
         }
@@ -149,8 +149,8 @@ namespace OpenCV.Net
         /// Optionally specifies the standard deviation for the second dimension.
         /// </param>
         public static void Smooth(
-            CvArr src,
-            CvArr dst,
+            Arr src,
+            Arr dst,
             SmoothMethod smoothType = SmoothMethod.Gaussian,
             int size1 = 3,
             int size2 = 0,
@@ -171,9 +171,9 @@ namespace OpenCV.Net
         /// The convolution kernel (or rather a correlation kernel), a single-channel
         /// floating point matrix.
         /// </param>
-        public static void Filter2D(CvArr src, CvArr dst, CvMat kernel)
+        public static void Filter2D(Arr src, Arr dst, Mat kernel)
         {
-            Filter2D(src, dst, kernel, new CvPoint(-1, -1));
+            Filter2D(src, dst, kernel, new Point(-1, -1));
         }
 
         /// <summary>
@@ -192,7 +192,7 @@ namespace OpenCV.Net
         /// within the kernel; the anchor should lie within the kernel; default value (-1,-1)
         /// means that the anchor is at the kernel center.
         /// </param>
-        public static void Filter2D(CvArr src, CvArr dst, CvMat kernel, CvPoint anchor)
+        public static void Filter2D(Arr src, Arr dst, Mat kernel, Point anchor)
         {
             NativeMethods.cvFilter2D(src, dst, kernel, anchor);
         }
@@ -209,9 +209,9 @@ namespace OpenCV.Net
         /// <param name="tiltedSum">
         /// The integral for the image rotated by 45 degrees, the same data type as <paramref name="sum"/>.
         /// </param>
-        public static void Integral(CvArr image, CvArr sum, CvArr sqsum = null, CvArr tiltedSum = null)
+        public static void Integral(Arr image, Arr sum, Arr sqsum = null, Arr tiltedSum = null)
         {
-            NativeMethods.cvIntegral(image, sum, sqsum ?? CvArr.Null, tiltedSum ?? CvArr.Null);
+            NativeMethods.cvIntegral(image, sum, sqsum ?? Arr.Null, tiltedSum ?? Arr.Null);
         }
 
         /// <summary>
@@ -220,7 +220,7 @@ namespace OpenCV.Net
         /// <param name="src">The source image.</param>
         /// <param name="dst">The destination image, with the same type as <paramref name="src"/>.</param>
         /// <param name="filter">The type of filter used for convolution.</param>
-        public static void PyrDown(CvArr src, CvArr dst, PyramidDecompositionFilter filter = PyramidDecompositionFilter.Gaussian5x5)
+        public static void PyrDown(Arr src, Arr dst, PyramidDecompositionFilter filter = PyramidDecompositionFilter.Gaussian5x5)
         {
             NativeMethods.cvPyrDown(src, dst, filter);
         }
@@ -231,7 +231,7 @@ namespace OpenCV.Net
         /// <param name="src">The source image.</param>
         /// <param name="dst">The destination image, with the same type as <paramref name="src"/>.</param>
         /// <param name="filter">The type of filter used for convolution.</param>
-        public static void PyrUp(CvArr src, CvArr dst, PyramidDecompositionFilter filter = PyramidDecompositionFilter.Gaussian5x5)
+        public static void PyrUp(Arr src, Arr dst, PyramidDecompositionFilter filter = PyramidDecompositionFilter.Gaussian5x5)
         {
             NativeMethods.cvPyrUp(src, dst, filter);
         }
@@ -255,19 +255,19 @@ namespace OpenCV.Net
         /// <returns>
         /// A set of matrix handles representing the pyramid of <paramref name="img"/>.
         /// </returns>
-        public static CvMat[] CreatePyramid(
-            CvArr img,
+        public static Mat[] CreatePyramid(
+            Arr img,
             int extraLayers,
             double rate,
-            CvSize[] layerSizes = null,
-            CvArr buffer = null,
+            Size[] layerSizes = null,
+            Arr buffer = null,
             bool calc = true,
             PyramidDecompositionFilter filter = PyramidDecompositionFilter.Gaussian5x5)
         {
             var handles = new IntPtr[extraLayers + 1];
-            var pyramid = NativeMethods.cvCreatePyramid(img, extraLayers, rate, layerSizes, buffer ?? CvArr.Null, calc ? 1 : 0, filter);
+            var pyramid = NativeMethods.cvCreatePyramid(img, extraLayers, rate, layerSizes, buffer ?? Arr.Null, calc ? 1 : 0, filter);
             Marshal.Copy(pyramid, handles, 0, handles.Length);
-            return Array.ConvertAll(handles, handle => new CvMat(handle, true));
+            return Array.ConvertAll(handles, handle => new Mat(handle, true));
         }
 
         /// <summary>
@@ -279,13 +279,13 @@ namespace OpenCV.Net
         /// <param name="sr">The color window radius.</param>
         /// <param name="maxLevel">Maximum level of the pyramid for the segmentation.</param>
         public static void PyrMeanShiftFiltering(
-            CvArr src,
-            CvArr dst,
+            Arr src,
+            Arr dst,
             double sp,
             double sr,
             int maxLevel = 1)
         {
-            PyrMeanShiftFiltering(src, dst, sp, sr, maxLevel, new CvTermCriteria(TermCriteriaType.MaxIter | TermCriteriaType.Epsilon, 5, 1));
+            PyrMeanShiftFiltering(src, dst, sp, sr, maxLevel, new TermCriteria(TermCriteriaType.MaxIter | TermCriteriaType.Epsilon, 5, 1));
         }
 
         /// <summary>
@@ -298,12 +298,12 @@ namespace OpenCV.Net
         /// <param name="maxLevel">Maximum level of the pyramid for the segmentation.</param>
         /// <param name="termcrit">Termination criteria: when to stop meanshift iterations.</param>
         public static void PyrMeanShiftFiltering(
-            CvArr src,
-            CvArr dst,
+            Arr src,
+            Arr dst,
             double sp,
             double sr,
             int maxLevel,
-            CvTermCriteria termcrit)
+            TermCriteria termcrit)
         {
             NativeMethods.cvPyrMeanShiftFiltering(src, dst, sp, sr, maxLevel, termcrit);
         }
@@ -316,7 +316,7 @@ namespace OpenCV.Net
         /// The input/output 32-bit single-channel image (map) of markers. It should have the
         /// same size as <paramref name="image"/>.
         /// </param>
-        public static void Watershed(CvArr image, CvArr markers)
+        public static void Watershed(Arr image, Arr markers)
         {
             NativeMethods.cvWatershed(image, markers);
         }
@@ -329,7 +329,7 @@ namespace OpenCV.Net
         /// <param name="xorder">The order of the derivative x.</param>
         /// <param name="yorder">The order of the derivative y.</param>
         /// <param name="apertureSize">Size of the extended Sobel kernel, must be 1, 3, 5 or 7.</param>
-        public static void Sobel(CvArr src, CvArr dst, int xorder, int yorder, int apertureSize = 3)
+        public static void Sobel(Arr src, Arr dst, int xorder, int yorder, int apertureSize = 3)
         {
             NativeMethods.cvSobel(src, dst, xorder, yorder, apertureSize);
         }
@@ -343,7 +343,7 @@ namespace OpenCV.Net
         /// Size of the extended Sobel kernel used to compute derivatives,
         /// must be 1, 3, 5 or 7.
         /// </param>
-        public static void Laplace(CvArr src, CvArr dst, int apertureSize = 3)
+        public static void Laplace(Arr src, Arr dst, int apertureSize = 3)
         {
             NativeMethods.cvLaplace(src, dst, apertureSize);
         }
@@ -354,7 +354,7 @@ namespace OpenCV.Net
         /// <param name="src">The input image, 8-bit unsigned, 16-bit unsigned or single-precision floating-point.</param>
         /// <param name="dst">The output image of the same size and depth as <paramref name="src"/>.</param>
         /// <param name="code">The color space conversion to apply.</param>
-        public static void CvtColor(CvArr src, CvArr dst, ColorConversion code)
+        public static void CvtColor(Arr src, Arr dst, ColorConversion code)
         {
             NativeMethods.cvCvtColor(src, dst, code);
         }
@@ -365,7 +365,7 @@ namespace OpenCV.Net
         /// <param name="src">The source image.</param>
         /// <param name="dst">The destination image.</param>
         /// <param name="interpolation">The interpolation method.</param>
-        public static void Resize(CvArr src, CvArr dst, SubPixelInterpolation interpolation = SubPixelInterpolation.Linear)
+        public static void Resize(Arr src, Arr dst, SubPixelInterpolation interpolation = SubPixelInterpolation.Linear)
         {
             NativeMethods.cvResize(src, dst, interpolation);
         }
@@ -377,9 +377,9 @@ namespace OpenCV.Net
         /// <param name="dst">The destination image.</param>
         /// <param name="mapMatrix">The 2 x 3 transformation matrix.</param>
         /// <param name="flags">A combination of interpolation methods and operational flags.</param>
-        public static void WarpAffine(CvArr src, CvArr dst, CvMat mapMatrix, WarpFlags flags = WarpFlags.Linear | WarpFlags.FillOutliers)
+        public static void WarpAffine(Arr src, Arr dst, Mat mapMatrix, WarpFlags flags = WarpFlags.Linear | WarpFlags.FillOutliers)
         {
-            WarpAffine(src, dst, mapMatrix, flags, CvScalar.All(0));
+            WarpAffine(src, dst, mapMatrix, flags, Scalar.All(0));
         }
 
         /// <summary>
@@ -390,7 +390,7 @@ namespace OpenCV.Net
         /// <param name="mapMatrix">The 2 x 3 transformation matrix.</param>
         /// <param name="flags">A combination of interpolation methods and operational flags.</param>
         /// <param name="fillval">A value used to fill outliers.</param>
-        public static void WarpAffine(CvArr src, CvArr dst, CvMat mapMatrix, WarpFlags flags, CvScalar fillval)
+        public static void WarpAffine(Arr src, Arr dst, Mat mapMatrix, WarpFlags flags, Scalar fillval)
         {
             NativeMethods.cvWarpAffine(src, dst, mapMatrix, flags, fillval);
         }
@@ -402,7 +402,7 @@ namespace OpenCV.Net
         /// <param name="dst">Coordinates of the three corresponding triangle vertices in the destination image.</param>
         /// <param name="mapMatrix">The destination 2 x 3 transformation matrix.</param>
         /// <returns>The destination 2 x 3 transformation matrix.</returns>
-        public static CvMat GetAffineTransform(CvPoint2D32f[] src, CvPoint2D32f[] dst, CvMat mapMatrix)
+        public static Mat GetAffineTransform(Point2f[] src, Point2f[] dst, Mat mapMatrix)
         {
             NativeMethods.cvGetAffineTransform(src, dst, mapMatrix);
             return mapMatrix;
@@ -419,7 +419,7 @@ namespace OpenCV.Net
         /// <param name="scale">Isotropic scale factor.</param>
         /// <param name="mapMatrix">The destination 2 x 3 transformation matrix.</param>
         /// <returns>The destination 2 x 3 transformation matrix.</returns>
-        public static CvMat GetRotationMatrix2D(CvPoint2D32f center, double angle, double scale, CvMat mapMatrix)
+        public static Mat GetRotationMatrix2D(Point2f center, double angle, double scale, Mat mapMatrix)
         {
             NativeMethods.cv2DRotationMatrix(center, angle, scale, mapMatrix);
             return mapMatrix;
@@ -432,9 +432,9 @@ namespace OpenCV.Net
         /// <param name="dst">The destination image.</param>
         /// <param name="mapMatrix">The 3 x 3 transformation matrix.</param>
         /// <param name="flags">A combination of interpolation methods and operational flags.</param>
-        public static void WarpPerspective(CvArr src, CvArr dst, CvMat mapMatrix, WarpFlags flags = WarpFlags.Linear | WarpFlags.FillOutliers)
+        public static void WarpPerspective(Arr src, Arr dst, Mat mapMatrix, WarpFlags flags = WarpFlags.Linear | WarpFlags.FillOutliers)
         {
-            WarpPerspective(src, dst, mapMatrix, flags, CvScalar.All(0));
+            WarpPerspective(src, dst, mapMatrix, flags, Scalar.All(0));
         }
 
         /// <summary>
@@ -445,7 +445,7 @@ namespace OpenCV.Net
         /// <param name="mapMatrix">The 3 x 3 transformation matrix.</param>
         /// <param name="flags">A combination of interpolation methods and operational flags.</param>
         /// <param name="fillval">A value used to fill outliers.</param>
-        public static void WarpPerspective(CvArr src, CvArr dst, CvMat mapMatrix, WarpFlags flags, CvScalar fillval)
+        public static void WarpPerspective(Arr src, Arr dst, Mat mapMatrix, WarpFlags flags, Scalar fillval)
         {
             NativeMethods.cvWarpPerspective(src, dst, mapMatrix, flags, fillval);
         }
@@ -457,7 +457,7 @@ namespace OpenCV.Net
         /// <param name="dst">Coordinates of the four corresponding quadrangle vertices in the destination image.</param>
         /// <param name="mapMatrix">The destination 3 x 3 transformation matrix.</param>
         /// <returns>The destination 3 x 3 transformation matrix.</returns>
-        public static CvMat GetPerspectiveTransform(CvPoint2D32f[] src, CvPoint2D32f[] dst, CvMat mapMatrix)
+        public static Mat GetPerspectiveTransform(Point2f[] src, Point2f[] dst, Mat mapMatrix)
         {
             NativeMethods.cvGetPerspectiveTransform(src, dst, mapMatrix);
             return mapMatrix;
@@ -478,9 +478,9 @@ namespace OpenCV.Net
         /// 16-bit single-channel unsigned integer image. Fixed-point version is faster.
         /// </param>
         /// <param name="flags">A combination of interpolation methods and operational flags.</param>
-        public static void Remap(CvArr src, CvArr dst, CvArr mapx, CvArr mapy, WarpFlags flags = WarpFlags.Linear | WarpFlags.FillOutliers)
+        public static void Remap(Arr src, Arr dst, Arr mapx, Arr mapy, WarpFlags flags = WarpFlags.Linear | WarpFlags.FillOutliers)
         {
-            Remap(src, dst, mapx, mapy, flags, CvScalar.All(0));
+            Remap(src, dst, mapx, mapy, flags, Scalar.All(0));
         }
 
         /// <summary>
@@ -499,7 +499,7 @@ namespace OpenCV.Net
         /// </param>
         /// <param name="flags">A combination of interpolation methods and operational flags.</param>
         /// <param name="fillval">A value used to fill outliers.</param>
-        public static void Remap(CvArr src, CvArr dst, CvArr mapx, CvArr mapy, WarpFlags flags, CvScalar fillval)
+        public static void Remap(Arr src, Arr dst, Arr mapx, Arr mapy, WarpFlags flags, Scalar fillval)
         {
             NativeMethods.cvRemap(src, dst, mapx, mapy, flags, fillval);
         }
@@ -512,7 +512,7 @@ namespace OpenCV.Net
         /// <param name="mapy">The map of y-coordinates, 32-bit single-channel floating-point image.</param>
         /// <param name="mapxy">The output map of xy-coordinates, 16-bit 2-channel signed integer image.</param>
         /// <param name="mapalpha">The output alpha map, 16-bit single-channel unsigned integer image.</param>
-        public static void ConvertMaps(CvArr mapx, CvArr mapy, CvArr mapxy, CvArr mapalpha)
+        public static void ConvertMaps(Arr mapx, Arr mapy, Arr mapxy, Arr mapalpha)
         {
             NativeMethods.cvConvertMaps(mapx, mapy, mapxy, mapalpha);
         }
@@ -526,7 +526,7 @@ namespace OpenCV.Net
         /// <param name="center">The transformation center; where the output precision is maximal.</param>
         /// <param name="M">Magnitude scale parameter for polar transformation.</param>
         /// <param name="flags">A combination of interpolation methods and operational flags.</param>
-        public static void LogPolar(CvArr src, CvArr dst, CvPoint2D32f center, double M, WarpFlags flags = WarpFlags.Linear | WarpFlags.FillOutliers)
+        public static void LogPolar(Arr src, Arr dst, Point2f center, double M, WarpFlags flags = WarpFlags.Linear | WarpFlags.FillOutliers)
         {
             NativeMethods.cvLogPolar(src, dst, center, M, flags);
         }
@@ -540,7 +540,7 @@ namespace OpenCV.Net
         /// <param name="center">The transformation center; where the output precision is maximal.</param>
         /// <param name="maxRadius">The maximum radius of polar transformation.</param>
         /// <param name="flags">A combination of interpolation methods and operational flags.</param>
-        public static void LinearPolar(CvArr src, CvArr dst, CvPoint2D32f center, double maxRadius, WarpFlags flags = WarpFlags.Linear | WarpFlags.FillOutliers)
+        public static void LinearPolar(Arr src, Arr dst, Point2f center, double maxRadius, WarpFlags flags = WarpFlags.Linear | WarpFlags.FillOutliers)
         {
             NativeMethods.cvLinearPolar(src, dst, center, maxRadius, flags);
         }
@@ -555,9 +555,9 @@ namespace OpenCV.Net
         /// <param name="newCameraMatrix">
         /// Regulates the particular subset of the source image that will be visible in the corrected image.
         /// </param>
-        public static void Undistort2(CvArr src, CvArr dst, CvMat cameraMatrix, CvMat distortionCoeffs, CvMat newCameraMatrix = null)
+        public static void Undistort2(Arr src, Arr dst, Mat cameraMatrix, Mat distortionCoeffs, Mat newCameraMatrix = null)
         {
-            NativeMethods.cvUndistort2(src, dst, cameraMatrix, distortionCoeffs, newCameraMatrix ?? CvMat.Null);
+            NativeMethods.cvUndistort2(src, dst, cameraMatrix, distortionCoeffs, newCameraMatrix ?? Mat.Null);
         }
 
         /// <summary>
@@ -573,7 +573,7 @@ namespace OpenCV.Net
         /// The output map of y-coordinates, 32-bit single-channel floating-point image or
         /// 16-bit single-channel unsigned integer image. Fixed-point version is faster.
         /// </param>
-        public static void InitUndistortMap(CvMat cameraMatrix, CvMat distortionCoeffs, CvArr mapx, CvArr mapy)
+        public static void InitUndistortMap(Mat cameraMatrix, Mat distortionCoeffs, Arr mapx, Arr mapy)
         {
             NativeMethods.cvInitUndistortMap(cameraMatrix, distortionCoeffs, mapx, mapy);
         }
@@ -597,14 +597,14 @@ namespace OpenCV.Net
         /// 16-bit single-channel unsigned integer image. Fixed-point version is faster.
         /// </param>
         public static void InitUndistortRectifyMap(
-            CvMat cameraMatrix,
-            CvMat distortionCoeffs,
-            CvMat R,
-            CvMat newCameraMatrix,
-            CvArr mapx,
-            CvArr mapy)
+            Mat cameraMatrix,
+            Mat distortionCoeffs,
+            Mat R,
+            Mat newCameraMatrix,
+            Arr mapx,
+            Arr mapy)
         {
-            NativeMethods.cvInitUndistortRectifyMap(cameraMatrix, distortionCoeffs, R ?? CvMat.Null, newCameraMatrix, mapx, mapy);
+            NativeMethods.cvInitUndistortRectifyMap(cameraMatrix, distortionCoeffs, R ?? Mat.Null, newCameraMatrix, mapx, mapy);
         }
 
         /// <summary>
@@ -626,14 +626,14 @@ namespace OpenCV.Net
         /// the identity new camera matrix is used.
         /// </param>
         public static void UndistortPoints(
-            CvMat src,
-            CvMat dst,
-            CvMat cameraMatrix,
-            CvMat distortionCoeffs,
-            CvMat R = null,
-            CvMat P = null)
+            Mat src,
+            Mat dst,
+            Mat cameraMatrix,
+            Mat distortionCoeffs,
+            Mat R = null,
+            Mat P = null)
         {
-            NativeMethods.cvUndistortPoints(src, dst, cameraMatrix, distortionCoeffs, R ?? CvMat.Null, P ?? CvMat.Null);
+            NativeMethods.cvUndistortPoints(src, dst, cameraMatrix, distortionCoeffs, R ?? Mat.Null, P ?? Mat.Null);
         }
 
         /// <summary>
@@ -646,7 +646,7 @@ namespace OpenCV.Net
         /// structuring element is used.
         /// </param>
         /// <param name="iterations">The number of times erosion is applied.</param>
-        public static void Erode(CvArr src, CvArr dst, IplConvKernel element = null, int iterations = 1)
+        public static void Erode(Arr src, Arr dst, IplConvKernel element = null, int iterations = 1)
         {
             NativeMethods.cvErode(src, dst, element ?? IplConvKernel.Null, iterations);
         }
@@ -661,7 +661,7 @@ namespace OpenCV.Net
         /// structuring element is used.
         /// </param>
         /// <param name="iterations">The number of times dilation is applied.</param>
-        public static void Dilate(CvArr src, CvArr dst, IplConvKernel element = null, int iterations = 1)
+        public static void Dilate(Arr src, Arr dst, IplConvKernel element = null, int iterations = 1)
         {
             NativeMethods.cvDilate(src, dst, element ?? IplConvKernel.Null, iterations);
         }
@@ -679,9 +679,9 @@ namespace OpenCV.Net
         /// <param name="operation">The type of morphological transformation applied.</param>
         /// <param name="iterations">The number of times erosion and dilation are applied.</param>
         public static void MorphologyEx(
-            CvArr src,
-            CvArr dst,
-            CvArr temp,
+            Arr src,
+            Arr dst,
+            Arr temp,
             IplConvKernel element,
             MorphologicalOperation operation,
             int iterations = 1)
@@ -703,9 +703,9 @@ namespace OpenCV.Net
         /// <param name="connectivity">The scanned line connectivity for Bresenham's algorithm, either 4 or 8.</param>
         /// <returns>The buffer containing the sampled line elements.</returns>
         public static TElement[] SampleLine<TElement>(
-            CvArr image,
-            CvPoint pt1,
-            CvPoint pt2,
+            Arr image,
+            Point pt1,
+            Point pt2,
             LineType connectivity = LineType.Connected8)
             where TElement : struct
         {
@@ -744,7 +744,7 @@ namespace OpenCV.Net
         /// Floating point coordinates of the extracted rectangle center within the source image.
         /// The center must be inside the image.
         /// </param>
-        public static void GetRectSubPix(CvArr src, CvArr dst, CvPoint2D32f center)
+        public static void GetRectSubPix(Arr src, Arr dst, Point2f center)
         {
             NativeMethods.cvGetRectSubPix(src, dst, center);
         }
@@ -755,7 +755,7 @@ namespace OpenCV.Net
         /// <param name="src">The source image.</param>
         /// <param name="dst">The destination image containing the extracted quadrangle.</param>
         /// <param name="mapMatrix">The 2 x 3 transformation matrix.</param>
-        public static void GetQuadrangleSubPix(CvArr src, CvArr dst, CvMat mapMatrix)
+        public static void GetQuadrangleSubPix(Arr src, Arr dst, Mat mapMatrix)
         {
             NativeMethods.cvGetQuadrangleSubPix(src, dst, mapMatrix);
         }
@@ -769,7 +769,7 @@ namespace OpenCV.Net
         /// </param>
         /// <param name="result">A map of comparison results; single-channel 32-bit floating-point.</param>
         /// <param name="method">Specifies the way the template must be compared with the image regions.</param>
-        public static void MatchTemplate(CvArr image, CvArr templ, CvArr result, TemplateMatchingMethod method)
+        public static void MatchTemplate(Arr image, Arr templ, Arr result, TemplateMatchingMethod method)
         {
             NativeMethods.cvMatchTemplate(image, templ, result, method);
         }
@@ -791,12 +791,12 @@ namespace OpenCV.Net
         /// <param name="flow">The resultant flow matrix.</param>
         /// <returns>The earth mover distance between the two signatures.</returns>
         public static float CalcEMD2(
-            CvArr signature1,
-            CvArr signature2,
+            Arr signature1,
+            Arr signature2,
             DistanceType distanceType,
             Func<float, float, float> distanceFunc = null,
-            CvArr costMatrix = null,
-            CvArr flow = null)
+            Arr costMatrix = null,
+            Arr flow = null)
         {
             float lowerBound = 0;
             return CalcEMD2(signature1, signature2, distanceType, distanceFunc, costMatrix, flow, ref lowerBound);
@@ -823,12 +823,12 @@ namespace OpenCV.Net
         /// </param>
         /// <returns>The earth mover distance between the two signatures.</returns>
         public static float CalcEMD2(
-            CvArr signature1,
-            CvArr signature2,
+            Arr signature1,
+            Arr signature2,
             DistanceType distanceType,
             Func<float, float, float> distanceFunc,
-            CvArr costMatrix,
-            CvArr flow,
+            Arr costMatrix,
+            Arr flow,
             ref float lowerBound)
         {
             unsafe
@@ -838,8 +838,8 @@ namespace OpenCV.Net
                     signature2,
                     distanceType,
                     distanceFunc == null ? (CvDistanceFunction)null : (a, b, userData) => distanceFunc(*a, *b),
-                    costMatrix ?? CvArr.Null,
-                    flow ?? CvArr.Null,
+                    costMatrix ?? Arr.Null,
+                    flow ?? Arr.Null,
                     ref lowerBound,
                     IntPtr.Zero);
             }
@@ -860,9 +860,9 @@ namespace OpenCV.Net
         /// <param name="firstContour">The reference to the first outer contour.</param>
         /// <returns>The number of retrieved contours.</returns>
         public static int FindContours(
-            CvArr image,
-            CvMemStorage storage,
-            out CvSeq firstContour)
+            Arr image,
+            MemStorage storage,
+            out Seq firstContour)
         {
             return FindContours(image, storage, out firstContour, SeqHelper.ContourHeaderSize);
         }
@@ -881,14 +881,14 @@ namespace OpenCV.Net
         /// <param name="method">Specifies the contour approximation method.</param>
         /// <returns>The number of retrieved contours.</returns>
         public static int FindContours(
-            CvArr image,
-            CvMemStorage storage,
-            out CvSeq firstContour,
+            Arr image,
+            MemStorage storage,
+            out Seq firstContour,
             int headerSize,
             ContourRetrieval mode = ContourRetrieval.List,
             ContourApproximation method = ContourApproximation.ChainApproxSimple)
         {
-            return FindContours(image, storage, out firstContour, headerSize, mode, method, new CvPoint(0, 0));
+            return FindContours(image, storage, out firstContour, headerSize, mode, method, new Point(0, 0));
         }
 
         /// <summary>
@@ -907,13 +907,13 @@ namespace OpenCV.Net
         /// </param>
         /// <returns>The number of retrieved contours.</returns>
         public static int FindContours(
-            CvArr image,
-            CvMemStorage storage,
-            out CvSeq firstContour,
+            Arr image,
+            MemStorage storage,
+            out Seq firstContour,
             int headerSize,
             ContourRetrieval mode,
             ContourApproximation method,
-            CvPoint offset)
+            Point offset)
         {
             var result = NativeMethods.cvFindContours(image, storage, out firstContour, headerSize, mode, method, offset);
             if (result > 0)
@@ -938,16 +938,16 @@ namespace OpenCV.Net
         /// the whole image context.
         /// </param>
         /// <returns>
-        /// A reference to the <see cref="CvContourScanner"/> instance that can be
+        /// A reference to the <see cref="ContourScanner"/> instance that can be
         /// used to iterate over the retrieved contours.
         /// </returns>
-        public static CvContourScanner StartFindContours(
-            CvArr image,
-            CvMemStorage storage,
+        public static ContourScanner StartFindContours(
+            Arr image,
+            MemStorage storage,
             int headerSize,
             ContourRetrieval mode,
             ContourApproximation method,
-            CvPoint offset)
+            Point offset)
         {
             var scanner = NativeMethods.cvStartFindContours(image, storage, headerSize, mode, method, offset);
             scanner.SetOwnerStorage(storage);
@@ -967,13 +967,13 @@ namespace OpenCV.Net
         /// </param>
         /// <param name="recursive">
         /// If <b>true</b>, the function approximates all chains that can be accessed from
-        /// <paramref name="srcSeq"/> by using either <see cref="CvSeq.HNext"/> or <see cref="CvSeq.VPrev"/>
+        /// <paramref name="srcSeq"/> by using either <see cref="Seq.HNext"/> or <see cref="Seq.VPrev"/>
         /// links; otherwise, the single chain is approximated.
         /// </param>
         /// <returns>The function returns the reference to the first resultant contour.</returns>
-        public static CvSeq ApproxChains(
-            CvSeq srcSeq,
-            CvMemStorage storage,
+        public static Seq ApproxChains(
+            Seq srcSeq,
+            MemStorage storage,
             ContourApproximation method,
             double parameter,
             int minimalPerimeter,
@@ -1009,15 +1009,15 @@ namespace OpenCV.Net
         /// <returns>
         /// A reference to the first approximated curve.
         /// </returns>
-        public static CvSeq ApproxPoly(
-            CvSeq srcSeq,
+        public static Seq ApproxPoly(
+            Seq srcSeq,
             int headerSize,
-            CvMemStorage storage,
+            MemStorage storage,
             PolygonApproximation method,
             double parameter,
             bool parameter2 = false)
         {
-            var poly = NativeMethods.cvApproxPoly(srcSeq, headerSize, storage ?? CvMemStorage.Null, method, parameter, parameter2 ? 1 : 0);
+            var poly = NativeMethods.cvApproxPoly(srcSeq, headerSize, storage ?? MemStorage.Null, method, parameter, parameter2 ? 1 : 0);
             poly.SetOwnerStorage(storage ?? srcSeq.Storage);
             return poly;
         }
@@ -1029,9 +1029,9 @@ namespace OpenCV.Net
         /// <returns>
         /// The length of the curve as the sum of the lengths of segments between subsequent points.
         /// </returns>
-        public static double ArcLength(CvHandle curve)
+        public static double ArcLength(CVHandle curve)
         {
-            return ArcLength(curve, CvSlice.WholeSeq);
+            return ArcLength(curve, SeqSlice.WholeSeq);
         }
 
         /// <summary>
@@ -1049,7 +1049,7 @@ namespace OpenCV.Net
         /// <returns>
         /// The length of the curve as the sum of the lengths of segments between subsequent points.
         /// </returns>
-        public static double ArcLength(CvHandle curve, CvSlice slice, bool? isClosed = null)
+        public static double ArcLength(CVHandle curve, SeqSlice slice, bool? isClosed = null)
         {
             return NativeMethods.cvArcLength(curve, slice, isClosed.HasValue ? (isClosed.Value ? 1 : 0) : -1);
         }
@@ -1062,9 +1062,9 @@ namespace OpenCV.Net
         /// The perimeter of the closed contour as the sum of the lengths of segments between
         /// subsequent points.
         /// </returns>
-        public static double ContourPerimeter(CvHandle contour)
+        public static double ContourPerimeter(CVHandle contour)
         {
-            return NativeMethods.cvArcLength(contour, CvSlice.WholeSeq, 1);
+            return NativeMethods.cvArcLength(contour, SeqSlice.WholeSeq, 1);
         }
 
         /// <summary>
@@ -1072,10 +1072,10 @@ namespace OpenCV.Net
         /// </summary>
         /// <param name="points">Sequence or array of points.</param>
         /// <param name="update">
-        /// Indicates whether or not to update the <see cref="CvContour.Rect"/> field.
+        /// Indicates whether or not to update the <see cref="Contour.Rect"/> field.
         /// </param>
         /// <returns>The up-right bounding rectangle for a 2d point set.</returns>
-        public static CvRect BoundingRect(CvHandle points, bool update = false)
+        public static Rect BoundingRect(CVHandle points, bool update = false)
         {
             return NativeMethods.cvBoundingRect(points, update ? 1 : 0);
         }
@@ -1085,9 +1085,9 @@ namespace OpenCV.Net
         /// </summary>
         /// <param name="contour">Sequence or array of vertices.</param>
         /// <returns>The area of the whole contour or contour section.</returns>
-        public static double ContourArea(CvHandle contour)
+        public static double ContourArea(CVHandle contour)
         {
-            return ContourArea(contour, CvSlice.WholeSeq);
+            return ContourArea(contour, SeqSlice.WholeSeq);
         }
 
         /// <summary>
@@ -1103,7 +1103,7 @@ namespace OpenCV.Net
         /// might be negative.
         /// </param>
         /// <returns>The area of the whole contour or contour section.</returns>
-        public static double ContourArea(CvHandle contour, CvSlice slice, bool oriented = false)
+        public static double ContourArea(CVHandle contour, SeqSlice slice, bool oriented = false)
         {
             return NativeMethods.cvContourArea(contour, slice, oriented ? 1 : 0);
         }
@@ -1114,9 +1114,9 @@ namespace OpenCV.Net
         /// <param name="points">Sequence or array of points.</param>
         /// <param name="storage">Optional temporary memory storage.</param>
         /// <returns>The oriented rectangle with minimal area for the specified <paramref name="points"/>.</returns>
-        public static CvBox2D MinAreaRect2(CvHandle points, CvMemStorage storage = null)
+        public static RotatedRect MinAreaRect2(CVHandle points, MemStorage storage = null)
         {
-            return NativeMethods.cvMinAreaRect2(points, storage ?? CvMemStorage.Null);
+            return NativeMethods.cvMinAreaRect2(points, storage ?? MemStorage.Null);
         }
 
         /// <summary>
@@ -1129,7 +1129,7 @@ namespace OpenCV.Net
         /// <b>true</b> if the resulting circle contains all the input points and <b>false</b>
         /// otherwise.
         /// </returns>
-        public static bool MinEnclosingCircle(CvHandle points, out CvPoint2D32f center, out float radius)
+        public static bool MinEnclosingCircle(CVHandle points, out Point2f center, out float radius)
         {
             return NativeMethods.cvMinEnclosingCircle(points, out center, out radius) > 0;
         }
@@ -1142,7 +1142,7 @@ namespace OpenCV.Net
         /// <param name="method">The shape comparison method.</param>
         /// <param name="parameter">Method-specific parameter (not used).</param>
         /// <returns>The distance between the two shapes.</returns>
-        public static double MatchShapes(CvHandle object1, CvHandle object2, ShapeMatchingMethod method, double parameter = 0)
+        public static double MatchShapes(CVHandle object1, CVHandle object2, ShapeMatchingMethod method, double parameter = 0)
         {
             return NativeMethods.cvMatchShapes(object1, object2, method, parameter);
         }
@@ -1157,15 +1157,15 @@ namespace OpenCV.Net
         /// If <b>true</b>, the points themselves will be stored in the hull instead of the indices.
         /// </param>
         /// <returns>A sequence containing the points in the convex hull.</returns>
-        public static CvSeq ConvexHull2(
-            CvHandle input,
-            CvHandle hullStorage = null,
+        public static Seq ConvexHull2(
+            CVHandle input,
+            CVHandle hullStorage = null,
             ShapeOrientation orientation = ShapeOrientation.Clockwise,
             bool returnPoints = false)
         {
-            var hull = NativeMethods.cvConvexHull2(input, hullStorage ?? CvMemStorage.Null, orientation, returnPoints ? 1 : 0);
+            var hull = NativeMethods.cvConvexHull2(input, hullStorage ?? MemStorage.Null, orientation, returnPoints ? 1 : 0);
             if (hull.IsInvalid) return null;
-            hull.SetOwnerStorage((CvMemStorage)hullStorage);
+            hull.SetOwnerStorage((MemStorage)hullStorage);
             return hull;
         }
 
@@ -1176,7 +1176,7 @@ namespace OpenCV.Net
         /// <returns>
         /// A value indicating whether or not the <paramref name="contour"/> is convex.
         /// </returns>
-        public static bool CheckContourConvexity(CvHandle contour)
+        public static bool CheckContourConvexity(CVHandle contour)
         {
             return NativeMethods.cvCheckContourConvexity(contour) > 0;
         }
@@ -1191,13 +1191,13 @@ namespace OpenCV.Net
         /// parameter should be <b>false</b>).
         /// </param>
         /// <param name="storage">Container for the output sequence of convexity defects.</param>
-        /// <returns>A sequence of <see cref="CvConvexityDefect"/> structures.</returns>
-        public static CvSeq ConvexityDefects(CvHandle contour, CvSeq convexhull, CvMemStorage storage = null)
+        /// <returns>A sequence of <see cref="ConvexityDefect"/> structures.</returns>
+        public static Seq ConvexityDefects(CVHandle contour, Seq convexhull, MemStorage storage = null)
         {
-            var defects = NativeMethods.cvConvexityDefects(contour, convexhull, storage ?? CvMemStorage.Null);
+            var defects = NativeMethods.cvConvexityDefects(contour, convexhull, storage ?? MemStorage.Null);
             if (storage == null)
             {
-                var seq = contour as CvSeq;
+                var seq = contour as Seq;
                 if (seq != null) storage = seq.Storage;
                 else storage = convexhull.Storage;
             }
@@ -1214,7 +1214,7 @@ namespace OpenCV.Net
         /// The rotated rectangle representing the ellipse best fit around the point set.
         /// The size of the box represents the full lengths of the ellipse axes.
         /// </returns>
-        public static CvBox2D FitEllipse2(CvHandle points)
+        public static RotatedRect FitEllipse2(CVHandle points)
         {
             return NativeMethods.cvFitEllipse2(points);
         }
@@ -1227,7 +1227,7 @@ namespace OpenCV.Net
         /// <returns>
         /// The minimum rectangle containing <paramref name="rect1"/> and <paramref name="rect2"/>.
         /// </returns>
-        public static CvRect MaxRect(CvRect rect1, CvRect rect2)
+        public static Rect MaxRect(Rect rect1, Rect rect2)
         {
             return NativeMethods.cvMaxRect(ref rect1, ref rect2);
         }
@@ -1237,7 +1237,7 @@ namespace OpenCV.Net
         /// </summary>
         /// <param name="box">The input rotated rectangle.</param>
         /// <param name="pt">The array of box vertices.</param>
-        public static void BoxPoints(CvBox2D box, CvPoint2D32f[] pt)
+        public static void BoxPoints(RotatedRect box, Point2f[] pt)
         {
             NativeMethods.cvBoxPoints(box, pt);
         }
@@ -1256,7 +1256,7 @@ namespace OpenCV.Net
         /// between the point and the nearest contour edge. Otherwise, +1, -1 and 0 are returned,
         /// respectively, when the point is inside the contour, outside or lies on an edge.
         /// </returns>
-        public static double PointPolygonTest(CvHandle contour, CvPoint2D32f pt, bool measureDist)
+        public static double PointPolygonTest(CVHandle contour, Point2f pt, bool measureDist)
         {
             return NativeMethods.cvPointPolygonTest(contour, pt, measureDist ? 1 : 0);
         }
@@ -1270,7 +1270,7 @@ namespace OpenCV.Net
         /// </summary>
         /// <param name="src">The source histograms.</param>
         /// <param name="dst">The destination histograms.</param>
-        public static void CalcBayesianProb(CvHistogram[] src, CvHistogram[] dst)
+        public static void CalcBayesianProb(Histogram[] src, Histogram[] dst)
         {
             var pSrc = Array.ConvertAll(src, hist => hist.DangerousGetHandle());
             var pDst = Array.ConvertAll(dst, hist => hist.DangerousGetHandle());
@@ -1284,7 +1284,7 @@ namespace OpenCV.Net
         /// </summary>
         /// <param name="src">Source 8-bit single channel image.</param>
         /// <param name="dst">Destination image of the same size and type as <paramref name="src"/>.</param>
-        public static void EqualizeHist(CvArr src, CvArr dst)
+        public static void EqualizeHist(Arr src, Arr dst)
         {
             NativeMethods.cvEqualizeHist(src, dst);
         }
@@ -1307,15 +1307,15 @@ namespace OpenCV.Net
         /// </param>
         /// <param name="labelType">Specifies the content of the output label array.</param>
         public static void DistTransform(
-            CvArr src,
-            CvArr dst,
+            Arr src,
+            Arr dst,
             DistanceType distanceType = DistanceType.L2,
             int maskSize = 3,
             float[] mask = null,
-            CvArr labels = null,
+            Arr labels = null,
             DistanceLabel labelType = DistanceLabel.ConnectedComponent)
         {
-            NativeMethods.cvDistTransform(src, dst, distanceType, maskSize, mask, labels ?? CvArr.Null, labelType);
+            NativeMethods.cvDistTransform(src, dst, distanceType, maskSize, mask, labels ?? Arr.Null, labelType);
         }
 
         /// <summary>
@@ -1330,8 +1330,8 @@ namespace OpenCV.Net
         /// <param name="thresholdType">The type of threshold to apply.</param>
         /// <returns>The computed threshold value in case <see cref="ThresholdTypes.Otsu"/> is used.</returns>
         public static double Threshold(
-            CvArr src,
-            CvArr dst,
+            Arr src,
+            Arr dst,
             double threshold,
             double maxValue,
             ThresholdTypes thresholdType)
@@ -1353,8 +1353,8 @@ namespace OpenCV.Net
         /// </param>
         /// <param name="C">The constant subtracted from the mean or weighted mean.</param>
         public static void AdaptiveThreshold(
-            CvArr src,
-            CvArr dst,
+            Arr src,
+            Arr dst,
             double maxValue,
             AdaptiveThresholdMethod adaptiveMethod = AdaptiveThresholdMethod.MeanC,
             ThresholdTypes thresholdType = ThresholdTypes.Binary,
@@ -1374,11 +1374,11 @@ namespace OpenCV.Net
         /// <param name="seedPoint">The starting point.</param>
         /// <param name="newVal">New value of the repainted domain pixels.</param>
         public static void FloodFill(
-            CvArr image,
-            CvPoint seedPoint,
-            CvScalar newVal)
+            Arr image,
+            Point seedPoint,
+            Scalar newVal)
         {
-            FloodFill(image, seedPoint, newVal, CvScalar.All(0));
+            FloodFill(image, seedPoint, newVal, Scalar.All(0));
         }
 
         /// <summary>
@@ -1396,12 +1396,12 @@ namespace OpenCV.Net
         /// component.
         /// </param>
         public static void FloodFill(
-            CvArr image,
-            CvPoint seedPoint,
-            CvScalar newVal,
-            CvScalar lowerDiff)
+            Arr image,
+            Point seedPoint,
+            Scalar newVal,
+            Scalar lowerDiff)
         {
-            FloodFill(image, seedPoint, newVal, lowerDiff, CvScalar.All(0));
+            FloodFill(image, seedPoint, newVal, lowerDiff, Scalar.All(0));
         }
 
         /// <summary>
@@ -1424,13 +1424,13 @@ namespace OpenCV.Net
         /// component.
         /// </param>
         public static void FloodFill(
-            CvArr image,
-            CvPoint seedPoint,
-            CvScalar newVal,
-            CvScalar lowerDiff,
-            CvScalar upperDiff)
+            Arr image,
+            Point seedPoint,
+            Scalar newVal,
+            Scalar lowerDiff,
+            Scalar upperDiff)
         {
-            CvConnectedComp comp;
+            ConnectedComp comp;
             FloodFill(image, seedPoint, newVal, lowerDiff, upperDiff, out comp);
         }
 
@@ -1462,16 +1462,16 @@ namespace OpenCV.Net
         /// than <paramref name="image"/>.
         /// </param>
         public static void FloodFill(
-            CvArr image,
-            CvPoint seedPoint,
-            CvScalar newVal,
-            CvScalar lowerDiff,
-            CvScalar upperDiff,
-            out CvConnectedComp comp,
+            Arr image,
+            Point seedPoint,
+            Scalar newVal,
+            Scalar lowerDiff,
+            Scalar upperDiff,
+            out ConnectedComp comp,
             FloodFillFlags flags = FloodFillFlags.Connected4,
-            CvArr mask = null)
+            Arr mask = null)
         {
-            NativeMethods.cvFloodFill(image, seedPoint, newVal, lowerDiff, upperDiff, out comp, flags, mask ?? CvArr.Null);
+            NativeMethods.cvFloodFill(image, seedPoint, newVal, lowerDiff, upperDiff, out comp, flags, mask ?? Arr.Null);
         }
 
         #endregion
@@ -1496,7 +1496,7 @@ namespace OpenCV.Net
         /// <param name="apertureSize">
         /// Aperture parameter for the Sobel operator (see <see cref="Sobel"/>).
         /// </param>
-        public static void Canny(CvArr image, CvArr edges, double threshold1, double threshold2, int apertureSize = 3)
+        public static void Canny(Arr image, Arr edges, double threshold1, double threshold2, int apertureSize = 3)
         {
             NativeMethods.cvCanny(image, edges, threshold1, threshold2, apertureSize);
         }
@@ -1509,7 +1509,7 @@ namespace OpenCV.Net
         /// <param name="apertureSize">
         /// Aperture parameter for the Sobel operator (see <see cref="Sobel"/>).
         /// </param>
-        public static void PreCornerDetect(CvArr image, CvArr corners, int apertureSize=3)
+        public static void PreCornerDetect(Arr image, Arr corners, int apertureSize=3)
         {
             NativeMethods.cvPreCornerDetect(image, corners, apertureSize);
         }
@@ -1526,7 +1526,7 @@ namespace OpenCV.Net
         /// <param name="apertureSize">
         /// Aperture parameter for the Sobel operator (see <see cref="Sobel"/>).
         /// </param>
-        public static void CornerEigenValsAndVecs(CvArr image, CvArr eigenvv, int blockSize, int apertureSize=3)
+        public static void CornerEigenValsAndVecs(Arr image, Arr eigenvv, int blockSize, int apertureSize=3)
         {
             NativeMethods.cvCornerEigenValsAndVecs(image, eigenvv, blockSize, apertureSize);
         }
@@ -1544,7 +1544,7 @@ namespace OpenCV.Net
         /// <param name="apertureSize">
         /// Aperture parameter for the Sobel operator (see <see cref="Sobel"/>).
         /// </param>
-        public static void CornerMinEigenVal(CvArr image, CvArr eigenval, int blockSize, int apertureSize=3)
+        public static void CornerMinEigenVal(Arr image, Arr eigenval, int blockSize, int apertureSize=3)
         {
             NativeMethods.cvCornerMinEigenVal(image, eigenval, blockSize, apertureSize);
         }
@@ -1564,8 +1564,8 @@ namespace OpenCV.Net
         /// </param>
         /// <param name="k">Harris detector free parameter.</param>
         public static void CornerHarris(
-            CvArr image,
-            CvArr harrisResponse,
+            Arr image,
+            Arr harrisResponse,
             int blockSize,
             int apertureSize = 3,
             double k = 0.04)
@@ -1588,11 +1588,11 @@ namespace OpenCV.Net
         /// Criteria for termination of the iterative process of corner refinement.
         /// </param>
         public static void FindCornerSubPix(
-            CvArr image,
-            CvPoint2D32f[] corners,
-            CvSize win,
-            CvSize zeroZone,
-            CvTermCriteria criteria)
+            Arr image,
+            Point2f[] corners,
+            Size win,
+            Size zeroZone,
+            TermCriteria criteria)
         {
             NativeMethods.cvFindCornerSubPix(image, corners, corners.Length, win, zeroZone, criteria);
         }
@@ -1631,14 +1631,14 @@ namespace OpenCV.Net
         /// Free parameter of Harris detector; used only if <paramref name="useHarris"/> is <b>true</b>.
         /// </param>
         public static void GoodFeaturesToTrack(
-            CvArr image,
-            CvArr eigImage,
-            CvArr tempImage,
-            CvPoint2D32f[] corners,
+            Arr image,
+            Arr eigImage,
+            Arr tempImage,
+            Point2f[] corners,
             out int cornerCount,
             double qualityLevel,
             double minDistance,
-            CvArr mask = null,
+            Arr mask = null,
             int blockSize = 3,
             bool useHarris = false,
             double k = 0.04)
@@ -1652,7 +1652,7 @@ namespace OpenCV.Net
                 ref cornerCount,
                 qualityLevel,
                 minDistance,
-                mask ?? CvArr.Null,
+                mask ?? Arr.Null,
                 blockSize,
                 useHarris ? 1 : 0,
                 k);
@@ -1668,7 +1668,7 @@ namespace OpenCV.Net
         /// <param name="lineStorage">
         /// The storage for the lines that are detected. It can be a memory storage (in this case
         /// a sequence of lines is created in the storage and returned by the function) or single
-        /// row/single column matrix (<see cref="CvMat"/>) of a particular type.
+        /// row/single column matrix (<see cref="Mat"/>) of a particular type.
         /// </param>
         /// <param name="method">The Hough transform variant.</param>
         /// <param name="rho">Distance resolution in pixel-related units.</param>
@@ -1691,9 +1691,9 @@ namespace OpenCV.Net
         /// <returns>
         /// A sequence of lines in case <paramref name="lineStorage"/> is a memory storage.
         /// </returns>
-        public static CvSeq HoughLines2(
-            CvArr image,
-            CvHandle lineStorage,
+        public static Seq HoughLines2(
+            Arr image,
+            CVHandle lineStorage,
             HoughLinesMethod method,
             double rho,
             double theta,
@@ -1703,7 +1703,7 @@ namespace OpenCV.Net
         {
             var lines = NativeMethods.cvHoughLines2(image, lineStorage, method, rho, theta, threshold, param1, param2);
             if (lines.IsInvalid) return null;
-            lines.SetOwnerStorage((CvMemStorage)lineStorage);
+            lines.SetOwnerStorage((MemStorage)lineStorage);
             return lines;
         }
 
@@ -1714,7 +1714,7 @@ namespace OpenCV.Net
         /// <param name="circleStorage">
         /// The storage for the circles that are detected. It can be a memory storage (in this case
         /// a sequence of circles is created in the storage and returned by the function) or single
-        /// row/single column matrix (<see cref="CvMat"/>) of a particular type.
+        /// row/single column matrix (<see cref="Mat"/>) of a particular type.
         /// </param>
         /// <param name="method">
         /// The Hough transform method. Currently, only <see cref="HoughCirclesMethod.Gradient"/>
@@ -1746,9 +1746,9 @@ namespace OpenCV.Net
         /// <returns>
         /// A sequence of lines in case <paramref name="circleStorage"/> is a memory storage.
         /// </returns>
-        public static CvSeq HoughCircles(
-            CvArr image,
-            CvHandle circleStorage,
+        public static Seq HoughCircles(
+            Arr image,
+            CVHandle circleStorage,
             HoughCirclesMethod method,
             double dp,
             double minDist,
@@ -1759,7 +1759,7 @@ namespace OpenCV.Net
         {
             var circles = NativeMethods.cvHoughCircles(image, circleStorage, method, dp, minDist, param1, param2, minRadius, maxRadius);
             if (circles.IsInvalid) return null;
-            circles.SetOwnerStorage((CvMemStorage)circleStorage);
+            circles.SetOwnerStorage((MemStorage)circleStorage);
             return circles;
         }
 
@@ -1785,7 +1785,7 @@ namespace OpenCV.Net
         /// normalized vector collinear to the line and (x0, y0, z0) is some point on the line.
         /// </param>
         public static void FitLine(
-            CvArr points,
+            Arr points,
             DistanceType distType,
             double param,
             double reps,

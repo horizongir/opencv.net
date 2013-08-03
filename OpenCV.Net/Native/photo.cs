@@ -11,6 +11,6 @@ namespace OpenCV.Net.Native
         const string photoLib = "opencv_photo246";
 
         [DllImport(photoLib, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void cvInpaint(CvArr src, CvArr inpaint_mask, CvArr dst, double inpaintRange, InpaintMethod flags);
+        internal static extern void cvInpaint(Arr src, Arr inpaint_mask, Arr dst, double inpaintRange, InpaintMethod flags);
     }
 }

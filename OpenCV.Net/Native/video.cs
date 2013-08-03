@@ -14,45 +14,45 @@ namespace OpenCV.Net.Native
 
         [DllImport(videoLib, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void cvCalcOpticalFlowPyrLK(
-            CvArr prev,
-            CvArr curr,
-            CvArr prev_pyr,
-            CvArr curr_pyr,
-            CvPoint2D32f[] prev_features,
-            [Out]CvPoint2D32f[] curr_features,
+            Arr prev,
+            Arr curr,
+            Arr prev_pyr,
+            Arr curr_pyr,
+            Point2f[] prev_features,
+            [Out]Point2f[] curr_features,
             int count,
-            CvSize win_size,
+            Size win_size,
             int level,
             [Out]byte[] status,
             [Out]float[] track_error,
-            CvTermCriteria criteria,
+            TermCriteria criteria,
             LKFlowFlags flags);
 
         [DllImport(videoLib, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void cvCalcAffineFlowPyrLK(
-            CvArr prev,
-            CvArr curr,
-            CvArr prev_pyr,
-            CvArr curr_pyr,
-            CvPoint2D32f[] prev_features,
-            [Out]CvPoint2D32f[] curr_features,
+            Arr prev,
+            Arr curr,
+            Arr prev_pyr,
+            Arr curr_pyr,
+            Point2f[] prev_features,
+            [Out]Point2f[] curr_features,
             float[] matrices,
             int count,
-            CvSize win_size,
+            Size win_size,
             int level,
             [Out]byte[] status,
             [Out]float[] track_error,
-            CvTermCriteria criteria,
+            TermCriteria criteria,
             LKFlowFlags flags);
 
         [DllImport(videoLib, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern int cvEstimateRigidTransform(CvArr A, CvArr B, CvMat M, int full_affine);
+        internal static extern int cvEstimateRigidTransform(Arr A, Arr B, Mat M, int full_affine);
 
         [DllImport(videoLib, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void cvCalcOpticalFlowFarneback(
-            CvArr prev,
-            CvArr next,
-            CvArr flow,
+            Arr prev,
+            Arr next,
+            Arr flow,
             double pyr_scale,
             int levels,
             int winsize,
@@ -66,30 +66,30 @@ namespace OpenCV.Net.Native
         #region Motion templates
 
         [DllImport(videoLib, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void cvUpdateMotionHistory(CvArr silhouette, CvArr mhi, double timestamp, double duration);
+        internal static extern void cvUpdateMotionHistory(Arr silhouette, Arr mhi, double timestamp, double duration);
 
         [DllImport(videoLib, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void cvCalcMotionGradient(
-            CvArr mhi,
-            CvArr mask,
-            CvArr orientation,
+            Arr mhi,
+            Arr mask,
+            Arr orientation,
             double delta1,
             double delta2,
             int aperture_size);
 
         [DllImport(videoLib, CallingConvention = CallingConvention.Cdecl)]
         internal static extern double cvCalcGlobalOrientation(
-            CvArr orientation,
-            CvArr mask,
-            CvArr mhi,
+            Arr orientation,
+            Arr mask,
+            Arr mhi,
             double timestamp,
             double duration);
 
         [DllImport(videoLib, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern CvSeq cvSegmentMotion(
-            CvArr mhi,
-            CvArr seg_mask,
-            CvMemStorage storage,
+        internal static extern Seq cvSegmentMotion(
+            Arr mhi,
+            Arr seg_mask,
+            MemStorage storage,
             double timestamp,
             double seg_thresh);
 
@@ -99,14 +99,14 @@ namespace OpenCV.Net.Native
 
         [DllImport(videoLib, CallingConvention = CallingConvention.Cdecl)]
         internal static extern int cvCamShift(
-            CvArr prob_image,
-            CvRect window,
-            CvTermCriteria criteria,
-            out CvConnectedComp comp,
-            out CvBox2D box);
+            Arr prob_image,
+            Rect window,
+            TermCriteria criteria,
+            out ConnectedComp comp,
+            out RotatedRect box);
 
         [DllImport(videoLib, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern int cvMeanShift(CvArr prob_image, CvRect window, CvTermCriteria criteria, out CvConnectedComp comp);
+        internal static extern int cvMeanShift(Arr prob_image, Rect window, TermCriteria criteria, out ConnectedComp comp);
 
         [DllImport(videoLib, CallingConvention = CallingConvention.Cdecl)]
         internal static extern IntPtr cvCreateKalman(int dynam_params, int measure_params, int control_params);
@@ -115,10 +115,10 @@ namespace OpenCV.Net.Native
         internal static extern void cvReleaseKalman(ref IntPtr kalman);
 
         [DllImport(videoLib, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern IntPtr cvKalmanPredict(CvKalman kalman, CvMat control);
+        internal static extern IntPtr cvKalmanPredict(KalmanFilter kalman, Mat control);
 
         [DllImport(videoLib, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern IntPtr cvKalmanCorrect(CvKalman kalman, CvMat measurement);
+        internal static extern IntPtr cvKalmanCorrect(KalmanFilter kalman, Mat measurement);
 
         #endregion
     }

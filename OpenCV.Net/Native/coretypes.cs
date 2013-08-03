@@ -213,7 +213,7 @@ namespace OpenCV.Net.Native
         public IntPtr free_blocks;
         public IntPtr first;
 
-        public CvPoint origin;
+        public Point origin;
     }
 
     [StructLayout(LayoutKind.Sequential)]
@@ -229,7 +229,7 @@ namespace OpenCV.Net.Native
         public IntPtr prev_elem;
 
         public byte code;
-        public CvPoint pt;
+        public Point pt;
         public byte deltas00;
         public byte deltas01;
         public byte deltas10;
@@ -266,7 +266,7 @@ namespace OpenCV.Net.Native
         public IntPtr free_blocks;
         public IntPtr first;
 
-        public CvRect rect;
+        public Rect rect;
         public int color;
         public int reserved0;
         public int reserved1;
@@ -284,7 +284,7 @@ namespace OpenCV.Net.Native
     struct _CvFont
     {
         public IntPtr nameFont;
-        public CvScalar color;
+        public Scalar color;
         public int font_face;
         public IntPtr ascii;
         public IntPtr greek;
@@ -329,14 +329,14 @@ namespace OpenCV.Net.Native
         internal const int DepthMax = 1 << ChannelShift;
         internal const int DepthMask = DepthMax - 1;
 
-        internal static int GetMatType(CvDepth depth, int channels)
+        internal static int GetMatType(Depth depth, int channels)
         {
             return ((int)depth & DepthMask) + ((channels - 1) << ChannelShift);
         }
 
-        internal static CvDepth GetMatDepth(int type)
+        internal static Depth GetMatDepth(int type)
         {
-            return (CvDepth)(type & DepthMask);
+            return (Depth)(type & DepthMask);
         }
 
         internal static int GetMatChannels(int type)

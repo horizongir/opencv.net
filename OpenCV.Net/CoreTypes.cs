@@ -91,9 +91,9 @@ namespace OpenCV.Net
     }
 
     /// <summary>
-    /// Specifies the available element bit depth formats for <see cref="CvMat"/> and <see cref="CvSeq"/> instances.
+    /// Specifies the available element bit depth formats for <see cref="Mat"/> and <see cref="Seq"/> instances.
     /// </summary>
-    public enum CvDepth : int
+    public enum Depth : int
     {
         /// <summary>
         /// Specifies an unsigned 8-bit element depth.
@@ -200,7 +200,7 @@ namespace OpenCV.Net
     }
 
     /// <summary>
-    /// Specifies operation flags for <see cref="CvArr.CheckRange"/>.
+    /// Specifies operation flags for <see cref="Arr.CheckRange"/>.
     /// </summary>
     [Flags]
     public enum CheckArrayFlags : int
@@ -224,7 +224,7 @@ namespace OpenCV.Net
     /// <summary>
     /// Specifies the random distribution to use for <see cref="cv.RandArr"/>.
     /// </summary>
-    public enum CvRandDistribution : int
+    public enum RandDistribution : int
     {
         /// <summary>
         /// Specifies that a uniform distribution should be used.
@@ -606,7 +606,7 @@ namespace OpenCV.Net
         /// <summary>
         /// Specifies a freeman code element.
         /// </summary>
-        Code = CvDepth.U8,
+        Code = Depth.U8,
 
         /// <summary>
         /// Specifies an undefined type of sequence element.
@@ -616,7 +616,7 @@ namespace OpenCV.Net
         /// <summary>
         /// Specifies a pointer type of sequence element.
         /// </summary>
-        Pointer = CvDepth.UserType,
+        Pointer = Depth.UserType,
 
         /// <summary>
         /// Specifies a pointer to an element of another sequence.
@@ -626,7 +626,7 @@ namespace OpenCV.Net
         /// <summary>
         /// Specifies an index of an element of some other sequence.
         /// </summary>
-        Index = CvDepth.S32,
+        Index = Depth.S32,
 
         /// <summary>
         /// Specifies an edge of a graph.
@@ -655,7 +655,7 @@ namespace OpenCV.Net
     }
 
     /// <summary>
-    /// Specifies the kind of <see cref="CvSeq"/> instances.
+    /// Specifies the kind of <see cref="Seq"/> instances.
     /// </summary>
     public enum SequenceKind : int
     {
@@ -686,7 +686,7 @@ namespace OpenCV.Net
     }
 
     /// <summary>
-    /// Specifies a set of operational flags for <see cref="CvSeq"/> instances.
+    /// Specifies a set of operational flags for <see cref="Seq"/> instances.
     /// </summary>
     [Flags]
     public enum SequenceFlags : int
@@ -756,7 +756,7 @@ namespace OpenCV.Net
     }
 
     /// <summary>
-    /// Specifies font face flags for instances of <see cref="CvFont"/>.
+    /// Specifies font face flags for instances of <see cref="Font"/>.
     /// </summary>
     [Flags]
     public enum FontFace : int
@@ -808,7 +808,7 @@ namespace OpenCV.Net
     }
 
     /// <summary>
-    /// Specifies available flags for creating <see cref="CvFileStorage"/> instances.
+    /// Specifies available flags for creating <see cref="FileStorage"/> instances.
     /// </summary>
     [Flags]
     public enum StorageFlags : int
@@ -887,7 +887,7 @@ namespace OpenCV.Net
     }
 
     /// <summary>
-    /// Specifies type flags for writing compound structures to a <see cref="CvFileStorage"/> instance.
+    /// Specifies type flags for writing compound structures to a <see cref="FileStorage"/> instance.
     /// </summary>
     [Flags]
     public enum StructStorageFlags : int

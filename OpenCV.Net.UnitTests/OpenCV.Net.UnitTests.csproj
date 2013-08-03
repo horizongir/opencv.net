@@ -52,15 +52,15 @@
   <ItemGroup>
     <Compile Include="TestCore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestCvFileStorage.cs" />
-    <Compile Include="TestCvMat.cs" />
-    <Compile Include="TestCvMemStorage.cs" />
-    <Compile Include="TestCvSeq.cs" />
-    <Compile Include="TestCvSparseMat.cs" />
+    <Compile Include="TestFileStorage.cs" />
+    <Compile Include="TestMat.cs" />
+    <Compile Include="TestMemStorage.cs" />
+    <Compile Include="TestSeq.cs" />
+    <Compile Include="TestSparseMat.cs" />
     <Compile Include="TestHighGui.cs" />
     <Compile Include="TestIplImage.cs" />
-    <Compile Include="TestCvArr.cs" />
-    <Compile Include="TestCvMatND.cs" />
+    <Compile Include="TestArr.cs" />
+    <Compile Include="TestMatND.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OpenCV.Net\OpenCV.Net.csproj">

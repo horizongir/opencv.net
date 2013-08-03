@@ -21,7 +21,7 @@ namespace OpenCV.Net
         /// The output point array, must contain the same number of points as the input.
         /// The dimensionality must be the same, 1 less or 1 more than the input.
         /// </param>
-        public static void ConvertPointsHomogeneous(CvMat src, CvMat dst)
+        public static void ConvertPointsHomogeneous(Mat src, Mat dst)
         {
             NativeMethods.cvConvertPointsHomogeneous(src, dst);
         }
@@ -63,15 +63,15 @@ namespace OpenCV.Net
         /// (9x3 matrix that stores all 3 matrices sequentially).
         /// </returns>
         public static int FindFundamentalMat(
-            CvMat points1,
-            CvMat points2,
-            CvMat fundamentalMatrix,
+            Mat points1,
+            Mat points2,
+            Mat fundamentalMatrix,
             FundamentalMatrixMethod method = FundamentalMatrixMethod.Ransac,
             double param1 = 3,
             double param2 = 0.99,
-            CvMat status = null)
+            Mat status = null)
         {
-            return NativeMethods.cvFindFundamentalMat(points1, points2, fundamentalMatrix, method, param1, param2, status ?? CvMat.Null);
+            return NativeMethods.cvFindFundamentalMat(points1, points2, fundamentalMatrix, method, param1, param2, status ?? Mat.Null);
         }
 
         /// <summary>
@@ -84,16 +84,16 @@ namespace OpenCV.Net
         /// <param name="whichImage">Index of the image (1 or 2) that contains the points.</param>
         /// <param name="fundamentalMatrix">
         /// The fundamental matrix that can be estimated using <see cref="FindFundamentalMat"/> or
-        /// <see cref="StereoRectify(CvMat,CvMat,CvMat,CvMat,CvSize,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,StereoRectificationFlags,double,CvSize)"/>.
+        /// <see cref="StereoRectify(Mat,Mat,Mat,Mat,Size,Mat,Mat,Mat,Mat,Mat,Mat,Mat,StereoRectificationFlags,double,Size)"/>.
         /// </param>
         /// <param name="correspondentLines">
         /// The output epilines, a 3xN or Nx3 array. Each line ax + by + c = 0 is encoded by 3 numbers (a, b, c).
         /// </param>
         public static void ComputeCorrespondEpilines(
-            CvMat points,
+            Mat points,
             int whichImage,
-            CvMat fundamentalMatrix,
-            CvMat correspondentLines)
+            Mat fundamentalMatrix,
+            Mat correspondentLines)
         {
             NativeMethods.cvComputeCorrespondEpilines(points, whichImage, fundamentalMatrix, correspondentLines);
         }
@@ -107,11 +107,11 @@ namespace OpenCV.Net
         /// <param name="projPoints2">2xN array of corresponding points in the second image.</param>
         /// <param name="points4D">4xN array of reconstructed points in homogeneous coordinates.</param>
         public static void TriangulatePoints(
-            CvMat projMatr1,
-            CvMat projMatr2,
-            CvMat projPoints1,
-            CvMat projPoints2,
-            CvMat points4D)
+            Mat projMatr1,
+            Mat projMatr2,
+            Mat projPoints1,
+            Mat projPoints2,
+            Mat points4D)
         {
             NativeMethods.cvTriangulatePoints(projMatr1, projMatr2, projPoints1, projPoints2, points4D);
         }
@@ -125,11 +125,11 @@ namespace OpenCV.Net
         /// <param name="newPoints1">The optimized <paramref name="points1"/>.</param>
         /// <param name="newPoints2">The optimized <paramref name="points2"/></param>
         public static void CorrectMatches(
-            CvMat F,
-            CvMat points1,
-            CvMat points2,
-            CvMat newPoints1,
-            CvMat newPoints2)
+            Mat F,
+            Mat points1,
+            Mat points2,
+            Mat newPoints1,
+            Mat newPoints2)
         {
             NativeMethods.cvCorrectMatches(F, points1, points2, newPoints1, newPoints2);
         }
@@ -146,17 +146,17 @@ namespace OpenCV.Net
         /// <param name="alpha">
         /// The free scaling parameter between 0 (when all the pixels in the undistorted image will be valid) and 1
         /// (when all the source image pixels will be retained in the undistorted image); see
-        /// <see cref="StereoRectify(CvMat,CvMat,CvMat,CvMat,CvSize,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,StereoRectificationFlags,double,CvSize)"/>.
+        /// <see cref="StereoRectify(Mat,Mat,Mat,Mat,Size,Mat,Mat,Mat,Mat,Mat,Mat,Mat,StereoRectificationFlags,double,Size)"/>.
         /// </param>
         /// <param name="newCameraMatrix">The output new camera matrix.</param>
         public static void GetOptimalNewCameraMatrix(
-            CvMat cameraMatrix,
-            CvMat distCoeffs,
-            CvSize imageSize,
+            Mat cameraMatrix,
+            Mat distCoeffs,
+            Size imageSize,
             double alpha,
-            CvMat newCameraMatrix)
+            Mat newCameraMatrix)
         {
-            GetOptimalNewCameraMatrix(cameraMatrix, distCoeffs, imageSize, alpha, newCameraMatrix, CvSize.Zero);
+            GetOptimalNewCameraMatrix(cameraMatrix, distCoeffs, imageSize, alpha, newCameraMatrix, Size.Zero);
         }
 
         /// <summary>
@@ -171,21 +171,21 @@ namespace OpenCV.Net
         /// <param name="alpha">
         /// The free scaling parameter between 0 (when all the pixels in the undistorted image will be valid) and 1
         /// (when all the source image pixels will be retained in the undistorted image); see
-        /// <see cref="StereoRectify(CvMat,CvMat,CvMat,CvMat,CvSize,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,StereoRectificationFlags,double,CvSize)"/>.
+        /// <see cref="StereoRectify(Mat,Mat,Mat,Mat,Size,Mat,Mat,Mat,Mat,Mat,Mat,Mat,StereoRectificationFlags,double,Size)"/>.
         /// </param>
         /// <param name="newCameraMatrix">The output new camera matrix.</param>
         /// <param name="newImageSize">
         /// The image size after rectification. By default it will be set to <paramref name="imageSize"/>.
         /// </param>
         public static void GetOptimalNewCameraMatrix(
-            CvMat cameraMatrix,
-            CvMat distCoeffs,
-            CvSize imageSize,
+            Mat cameraMatrix,
+            Mat distCoeffs,
+            Size imageSize,
             double alpha,
-            CvMat newCameraMatrix,
-            CvSize newImageSize)
+            Mat newCameraMatrix,
+            Size newImageSize)
         {
-            CvRect validPixelRoi;
+            Rect validPixelRoi;
             GetOptimalNewCameraMatrix(cameraMatrix, distCoeffs, imageSize, alpha, newCameraMatrix, newImageSize, out validPixelRoi);
         }
 
@@ -201,7 +201,7 @@ namespace OpenCV.Net
         /// <param name="alpha">
         /// The free scaling parameter between 0 (when all the pixels in the undistorted image will be valid) and 1
         /// (when all the source image pixels will be retained in the undistorted image); see
-        /// <see cref="StereoRectify(CvMat,CvMat,CvMat,CvMat,CvSize,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,StereoRectificationFlags,double,CvSize)"/>.
+        /// <see cref="StereoRectify(Mat,Mat,Mat,Mat,Size,Mat,Mat,Mat,Mat,Mat,Mat,Mat,StereoRectificationFlags,double,Size)"/>.
         /// </param>
         /// <param name="newCameraMatrix">The output new camera matrix.</param>
         /// <param name="newImageSize">
@@ -216,16 +216,16 @@ namespace OpenCV.Net
         /// image (determined by alpha) to the corrected image.
         /// </param>
         public static void GetOptimalNewCameraMatrix(
-            CvMat cameraMatrix,
-            CvMat distCoeffs,
-            CvSize imageSize,
+            Mat cameraMatrix,
+            Mat distCoeffs,
+            Size imageSize,
             double alpha,
-            CvMat newCameraMatrix,
-            CvSize newImageSize,
-            out CvRect validPixelROI,
+            Mat newCameraMatrix,
+            Size newImageSize,
+            out Rect validPixelROI,
             bool centerPrincipalPoint = false)
         {
-            NativeMethods.cvGetOptimalNewCameraMatrix(cameraMatrix, distCoeffs ?? CvMat.Null, imageSize, alpha, newCameraMatrix, newImageSize, out validPixelROI, centerPrincipalPoint ? 1 : 0);
+            NativeMethods.cvGetOptimalNewCameraMatrix(cameraMatrix, distCoeffs ?? Mat.Null, imageSize, alpha, newCameraMatrix, newImageSize, out validPixelROI, centerPrincipalPoint ? 1 : 0);
         }
 
         /// <summary>
@@ -238,9 +238,9 @@ namespace OpenCV.Net
         /// respect to the input array components.
         /// </param>
         /// <returns>A value indicating whether the conversion was successful.</returns>
-        public static bool Rodrigues2(CvMat src, CvMat dst, CvMat jacobian = null)
+        public static bool Rodrigues2(Mat src, Mat dst, Mat jacobian = null)
         {
-            return NativeMethods.cvRodrigues2(src, dst, jacobian ?? CvMat.Null) > 0;
+            return NativeMethods.cvRodrigues2(src, dst, jacobian ?? Mat.Null) > 0;
         }
 
         /// <summary>
@@ -265,14 +265,14 @@ namespace OpenCV.Net
         /// </param>
         /// <returns>A value indicating whether the homography matrix calculation was successful.</returns>
         public static bool FindHomography(
-            CvMat srcPoints,
-            CvMat dstPoints,
-            CvMat homography,
+            Mat srcPoints,
+            Mat dstPoints,
+            Mat homography,
             FindHomographyMethod method = FindHomographyMethod.Regular,
             double ransacReprojThreshold = 3,
-            CvMat mask = null)
+            Mat mask = null)
         {
-            return NativeMethods.cvFindHomography(srcPoints, dstPoints, homography, method, ransacReprojThreshold, mask ?? CvMat.Null) > 0;
+            return NativeMethods.cvFindHomography(srcPoints, dstPoints, homography, method, ransacReprojThreshold, mask ?? Mat.Null) > 0;
         }
 
         /// <summary>
@@ -286,15 +286,15 @@ namespace OpenCV.Net
         /// <param name="matrixQz">Optional output 3x3 rotation matrix around z-axis.</param>
         /// <param name="eulerAngles">Optional output array containing the three Euler angles of rotation.</param>
         public static void RQDecomp3x3(
-            CvMat matrixM,
-            CvMat matrixR,
-            CvMat matrixQ,
-            CvMat matrixQx = null,
-            CvMat matrixQy = null,
-            CvMat matrixQz = null,
-            CvPoint3D64f[] eulerAngles = null)
+            Mat matrixM,
+            Mat matrixR,
+            Mat matrixQ,
+            Mat matrixQx = null,
+            Mat matrixQy = null,
+            Mat matrixQz = null,
+            Point3d[] eulerAngles = null)
         {
-            NativeMethods.cvRQDecomp3x3(matrixM, matrixR, matrixQ, matrixQx ?? CvMat.Null, matrixQy ?? CvMat.Null, matrixQz ?? CvMat.Null, eulerAngles);
+            NativeMethods.cvRQDecomp3x3(matrixM, matrixR, matrixQ, matrixQx ?? Mat.Null, matrixQy ?? Mat.Null, matrixQz ?? Mat.Null, eulerAngles);
         }
 
         /// <summary>
@@ -309,16 +309,16 @@ namespace OpenCV.Net
         /// <param name="rotMatrZ">Optional output 3x3 rotation matrix around z-axis.</param>
         /// <param name="eulerAngles">Optional output array containing the three Euler angles of rotation.</param>
         public static void DecomposeProjectionMatrix(
-            CvMat projMatr,
-            CvMat calibMatr,
-            CvMat rotMatr,
-            CvMat posVect,
-            CvMat rotMatrX = null,
-            CvMat rotMatrY = null,
-            CvMat rotMatrZ = null,
-            CvPoint3D64f[] eulerAngles = null)
+            Mat projMatr,
+            Mat calibMatr,
+            Mat rotMatr,
+            Mat posVect,
+            Mat rotMatrX = null,
+            Mat rotMatrY = null,
+            Mat rotMatrZ = null,
+            Point3d[] eulerAngles = null)
         {
-            NativeMethods.cvDecomposeProjectionMatrix(projMatr, calibMatr, rotMatr, posVect, rotMatrX ?? CvMat.Null, rotMatrY ?? CvMat.Null, rotMatrZ ?? CvMat.Null, eulerAngles);
+            NativeMethods.cvDecomposeProjectionMatrix(projMatr, calibMatr, rotMatr, posVect, rotMatrX ?? Mat.Null, rotMatrY ?? Mat.Null, rotMatrZ ?? Mat.Null, eulerAngles);
         }
 
         /// <summary>
@@ -328,7 +328,7 @@ namespace OpenCV.Net
         /// <param name="B">Second multiplied matrix.</param>
         /// <param name="dABdA">First output derivative matrix d(A*B)/dA of size (A.Rows*B.Cols)x(A.Rows*A.Cols).</param>
         /// <param name="dABdB">Second output derivative matrix d(A*B)/dB of size (A.Rows*B.Cols)x(B.Rows*B.Cols).</param>
-        public static void CalcMatMulDeriv(CvMat A, CvMat B, CvMat dABdA, CvMat dABdB)
+        public static void CalcMatMulDeriv(Mat A, Mat B, Mat dABdA, Mat dABdB)
         {
             NativeMethods.cvCalcMatMulDeriv(A, B, dABdA, dABdB);
         }
@@ -351,29 +351,29 @@ namespace OpenCV.Net
         /// <param name="dt3dr2">Optional output derivatives of <paramref name="tvec3"/> with regard to <paramref name="rvec2"/>.</param>
         /// <param name="dt3dt2">Optional output derivatives of <paramref name="tvec3"/> with regard to <paramref name="tvec2"/>.</param>
         public static void ComposeRT(
-            CvMat rvec1,
-            CvMat tvec1,
-            CvMat rvec2,
-            CvMat tvec2,
-            CvMat rvec3,
-            CvMat tvec3,
-            CvMat dr3dr1 = null,
-            CvMat dr3dt1 = null,
-            CvMat dr3dr2 = null,
-            CvMat dr3dt2 = null,
-            CvMat dt3dr1 = null,
-            CvMat dt3dt1 = null,
-            CvMat dt3dr2 = null,
-            CvMat dt3dt2 = null)
+            Mat rvec1,
+            Mat tvec1,
+            Mat rvec2,
+            Mat tvec2,
+            Mat rvec3,
+            Mat tvec3,
+            Mat dr3dr1 = null,
+            Mat dr3dt1 = null,
+            Mat dr3dr2 = null,
+            Mat dr3dt2 = null,
+            Mat dt3dr1 = null,
+            Mat dt3dt1 = null,
+            Mat dt3dr2 = null,
+            Mat dt3dt2 = null)
         {
             NativeMethods.cvComposeRT(
                 rvec1, tvec1,
                 rvec2, tvec2,
                 rvec3, tvec3,
-                dr3dr1 ?? CvMat.Null, dr3dt1 ?? CvMat.Null,
-                dr3dr2 ?? CvMat.Null, dr3dt2 ?? CvMat.Null,
-                dt3dr1 ?? CvMat.Null, dt3dt1 ?? CvMat.Null,
-                dt3dr2 ?? CvMat.Null, dt3dt2 ?? CvMat.Null);
+                dr3dr1 ?? Mat.Null, dr3dt1 ?? Mat.Null,
+                dr3dr2 ?? Mat.Null, dr3dt2 ?? Mat.Null,
+                dt3dr1 ?? Mat.Null, dt3dt1 ?? Mat.Null,
+                dt3dr2 ?? Mat.Null, dt3dt2 ?? Mat.Null);
         }
 
         /// <summary>
@@ -412,24 +412,24 @@ namespace OpenCV.Net
         /// is fixed and correspondingly adjusts the jacobian matrix.
         /// </param>
         public static void ProjectPoints2(
-            CvMat objectPoints,
-            CvMat rotationVector,
-            CvMat translationVector,
-            CvMat cameraMatrix,
-            CvMat distortionCoeffs,
-            CvMat imagePoints,
-            CvMat dpdrot = null,
-            CvMat dpdt = null,
-            CvMat dpdf = null,
-            CvMat dpdc = null,
-            CvMat dpddist = null,
+            Mat objectPoints,
+            Mat rotationVector,
+            Mat translationVector,
+            Mat cameraMatrix,
+            Mat distortionCoeffs,
+            Mat imagePoints,
+            Mat dpdrot = null,
+            Mat dpdt = null,
+            Mat dpdf = null,
+            Mat dpdc = null,
+            Mat dpddist = null,
             double aspectRatio = 0)
         {
             NativeMethods.cvProjectPoints2(
                 objectPoints, rotationVector, translationVector,
-                cameraMatrix, distortionCoeffs ?? CvMat.Null, imagePoints,
-                dpdrot ?? CvMat.Null, dpdt ?? CvMat.Null, dpdf ?? CvMat.Null,
-                dpdc ?? CvMat.Null, dpddist ?? CvMat.Null, aspectRatio);
+                cameraMatrix, distortionCoeffs ?? Mat.Null, imagePoints,
+                dpdrot ?? Mat.Null, dpdt ?? Mat.Null, dpdf ?? Mat.Null,
+                dpdc ?? Mat.Null, dpddist ?? Mat.Null, aspectRatio);
         }
 
         /// <summary>
@@ -458,16 +458,16 @@ namespace OpenCV.Net
         ///  as the initial approximations of the rotation and translation vectors, respectively, and will further optimize them.
         /// </param>
         public static void FindExtrinsicCameraParams2(
-            CvMat objectPoints,
-            CvMat imagePoints,
-            CvMat cameraMatrix,
-            CvMat distortionCoeffs,
-            CvMat rotationVector,
-            CvMat translationVector,
+            Mat objectPoints,
+            Mat imagePoints,
+            Mat cameraMatrix,
+            Mat distortionCoeffs,
+            Mat rotationVector,
+            Mat translationVector,
             bool useExtrinsicGuess = false)
         {
             NativeMethods.cvFindExtrinsicCameraParams2(
-                objectPoints, imagePoints, cameraMatrix, distortionCoeffs ?? CvMat.Null,
+                objectPoints, imagePoints, cameraMatrix, distortionCoeffs ?? Mat.Null,
                 rotationVector, translationVector, useExtrinsicGuess ? 1 : 0);
         }
 
@@ -475,13 +475,13 @@ namespace OpenCV.Net
         /// Finds the initial camera matrix from the 3D-2D point correspondences.
         /// </summary>
         /// <param name="objectPoints">
-        /// The joint array of object points; see <see cref="CalibrateCamera2(CvMat,CvMat,CvMat,CvSize,CvMat,CvMat,CvMat,CvMat,CameraCalibrationFlags)"/>.
+        /// The joint array of object points; see <see cref="CalibrateCamera2(Mat,Mat,Mat,Size,Mat,Mat,Mat,Mat,CameraCalibrationFlags)"/>.
         /// </param>
         /// <param name="imagePoints">
-        /// The joint array of object point projections; see <see cref="CalibrateCamera2(CvMat,CvMat,CvMat,CvSize,CvMat,CvMat,CvMat,CvMat,CameraCalibrationFlags)"/>.
+        /// The joint array of object point projections; see <see cref="CalibrateCamera2(Mat,Mat,Mat,Size,Mat,Mat,Mat,Mat,CameraCalibrationFlags)"/>.
         /// </param>
         /// <param name="npoints">
-        /// The array of point counts; see <see cref="CalibrateCamera2(CvMat,CvMat,CvMat,CvSize,CvMat,CvMat,CvMat,CvMat,CameraCalibrationFlags)"/>.
+        /// The array of point counts; see <see cref="CalibrateCamera2(Mat,Mat,Mat,Size,Mat,Mat,Mat,Mat,CameraCalibrationFlags)"/>.
         /// </param>
         /// <param name="imageSize">The image size in pixels; used to initialize the principal point.</param>
         /// <param name="cameraMatrix">The output camera matrix A = [fx 0 cx; 0 fy cy; 0 0 1].</param>
@@ -489,11 +489,11 @@ namespace OpenCV.Net
         /// If it is zero or negative, both fx and fy are estimated independently. Otherwise fx = fy * <paramref name="aspectRatio"/>.
         /// </param>
         public static void InitIntrinsicParams2D(
-            CvMat objectPoints,
-            CvMat imagePoints,
-            CvMat npoints,
-            CvSize imageSize,
-            CvMat cameraMatrix,
+            Mat objectPoints,
+            Mat imagePoints,
+            Mat npoints,
+            Size imageSize,
+            Mat cameraMatrix,
             double aspectRatio = 1)
         {
             NativeMethods.cvInitIntrinsicParams2D(
@@ -507,7 +507,7 @@ namespace OpenCV.Net
         /// <param name="src">The input image.</param>
         /// <param name="size">The size of the chessboard.</param>
         /// <returns><b>true</b> if a chessboard may be in the input image; <b>false</b> otherwise.</returns>
-        public static bool CheckChessboard(IplImage src, CvSize size)
+        public static bool CheckChessboard(IplImage src, Size size)
         {
             return NativeMethods.cvCheckChessboard(src, size) > 0;
         }
@@ -524,9 +524,9 @@ namespace OpenCV.Net
         /// <b>true</b> if all of the corners have been found and correctly reordered; <b>false</b> otherwise.
         /// </returns>
         public static bool FindChessboardCorners(
-            CvArr image,
-            CvSize patternSize,
-            CvPoint2D32f[] corners)
+            Arr image,
+            Size patternSize,
+            Point2f[] corners)
         {
             int cornerCount;
             return FindChessboardCorners(image, patternSize, corners, out cornerCount);
@@ -546,9 +546,9 @@ namespace OpenCV.Net
         /// <b>true</b> if all of the corners have been found and correctly reordered; <b>false</b> otherwise.
         /// </returns>
         public static bool FindChessboardCorners(
-            CvArr image,
-            CvSize patternSize,
-            CvPoint2D32f[] corners,
+            Arr image,
+            Size patternSize,
+            Point2f[] corners,
             out int cornerCount,
             ChessboardCalibrationFlags flags = ChessboardCalibrationFlags.AdaptiveThreshold | ChessboardCalibrationFlags.NormalizeImage)
         {
@@ -565,9 +565,9 @@ namespace OpenCV.Net
         /// <param name="corners">The array of detected corners.</param>
         /// <param name="patternWasFound">A value indicating whether the complete board was found.</param>
         public static void DrawChessboardCorners(
-            CvArr image,
-            CvSize patternSize,
-            CvPoint2D32f[] corners,
+            Arr image,
+            Size patternSize,
+            Point2f[] corners,
             bool patternWasFound)
         {
             NativeMethods.cvDrawChessboardCorners(image, patternSize, corners, corners.Length, patternWasFound ? 1 : 0);
@@ -609,20 +609,20 @@ namespace OpenCV.Net
         /// <param name="flags">Specifies various operation flags.</param>
         /// <returns>The final re-projection error.</returns>
         public static double CalibrateCamera2(
-            CvMat objectPoints,
-            CvMat imagePoints,
-            CvMat pointCounts,
-            CvSize imageSize,
-            CvMat cameraMatrix,
-            CvMat distortionCoeffs,
-            CvMat rotationVectors = null,
-            CvMat translationVectors = null,
+            Mat objectPoints,
+            Mat imagePoints,
+            Mat pointCounts,
+            Size imageSize,
+            Mat cameraMatrix,
+            Mat distortionCoeffs,
+            Mat rotationVectors = null,
+            Mat translationVectors = null,
             CameraCalibrationFlags flags = CameraCalibrationFlags.None)
         {
             return CalibrateCamera2(
                 objectPoints, imagePoints, pointCounts, imageSize,
                 cameraMatrix, distortionCoeffs, rotationVectors, translationVectors,
-                flags, new CvTermCriteria(TermCriteriaType.MaxIter | TermCriteriaType.Epsilon, 30, double.Epsilon));
+                flags, new TermCriteria(TermCriteriaType.MaxIter | TermCriteriaType.Epsilon, 30, double.Epsilon));
         }
 
         /// <summary>
@@ -662,20 +662,20 @@ namespace OpenCV.Net
         /// <param name="criteria">Termination criteria for the iterative optimization algorithm.</param>
         /// <returns>The final re-projection error.</returns>
         public static double CalibrateCamera2(
-            CvMat objectPoints,
-            CvMat imagePoints,
-            CvMat pointCounts,
-            CvSize imageSize,
-            CvMat cameraMatrix,
-            CvMat distortionCoeffs,
-            CvMat rotationVectors,
-            CvMat translationVectors,
+            Mat objectPoints,
+            Mat imagePoints,
+            Mat pointCounts,
+            Size imageSize,
+            Mat cameraMatrix,
+            Mat distortionCoeffs,
+            Mat rotationVectors,
+            Mat translationVectors,
             CameraCalibrationFlags flags,
-            CvTermCriteria criteria)
+            TermCriteria criteria)
         {
             return NativeMethods.cvCalibrateCamera2(
                 objectPoints, imagePoints, pointCounts, imageSize,
-                cameraMatrix, distortionCoeffs, rotationVectors ?? CvMat.Null, translationVectors ?? CvMat.Null,
+                cameraMatrix, distortionCoeffs, rotationVectors ?? Mat.Null, translationVectors ?? Mat.Null,
                 flags, criteria);
         }
 
@@ -683,15 +683,15 @@ namespace OpenCV.Net
         /// Computes useful camera characteristics from the camera matrix.
         /// </summary>
         /// <param name="cameraMatrix">
-        /// Input camera matrix that can be estimated by <see cref="CalibrateCamera2(CvMat,CvMat,CvMat,CvSize,CvMat,CvMat,CvMat,CvMat,CameraCalibrationFlags,CvTermCriteria)"/>
-        /// or <see cref="StereoCalibrate(CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvSize,CvMat,CvMat,CvMat,CvMat,CvTermCriteria,StereoCalibrationFlags)"/>.
+        /// Input camera matrix that can be estimated by <see cref="CalibrateCamera2(Mat,Mat,Mat,Size,Mat,Mat,Mat,Mat,CameraCalibrationFlags,TermCriteria)"/>
+        /// or <see cref="StereoCalibrate(Mat,Mat,Mat,Mat,Mat,Mat,Mat,Mat,Size,Mat,Mat,Mat,Mat,TermCriteria,StereoCalibrationFlags)"/>.
         /// </param>
         /// <param name="imageSize">Input image size in pixels.</param>
         /// <param name="apertureWidth">Physical width of the sensor.</param>
         /// <param name="apertureHeight">Physical height of the sensor.</param>
         public static void CalibrationMatrixValues(
-            CvMat cameraMatrix,
-            CvSize imageSize,
+            Mat cameraMatrix,
+            Size imageSize,
             double apertureWidth = 0,
             double apertureHeight = 0)
         {
@@ -703,16 +703,16 @@ namespace OpenCV.Net
         /// Computes useful camera characteristics from the camera matrix.
         /// </summary>
         /// <param name="cameraMatrix">
-        /// Input camera matrix that can be estimated by <see cref="CalibrateCamera2(CvMat,CvMat,CvMat,CvSize,CvMat,CvMat,CvMat,CvMat,CameraCalibrationFlags,CvTermCriteria)"/>
-        /// or <see cref="StereoCalibrate(CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvSize,CvMat,CvMat,CvMat,CvMat,CvTermCriteria,StereoCalibrationFlags)"/>.
+        /// Input camera matrix that can be estimated by <see cref="CalibrateCamera2(Mat,Mat,Mat,Size,Mat,Mat,Mat,Mat,CameraCalibrationFlags,TermCriteria)"/>
+        /// or <see cref="StereoCalibrate(Mat,Mat,Mat,Mat,Mat,Mat,Mat,Mat,Size,Mat,Mat,Mat,Mat,TermCriteria,StereoCalibrationFlags)"/>.
         /// </param>
         /// <param name="imageSize">Input image size in pixels.</param>
         /// <param name="apertureWidth">Physical width of the sensor.</param>
         /// <param name="apertureHeight">Physical height of the sensor.</param>
         /// <param name="fovx">Output field of view in degrees along the horizontal sensor axis.</param>
         public static void CalibrationMatrixValues(
-            CvMat cameraMatrix,
-            CvSize imageSize,
+            Mat cameraMatrix,
+            Size imageSize,
             double apertureWidth,
             double apertureHeight,
             out double fovx)
@@ -727,8 +727,8 @@ namespace OpenCV.Net
         /// Computes useful camera characteristics from the camera matrix.
         /// </summary>
         /// <param name="cameraMatrix">
-        /// Input camera matrix that can be estimated by <see cref="CalibrateCamera2(CvMat,CvMat,CvMat,CvSize,CvMat,CvMat,CvMat,CvMat,CameraCalibrationFlags,CvTermCriteria)"/>
-        /// or <see cref="StereoCalibrate(CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvSize,CvMat,CvMat,CvMat,CvMat,CvTermCriteria,StereoCalibrationFlags)"/>.
+        /// Input camera matrix that can be estimated by <see cref="CalibrateCamera2(Mat,Mat,Mat,Size,Mat,Mat,Mat,Mat,CameraCalibrationFlags,TermCriteria)"/>
+        /// or <see cref="StereoCalibrate(Mat,Mat,Mat,Mat,Mat,Mat,Mat,Mat,Size,Mat,Mat,Mat,Mat,TermCriteria,StereoCalibrationFlags)"/>.
         /// </param>
         /// <param name="imageSize">Input image size in pixels.</param>
         /// <param name="apertureWidth">Physical width of the sensor.</param>
@@ -736,8 +736,8 @@ namespace OpenCV.Net
         /// <param name="fovx">Output field of view in degrees along the horizontal sensor axis.</param>
         /// <param name="fovy">Output field of view in degrees along the vertical sensor axis.</param>
         public static void CalibrationMatrixValues(
-            CvMat cameraMatrix,
-            CvSize imageSize,
+            Mat cameraMatrix,
+            Size imageSize,
             double apertureWidth,
             double apertureHeight,
             out double fovx,
@@ -753,8 +753,8 @@ namespace OpenCV.Net
         /// Computes useful camera characteristics from the camera matrix.
         /// </summary>
         /// <param name="cameraMatrix">
-        /// Input camera matrix that can be estimated by <see cref="CalibrateCamera2(CvMat,CvMat,CvMat,CvSize,CvMat,CvMat,CvMat,CvMat,CameraCalibrationFlags,CvTermCriteria)"/>
-        /// or <see cref="StereoCalibrate(CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvSize,CvMat,CvMat,CvMat,CvMat,CvTermCriteria,StereoCalibrationFlags)"/>.
+        /// Input camera matrix that can be estimated by <see cref="CalibrateCamera2(Mat,Mat,Mat,Size,Mat,Mat,Mat,Mat,CameraCalibrationFlags,TermCriteria)"/>
+        /// or <see cref="StereoCalibrate(Mat,Mat,Mat,Mat,Mat,Mat,Mat,Mat,Size,Mat,Mat,Mat,Mat,TermCriteria,StereoCalibrationFlags)"/>.
         /// </param>
         /// <param name="imageSize">Input image size in pixels.</param>
         /// <param name="apertureWidth">Physical width of the sensor.</param>
@@ -763,15 +763,15 @@ namespace OpenCV.Net
         /// <param name="fovy">Output field of view in degrees along the vertical sensor axis.</param>
         /// <param name="focalLength">Focal length of the lens in mm.</param>
         public static void CalibrationMatrixValues(
-            CvMat cameraMatrix,
-            CvSize imageSize,
+            Mat cameraMatrix,
+            Size imageSize,
             double apertureWidth,
             double apertureHeight,
             out double fovx,
             out double fovy,
             out double focalLength)
         {
-            CvPoint2D64f principalPoint;
+            Point2d principalPoint;
             CalibrationMatrixValues(
                 cameraMatrix, imageSize, apertureWidth, apertureHeight,
                 out fovx, out fovy, out focalLength, out principalPoint);
@@ -781,8 +781,8 @@ namespace OpenCV.Net
         /// Computes useful camera characteristics from the camera matrix.
         /// </summary>
         /// <param name="cameraMatrix">
-        /// Input camera matrix that can be estimated by <see cref="CalibrateCamera2(CvMat,CvMat,CvMat,CvSize,CvMat,CvMat,CvMat,CvMat,CameraCalibrationFlags,CvTermCriteria)"/>
-        /// or <see cref="StereoCalibrate(CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvSize,CvMat,CvMat,CvMat,CvMat,CvTermCriteria,StereoCalibrationFlags)"/>.
+        /// Input camera matrix that can be estimated by <see cref="CalibrateCamera2(Mat,Mat,Mat,Size,Mat,Mat,Mat,Mat,CameraCalibrationFlags,TermCriteria)"/>
+        /// or <see cref="StereoCalibrate(Mat,Mat,Mat,Mat,Mat,Mat,Mat,Mat,Size,Mat,Mat,Mat,Mat,TermCriteria,StereoCalibrationFlags)"/>.
         /// </param>
         /// <param name="imageSize">Input image size in pixels.</param>
         /// <param name="apertureWidth">Physical width of the sensor.</param>
@@ -792,14 +792,14 @@ namespace OpenCV.Net
         /// <param name="focalLength">Focal length of the lens in mm.</param>
         /// <param name="principalPoint">Principal point in pixels.</param>
         public static void CalibrationMatrixValues(
-            CvMat cameraMatrix,
-            CvSize imageSize,
+            Mat cameraMatrix,
+            Size imageSize,
             double apertureWidth,
             double apertureHeight,
             out double fovx,
             out double fovy,
             out double focalLength,
-            out CvPoint2D64f principalPoint)
+            out Point2d principalPoint)
         {
             double pixelAspectRatio;
             CalibrationMatrixValues(
@@ -811,8 +811,8 @@ namespace OpenCV.Net
         /// Computes useful camera characteristics from the camera matrix.
         /// </summary>
         /// <param name="cameraMatrix">
-        /// Input camera matrix that can be estimated by <see cref="CalibrateCamera2(CvMat,CvMat,CvMat,CvSize,CvMat,CvMat,CvMat,CvMat,CameraCalibrationFlags,CvTermCriteria)"/>
-        /// or <see cref="StereoCalibrate(CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvSize,CvMat,CvMat,CvMat,CvMat,CvTermCriteria,StereoCalibrationFlags)"/>.
+        /// Input camera matrix that can be estimated by <see cref="CalibrateCamera2(Mat,Mat,Mat,Size,Mat,Mat,Mat,Mat,CameraCalibrationFlags,TermCriteria)"/>
+        /// or <see cref="StereoCalibrate(Mat,Mat,Mat,Mat,Mat,Mat,Mat,Mat,Size,Mat,Mat,Mat,Mat,TermCriteria,StereoCalibrationFlags)"/>.
         /// </param>
         /// <param name="imageSize">Input image size in pixels.</param>
         /// <param name="apertureWidth">Physical width of the sensor.</param>
@@ -823,14 +823,14 @@ namespace OpenCV.Net
         /// <param name="principalPoint">Principal point in pixels.</param>
         /// <param name="pixelAspectRatio">The aspect ratio of a pixel, given by fy / fx.</param>
         public static void CalibrationMatrixValues(
-            CvMat cameraMatrix,
-            CvSize imageSize,
+            Mat cameraMatrix,
+            Size imageSize,
             double apertureWidth,
             double apertureHeight,
             out double fovx,
             out double fovy,
             out double focalLength,
-            out CvPoint2D64f principalPoint,
+            out Point2d principalPoint,
             out double pixelAspectRatio)
         {
             NativeMethods.cvCalibrationMatrixValues(
@@ -874,24 +874,24 @@ namespace OpenCV.Net
         /// <param name="F">The optional output fundamental matrix.</param>
         /// <returns>The final re-projection error.</returns>
         public static double StereoCalibrate(
-            CvMat objectPoints,
-            CvMat imagePoints1,
-            CvMat imagePoints2,
-            CvMat npoints,
-            CvMat cameraMatrix1,
-            CvMat distCoeffs1,
-            CvMat cameraMatrix2,
-            CvMat distCoeffs2,
-            CvSize imageSize,
-            CvMat R,
-            CvMat T,
-            CvMat E = null,
-            CvMat F = null)
+            Mat objectPoints,
+            Mat imagePoints1,
+            Mat imagePoints2,
+            Mat npoints,
+            Mat cameraMatrix1,
+            Mat distCoeffs1,
+            Mat cameraMatrix2,
+            Mat distCoeffs2,
+            Size imageSize,
+            Mat R,
+            Mat T,
+            Mat E = null,
+            Mat F = null)
         {
             return StereoCalibrate(
                 objectPoints, imagePoints1, imagePoints2, npoints,
                 cameraMatrix1, distCoeffs1, cameraMatrix2, distCoeffs2, imageSize,
-                R, T, E, F, new CvTermCriteria(TermCriteriaType.MaxIter | TermCriteriaType.Epsilon, 30, 1e-6));
+                R, T, E, F, new TermCriteria(TermCriteriaType.MaxIter | TermCriteriaType.Epsilon, 30, 1e-6));
         }
 
         /// <summary>
@@ -932,26 +932,26 @@ namespace OpenCV.Net
         /// <param name="flags">Specifies various operation flags.</param>
         /// <returns>The final re-projection error.</returns>
         public static double StereoCalibrate(
-            CvMat objectPoints,
-            CvMat imagePoints1,
-            CvMat imagePoints2,
-            CvMat npoints,
-            CvMat cameraMatrix1,
-            CvMat distCoeffs1,
-            CvMat cameraMatrix2,
-            CvMat distCoeffs2,
-            CvSize imageSize,
-            CvMat R,
-            CvMat T,
-            CvMat E,
-            CvMat F,
-            CvTermCriteria criteria,
+            Mat objectPoints,
+            Mat imagePoints1,
+            Mat imagePoints2,
+            Mat npoints,
+            Mat cameraMatrix1,
+            Mat distCoeffs1,
+            Mat cameraMatrix2,
+            Mat distCoeffs2,
+            Size imageSize,
+            Mat R,
+            Mat T,
+            Mat E,
+            Mat F,
+            TermCriteria criteria,
             StereoCalibrationFlags flags = StereoCalibrationFlags.FixIntrinsic)
         {
             return NativeMethods.cvStereoCalibrate(
                 objectPoints, imagePoints1, imagePoints2, npoints,
                 cameraMatrix1, distCoeffs1, cameraMatrix2, distCoeffs2, imageSize,
-                R, T, E ?? CvMat.Null, F ?? CvMat.Null, criteria, flags);
+                R, T, E ?? Mat.Null, F ?? Mat.Null, criteria, flags);
         }
 
         /// <summary>
@@ -984,24 +984,24 @@ namespace OpenCV.Net
         /// in the rectified images, i.e. no source image pixels are lost.
         /// </param>
         public static void StereoRectify(
-            CvMat cameraMatrix1,
-            CvMat cameraMatrix2,
-            CvMat distCoeffs1,
-            CvMat distCoeffs2,
-            CvSize imageSize,
-            CvMat R,
-            CvMat T,
-            CvMat R1,
-            CvMat R2,
-            CvMat P1,
-            CvMat P2,
-            CvMat Q = null,
+            Mat cameraMatrix1,
+            Mat cameraMatrix2,
+            Mat distCoeffs1,
+            Mat distCoeffs2,
+            Size imageSize,
+            Mat R,
+            Mat T,
+            Mat R1,
+            Mat R2,
+            Mat P1,
+            Mat P2,
+            Mat Q = null,
             StereoRectificationFlags flags = StereoRectificationFlags.ZeroDisparity,
             double alpha = -1)
         {
             StereoRectify(
                 cameraMatrix1, cameraMatrix2, distCoeffs1, distCoeffs2,
-                imageSize, R, T, R1, R2, P1, P2, Q, flags, alpha, CvSize.Zero);
+                imageSize, R, T, R1, R2, P1, P2, Q, flags, alpha, Size.Zero);
         }
 
         /// <summary>
@@ -1039,23 +1039,23 @@ namespace OpenCV.Net
         /// especially when there is big radial distortion.
         /// </param>
         public static void StereoRectify(
-            CvMat cameraMatrix1,
-            CvMat cameraMatrix2,
-            CvMat distCoeffs1,
-            CvMat distCoeffs2,
-            CvSize imageSize,
-            CvMat R,
-            CvMat T,
-            CvMat R1,
-            CvMat R2,
-            CvMat P1,
-            CvMat P2,
-            CvMat Q,
+            Mat cameraMatrix1,
+            Mat cameraMatrix2,
+            Mat distCoeffs1,
+            Mat distCoeffs2,
+            Size imageSize,
+            Mat R,
+            Mat T,
+            Mat R1,
+            Mat R2,
+            Mat P1,
+            Mat P2,
+            Mat Q,
             StereoRectificationFlags flags,
             double alpha,
-            CvSize newImageSize)
+            Size newImageSize)
         {
-            CvRect validPixROI1;
+            Rect validPixROI1;
             StereoRectify(
                 cameraMatrix1, cameraMatrix2, distCoeffs1, distCoeffs2,
                 imageSize, R, T, R1, R2, P1, P2, Q, flags, alpha,
@@ -1100,24 +1100,24 @@ namespace OpenCV.Net
         /// The optional output rectangle inside the rectified first camera image where all the pixels are valid.
         /// </param>
         public static void StereoRectify(
-            CvMat cameraMatrix1,
-            CvMat cameraMatrix2,
-            CvMat distCoeffs1,
-            CvMat distCoeffs2,
-            CvSize imageSize,
-            CvMat R,
-            CvMat T,
-            CvMat R1,
-            CvMat R2,
-            CvMat P1,
-            CvMat P2,
-            CvMat Q,
+            Mat cameraMatrix1,
+            Mat cameraMatrix2,
+            Mat distCoeffs1,
+            Mat distCoeffs2,
+            Size imageSize,
+            Mat R,
+            Mat T,
+            Mat R1,
+            Mat R2,
+            Mat P1,
+            Mat P2,
+            Mat Q,
             StereoRectificationFlags flags,
             double alpha,
-            CvSize newImageSize,
-            out CvRect validPixelROI1)
+            Size newImageSize,
+            out Rect validPixelROI1)
         {
-            CvRect validPixROI2;
+            Rect validPixROI2;
             StereoRectify(
                 cameraMatrix1, cameraMatrix2, distCoeffs1, distCoeffs2,
                 imageSize, R, T, R1, R2, P1, P2, Q, flags, alpha,
@@ -1165,27 +1165,27 @@ namespace OpenCV.Net
         /// The optional output rectangle inside the rectified second camera image where all the pixels are valid.
         /// </param>
         public static void StereoRectify(
-            CvMat cameraMatrix1,
-            CvMat cameraMatrix2,
-            CvMat distCoeffs1,
-            CvMat distCoeffs2,
-            CvSize imageSize,
-            CvMat R,
-            CvMat T,
-            CvMat R1,
-            CvMat R2,
-            CvMat P1,
-            CvMat P2,
-            CvMat Q,
+            Mat cameraMatrix1,
+            Mat cameraMatrix2,
+            Mat distCoeffs1,
+            Mat distCoeffs2,
+            Size imageSize,
+            Mat R,
+            Mat T,
+            Mat R1,
+            Mat R2,
+            Mat P1,
+            Mat P2,
+            Mat Q,
             StereoRectificationFlags flags,
             double alpha,
-            CvSize newImageSize,
-            out CvRect validPixelROI1,
-            out CvRect validPixelROI2)
+            Size newImageSize,
+            out Rect validPixelROI1,
+            out Rect validPixelROI2)
         {
             NativeMethods.cvStereoRectify(
                 cameraMatrix1, cameraMatrix2, distCoeffs1, distCoeffs2,
-                imageSize, R, T, R1, R2, P1, P2, Q ?? CvMat.Null, flags, alpha,
+                imageSize, R, T, R1, R2, P1, P2, Q ?? Mat.Null, flags, alpha,
                 newImageSize, out validPixelROI1, out validPixelROI2);
         }
 
@@ -1214,12 +1214,12 @@ namespace OpenCV.Net
         /// </param>
         /// <returns>A value indicating whether the rectification transform was computed successfully.</returns>
         public static bool StereoRectifyUncalibrated(
-            CvMat points1,
-            CvMat points2,
-            CvMat F,
-            CvSize imageSize,
-            CvMat H1,
-            CvMat H2,
+            Mat points1,
+            Mat points2,
+            Mat F,
+            Size imageSize,
+            Mat H1,
+            Mat H2,
             double threshold = 5)
         {
             return NativeMethods.cvStereoRectifyUncalibrated(points1, points2, F, imageSize, H1, H2, threshold) > 0;
@@ -1238,17 +1238,17 @@ namespace OpenCV.Net
         /// </param>
         /// <param name="Q">
         /// The 4x4 perspective transformation matrix that can be obtained with
-        /// <see cref="StereoRectify(CvMat,CvMat,CvMat,CvMat,CvSize,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,CvMat,StereoRectificationFlags,double)"/>.
+        /// <see cref="StereoRectify(Mat,Mat,Mat,Mat,Size,Mat,Mat,Mat,Mat,Mat,Mat,Mat,StereoRectificationFlags,double)"/>.
         /// </param>
         /// <param name="handleMissingValues">
         /// If <b>true</b>, the pixels with the minimal disparity (which correspond to the
-        /// outliers; see <see cref="CvStereoBMState.FindStereoCorrespondence"/>) will be
+        /// outliers; see <see cref="StereoBM.FindStereoCorrespondence"/>) will be
         /// transformed to 3D points with some very large Z value (currently set to 10000).
         /// </param>
         public static void ReprojectImageTo3D(
-            CvArr disparityImage,
-            CvArr image3d,
-            CvMat Q,
+            Arr disparityImage,
+            Arr image3d,
+            Mat Q,
             bool handleMissingValues)
         {
             NativeMethods.cvReprojectImageTo3D(disparityImage, image3d, Q, handleMissingValues ? 1 : 0);

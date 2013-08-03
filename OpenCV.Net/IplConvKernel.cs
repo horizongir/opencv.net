@@ -70,13 +70,13 @@ namespace OpenCV.Net
         /// <summary>
         /// Gets the size of the convolution kernel.
         /// </summary>
-        public CvSize Size
+        public Size Size
         {
             get
             {
                 unsafe
                 {
-                    return new CvSize(((_IplConvKernel*)handle.ToPointer())->nCols,
+                    return new Size(((_IplConvKernel*)handle.ToPointer())->nCols,
                                       ((_IplConvKernel*)handle.ToPointer())->nRows);
                 }
             }
@@ -88,13 +88,13 @@ namespace OpenCV.Net
         /// on the anchor position. In other cases the anchor just regulates how much the result
         /// of the morphological operation is shifted.
         /// </summary>
-        public CvPoint Anchor
+        public Point Anchor
         {
             get
             {
                 unsafe
                 {
-                    return new CvPoint(((_IplConvKernel*)handle.ToPointer())->anchorX,
+                    return new Point(((_IplConvKernel*)handle.ToPointer())->anchorX,
                                        ((_IplConvKernel*)handle.ToPointer())->anchorY);
                 }
             }

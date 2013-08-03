@@ -13,27 +13,27 @@ namespace OpenCV.Net
     /// The exception that is thrown when OpenCV error status is set.
     /// </summary>
     [Serializable]
-    public class CvException : Exception
+    public class CVException : Exception
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CvException"/> class.
+        /// Initializes a new instance of the <see cref="CVException"/> class.
         /// </summary>
-        public CvException()
+        public CVException()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CvException"/> class with a
+        /// Initializes a new instance of the <see cref="CVException"/> class with a
         /// specified error message.
         /// </summary>
         /// <param name="message">The error message that explains the reason for the exception.</param>
-        public CvException(string message)
+        public CVException(string message)
             : base(message)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CvException"/> class with a
+        /// Initializes a new instance of the <see cref="CVException"/> class with a
         /// specified error message and a reference to the inner exception that is the
         /// cause of this exception.
         /// </summary>
@@ -43,13 +43,13 @@ namespace OpenCV.Net
         /// parameter is not <b>null</b>, the current exception is raised in a <b>catch</b> block
         /// that handles the inner exception.
         /// </param>
-        public CvException(string message, Exception inner)
+        public CVException(string message, Exception inner)
             : base(message, inner)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CvException"/> class from OpenCV
+        /// Initializes a new instance of the <see cref="CVException"/> class from OpenCV
         /// error information.
         /// </summary>
         /// <param name="status">The error code, usually a negative value.</param>
@@ -57,7 +57,7 @@ namespace OpenCV.Net
         /// <param name="errorMessage">The text of the error message.</param>
         /// <param name="fileName">The path to the file where the error status was set.</param>
         /// <param name="line">The line number inside <paramref name="fileName"/> where the error status was set.</param>
-        public CvException(int status, string functionName, string errorMessage, string fileName, int line)
+        public CVException(int status, string functionName, string errorMessage, string fileName, int line)
             : base(GetErrorMessage(status, functionName, errorMessage, fileName, line))
         {
             Status = status;
@@ -68,12 +68,12 @@ namespace OpenCV.Net
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CvException"/> class from
+        /// Initializes a new instance of the <see cref="CVException"/> class from
         /// serialization data.
         /// </summary>
         /// <param name="info">The object that holds the serialized object data.</param>
         /// <param name="context">The contextual information about the source or destination.</param>
-        protected CvException(SerializationInfo info, StreamingContext context)
+        protected CVException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {
         }
