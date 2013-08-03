@@ -55,10 +55,14 @@ namespace OpenCV.Net
         /// </returns>
         public CvSeq EndFindContours()
         {
-            var contours = NativeMethods.cvEndFindContours(ref handle);
-            contours.SetOwnerStorage(owner);
-            SetHandleAsInvalid();
-            return contours;
+            try
+            {
+                var contours = NativeMethods.cvEndFindContours(ref handle);
+                if (contours.IsInvalid) return null;
+                contours.SetOwnerStorage(owner);
+                return contours;
+            }
+            finally { SetHandleAsInvalid(); }
         }
 
         /// <summary>
