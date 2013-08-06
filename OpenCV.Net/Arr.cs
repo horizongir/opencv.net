@@ -109,18 +109,6 @@ namespace OpenCV.Net
         }
 
         /// <summary>
-        /// Returns the main diagonal of the current matrix.
-        /// </summary>
-        /// <returns>
-        /// A new <see cref="Mat"/> that corresponds to the main diagonal
-        /// of the current matrix.
-        /// </returns>
-        public Mat GetDiag()
-        {
-            return GetDiag(0);
-        }
-
-        /// <summary>
         /// Returns a specified diagonal of the current matrix.
         /// </summary>
         /// <param name="diag">
@@ -132,7 +120,7 @@ namespace OpenCV.Net
         /// A new <see cref="Mat"/> that corresponds to the specified diagonal
         /// of the current matrix.
         /// </returns>
-        public Mat GetDiag(int diag)
+        public Mat GetDiag(int diag = 0)
         {
             _CvMat subMat;
             NativeMethods.cvGetDiag(this, out subMat, diag);
@@ -177,8 +165,27 @@ namespace OpenCV.Net
         /// </remarks>
         public IntPtr Ptr(int index)
         {
-            int type;
-            return NativeMethods.cvPtr1D(this, index, out type);
+            int elementType;
+            return Ptr(index, out elementType);
+        }
+
+        /// <summary>
+        /// Returns a pointer to a specific array element.
+        /// </summary>
+        /// <param name="index">The zero-based element index.</param>
+        /// <param name="elementType">
+        /// When this method returns, contains the type of matrix elements. This parameter
+        /// is passed uninitialized.
+        /// </param>
+        /// <returns>The pointer to the array element specified by <paramref name="index"/>.</returns>
+        /// <remarks>
+        /// This method can be used for sequential access to 1D, 2D or nD dense arrays.
+        /// The method can be used for sparse arrays as well; if the requested node
+        /// does not exist, it is created and set to zero.
+        /// </remarks>
+        public IntPtr Ptr(int index, out int elementType)
+        {
+            return NativeMethods.cvPtr1D(this, index, out elementType);
         }
 
         /// <summary>
@@ -196,8 +203,30 @@ namespace OpenCV.Net
         /// </remarks>
         public IntPtr Ptr(int index0, int index1)
         {
-            int type;
-            return NativeMethods.cvPtr2D(this, index0, index1, out type);
+            int elementType;
+            return Ptr(index0, index1, out elementType);
+        }
+
+        /// <summary>
+        /// Returns a pointer to a specific array element.
+        /// </summary>
+        /// <param name="index0">The zero-based element index on the first array dimension.</param>
+        /// <param name="index1">The zero-based element index on the second array dimension.</param>
+        /// <param name="elementType">
+        /// When this method returns, contains the type of matrix elements. This parameter
+        /// is passed uninitialized.
+        /// </param>
+        /// <returns>
+        /// The pointer to the array element specified by <paramref name="index0"/> and
+        /// <paramref name="index1"/>.
+        /// </returns>
+        /// <remarks>
+        /// The array must have two dimensions. The method can be used for sparse arrays as
+        /// well; if the requested node does not exist, it is created and set to zero.
+        /// </remarks>
+        public IntPtr Ptr(int index0, int index1, out int elementType)
+        {
+            return NativeMethods.cvPtr2D(this, index0, index1, out elementType);
         }
 
         /// <summary>
@@ -216,8 +245,31 @@ namespace OpenCV.Net
         /// </remarks>
         public IntPtr Ptr(int index0, int index1, int index2)
         {
-            int type;
-            return NativeMethods.cvPtr3D(this, index0, index1, index2, out type);
+            int elementType;
+            return Ptr(index0, index1, index2, out elementType);
+        }
+
+        /// <summary>
+        /// Returns a pointer to a specific array element.
+        /// </summary>
+        /// <param name="index0">The zero-based element index on the first array dimension.</param>
+        /// <param name="index1">The zero-based element index on the second array dimension.</param>
+        /// <param name="index2">The zero-based element index on the third array dimension.</param>
+        /// <param name="elementType">
+        /// When this method returns, contains the type of matrix elements. This parameter
+        /// is passed uninitialized.
+        /// </param>
+        /// <returns>
+        /// The pointer to the array element specified by <paramref name="index0"/>,
+        /// <paramref name="index1"/> and <paramref name="index2"/>.
+        /// </returns>
+        /// <remarks>
+        /// The array must have three dimensions. The method can be used for sparse arrays as
+        /// well; if the requested node does not exist, it is created and set to zero.
+        /// </remarks>
+        public IntPtr Ptr(int index0, int index1, int index2, out int elementType)
+        {
+            return NativeMethods.cvPtr3D(this, index0, index1, index2, out elementType);
         }
 
         /// <summary>
@@ -236,10 +288,36 @@ namespace OpenCV.Net
         /// The method can be used for sparse arrays as
         /// well; if the requested node does not exist, it is created and set to zero.
         /// </remarks>
-        public IntPtr Ptr(params int[] index)
+        public IntPtr Ptr(int[] index)
         {
-            int type;
-            return NativeMethods.cvPtrND(this, index, out type, 1, IntPtr.Zero);
+            int elementType;
+            return Ptr(index, out elementType);
+        }
+
+        /// <summary>
+        /// Returns a pointer to a specific array element.
+        /// </summary>
+        /// <param name="index">
+        /// An array specifying the zero-based multi-dimensional element index.
+        /// The length of <paramref name="index"/> must be the same as the number
+        /// of dimensions of this instance.
+        /// </param>
+        /// <param name="elementType">
+        /// When this method returns, contains the type of matrix elements. This parameter
+        /// is passed uninitialized.
+        /// </param>
+        /// <param name="createNode">
+        /// Optional parameter for sparse arrays only. <b>true</b> means that the requested
+        /// element is created if it does not exist already; otherwise, the array will not
+        /// be changed.
+        /// </param>
+        /// <returns>
+        /// The pointer to the array element specified by the multi-dimensional
+        /// <paramref name="index"/>.
+        /// </returns>
+        public IntPtr Ptr(int[] index, out int elementType, bool createNode = true)
+        {
+            return NativeMethods.cvPtrND(this, index, out elementType, createNode ? 1 : 0, IntPtr.Zero);
         }
 
         /// <summary>
@@ -382,12 +460,75 @@ namespace OpenCV.Net
         /// The array element specified by the multi-dimensional <paramref name="index"/>.
         /// </returns>
         /// <remarks>
-        /// The method can be used for sparse arrays as
-        /// well; if the requested node does not exist, it is created and set to zero.
+        /// The method can be used for sparse arrays as well; if the requested node
+        /// does not exist, it is created and set to zero.
         /// </remarks>
         public double GetReal(params int[] index)
         {
             return NativeMethods.cvGetRealND(this, index);
+        }
+
+        /// <summary>
+        /// Sets a specific element of single-channel array.
+        /// </summary>
+        /// <param name="index">The zero-based element index.</param>
+        /// <param name="value">The assigned value.</param>
+        /// <remarks>
+        /// The method can be used for sparse arrays as well; if the node does not
+        /// exist, it is created and set to the specified <paramref name="value"/>.
+        /// </remarks>
+        public void SetReal(int index, double value)
+        {
+            NativeMethods.cvSetReal1D(this, index, value);
+        }
+
+        /// <summary>
+        /// Sets a specific element of single-channel array.
+        /// </summary>
+        /// <param name="index0">The zero-based element index on the first array dimension.</param>
+        /// <param name="index1">The zero-based element index on the second array dimension.</param>
+        /// <param name="value">The assigned value.</param>
+        /// <remarks>
+        /// The method can be used for sparse arrays as well; if the node does not
+        /// exist, it is created and set to the specified <paramref name="value"/>.
+        /// </remarks>
+        public void SetReal(int index0, int index1, double value)
+        {
+            NativeMethods.cvSetReal2D(this, index0, index1, value);
+        }
+
+        /// <summary>
+        /// Sets a specific element of single-channel array.
+        /// </summary>
+        /// <param name="index0">The zero-based element index on the first array dimension.</param>
+        /// <param name="index1">The zero-based element index on the second array dimension.</param>
+        /// <param name="index2">The zero-based element index on the third array dimension.</param>
+        /// <param name="value">The assigned value.</param>
+        /// <remarks>
+        /// The method can be used for sparse arrays as well; if the node does not
+        /// exist, it is created and set to the specified <paramref name="value"/>.
+        /// </remarks>
+        public void SetReal(int index0, int index1, int index2, double value)
+        {
+            NativeMethods.cvSetReal3D(this, index0, index1, index2, value);
+        }
+
+        /// <summary>
+        /// Sets a specific element of single-channel array.
+        /// </summary>
+        /// <param name="index">
+        /// An array specifying the zero-based multi-dimensional element index.
+        /// The length of <paramref name="index"/> must be the same as the number
+        /// of dimensions of this instance.
+        /// </param>
+        /// <param name="value">The assigned value.</param>
+        /// <remarks>
+        /// The method can be used for sparse arrays as well; if the node does not
+        /// exist, it is created and set to the specified <paramref name="value"/>.
+        /// </remarks>
+        public void SetReal(int[] index, double value)
+        {
+            NativeMethods.cvSetRealND(this, index, value);
         }
 
         /// <summary>

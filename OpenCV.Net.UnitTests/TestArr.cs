@@ -43,6 +43,67 @@ namespace OpenCV.Net.UnitTests
         }
 
         [TestMethod]
+        public void TestGetSubRect()
+        {
+            var rect = new Rect(0, 0, arr.Size.Width / 2, arr.Size.Height / 2);
+            using (var subRect = arr.GetSubRect(rect))
+            {
+                Assert.AreEqual(rect.Height, subRect.Rows);
+                Assert.AreEqual(rect.Width, subRect.Cols);
+            }
+        }
+
+        [TestMethod]
+        public void TestGetRow()
+        {
+            using (var row = arr.GetRow(0))
+            {
+                Assert.AreEqual(arr.Size.Width, row.Cols);
+                Assert.AreEqual(1, row.Rows);
+            }
+        }
+
+        [TestMethod]
+        public void TestGetRows()
+        {
+            using (var rows = arr.GetRows(0, arr.Size.Height, 2))
+            {
+                Assert.AreEqual(arr.Size.Height / 2, rows.Rows);
+                Assert.AreEqual(arr.Size.Width, rows.Cols);
+            }
+        }
+
+        [TestMethod]
+        public void TestGetCol()
+        {
+            using (var col = arr.GetCol(0))
+            {
+                Assert.AreEqual(1, col.Cols);
+                Assert.AreEqual(arr.Size.Height, col.Rows);
+            }
+        }
+
+        [TestMethod]
+        public void TestGetCols()
+        {
+            using (var cols = arr.GetCols(0, arr.Size.Width / 2))
+            {
+                Assert.AreEqual(arr.Size.Height, cols.Rows);
+                Assert.AreEqual(arr.Size.Width / 2, cols.Cols);
+            }
+        }
+
+        [TestMethod]
+        public void TestGetDiag()
+        {
+            using (var diag = arr.GetCol(0))
+            {
+                Assert.AreEqual(1, diag.Cols);
+                Assert.AreEqual(arr.Size.Height, diag.Rows);
+            }
+        }
+
+        [TestMethod]
         public void TestGetDims()
         {
             var dims = arr.GetDims();
@@ -205,6 +266,13 @@ namespace OpenCV.Net.UnitTests
             arr.Set(TestElement);
             var real = arr.GetReal(new[] { 0, 0 });
             Assert.AreEqual(TestElement.Val0, real);
+        }
+
+        [TestMethod]
+        public void TestCheckRange()
+        {
+            arr.Set(TestElement);
+            Assert.AreEqual(true, arr.CheckRange(CheckArrayFlags.CheckRange, TestElement.Val0, TestElement.Val0 + 1));
         }
 
         [TestMethod]
