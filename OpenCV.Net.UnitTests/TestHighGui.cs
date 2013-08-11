@@ -7,6 +7,20 @@ namespace OpenCV.Net.UnitTests
     public class TestHighGui
     {
         [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void TestLoadImageNullPath()
+        {
+            cv.LoadImage(null, LoadImageFlags.Unchanged);
+        }
+
+        [TestMethod]
+        public void TestLoadImageInvalidPath()
+        {
+            var image = cv.LoadImage(string.Empty, LoadImageFlags.Unchanged);
+            Assert.AreEqual(null, image);
+        }
+
+        [TestMethod]
         public void TestEncodeImage()
         {
             var image = new IplImage(new Size(320, 240), IplDepth.U8, 3);

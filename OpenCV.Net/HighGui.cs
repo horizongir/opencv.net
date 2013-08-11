@@ -52,7 +52,13 @@ namespace OpenCV.Net
         /// <returns>The newly loaded image.</returns>
         public static IplImage LoadImage(string fileName, LoadImageFlags colorType)
         {
-            return NativeMethods.cvLoadImage(fileName, colorType);
+            if (fileName == null)
+            {
+                throw new ArgumentNullException("fileName");
+            }
+
+            var image = NativeMethods.cvLoadImage(fileName, colorType);
+            return image.IsInvalid ? null : image;
         }
 
         /// <summary>

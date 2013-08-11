@@ -13,6 +13,11 @@ namespace OpenCV.Net
     {
         bool ownsData;
 
+        internal IplImage()
+            : base(true)
+        {
+        }
+
         internal IplImage(bool ownsHandle)
             : base(ownsHandle)
         {
