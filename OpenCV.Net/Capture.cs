@@ -73,7 +73,13 @@ namespace OpenCV.Net
         /// </returns>
         public static Capture CreateFileCapture(string fileName)
         {
-            return NativeMethods.cvCreateFileCapture(fileName);
+            if (fileName == null)
+            {
+                throw new ArgumentNullException("fileName");
+            }
+
+            var capture = NativeMethods.cvCreateFileCapture(fileName);
+            return capture.IsInvalid ? null : capture;
         }
 
         /// <summary>
