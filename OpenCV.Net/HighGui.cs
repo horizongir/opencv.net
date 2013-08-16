@@ -83,6 +83,11 @@ namespace OpenCV.Net
         /// </returns>
         public static bool SaveImage(string fileName, Arr image, params int[] parameters)
         {
+            if (fileName == null)
+            {
+                throw new ArgumentNullException("fileName");
+            }
+
             return NativeMethods.cvSaveImage(fileName, image, parameters) > 0;
         }
 

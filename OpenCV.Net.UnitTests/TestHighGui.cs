@@ -21,6 +21,22 @@ namespace OpenCV.Net.UnitTests
         }
 
         [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void TestSaveImageNullPath()
+        {
+            var image = new IplImage(new Size(10, 10), IplDepth.U8, 1);
+            cv.SaveImage(null, image);
+        }
+
+        [TestMethod]
+        public void TestSaveImageInvalidPath()
+        {
+            var image = new IplImage(new Size(10, 10), IplDepth.U8, 1);
+            var result = cv.SaveImage(":://.png", image);
+            Assert.AreEqual(false, result);
+        }
+
+        [TestMethod]
         public void TestEncodeImage()
         {
             var image = new IplImage(new Size(320, 240), IplDepth.U8, 3);
