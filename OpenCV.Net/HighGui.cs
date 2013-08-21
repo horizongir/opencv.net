@@ -19,6 +19,11 @@ namespace OpenCV.Net
         /// <param name="font">Font used to draw the text.</param>
         public static void AddText(Arr img, string text, Point location, Font font)
         {
+            if (text == null)
+            {
+                throw new ArgumentNullException("text");
+            }
+
             NativeMethods.cvAddText(img, text, location, font);
         }
 
