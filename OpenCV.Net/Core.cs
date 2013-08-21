@@ -1792,6 +1792,11 @@ namespace OpenCV.Net
             string comment = null,
             AttrList attributes = default(AttrList)) where TElement : CVHandle
         {
+            if (fileName == null)
+            {
+                throw new ArgumentNullException("fileName");
+            }
+
             NativeMethods.cvSave(fileName, element, name, comment, attributes);
         }
 
@@ -1810,6 +1815,11 @@ namespace OpenCV.Net
         /// <returns>The loaded object instance.</returns>
         public static TElement Load<TElement>(string fileName, MemStorage storage = null, string name = null) where TElement : CVHandle
         {
+            if (fileName == null)
+            {
+                throw new ArgumentNullException("fileName");
+            }
+
             string realName;
             return Load<TElement>(fileName, storage, name, out realName);
         }
