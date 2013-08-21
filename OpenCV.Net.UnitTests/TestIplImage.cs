@@ -43,7 +43,7 @@ namespace OpenCV.Net.UnitTests
         }
 
         [TestMethod]
-        public void TestImageHeader()
+        public void CreateIplImageHeader_ValidAccessToUnderlyingDataArray()
         {
             var data = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
             var dataHandle = GCHandle.Alloc(data, GCHandleType.Pinned);
@@ -55,7 +55,7 @@ namespace OpenCV.Net.UnitTests
         }
 
         [TestMethod]
-        public void TestClone()
+        public void Clone_ReturnsCopyOfIplImage()
         {
             using (var image = new IplImage(new Size(3, 3), IplDepth.F32, 1))
             {
@@ -71,7 +71,7 @@ namespace OpenCV.Net.UnitTests
         }
 
         [TestMethod]
-        public void TestImageCoi()
+        public void CopyImageWithChannelOfInterest_ResultMatContainsSelectedChannelValues()
         {
             using (var image = new IplImage(new Size(3, 3), IplDepth.F32, 3))
             {

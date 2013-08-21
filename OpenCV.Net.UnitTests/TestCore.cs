@@ -7,7 +7,7 @@ namespace OpenCV.Net.UnitTests
     public class TestCore
     {
         [TestMethod]
-        public void TestAllocFree()
+        public void AllocFree_NonZeroPointerIsSuccessfullyReleased()
         {
             var size = new UIntPtr(1024);
             var ptr = cv.Alloc(size);

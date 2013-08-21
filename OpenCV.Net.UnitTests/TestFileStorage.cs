@@ -7,7 +7,7 @@ namespace OpenCV.Net.UnitTests
     public class TestFileStorage
     {
         [TestMethod]
-        public void TestReadWrite()
+        public void ReadAfterWrite_SerializationAndDeserializationSuccessful()
         {
             using (var storage = new MemStorage())
             using (var fileStorage = new FileStorage("storage.txt", storage, StorageFlags.Write))

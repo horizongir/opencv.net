@@ -14,7 +14,7 @@ namespace OpenCV.Net.UnitTests
         }
 
         [TestMethod]
-        public void TestSparseMatIterator()
+        public void SparseMatIterator_CorrectlyEnumeratesSparseElementNodes()
         {
             using (var mat = new SparseMat(new[] { 3, 3 }, Depth.F32, 2))
             {

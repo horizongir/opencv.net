@@ -30,20 +30,20 @@ namespace OpenCV.Net.UnitTests
         }
 
         [TestMethod]
-        public void TestGetElementType()
+        public void GetElementType_ReturnsArrElementCode()
         {
             Assert.AreEqual(5, arr.ElementType);
         }
 
         [TestMethod]
-        public void TestGetSize()
+        public void GetSize_ReturnsArrWidthAndHeight()
         {
             Assert.AreEqual(Dim0, arr.Size.Height);
             Assert.AreEqual(Dim1, arr.Size.Width);
         }
 
         [TestMethod]
-        public void TestGetSubRect()
+        public void GetSubRect_ReturnsMatWithSubRectDimensions()
         {
             var rect = new Rect(0, 0, arr.Size.Width / 2, arr.Size.Height / 2);
             using (var subRect = arr.GetSubRect(rect))
@@ -54,7 +54,7 @@ namespace OpenCV.Net.UnitTests
         }
 
         [TestMethod]
-        public void TestGetRow()
+        public void GetRow_ReturnsMatVectorWithArrWidthLength()
         {
             using (var row = arr.GetRow(0))
             {
@@ -64,7 +64,7 @@ namespace OpenCV.Net.UnitTests
         }
 
         [TestMethod]
-        public void TestGetRows()
+        public void GetRows_ReturnsMatWithHeightEqualToSelectedRowCount()
         {
             using (var rows = arr.GetRows(0, arr.Size.Height, 2))
             {
@@ -74,7 +74,7 @@ namespace OpenCV.Net.UnitTests
         }
 
         [TestMethod]
-        public void TestGetCol()
+        public void GetCol_ReturnsMatVectorWithArrHeightLength()
         {
             using (var col = arr.GetCol(0))
             {
@@ -84,7 +84,7 @@ namespace OpenCV.Net.UnitTests
         }
 
         [TestMethod]
-        public void TestGetCols()
+        public void GetCols_ReturnsMatWithWidthEqualToSelectedRowCount()
         {
             using (var cols = arr.GetCols(0, arr.Size.Width / 2))
             {
@@ -94,7 +94,7 @@ namespace OpenCV.Net.UnitTests
         }
 
         [TestMethod]
-        public void TestGetDiag()
+        public void GetDiag_ReturnsMatWithArrHeight()
         {
             using (var diag = arr.GetCol(0))
             {
@@ -104,7 +104,7 @@ namespace OpenCV.Net.UnitTests
         }
 
         [TestMethod]
-        public void TestGetDims()
+        public void GetDims_ReturnsCorrectNumberAndSizeOfArrDimensions()
         {
             var dims = arr.GetDims();
             Assert.AreEqual(2, dims);
@@ -116,7 +116,7 @@ namespace OpenCV.Net.UnitTests
         }
 
         [TestMethod]
-        public void TestGetDimSize()
+        public void GetDimSize_ReturnsCorrectArrDimensionSizes()
         {
             var dim0 = arr.GetDimSize(0);
             var dim1 = arr.GetDimSize(1);
@@ -125,14 +125,14 @@ namespace OpenCV.Net.UnitTests
         }
 
         [TestMethod]
-        public void TestPtr1D()
+        public void Ptr1D_ReturnsNonZeroPointer()
         {
             var ptr = arr.Ptr(0);
             Assert.AreNotEqual(IntPtr.Zero, ptr);
         }
 
         [TestMethod]
-        public void TestPtr2D()
+        public void Ptr2D_ReturnsNonZeroPointer()
         {
             var ptr = arr.Ptr(0, 0);
             Assert.AreNotEqual(IntPtr.Zero, ptr);
@@ -140,21 +140,21 @@ namespace OpenCV.Net.UnitTests
 
         [TestMethod]
         [ExpectedException(typeof(CVException))]
-        public void TestPtr3D()
+        public void Ptr3D_ReturnsNonZeroPointer()
         {
             var ptr = arr.Ptr(0, 0, 0);
             Assert.AreNotEqual(IntPtr.Zero, ptr);
         }
 
         [TestMethod]
-        public void TestPtrND()
+        public void PtrND_ReturnsNonZeroPointer()
         {
             var ptr = arr.Ptr(new[] { 0, 0 });
             Assert.AreNotEqual(IntPtr.Zero, ptr);
         }
 
         [TestMethod]
-        public void TestGet1D()
+        public void Get1D_ReturnsCorrectElementValue()
         {
             arr[0] = TestElement;
             var scalar = arr[0];
@@ -162,7 +162,7 @@ namespace OpenCV.Net.UnitTests
         }
 
         [TestMethod]
-        public void TestGet2D()
+        public void Get2D_ReturnsCorrectElementValue()
         {
             arr[1, 1] = TestElement;
             var scalar = arr[1, 1];
@@ -171,7 +171,7 @@ namespace OpenCV.Net.UnitTests
 
         [TestMethod]
         [ExpectedException(typeof(CVException))]
-        public void TestGet3D()
+        public void Get3D_ReturnsCorrectElementValue()
         {
             arr[2, 2, 2] = TestElement;
             var scalar = arr[2, 2, 2];
@@ -179,7 +179,7 @@ namespace OpenCV.Net.UnitTests
         }
 
         [TestMethod]
-        public void TestGetND()
+        public void GetND_ReturnsCorrectElementValue()
         {
             arr[new[] { 3, 3 }] = TestElement;
             var scalar = arr[new[] { 3, 3 }];
@@ -187,7 +187,7 @@ namespace OpenCV.Net.UnitTests
         }
 
         [TestMethod]
-        public void TestGetReal1D()
+        public void GetReal1D_ReturnsCorrectElementValue()
         {
             arr.SetZero();
             var real = arr.GetReal(0);
@@ -195,7 +195,7 @@ namespace OpenCV.Net.UnitTests
         }
 
         [TestMethod]
-        public void TestGetReal2D()
+        public void GetReal2D_ReturnsCorrectElementValue()
         {
             arr.SetZero();
             var real = arr.GetReal(0, 0);
@@ -204,7 +204,7 @@ namespace OpenCV.Net.UnitTests
 
         [TestMethod]
         [ExpectedException(typeof(CVException))]
-        public void TestGetReal3D()
+        public void GetReal3D_ReturnsCorrectElementValue()
         {
             arr.SetZero();
             var real = arr.GetReal(0, 0, 0);
@@ -212,7 +212,7 @@ namespace OpenCV.Net.UnitTests
         }
 
         [TestMethod]
-        public void TestGetRealND()
+        public void GetRealND_ReturnsCorrectElementValue()
         {
             arr.SetZero();
             var real = arr.GetReal(new[] { 0, 0 });
@@ -220,7 +220,7 @@ namespace OpenCV.Net.UnitTests
         }
 
         [TestMethod]
-        public void TestClearND()
+        public void ClearND_ReturnsCorrectElementValue()
         {
             arr[0] = TestElement;
             arr.ClearND(new[] { 0, 0 });
@@ -229,28 +229,28 @@ namespace OpenCV.Net.UnitTests
         }
 
         [TestMethod]
-        public void TestGetMat()
+        public void GetMat_ReturnsMatWrapperTo2DDenseArr()
         {
             var mat = arr.GetMat(true);
             Assert.AreEqual(Dim0, mat.Rows);
         }
 
         [TestMethod]
-        public void TestGetImage()
+        public void GetImage_ReturnsIplImageWrapperTo2DDenseArr()
         {
             var image = arr.GetImage();
             Assert.AreEqual(Dim0, image.Height);
         }
 
         [TestMethod]
-        public void TestReshape()
+        public void Reshape_ReturnsReshapedMatFor2DDenseArr()
         {
             var mat = arr.Reshape(2);
             Assert.AreEqual(Dim1 / 2, mat.Cols);
         }
 
         [TestMethod]
-        public void TestGetRawData()
+        public void GetRawData_ReturnsNonZeroPointer()
         {
             IntPtr data;
             int step;
@@ -261,7 +261,7 @@ namespace OpenCV.Net.UnitTests
         }
 
         [TestMethod]
-        public void TestSet()
+        public void Set_ArrElementsHaveTargetValue()
         {
             arr.Set(TestElement);
             var real = arr.GetReal(new[] { 0, 0 });
@@ -269,14 +269,14 @@ namespace OpenCV.Net.UnitTests
         }
 
         [TestMethod]
-        public void TestCheckRange()
+        public void CheckRange_ValidRangeElements_ReturnsTrue()
         {
             arr.Set(TestElement);
             Assert.AreEqual(true, arr.CheckRange(CheckArrayFlags.CheckRange, TestElement.Val0, TestElement.Val0 + 1));
         }
 
         [TestMethod]
-        public void TestRepeat()
+        public void Repeat_DestinationArrIsTiledWithSourceArr()
         {
             arr.SetZero();
             arr[0, 0] = Scalar.All(1);
@@ -290,7 +290,7 @@ namespace OpenCV.Net.UnitTests
         }
 
         [TestMethod]
-        public void TestCopy()
+        public void Copy_DestinationArrElementsEqualSourceArrElements()
         {
             const int Number = 5;
             using (var arr2 = CreateArr())
@@ -304,7 +304,7 @@ namespace OpenCV.Net.UnitTests
         }
 
         [TestMethod]
-        public void TestSplit()
+        public void Split_DestinationArrPlaneHasCorrectChannelValues()
         {
             arr.SetZero();
             using (var arr2 = CreateArr(3))
@@ -316,7 +316,7 @@ namespace OpenCV.Net.UnitTests
         }
 
         [TestMethod]
-        public void TestMerge()
+        public void Merge_DestinationArrHasCorrectChannelValues()
         {
             arr[0, 0] = Scalar.Real(2);
             using (var arr2 = CreateArr(3))
@@ -327,7 +327,7 @@ namespace OpenCV.Net.UnitTests
         }
 
         [TestMethod]
-        public void TestMixChannels()
+        public void MixChannels_TargetArrHasRemappedChannelValues()
         {
             arr.SetZero();
             using (var arrRgba = CreateArr(4))
@@ -351,7 +351,7 @@ namespace OpenCV.Net.UnitTests
         }
 
         [TestMethod]
-        public void TestConvertScale()
+        public void ConvertScale_DestinationArrHasCorrectlyScaledElements()
         {
             arr.Set(Scalar.All(1));
             using (var arr2 = CreateArr(1))
@@ -362,7 +362,7 @@ namespace OpenCV.Net.UnitTests
         }
 
         [TestMethod]
-        public void TestConvertScaleAbs()
+        public void ConvertScaleAbs_DestinationArrHasCorrectlyScaledElements()
         {
             arr.Set(Scalar.All(1));
             using (var arr2 = CreateArr(1, Depth.U8))
@@ -373,7 +373,7 @@ namespace OpenCV.Net.UnitTests
         }
 
         [TestMethod]
-        public void TestSampleLine()
+        public void SampleLine_ReturnsBufferWithLineElementCountLength()
         {
             var buf = cv.SampleLine<float>(arr, new Point(0, 0), new Point(Dim1 + 100, 1));
             Assert.AreEqual(Dim1, buf.Length);
