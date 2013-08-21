@@ -14,31 +14,31 @@ namespace OpenCV.Net.UnitTests
         }
 
         [TestMethod]
-        public void TestMatRows()
+        public void MatRows_ReturnsCorrectNumberOfRows()
         {
             Assert.AreEqual(mat.Rows, Dim0);
         }
 
         [TestMethod]
-        public void TestMatCols()
+        public void MatCols_ReturnsCorrectNumberOfColumns()
         {
             Assert.AreEqual(mat.Cols, Dim1);
         }
 
         [TestMethod]
-        public void TestMatDepth()
+        public void MatDepth_ReturnsCorrectElementDepth()
         {
             Assert.AreEqual(mat.Depth, TestDepth);
         }
 
         [TestMethod]
-        public void TestMatChannels()
+        public void MatChannels_ReturnsCorrectNumberOfChannels()
         {
             Assert.AreEqual(mat.Channels, 1);
         }
 
         [TestMethod]
-        public void TestMatStep()
+        public void MatStep_ReturnsCorrectRowStepInBytes()
         {
             Assert.AreEqual(mat.Step, mat.Cols * mat.ElementSize * mat.Channels);
         }

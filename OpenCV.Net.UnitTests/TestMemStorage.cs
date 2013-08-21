@@ -7,7 +7,7 @@ namespace OpenCV.Net.UnitTests
     public class TestMemStorage
     {
         [TestMethod]
-        public void TestAllocString()
+        public void AllocString_ReturnsNonZeroPointer()
         {
             using (var storage = new MemStorage())
             {

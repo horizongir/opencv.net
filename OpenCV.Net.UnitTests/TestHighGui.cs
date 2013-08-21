@@ -8,13 +8,13 @@ namespace OpenCV.Net.UnitTests
     {
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void TestLoadImageNullPath()
+        public void LoadImage_NullPath_ThrowsArgumentNullException()
         {
             cv.LoadImage(null, LoadImageFlags.Unchanged);
         }
 
         [TestMethod]
-        public void TestLoadImageInvalidPath()
+        public void LoadImage_InvalidPath_ReturnsNull()
         {
             var image = cv.LoadImage(string.Empty, LoadImageFlags.Unchanged);
             Assert.AreEqual(null, image);
@@ -22,14 +22,22 @@ namespace OpenCV.Net.UnitTests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void TestSaveImageNullPath()
+        public void SaveImage_NullPath_ThrowsArgumentNullException()
         {
             var image = new IplImage(new Size(10, 10), IplDepth.U8, 1);
             cv.SaveImage(null, image);
         }
 
         [TestMethod]
-        public void TestSaveImageInvalidPath()
+        [ExpectedException(typeof(CVException))]
+        public void SaveImage_InvalidPathWithInvalidExtension_ThrowsCVException()
+        {
+            var image = new IplImage(new Size(10, 10), IplDepth.U8, 1);
+            cv.SaveImage(":://42.sd", image);
+        }
+
+        [TestMethod]
+        public void SaveImage_InvalidPathWithValidExtension_ReturnsFalse()
         {
             var image = new IplImage(new Size(10, 10), IplDepth.U8, 1);
             var result = cv.SaveImage(":://.png", image);
@@ -37,7 +45,15 @@ namespace OpenCV.Net.UnitTests
         }
 
         [TestMethod]
-        public void TestEncodeImage()
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void EncodeImage_NullPath_ThrowsArgumentNullException()
+        {
+            var image = new IplImage(new Size(10, 10), IplDepth.U8, 1);
+            cv.EncodeImage(null, image);
+        }
+
+        [TestMethod]
+        public void EncodeImage_ReturnsSingleChannelMat()
         {
             var image = new IplImage(new Size(320, 240), IplDepth.U8, 3);
             image.SetZero();

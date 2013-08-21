@@ -9,7 +9,7 @@ namespace OpenCV.Net.UnitTests
     public class TestSeq
     {
         [TestMethod]
-        public void TestCreateSeq()
+        public void CreateSeq_ReturnsValidSeqInstance()
         {
             using (var storage = new MemStorage())
             {
@@ -21,7 +21,7 @@ namespace OpenCV.Net.UnitTests
         }
 
         [TestMethod]
-        public void TestSort()
+        public void PushSortPartitionSearch_Success()
         {
             using (var storage = new MemStorage())
             using (var seq = new Seq(Depth.S32, 1, storage))
