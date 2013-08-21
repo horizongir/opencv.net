@@ -124,6 +124,11 @@ namespace OpenCV.Net
         /// </returns>
         public static Mat EncodeImage(string ext, Arr image, params int[] parameters)
         {
+            if (ext == null)
+            {
+                throw new ArgumentNullException("ext");
+            }
+
             return NativeMethods.cvEncodeImage(ext, image, parameters);
         }
 
