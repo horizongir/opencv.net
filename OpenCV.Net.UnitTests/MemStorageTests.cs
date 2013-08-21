@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace OpenCV.Net.UnitTests
 {
     [TestClass]
-    public class TestMemStorage
+    public class MemStorageTests
     {
         [TestMethod]
         public void AllocString_ReturnsNonZeroPointer()

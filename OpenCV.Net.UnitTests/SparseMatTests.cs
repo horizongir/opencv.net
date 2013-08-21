@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace OpenCV.Net.UnitTests
 {
     [TestClass]
-    public class TestSparseMat : TestArr
+    public class SparseMatTests : ArrTests
     {
         SparseMat mat;
 

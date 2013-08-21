@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace OpenCV.Net.UnitTests
 {
     [TestClass]
-    public class TestFileStorage
+    public class FileStorageTests
     {
         [TestMethod]
         public void ReadAfterWrite_SerializationAndDeserializationSuccessful()

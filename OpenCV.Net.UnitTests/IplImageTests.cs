@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 namespace OpenCV.Net.UnitTests
 {
     [TestClass]
-    public class TestIplImage : TestArr
+    public class IplImageTests : ArrTests
     {
         IplImage image;
 

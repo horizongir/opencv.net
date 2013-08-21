@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace OpenCV.Net.UnitTests
 {
     [TestClass]
-    public class TestCapture
+    public class CaptureTests
     {
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]

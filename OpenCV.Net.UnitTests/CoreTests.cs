@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace OpenCV.Net.UnitTests
 {
     [TestClass]
-    public class TestCore
+    public class CoreTests
     {
         [TestMethod]
         public void AllocFree_NonZeroPointerIsSuccessfullyReleased()

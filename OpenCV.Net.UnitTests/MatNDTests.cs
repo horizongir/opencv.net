@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace OpenCV.Net.UnitTests
 {
     [TestClass]
-    public class TestMatND : TestArr
+    public class MatNDTests : ArrTests
     {
         MatND mat;
 

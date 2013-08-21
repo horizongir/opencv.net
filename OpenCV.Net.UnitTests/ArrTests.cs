@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace OpenCV.Net.UnitTests
 {
     [TestClass]
-    public abstract class TestArr
+    public abstract class ArrTests
     {
         protected const int Dim0 = 240;
         protected const int Dim1 = 320;
