@@ -6,7 +6,7 @@ using OpenCV.Net.Native;
 namespace OpenCV.Net.UnitTests
 {
     [TestClass]
-    public class TestSeq
+    public class SeqTests
     {
         [TestMethod]
         public void CreateSeq_ReturnsValidSeqInstance()

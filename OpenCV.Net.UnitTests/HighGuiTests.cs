@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace OpenCV.Net.UnitTests
 {
     [TestClass]
-    public class TestHighGui
+    public class HighGuiTests
     {
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
