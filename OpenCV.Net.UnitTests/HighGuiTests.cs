@@ -7,6 +7,13 @@ namespace OpenCV.Net.UnitTests
     public class HighGuiTests
     {
         [TestMethod]
+        public void AddText_NullText_ThrowsArgumentNullException()
+        {
+            var image = new IplImage(new Size(10, 10), IplDepth.U8, 1);
+            cv.AddText(image, null, Point.Zero, new Font(1));
+        }
+
+        [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void LoadImage_NullPath_ThrowsArgumentNullException()
         {
@@ -18,6 +25,20 @@ namespace OpenCV.Net.UnitTests
         {
             var image = cv.LoadImage(string.Empty, LoadImageFlags.Unchanged);
             Assert.AreEqual(null, image);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void LoadImageM_NullPath_ThrowsArgumentNullException()
+        {
+            cv.LoadImageM(null, LoadImageFlags.Unchanged);
+        }
+
+        [TestMethod]
+        public void LoadImageM_InvalidPath_ReturnsNull()
+        {
+            var mat = cv.LoadImageM(string.Empty, LoadImageFlags.Unchanged);
+            Assert.AreEqual(null, mat);
         }
 
         [TestMethod]

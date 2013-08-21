@@ -69,7 +69,13 @@ namespace OpenCV.Net
         /// <returns>The newly loaded image.</returns>
         public static Mat LoadImageM(string fileName, LoadImageFlags colorType)
         {
-            return NativeMethods.cvLoadImageM(fileName, colorType);
+            if (fileName == null)
+            {
+                throw new ArgumentNullException("fileName");
+            }
+
+            var mat = NativeMethods.cvLoadImageM(fileName, colorType);
+            return mat.IsInvalid ? null : mat;
         }
 
         /// <summary>
