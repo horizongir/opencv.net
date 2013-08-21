@@ -1631,6 +1631,11 @@ namespace OpenCV.Net
         /// <param name="color">The color of the text.</param>
         public static void PutText(Arr img, string text, Point origin, Font font, Scalar color)
         {
+            if (text == null)
+            {
+                throw new ArgumentNullException("text");
+            }
+
             NativeMethods.cvPutText(img, text, origin, font, color);
         }
 
@@ -1648,6 +1653,11 @@ namespace OpenCV.Net
         /// </param>
         public static void GetTextSize(string text, Font font, out Size textSize, out int baseline)
         {
+            if (text == null)
+            {
+                throw new ArgumentNullException("text");
+            }
+
             NativeMethods.cvGetTextSize(text, font, out textSize, out baseline);
         }
 

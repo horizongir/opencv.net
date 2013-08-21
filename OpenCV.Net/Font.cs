@@ -79,6 +79,11 @@ namespace OpenCV.Net
         public Font(string nameFont, int pointSize, Scalar color, FontWeight weight = FontWeight.Normal, FontStyle style = FontStyle.Normal, int spacing = 0)
             : base(true)
         {
+            if (nameFont == null)
+            {
+                throw new ArgumentNullException("nameFont");
+            }
+
             var font = NativeMethods.cvFontQt(nameFont, pointSize, color, weight, style, spacing);
             var pFont = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(_CvFont)));
             Marshal.StructureToPtr(font, pFont, false);
