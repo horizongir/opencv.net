@@ -6,8 +6,8 @@ using System.Text;
 namespace OpenCV.Net
 {
     /// <summary>
-    /// Specifies available operation flags for <see cref="cv.CalcOpticalFlowPyrLK"/> and
-    /// <see cref="cv.CalcAffineFlowPyrLK"/>.
+    /// Specifies available operation flags for <see cref="CV.CalcOpticalFlowPyrLK"/> and
+    /// <see cref="CV.CalcAffineFlowPyrLK"/>.
     /// </summary>
     [Flags]
     public enum LKFlowFlags : int
@@ -39,7 +39,7 @@ namespace OpenCV.Net
     }
 
     /// <summary>
-    /// Specifies available operation flags for <see cref="cv.CalcOpticalFlowFarneback"/>.
+    /// Specifies available operation flags for <see cref="CV.CalcOpticalFlowFarneback"/>.
     /// </summary>
     [Flags]
     public enum FarnebackFlowFlags : int

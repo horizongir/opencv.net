@@ -38,7 +38,7 @@ namespace OpenCV.Net.UnitTests
 
                 node = fileStorage.GetRootFileNode();
                 var mat = fileStorage.Read<Mat>(node, "testmat");
-                Console.WriteLine(cv.Sum(mat).Val0);
+                Console.WriteLine(CV.Sum(mat).Val0);
 
                 var elems = new int[5];
                 node = fileStorage.GetFileNode(node, "testseq");

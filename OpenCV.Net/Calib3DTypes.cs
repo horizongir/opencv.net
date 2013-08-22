@@ -70,7 +70,7 @@ namespace OpenCV.Net
         AdaptiveThreshold = 1,
 
         /// <summary>
-        /// Specifies the image gamma should be normalized with <see cref="cv.EqualizeHist"/> before
+        /// Specifies the image gamma should be normalized with <see cref="CV.EqualizeHist"/> before
         /// applying fixed or adaptive thresholding.
         /// </summary>
         NormalizeImage = 2,
