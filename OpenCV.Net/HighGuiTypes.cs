@@ -362,7 +362,7 @@ namespace OpenCV.Net
     }
 
     /// <summary>
-    /// Specifies operation flags for <see cref="cv.ConvertImage"/>.
+    /// Specifies operation flags for <see cref="CV.ConvertImage"/>.
     /// </summary>
     [Flags]
     public enum ConvertImageFlags : int

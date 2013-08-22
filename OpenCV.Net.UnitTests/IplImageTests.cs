@@ -80,7 +80,7 @@ namespace OpenCV.Net.UnitTests
                 using (var mask = new IplImage(image.Size, image.Depth, 1))
                 {
                     image.ChannelOfInterest = 2;
-                    cv.Copy(image, mask);
+                    CV.Copy(image, mask);
                     image.ChannelOfInterest = 0;
                     Assert.AreEqual(image[1, 1].Val1, mask[1, 1].Val0);
                 }

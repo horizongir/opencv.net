@@ -282,7 +282,7 @@ namespace OpenCV.Net.UnitTests
             arr[0, 0] = Scalar.All(1);
             using (var arr2 = CreateArr(1, TestDepth, Dim0 * 2, Dim1 * 2))
             {
-                cv.Repeat(arr, arr2);
+                CV.Repeat(arr, arr2);
                 Assert.AreEqual(1, arr2[0, 0].Val0);
                 Assert.AreEqual(0, arr2[1, 0].Val0);
                 Assert.AreEqual(1, arr2[Dim0, 0].Val0);
@@ -298,7 +298,7 @@ namespace OpenCV.Net.UnitTests
                 arr2.SetZero();
                 Assert.AreNotEqual(Number, arr2[Number, Number].Val0);
                 arr[Number, Number] = Scalar.Real(Number);
-                cv.Copy(arr, arr2);
+                CV.Copy(arr, arr2);
                 Assert.AreEqual(Number, arr2[Number, Number].Val0);
             }
         }
@@ -310,7 +310,7 @@ namespace OpenCV.Net.UnitTests
             using (var arr2 = CreateArr(3))
             {
                 arr2[0, 0] = new Scalar(1, 2, 3, 4);
-                cv.Split(arr2, null, arr, null, null);
+                CV.Split(arr2, null, arr, null, null);
                 Assert.AreEqual(2, arr[0, 0].Val0);
             }
         }
@@ -321,7 +321,7 @@ namespace OpenCV.Net.UnitTests
             arr[0, 0] = Scalar.Real(2);
             using (var arr2 = CreateArr(3))
             {
-                cv.Merge(null, arr, null, null, arr2);
+                CV.Merge(null, arr, null, null, arr2);
                 Assert.AreEqual(2, arr2[0, 0].Val1);
             }
         }
@@ -345,7 +345,7 @@ namespace OpenCV.Net.UnitTests
                     3, 3
                 };
 
-                cv.MixChannels(src, dst, fromTo);
+                CV.MixChannels(src, dst, fromTo);
                 Assert.AreEqual(4, arr[0,0].Val0);
             }
         }
@@ -356,7 +356,7 @@ namespace OpenCV.Net.UnitTests
             arr.Set(Scalar.All(1));
             using (var arr2 = CreateArr(1))
             {
-                cv.ConvertScale(arr, arr2, 5, 1);
+                CV.ConvertScale(arr, arr2, 5, 1);
                 Assert.AreEqual(6, arr2[0, 0].Val0);
             }
         }
@@ -367,7 +367,7 @@ namespace OpenCV.Net.UnitTests
             arr.Set(Scalar.All(1));
             using (var arr2 = CreateArr(1, Depth.U8))
             {
-                cv.ConvertScaleAbs(arr, arr2, 5, 1);
+                CV.ConvertScaleAbs(arr, arr2, 5, 1);
                 Assert.AreEqual(6, arr2[0, 0].Val0);
             }
         }
@@ -375,7 +375,7 @@ namespace OpenCV.Net.UnitTests
         [TestMethod]
         public void SampleLine_ReturnsBufferWithLineElementCountLength()
         {
-            var buf = cv.SampleLine<float>(arr, new Point(0, 0), new Point(Dim1 + 100, 1));
+            var buf = CV.SampleLine<float>(arr, new Point(0, 0), new Point(Dim1 + 100, 1));
             Assert.AreEqual(Dim1, buf.Length);
         }
     }

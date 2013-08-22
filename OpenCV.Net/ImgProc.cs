@@ -7,7 +7,7 @@ using System.Text;
 
 namespace OpenCV.Net
 {
-    public static partial class cv
+    public static partial class CV
     {
         #region Background statistics accumulation
 

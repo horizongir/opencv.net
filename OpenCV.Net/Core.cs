@@ -10,7 +10,7 @@ namespace OpenCV.Net
     /// <summary>
     /// This class provides wrapper methods for the OpenCV C interface native functions.
     /// </summary>
-    public static partial class cv
+    public static partial class CV
     {
         #region Array allocation, deallocation, initialization and access to elements
 

@@ -19,7 +19,7 @@ namespace OpenCV.Net
 
         /// <summary>
         /// Loads a boosted Haar classifier cascade from a file. This method ensures that all dependencies are loaded
-        /// and is a temporary workaround to ensure <see cref="cv.Load(string,MemStorage,string)"/> does not throw
+        /// and is a temporary workaround to ensure <see cref="CV.Load(string,MemStorage,string)"/> does not throw
         /// an error.
         /// </summary>
         /// <param name="fileName">The path to the trained classifier cascade.</param>
@@ -28,7 +28,7 @@ namespace OpenCV.Net
         {
             IntPtr ptr = IntPtr.Zero;
             NativeMethods.cvReleaseHaarClassifierCascade(ref ptr);
-            return cv.Load<HaarClassifierCascade>(fileName);
+            return CV.Load<HaarClassifierCascade>(fileName);
         }
 
         /// <summary>

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace OpenCV.Net
 {
-    public static partial class cv
+    public static partial class CV
     {
         /// <summary>
         /// Restores the selected region in an image using the region neighborhood.

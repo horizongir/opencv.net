@@ -10,20 +10,20 @@ namespace OpenCV.Net.UnitTests
         public void AddText_NullText_ThrowsArgumentNullException()
         {
             var image = new IplImage(new Size(10, 10), IplDepth.U8, 1);
-            cv.AddText(image, null, Point.Zero, new Font(1));
+            CV.AddText(image, null, Point.Zero, new Font(1));
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void LoadImage_NullPath_ThrowsArgumentNullException()
         {
-            cv.LoadImage(null, LoadImageFlags.Unchanged);
+            CV.LoadImage(null, LoadImageFlags.Unchanged);
         }
 
         [TestMethod]
         public void LoadImage_InvalidPath_ReturnsNull()
         {
-            var image = cv.LoadImage(string.Empty, LoadImageFlags.Unchanged);
+            var image = CV.LoadImage(string.Empty, LoadImageFlags.Unchanged);
             Assert.AreEqual(null, image);
         }
 
@@ -31,13 +31,13 @@ namespace OpenCV.Net.UnitTests
         [ExpectedException(typeof(ArgumentNullException))]
         public void LoadImageM_NullPath_ThrowsArgumentNullException()
         {
-            cv.LoadImageM(null, LoadImageFlags.Unchanged);
+            CV.LoadImageM(null, LoadImageFlags.Unchanged);
         }
 
         [TestMethod]
         public void LoadImageM_InvalidPath_ReturnsNull()
         {
-            var mat = cv.LoadImageM(string.Empty, LoadImageFlags.Unchanged);
+            var mat = CV.LoadImageM(string.Empty, LoadImageFlags.Unchanged);
             Assert.AreEqual(null, mat);
         }
 
@@ -46,7 +46,7 @@ namespace OpenCV.Net.UnitTests
         public void SaveImage_NullPath_ThrowsArgumentNullException()
         {
             var image = new IplImage(new Size(10, 10), IplDepth.U8, 1);
-            cv.SaveImage(null, image);
+            CV.SaveImage(null, image);
         }
 
         [TestMethod]
@@ -54,14 +54,14 @@ namespace OpenCV.Net.UnitTests
         public void SaveImage_InvalidPathWithInvalidExtension_ThrowsCVException()
         {
             var image = new IplImage(new Size(10, 10), IplDepth.U8, 1);
-            cv.SaveImage(":://42.sd", image);
+            CV.SaveImage(":://42.sd", image);
         }
 
         [TestMethod]
         public void SaveImage_InvalidPathWithValidExtension_ReturnsFalse()
         {
             var image = new IplImage(new Size(10, 10), IplDepth.U8, 1);
-            var result = cv.SaveImage(":://.png", image);
+            var result = CV.SaveImage(":://.png", image);
             Assert.AreEqual(false, result);
         }
 
@@ -70,7 +70,7 @@ namespace OpenCV.Net.UnitTests
         public void EncodeImage_NullPath_ThrowsArgumentNullException()
         {
             var image = new IplImage(new Size(10, 10), IplDepth.U8, 1);
-            cv.EncodeImage(null, image);
+            CV.EncodeImage(null, image);
         }
 
         [TestMethod]
@@ -78,8 +78,8 @@ namespace OpenCV.Net.UnitTests
         {
             var image = new IplImage(new Size(320, 240), IplDepth.U8, 3);
             image.SetZero();
-            cv.Circle(image, new Point(100, 100), 50, Scalar.Rgb(255, 0, 0));
-            var result = cv.EncodeImage(".jpg", image);
+            CV.Circle(image, new Point(100, 100), 50, Scalar.Rgb(255, 0, 0));
+            var result = CV.EncodeImage(".jpg", image);
             Assert.AreEqual(1, result.Channels);
         }
     }

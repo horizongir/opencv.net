@@ -6,14 +6,14 @@ using System.Text;
 namespace OpenCV.Net
 {
     /// <summary>
-    /// Specifies the type of smoothing used by <see cref="cv.Smooth"/>.
+    /// Specifies the type of smoothing used by <see cref="CV.Smooth"/>.
     /// </summary>
     public enum SmoothMethod : int
     {
         /// <summary>
         /// Specifies a linear convolution with size1 x size2 box kernel (all 1’s).
         /// If you want to smooth different pixels with different-size box kernels,
-        /// you can use the integral image that is computed using <see cref="cv.Integral"/>.
+        /// you can use the integral image that is computed using <see cref="CV.Integral"/>.
         /// </summary>
         BlurNoScale = 0,
 
@@ -52,7 +52,7 @@ namespace OpenCV.Net
     }
 
     /// <summary>
-    /// Specifies the color space conversion used by <see cref="cv.CvtColor"/>.
+    /// Specifies the color space conversion used by <see cref="CV.CvtColor"/>.
     /// </summary>
     public enum ColorConversion : int
     {
@@ -985,7 +985,7 @@ namespace OpenCV.Net
     }
 
     /// <summary>
-    /// Specifies the interpolation method used by <see cref="cv.Resize"/>.
+    /// Specifies the interpolation method used by <see cref="CV.Resize"/>.
     /// </summary>
     public enum SubPixelInterpolation : int
     {
@@ -1062,7 +1062,7 @@ namespace OpenCV.Net
     }
 
     /// <summary>
-    /// Specifies the type of morphological operation used by <see cref="cv.MorphologyEx"/>.
+    /// Specifies the type of morphological operation used by <see cref="CV.MorphologyEx"/>.
     /// </summary>
     public enum MorphologicalOperation : int
     {
@@ -1133,7 +1133,7 @@ namespace OpenCV.Net
     }
 
     /// <summary>
-    /// Specifies the way the template is compared with image regions in <see cref="cv.MatchTemplate"/>.
+    /// Specifies the way the template is compared with image regions in <see cref="CV.MatchTemplate"/>.
     /// </summary>
     public enum TemplateMatchingMethod : int
     {
@@ -1434,7 +1434,7 @@ namespace OpenCV.Net
     }
 
     /// <summary>
-    /// Specifies the content of the output label array in <see cref="cv.DistTransform"/>.
+    /// Specifies the content of the output label array in <see cref="CV.DistTransform"/>.
     /// </summary>
     public enum DistanceLabel : int
     {

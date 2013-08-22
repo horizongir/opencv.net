@@ -160,7 +160,7 @@ namespace OpenCV.Net
 
     /// <summary>
     /// Specifies the comparison operation used to test the relation between individual array elements
-    /// in <see cref="cv.Cmp"/> and <see cref="cv.CmpS"/>.
+    /// in <see cref="CV.Cmp"/> and <see cref="CV.CmpS"/>.
     /// </summary>
     public enum ComparisonOperation : int
     {
@@ -222,7 +222,7 @@ namespace OpenCV.Net
     }
 
     /// <summary>
-    /// Specifies the random distribution to use for <see cref="cv.RandArr"/>.
+    /// Specifies the random distribution to use for <see cref="CV.RandArr"/>.
     /// </summary>
     public enum RandDistribution : int
     {
@@ -238,7 +238,7 @@ namespace OpenCV.Net
     }
 
     /// <summary>
-    /// Specifies operation flags for the <see cref="cv.Sort"/> method.
+    /// Specifies operation flags for the <see cref="CV.Sort"/> method.
     /// </summary>
     [Flags]
     public enum SortFlags : int
@@ -265,7 +265,7 @@ namespace OpenCV.Net
     }
 
     /// <summary>
-    /// Specifies operation flags for <see cref="cv.GEMM"/>.
+    /// Specifies operation flags for <see cref="CV.GEMM"/>.
     /// </summary>
     [Flags]
     public enum GemmFlags : int
@@ -292,7 +292,7 @@ namespace OpenCV.Net
     }
 
     /// <summary>
-    /// Specifies the mirror mode used in <see cref="cv.Flip"/>.
+    /// Specifies the mirror mode used in <see cref="CV.Flip"/>.
     /// </summary>
     public enum FlipMode : int
     {
@@ -313,7 +313,7 @@ namespace OpenCV.Net
     }
 
     /// <summary>
-    /// Specifies operation flags for <see cref="cv.SVD"/>.
+    /// Specifies operation flags for <see cref="CV.SVD"/>.
     /// </summary>
     [Flags]
     public enum SvdFlags : int
@@ -379,7 +379,7 @@ namespace OpenCV.Net
     }
 
     /// <summary>
-    /// Specifies operation flags for <see cref="cv.CalcCovarMatrix"/>.
+    /// Specifies operation flags for <see cref="CV.CalcCovarMatrix"/>.
     /// </summary>
     [Flags]
     public enum CovarianceFlags : int
@@ -422,7 +422,7 @@ namespace OpenCV.Net
     }
 
     /// <summary>
-    /// Specifies operation flags for <see cref="cv.CalcPCA"/>
+    /// Specifies operation flags for <see cref="CV.CalcPCA"/>
     /// </summary>
     [Flags]
     public enum PcaFlags : int
@@ -444,7 +444,7 @@ namespace OpenCV.Net
     }
 
     /// <summary>
-    /// Specifies flags for <see cref="cv.Norm"/> and <see cref="cv.Normalize"/>.
+    /// Specifies flags for <see cref="CV.Norm"/> and <see cref="CV.Normalize"/>.
     /// </summary>
     [Flags]
     public enum NormTypes : int
