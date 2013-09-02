@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("OpenCV.Net")]
+[assembly: AssemblyTitle("OpenCV.NET")]
 [assembly: AssemblyDescription("A .NET interface for the popular OpenCV computer vision and image processing library.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Gonçalo Lopes")]
