@@ -2,8 +2,8 @@
 <package >
   <metadata>
     <id>$id$</id>
-    <version>3.0.0-ctp</version>
-    <title>$title$</title>
+    <version>3.0.0-alpha</version>
+    <title>OpenCV.NET</title>
     <authors>$author$</authors>
     <owners>$author$</owners>
     <licenseUrl>http://bitbucket.org/horizongir/opencv.net/raw/49e2d06d594f859f7c7712cb052eb2b340a73f17/COPYING</licenseUrl>
