@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>$id$</id>
-    <version>3.0.0-alpha</version>
+    <version>3.0.0-alpha2</version>
     <title>$title$</title>
     <authors>$author$</authors>
     <owners>$author$</owners>
@@ -14,5 +14,8 @@
     <releaseNotes>First public release of the .NET interface targeting the C API of OpenCV 2.4.6.</releaseNotes>
     <copyright>Gonçalo Lopes © 2013</copyright>
     <tags>OpenCV Computer Vision Image Processing Wrapper</tags>
+    <dependencies>
+      <dependency id="OpenCV" version="[2.4.6-nuget]" />
+    </dependencies>
   </metadata>
 </package>
