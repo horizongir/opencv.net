@@ -15,7 +15,7 @@
     <copyright>Gonçalo Lopes © 2013</copyright>
     <tags>OpenCV Computer Vision Image Processing Wrapper</tags>
     <dependencies>
-      <dependency id="OpenCV" version="[2.4.6-nuget]" />
+      <dependency id="OpenCV.redist" version="[2.4.6]" />
     </dependencies>
   </metadata>
 </package>
