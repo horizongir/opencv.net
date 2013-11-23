@@ -8,7 +8,7 @@ namespace OpenCV.Net.Native
 {
     static partial class NativeMethods
     {
-        const string imgprocLib = "opencv_imgproc246";
+        const string imgprocLib = "opencv_imgproc247";
 
         #region Background statistics accumulation
 
