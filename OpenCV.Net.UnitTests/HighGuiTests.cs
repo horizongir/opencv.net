@@ -7,6 +7,7 @@ namespace OpenCV.Net.UnitTests
     public class HighGuiTests
     {
         [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void AddText_NullText_ThrowsArgumentNullException()
         {
             var image = new IplImage(new Size(10, 10), IplDepth.U8, 1);
