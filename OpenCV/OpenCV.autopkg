@@ -1,7 +1,7 @@
 nuget {
     nuspec {
         id = OpenCV;
-        version: 2.4.6;
+        version: 2.4.7;
         title: OpenCV;
         authors: {Itseez};
         owners: {Gonçalo Lopes};
@@ -11,66 +11,42 @@ nuget {
         requireLicenseAcceptance: false;
         summary: "OpenCV is a library of programming functions for realtime computer vision.";
         description: @"OpenCV (Open Source Computer Vision) is a library of programming functions for realtime computer vision. OpenCV is released under a BSD license and hence it’s free for both academic and commercial use. It has C++, C, Python and Java (Android) interfaces and supports Windows, Linux, Android, iOS and Mac OS. It has more than 2500 optimized algorithms. Adopted all around the world, OpenCV has more than 7 million downloads growing by nearly 200K/month. Usage ranges from interactive art, to mines inspection, stitching maps on the web on through advanced robotics.";
-        releaseNotes: "Binaries and build targets for OpenCV 2.4.6 in the x86 and x64 platform architectures.";
+        releaseNotes: "Binaries and build targets for OpenCV 2.4.7 in the x86 and x64 platform architectures.";
         copyright: "© Copyright 2013, Itseez";
         tags: { OpenCV, Computer, Vision, Image, Processing };
     }
     
     files {
-        net35 += {
-            #output {
-                package = redist;
-            };
-            #destination : \build\net35;
-        };
-    
-        net40 += {
-            #output {
-                package = redist;
-            };
-            #destination : \build\net40;
-        };
-    
-        net45 += {
-            #output {
-                package = redist;
-            };
-            #destination : \build\net45;
-        };
-    
-        net35: { "net\${pkgname}.redist.targets" };
-        net40: { "net\${pkgname}.redist.targets" };
-        net45: { "net\${pkgname}.redist.targets" };
         docs: { "docs\license.txt" };
         include: { "include\**\*" };
         [x64,v110] {
-            bin: { "x64\vc11\bin\opencv_ffmpeg246_64.dll" };
+            bin: { "x64\vc11\bin\opencv_ffmpeg247_64.dll" };
         }
         
         [x86,v110] {
-            bin: { "x86\vc11\bin\opencv_ffmpeg246.dll" };
+            bin: { "x86\vc11\bin\opencv_ffmpeg247.dll" };
         }
         
         [x64,v110,debug] {
-            lib: { "x64\vc11\lib\*246d.lib" };
-            bin: { "x64\vc11\bin\*246d.dll" };
+            lib: { "x64\vc11\lib\*247d.lib" };
+            bin: { "x64\vc11\bin\*247d.dll" };
         }
         
         [x64,v110,release] {
-            lib: { "x64\vc11\lib\*246.lib" };
-            bin: { "x64\vc11\bin\*246.dll" };
+            lib: { "x64\vc11\lib\*247.lib" };
+            bin: { "x64\vc11\bin\*247.dll" };
         }
         
         [x86,v110,debug] {
-            lib: { "x86\vc11\lib\*246d.lib" };
-            bin: { "x86\vc11\bin\*246d.dll" };
+            lib: { "x86\vc11\lib\*247d.lib" };
+            bin: { "x86\vc11\bin\*247d.dll" };
         }
         
         [x86,v110,release] {
-            lib: { "x86\vc11\lib\*246.lib" };
+            lib: { "x86\vc11\lib\*247.lib" };
             bin: {
                 #exclude: { "**\opencv_ffmpeg*.dll" };
-                "x86\vc11\bin\*246.dll"
+                "x86\vc11\bin\*247.dll"
             };
         }
     }
