@@ -8,7 +8,7 @@ namespace OpenCV.Net.Native
 {
     static partial class NativeMethods
     {
-        const string objdetectLib = "opencv_objdetect246";
+        const string objdetectLib = "opencv_objdetect247";
 
         #region Haar-like Object Detection functions
 

@@ -8,7 +8,7 @@ namespace OpenCV.Net.Native
 {
     static partial class NativeMethods
     {
-        const string calib3dLib = "opencv_calib3d246";
+        const string calib3dLib = "opencv_calib3d247";
 
         #region Camera Calibration, Pose Estimation and Stereo
 

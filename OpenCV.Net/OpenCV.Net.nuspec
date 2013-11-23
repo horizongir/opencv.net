@@ -11,11 +11,8 @@
     <iconUrl>http://opencvlibrary.svn.sourceforge.net/viewvc/opencvlibrary/trunk/opencv/doc/opencv-logo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>First public release of the .NET interface targeting the C API of OpenCV 2.4.6.</releaseNotes>
+    <releaseNotes>First public release of the .NET interface targeting the C API of OpenCV 2.4.7.</releaseNotes>
     <copyright>Gonçalo Lopes © 2013</copyright>
     <tags>OpenCV Computer Vision Image Processing Wrapper</tags>
-    <dependencies>
-      <dependency id="OpenCV.redist" version="[2.4.6]" />
-    </dependencies>
   </metadata>
 </package>
