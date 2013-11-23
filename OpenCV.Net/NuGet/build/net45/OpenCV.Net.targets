@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Target Name="OpenCV_AfterBuild" AfterTargets="AfterBuild">
+    <Copy SourceFiles="@(CopyToOutput)" DestinationFolder="$(TargetDir)" SkipUnchangedFiles="true" UseHardlinksIfPossible="true">
+      <Output TaskParameter="DestinationFiles" PropertyName="DestinationFiles" />
+      <Output TaskParameter="DestinationFiles" ItemName="DestinationFiles" />
+      <Output TaskParameter="CopiedFiles" PropertyName="CopiedFiles" />
+      <Output TaskParameter="CopiedFiles" ItemName="CopiedFiles" />
+    </Copy>
+  </Target>
+  <Target Name="OpenCV_ItemGroupInit_targets_3" DependsOnTargets="OpenCV_init_targets_0" BeforeTargets="BeforeBuild">
+    <ItemGroup Label="x64" Condition="'$(Platform.ToLower())' == 'x64'">
+      <CopyToOutput Include="$(MSBuildThisFileDirectory)../../build/native/bin/x64\v110/*.dll" />
+      <None Include="$(MSBuildThisFileDirectory)../../build/native/bin/x64\v110/*.dll">
+        <DeploymentContent>true</DeploymentContent>
+      </None>
+    </ItemGroup>
+    <ItemGroup Label="x86" Condition="'$(Platform.ToLower())' == 'x86' Or '$(Platform.ToLower())' == 'anycpu'">
+      <CopyToOutput Include="$(MSBuildThisFileDirectory)../../build/native/bin/Win32\v110/*.dll" />
+      <None Include="$(MSBuildThisFileDirectory)../../build/native/bin/Win32\v110/*.dll">
+        <DeploymentContent>true</DeploymentContent>
+      </None>
+    </ItemGroup>
+    <ItemGroup Label="x64 and Release" Condition="'$(Platform.ToLower())' == 'x64'">
+      <CopyToOutput Include="$(MSBuildThisFileDirectory)../../build/native/bin/x64\v110\Release/*.dll" />
+      <None Include="$(MSBuildThisFileDirectory)../../build/native/bin/x64\v110\Release/*.dll">
+        <DeploymentContent>true</DeploymentContent>
+      </None>
+    </ItemGroup>
+    <ItemGroup Label="x86 and Release" Condition="'$(Platform.ToLower())' == 'x86' Or '$(Platform.ToLower())' == 'anycpu'">
+      <CopyToOutput Include="$(MSBuildThisFileDirectory)../../build/native/bin/Win32\v110\Release/*.dll" />
+      <None Include="$(MSBuildThisFileDirectory)../../build/native/bin/Win32\v110\Release/*.dll">
+        <DeploymentContent>true</DeploymentContent>
+      </None>
+    </ItemGroup>
+  </Target>
+  <UsingTask TaskName="NuGetPackageOverlay" AssemblyFile="$(NuGet-NativeExtensionPath)\coapp.NuGetNativeMSBuildTasks.dll" Condition="'$(DesignTimeBuild)' != 'true' AND ('$(NugetMsBuildExtensionLoaded)' == '' OR '$(NugetMsBuildExtensionLoaded)' == 'false')" />
+  <UsingTask TaskName="CheckRuntimeLibrary" AssemblyFile="$(NuGet-NativeExtensionPath)\coapp.NuGetNativeMSBuildTasks.dll" Condition="'$(DesignTimeBuild)' != 'true' AND ('$(NugetMsBuildExtensionLoaded)' == '' OR '$(NugetMsBuildExtensionLoaded)' == 'false')" />
+  <UsingTask TaskName="StringContains" AssemblyFile="$(NuGet-NativeExtensionPath)\coapp.NuGetNativeMSBuildTasks.dll" Condition="'$(DesignTimeBuild)' != 'true' AND ('$(NugetMsBuildExtensionLoaded)' == '' OR '$(NugetMsBuildExtensionLoaded)' == 'false')" />
+  <Target Name="OpenCV_init_targets_0" BeforeTargets="BeforeBuild">
+    <Copy SkipUnchangedFiles="true" SourceFiles="$(NuGet-NativeExtensionPath)\coapp.NuGetNativeMSBuildTasks.dll.orig" DestinationFiles="$(NuGet-NativeExtensionPath)\coapp.NuGetNativeMSBuildTasks.dll" />
+    <PropertyGroup>
+      <NugetMsBuildExtensionLoaded Condition="'$(NugetMsBuildExtensionLoaded)' == '' OR '$(NuGet-OverlayLoaded)' == 'false'">true</NugetMsBuildExtensionLoaded>
+    </PropertyGroup>
+    <NuGetPackageOverlay Package="OpenCV.overlay-x64_v110" Version="$(Needs-OpenCV-Version)" PackageDirectory="$(MSBuildThisFileDirectory)\..\.." SolutionDirectory="$(SolutionDir)" Condition="'$(Platform.ToLower())' == 'x64'" />
+    <NuGetPackageOverlay Package="OpenCV.overlay-Win32_v110" Version="$(Needs-OpenCV-Version)" PackageDirectory="$(MSBuildThisFileDirectory)\..\.." SolutionDirectory="$(SolutionDir)" Condition="'$(Platform.ToLower())' == 'x86' Or '$(Platform.ToLower())' == 'anycpu'" />
+    <NuGetPackageOverlay Package="OpenCV.overlay-x64_v110_Release" Version="$(Needs-OpenCV-Version)" PackageDirectory="$(MSBuildThisFileDirectory)\..\.." SolutionDirectory="$(SolutionDir)" Condition="'$(Platform.ToLower())' == 'x64'" />
+    <NuGetPackageOverlay Package="OpenCV.overlay-Win32_v110_Release" Version="$(Needs-OpenCV-Version)" PackageDirectory="$(MSBuildThisFileDirectory)\..\.." SolutionDirectory="$(SolutionDir)" Condition="'$(Platform.ToLower())' == 'x86' Or '$(Platform.ToLower())' == 'anycpu'" />
+  </Target>
+</Project>
