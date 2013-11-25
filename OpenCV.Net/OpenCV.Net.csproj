@@ -133,7 +133,7 @@
     <None Include="NuGet\build\net45\OpenCV.Net.props">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="NuGet\build\net45\private\CoApp.NuGetNativeMSBuildTasks.dll.orig">
+    <None Include="NuGet\build\native\private\CoApp.NuGetNativeMSBuildTasks.dll.orig">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="NuGet\NuGet-Overlay.cmd">
@@ -142,16 +142,16 @@
     <None Include="OpenCV.Net.nuspec" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="NuGet\build\net45\pivot-list.txt">
+    <None Include="NuGet\build\native\pivot-list.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="NuGet\build\net45\private\CoApp.NuGetNativeExtensions.dll">
+    <None Include="NuGet\build\native\private\CoApp.NuGetNativeExtensions.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.nuget\NuGet.exe">
-      <Link>NuGet\build\net45\private\NuGet.exe</Link>
+      <Link>NuGet\build\native\private\NuGet.exe</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
