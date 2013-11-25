@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>OpenCV.Net</RootNamespace>
     <AssemblyName>OpenCV.Net</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
@@ -127,10 +127,10 @@
     <Compile Include="VideoTypes.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="NuGet\build\net45\OpenCV.Net.targets">
+    <None Include="NuGet\build\net40\OpenCV.Net.props">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="NuGet\build\net45\OpenCV.Net.props">
+    <None Include="NuGet\build\net40\OpenCV.Net.targets">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="NuGet\build\native\private\CoApp.NuGetNativeMSBuildTasks.dll.orig">
