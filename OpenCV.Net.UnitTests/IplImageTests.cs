@@ -86,5 +86,248 @@ namespace OpenCV.Net.UnitTests
                 }
             }
         }
+
+        #region Operator Tests
+
+        const double EyeValue = 1.0;
+        const double ScalarValue = 5.0;
+
+        IplImage CreateEye(int size = 3, double value = EyeValue, IplDepth depth = IplDepth.F64)
+        {
+            var eye = new IplImage(new Size(size, size), depth, 1);
+            CV.SetIdentity(eye, Scalar.All(value));
+            return eye;
+        }
+
+        [TestMethod]
+        public void op_UnaryPlus_IplImage_ReturnsSameIplImage()
+        {
+            var image = CreateEye();
+            Assert.AreSame(image, +image);
+        }
+
+        [TestMethod]
+        public void op_UnaryNegation_IplImage_ReturnsNegatedIplImage()
+        {
+            var image = -CreateEye();
+            Assert.AreEqual(-EyeValue, image.GetReal(0, 0));
+        }
+
+        [TestMethod]
+        public void op_OnesComplement_IplImage_ReturnsInvertedIplImage()
+        {
+            var image = ~CreateEye(depth: IplDepth.S32);
+            Assert.AreEqual(~(int)EyeValue, image.GetReal(0, 0));
+        }
+
+        [TestMethod]
+        public void op_Addition_IplImageIplImage_ReturnsAdditionOfTwoIplImages()
+        {
+            var left = CreateEye();
+            var right = CreateEye();
+            Assert.AreEqual(EyeValue + EyeValue, (left + right).GetReal(0, 0));
+        }
+
+        [TestMethod]
+        public void op_Addition_IplImageScalar_ReturnsAdditionOfIplImageAndScalar()
+        {
+            var image = CreateEye();
+            var scalar = Scalar.All(ScalarValue);
+            Assert.AreEqual(EyeValue + ScalarValue, (image + scalar).GetReal(0, 0));
+        }
+
+        [TestMethod]
+        public void op_Addition_ScalarIplImage_ReturnsAdditionOfIplImageAndScalar()
+        {
+            var scalar = Scalar.All(ScalarValue);
+            var image = CreateEye();
+            Assert.AreEqual(EyeValue + ScalarValue, (scalar + image).GetReal(0, 0));
+        }
+
+        [TestMethod]
+        public void op_Addition_IplImageDouble_ReturnsAdditionOfIplImageAndScalar()
+        {
+            var image = CreateEye();
+            var scalar = ScalarValue;
+            Assert.AreEqual(EyeValue + ScalarValue, (image + scalar).GetReal(0, 0));
+        }
+
+        [TestMethod]
+        public void op_Addition_DoubleIplImage_ReturnsAdditionOfIplImageAndScalar()
+        {
+            var scalar = ScalarValue;
+            var image = CreateEye();
+            Assert.AreEqual(EyeValue + ScalarValue, (scalar + image).GetReal(0, 0));
+        }
+
+        [TestMethod]
+        public void op_Subtraction_IplImageIplImage_ReturnsSubtractionOfTwoIplImages()
+        {
+            var left = CreateEye();
+            var right = CreateEye();
+            Assert.AreEqual(0, (left - right).GetReal(0, 0));
+        }
+
+        [TestMethod]
+        public void op_Subtraction_IplImageScalar_ReturnsSubtractionOfIplImageAndScalar()
+        {
+            var image = CreateEye();
+            var scalar = Scalar.All(ScalarValue);
+            Assert.AreEqual(EyeValue - ScalarValue, (image - scalar).GetReal(0, 0));
+        }
+
+        [TestMethod]
+        public void op_Subtraction_ScalarIplImage_ReturnsSubtractionOfIplImageAndScalar()
+        {
+            var scalar = Scalar.All(ScalarValue);
+            var image = CreateEye();
+            Assert.AreEqual(ScalarValue - EyeValue, (scalar - image).GetReal(0, 0));
+        }
+
+        [TestMethod]
+        public void op_Subtraction_IplImageDouble_ReturnsSubtractionOfIplImageAndScalar()
+        {
+            var image = CreateEye();
+            var scalar = ScalarValue;
+            Assert.AreEqual(EyeValue - ScalarValue, (image - scalar).GetReal(0, 0));
+        }
+
+        [TestMethod]
+        public void op_Subtraction_DoubleIplImage_ReturnsSubtractionOfIplImageAndScalar()
+        {
+            var scalar = ScalarValue;
+            var image = CreateEye();
+            Assert.AreEqual(ScalarValue - EyeValue, (scalar - image).GetReal(0, 0));
+        }
+
+        [TestMethod]
+        public void op_Multiply_IplImageIplImage_ReturnsMultiplicationOfTwoIplImages()
+        {
+            var left = CreateEye(value: 2);
+            var right = CreateEye(value: 2);
+            Assert.AreEqual(4, (left * right).GetReal(0, 0));
+        }
+
+        [TestMethod]
+        public void op_Multiply_IplImageDouble_ReturnsMultiplicationOfIplImageAndScalar()
+        {
+            var image = CreateEye();
+            var scalar = ScalarValue;
+            Assert.AreEqual(1 * ScalarValue, (image * scalar).GetReal(0, 0));
+        }
+
+        [TestMethod]
+        public void op_Multiply_DoubleIplImage_ReturnsMultiplicationOfIplImageAndScalar()
+        {
+            var scalar = ScalarValue;
+            var image = CreateEye();
+            Assert.AreEqual(ScalarValue * 1, (scalar * image).GetReal(0, 0));
+        }
+
+        [TestMethod]
+        public void op_Division_IplImageIplImage_ReturnsDivisionOfTwoIplImages()
+        {
+            var left = CreateEye(value: 1);
+            var right = CreateEye(value: 2);
+            Assert.AreEqual(0.5, (left / right).GetReal(0, 0));
+        }
+
+        [TestMethod]
+        public void op_Division_IplImageDouble_ReturnsDivisionOfIplImageAndScalar()
+        {
+            var image = CreateEye();
+            var scalar = ScalarValue;
+            Assert.AreEqual(1 / ScalarValue, (image / scalar).GetReal(0, 0));
+        }
+
+        [TestMethod]
+        public void op_Division_DoubleIplImage_ReturnsDivisionOfIplImageAndScalar()
+        {
+            var scalar = ScalarValue;
+            var image = CreateEye();
+            Assert.AreEqual(ScalarValue / 1, (scalar / image).GetReal(0, 0));
+        }
+
+        [TestMethod]
+        public void op_BitwiseAnd_IplImageIplImage_ReturnsBitwiseConjunctionOfTwoIplImages()
+        {
+            var left = CreateEye();
+            var right = CreateEye();
+            Assert.AreEqual(1, (left & right).GetReal(0, 0));
+        }
+
+        [TestMethod]
+        public void op_BitwiseAnd_IplImageScalar_ReturnsBitwiseConjunctionOfIplImageAndScalar()
+        {
+            var image = CreateEye(depth: IplDepth.S32);
+            var scalar = Scalar.All(ScalarValue);
+            Assert.AreEqual(EyeValue, (image & scalar).GetReal(0, 0));
+        }
+
+        [TestMethod]
+        public void op_BitwiseAnd_ScalarIplImage_ReturnsBitwiseConjunctionOfIplImageAndScalar()
+        {
+            var scalar = Scalar.All(ScalarValue);
+            var image = CreateEye(depth: IplDepth.S32);
+            Assert.AreEqual(EyeValue, (scalar & image).GetReal(0, 0));
+        }
+
+        [TestMethod]
+        public void op_BitwiseAnd_IplImageDouble_ReturnsBitwiseConjunctionOfIplImageAndScalar()
+        {
+            var image = CreateEye(depth: IplDepth.S32);
+            var scalar = ScalarValue;
+            Assert.AreEqual(EyeValue, (image & scalar).GetReal(0, 0));
+        }
+
+        [TestMethod]
+        public void op_BitwiseAnd_DoubleIplImage_ReturnsBitwiseConjunctionOfIplImageAndScalar()
+        {
+            var scalar = ScalarValue;
+            var image = CreateEye(depth: IplDepth.S32);
+            Assert.AreEqual(EyeValue, (scalar & image).GetReal(0, 0));
+        }
+
+        [TestMethod]
+        public void op_BitwiseOr_IplImageIplImage_ReturnsBitwiseDisjunctionOfTwoIplImages()
+        {
+            var left = CreateEye();
+            var right = CreateEye();
+            Assert.AreEqual(1, (left | right).GetReal(0, 0));
+        }
+
+        [TestMethod]
+        public void op_BitwiseOr_IplImageScalar_ReturnsBitwiseDisjunctionOfIplImageAndScalar()
+        {
+            var image = CreateEye(depth: IplDepth.S32);
+            var scalar = Scalar.All(ScalarValue);
+            Assert.AreEqual(ScalarValue, (image | scalar).GetReal(0, 0));
+        }
+
+        [TestMethod]
+        public void op_BitwiseOr_ScalarIplImage_ReturnsBitwiseDisjunctionOfIplImageAndScalar()
+        {
+            var scalar = Scalar.All(ScalarValue);
+            var image = CreateEye(depth: IplDepth.S32);
+            Assert.AreEqual(ScalarValue, (scalar | image).GetReal(0, 0));
+        }
+
+        [TestMethod]
+        public void op_BitwiseOr_IplImageDouble_ReturnsBitwiseDisjunctionOfIplImageAndScalar()
+        {
+            var image = CreateEye(depth: IplDepth.S32);
+            var scalar = ScalarValue;
+            Assert.AreEqual(ScalarValue, (image | scalar).GetReal(0, 0));
+        }
+
+        [TestMethod]
+        public void op_BitwiseOr_DoubleIplImage_ReturnsBitwiseDisjunctionOfIplImageAndScalar()
+        {
+            var scalar = ScalarValue;
+            var image = CreateEye(depth: IplDepth.S32);
+            Assert.AreEqual(ScalarValue, (scalar | image).GetReal(0, 0));
+        }
+
+        #endregion
     }
 }
