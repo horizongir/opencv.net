@@ -254,7 +254,7 @@ namespace OpenCV.Net
         }
 
         /// <summary>
-        /// Calculates the per-element difference between a scalar and an array.
+        /// Subtracts every element of a source array from a scalar.
         /// </summary>
         /// <param name="src">The input array.</param>
         /// <param name="value">The scalar input value.</param>
