@@ -100,6 +100,16 @@ namespace OpenCV.Net.UnitTests
         }
 
         [TestMethod]
+        public void op_Explicit_Mat_ReturnsEquivalentMatInstance()
+        {
+            var image = CreateEye();
+            var mat = (Mat)image;
+            Assert.AreEqual(image.Width, mat.Cols);
+            Assert.AreEqual(image.Height, mat.Rows);
+            Assert.AreEqual(CV.Sum(image), CV.Sum(mat));
+        }
+
+        [TestMethod]
         public void op_UnaryPlus_IplImage_ReturnsSameIplImage()
         {
             var image = CreateEye();
