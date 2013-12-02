@@ -72,5 +72,13 @@ namespace OpenCV.Net.UnitTests
             var loadmat = CV.Load<Mat>("storage.txt");
             Assert.AreEqual(mat.GetReal(1, 1), loadmat.GetReal(1, 1));
         }
+
+        [TestMethod]
+        public void Add_InplaceMat_MatElementsAreDoubled()
+        {
+            var mat = Mat.FromArray(new byte[,] { { 1, 0, 0 }, { 0, 1, 0 }, { 0, 0, 1 } });
+            CV.Add(mat, mat, mat);
+            Assert.AreEqual(2, mat.GetReal(1, 1));
+        }
     }
 }

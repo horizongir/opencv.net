@@ -604,5 +604,463 @@ namespace OpenCV.Net
                 return false;
             }
         }
+
+        #region Operator Overloads
+
+        /// <summary>
+        /// Returns the <see cref="Mat"/> value (the sign is unchanged).
+        /// </summary>
+        /// <param name="mat">The matrix to return.</param>
+        /// <returns>The matrix <paramref name="mat"/>.</returns>
+        public static Mat operator +(Mat mat)
+        {
+            return mat;
+        }
+
+        /// <summary>
+        /// Negates the specified <see cref="Mat"/> value.
+        /// </summary>
+        /// <param name="mat">The matrix to negate.</param>
+        /// <returns>
+        /// The result of <paramref name="mat"/> multiplied by negative one (-1).
+        /// </returns>
+        public static Mat operator -(Mat mat)
+        {
+            var result = new Mat(mat.Rows, mat.Cols, mat.Depth, mat.Channels);
+            CV.ConvertScale(mat, result, -1, 0);
+            return result;
+        }
+
+        /// <summary>
+        /// Performs per-element bit-wise inversion of the specified <see cref="Mat"/> value.
+        /// </summary>
+        /// <param name="mat">The matrix to invert.</param>
+        /// <returns>The result of bitwise inverting <paramref name="mat"/>.</returns>
+        public static Mat operator ~(Mat mat)
+        {
+            var result = new Mat(mat.Rows, mat.Cols, mat.Depth, mat.Channels);
+            CV.Not(mat, result);
+            return result;
+        }
+
+        /// <summary>
+        /// Calculates the per-element sum of two <see cref="Mat"/> values.
+        /// </summary>
+        /// <param name="left">The first value to add.</param>
+        /// <param name="right">The second value to add.</param>
+        /// <returns>
+        /// The result of adding <paramref name="left"/> and <paramref name="right"/>.
+        /// </returns>
+        public static Mat operator +(Mat left, Mat right)
+        {
+            var result = new Mat(left.Rows, left.Cols, left.Depth, left.Channels);
+            CV.Add(left, right, result);
+            return result;
+        }
+
+        /// <summary>
+        /// Calculates the per-element sum of a <see cref="Mat"/> and a <see cref="Scalar"/>.
+        /// </summary>
+        /// <param name="left">The matrix to add.</param>
+        /// <param name="right">The scalar to add.</param>
+        /// <returns>
+        /// The result of adding <paramref name="left"/> and <paramref name="right"/>.
+        /// </returns>
+        public static Mat operator +(Mat left, Scalar right)
+        {
+            var result = new Mat(left.Rows, left.Cols, left.Depth, left.Channels);
+            CV.AddS(left, right, result);
+            return result;
+        }
+
+        /// <summary>
+        /// Calculates the per-element sum of a <see cref="Scalar"/> and a <see cref="Mat"/>.
+        /// </summary>
+        /// <param name="left">The scalar to add.</param>
+        /// <param name="right">The matrix to add.</param>
+        /// <returns>
+        /// The result of adding <paramref name="left"/> and <paramref name="right"/>.
+        /// </returns>
+        public static Mat operator +(Scalar left, Mat right)
+        {
+            var result = new Mat(right.Rows, right.Cols, right.Depth, right.Channels);
+            CV.AddS(right, left, result);
+            return result;
+        }
+
+        /// <summary>
+        /// Calculates the per-element sum of a <see cref="Mat"/> and a
+        /// <see cref="double"/> value.
+        /// </summary>
+        /// <param name="left">The matrix to add.</param>
+        /// <param name="right">The scalar value to add.</param>
+        /// <returns>
+        /// The result of adding <paramref name="left"/> and <paramref name="right"/>.
+        /// </returns>
+        public static Mat operator +(Mat left, double right)
+        {
+            var result = new Mat(left.Rows, left.Cols, left.Depth, left.Channels);
+            CV.ConvertScale(left, result, 1, right);
+            return result;
+        }
+
+        /// <summary>
+        /// Calculates the per-element sum of a <see cref="double"/> value and a
+        /// <see cref="Mat"/>.
+        /// </summary>
+        /// <param name="left">The scalar value to add.</param>
+        /// <param name="right">The matrix to add.</param>
+        /// <returns>
+        /// The result of adding <paramref name="left"/> and <paramref name="right"/>.
+        /// </returns>
+        public static Mat operator +(double left, Mat right)
+        {
+            var result = new Mat(right.Rows, right.Cols, right.Depth, right.Channels);
+            CV.ConvertScale(right, result, 1, left);
+            return result;
+        }
+
+        /// <summary>
+        /// Calculates the per-element difference between two <see cref="Mat"/> values.
+        /// </summary>
+        /// <param name="left">The minuend.</param>
+        /// <param name="right">The subtrahend.</param>
+        /// <returns>
+        /// The result of subtracting <paramref name="right"/> from <paramref name="left"/>.
+        /// </returns>
+        public static Mat operator -(Mat left, Mat right)
+        {
+            var result = new Mat(left.Rows, left.Cols, left.Depth, left.Channels);
+            CV.Sub(left, right, result);
+            return result;
+        }
+
+        /// <summary>
+        /// Calculates the per-element difference between a <see cref="Mat"/> and a
+        /// <see cref="Scalar"/>.
+        /// </summary>
+        /// <param name="left">The matrix minuend.</param>
+        /// <param name="right">The scalar subtrahend.</param>
+        /// <returns>
+        /// The result of subtracting <paramref name="right"/> from <paramref name="left"/>.
+        /// </returns>
+        public static Mat operator -(Mat left, Scalar right)
+        {
+            var result = new Mat(left.Rows, left.Cols, left.Depth, left.Channels);
+            CV.SubS(left, right, result);
+            return result;
+        }
+
+        /// <summary>
+        /// Subtracts every element of the specified <see cref="Mat"/> value from a
+        /// <see cref="Scalar"/>.
+        /// </summary>
+        /// <param name="left">The scalar minuend.</param>
+        /// <param name="right">The matrix subtrahend.</param>
+        /// <returns>
+        /// The result of subtracting <paramref name="right"/> from <paramref name="left"/>.
+        /// </returns>
+        public static Mat operator -(Scalar left, Mat right)
+        {
+            var result = new Mat(right.Rows, right.Cols, right.Depth, right.Channels);
+            CV.SubRS(right, left, result);
+            return result;
+        }
+
+        /// <summary>
+        /// Calculates the per-element difference between a <see cref="Mat"/> and a
+        /// <see cref="double"/> value.
+        /// </summary>
+        /// <param name="left">The matrix minuend.</param>
+        /// <param name="right">The scalar subtrahend.</param>
+        /// <returns>
+        /// The result of subtracting <paramref name="right"/> from <paramref name="left"/>.
+        /// </returns>
+        public static Mat operator -(Mat left, double right)
+        {
+            var result = new Mat(left.Rows, left.Cols, left.Depth, left.Channels);
+            CV.SubS(left, Scalar.All(right), result);
+            return result;
+        }
+
+        /// <summary>
+        /// Subtracts every element of the specified <see cref="Mat"/> value from a
+        /// <see cref="double"/> value.
+        /// </summary>
+        /// <param name="left">The scalar minuend.</param>
+        /// <param name="right">The matrix subtrahend.</param>
+        /// <returns>
+        /// The result of subtracting <paramref name="right"/> from <paramref name="left"/>.
+        /// </returns>
+        public static Mat operator -(double left, Mat right)
+        {
+            var result = new Mat(right.Rows, right.Cols, right.Depth, right.Channels);
+            CV.SubRS(right, Scalar.All(left), result);
+            return result;
+        }
+
+        /// <summary>
+        /// Calculates the per-element product of two <see cref="Mat"/> values.
+        /// </summary>
+        /// <param name="left">The first value to multiply.</param>
+        /// <param name="right">The second value to multiply.</param>
+        /// <returns>
+        /// The result of multiplying <paramref name="left"/> by <paramref name="right"/>.
+        /// </returns>
+        public static Mat operator *(Mat left, Mat right)
+        {
+            var result = new Mat(left.Rows, left.Cols, left.Depth, left.Channels);
+            CV.Mul(left, right, result);
+            return result;
+        }
+
+        /// <summary>
+        /// Calculates the per-element product of a <see cref="Mat"/> by a
+        /// <see cref="double"/> scalar value.
+        /// </summary>
+        /// <param name="left">The matrix to multiply.</param>
+        /// <param name="right">The scalar value to multiply.</param>
+        /// <returns>
+        /// The result of multiplying <paramref name="left"/> by <paramref name="right"/>.
+        /// </returns>
+        public static Mat operator *(Mat left, double right)
+        {
+            var result = new Mat(left.Rows, left.Cols, left.Depth, left.Channels);
+            CV.ConvertScale(left, result, right);
+            return result;
+        }
+
+        /// <summary>
+        /// Calculates the per-element product of a <see cref="double"/> scalar value
+        /// by a <see cref="Mat"/>.
+        /// </summary>
+        /// <param name="left">The scalar value to multiply.</param>
+        /// <param name="right">The matrix to multiply.</param>
+        /// <returns>
+        /// The result of multiplying <paramref name="left"/> by <paramref name="right"/>.
+        /// </returns>
+        public static Mat operator *(double left, Mat right)
+        {
+            var result = new Mat(right.Rows, right.Cols, right.Depth, right.Channels);
+            CV.ConvertScale(right, result, left);
+            return result;
+        }
+
+        /// <summary>
+        /// Calculates the per-element division of two <see cref="Mat"/> values.
+        /// </summary>
+        /// <param name="left">The dividend.</param>
+        /// <param name="right">The divisor.</param>
+        /// <returns>
+        /// The result of dividing <paramref name="left"/> by <paramref name="right"/>.
+        /// </returns>
+        public static Mat operator /(Mat left, Mat right)
+        {
+            var result = new Mat(left.Rows, left.Cols, left.Depth, left.Channels);
+            CV.Div(left, right, result);
+            return result;
+        }
+
+        /// <summary>
+        /// Calculates the per-element division of a <see cref="Mat"/> by a
+        /// <see cref="double"/> scalar value.
+        /// </summary>
+        /// <param name="left">The matrix dividend.</param>
+        /// <param name="right">The scalar divisor.</param>
+        /// <returns>
+        /// The result of dividing <paramref name="left"/> by <paramref name="right"/>.
+        /// </returns>
+        public static Mat operator /(Mat left, double right)
+        {
+            var result = new Mat(left.Rows, left.Cols, left.Depth, left.Channels);
+            CV.ConvertScale(left, result, 1.0 / right);
+            return result;
+        }
+
+        /// <summary>
+        /// Calculates the per-element division of a <see cref="double"/> scalar value
+        /// by a <see cref="Mat"/>.
+        /// </summary>
+        /// <param name="left">The scalar dividend.</param>
+        /// <param name="right">The matrix divisor.</param>
+        /// <returns>
+        /// The result of dividing <paramref name="left"/> by <paramref name="right"/>.
+        /// </returns>
+        public static Mat operator /(double left, Mat right)
+        {
+            var result = new Mat(right.Rows, right.Cols, right.Depth, right.Channels);
+            CV.Div(null, right, result, left);
+            return result;
+        }
+
+        /// <summary>
+        /// Performs per-element bit-wise conjunction of two <see cref="Mat"/> values.
+        /// </summary>
+        /// <param name="left">The first matrix value.</param>
+        /// <param name="right">The second matrix value.</param>
+        /// <returns>
+        /// The result of performing the bit-wise conjunction of <paramref name="left"/>
+        /// and <paramref name="right"/>.
+        /// </returns>
+        public static Mat operator &(Mat left, Mat right)
+        {
+            var result = new Mat(left.Rows, left.Cols, left.Depth, left.Channels);
+            CV.And(left, right, result);
+            return result;
+        }
+
+        /// <summary>
+        /// Performs per-element bit-wise conjunction of a <see cref="Mat"/> and a
+        /// <see cref="Scalar"/>.
+        /// </summary>
+        /// <param name="left">The matrix value.</param>
+        /// <param name="right">The scalar value.</param>
+        /// <returns>
+        /// The result of performing the bit-wise conjunction of <paramref name="left"/>
+        /// and <paramref name="right"/>.
+        /// </returns>
+        public static Mat operator &(Mat left, Scalar right)
+        {
+            var result = new Mat(left.Rows, left.Cols, left.Depth, left.Channels);
+            CV.AndS(left, right, result);
+            return result;
+        }
+
+        /// <summary>
+        /// Performs per-element bit-wise conjunction of a <see cref="Scalar"/> and a
+        /// <see cref="Mat"/>.
+        /// </summary>
+        /// <param name="left">The scalar value.</param>
+        /// <param name="right">The matrix value.</param>
+        /// <returns>
+        /// The result of performing the bit-wise conjunction of <paramref name="left"/>
+        /// and <paramref name="right"/>.
+        /// </returns>
+        public static Mat operator &(Scalar left, Mat right)
+        {
+            var result = new Mat(right.Rows, right.Cols, right.Depth, right.Channels);
+            CV.AndS(right, left, result);
+            return result;
+        }
+
+        /// <summary>
+        /// Performs per-element bit-wise conjunction of a <see cref="Mat"/> and a
+        /// <see cref="double"/> value.
+        /// </summary>
+        /// <param name="left">The matrix value.</param>
+        /// <param name="right">The scalar value.</param>
+        /// <returns>
+        /// The result of performing the bit-wise conjunction of <paramref name="left"/>
+        /// and <paramref name="right"/>.
+        /// </returns>
+        public static Mat operator &(Mat left, double right)
+        {
+            var result = new Mat(left.Rows, left.Cols, left.Depth, left.Channels);
+            CV.AndS(left, Scalar.All(right), result);
+            return result;
+        }
+
+        /// <summary>
+        /// Performs per-element bit-wise conjunction of a <see cref="double"/> value and a
+        /// <see cref="Mat"/>.
+        /// </summary>
+        /// <param name="left">The scalar value.</param>
+        /// <param name="right">The matrix value.</param>
+        /// <returns>
+        /// The result of performing the bit-wise conjunction of <paramref name="left"/>
+        /// and <paramref name="right"/>.
+        /// </returns>
+        public static Mat operator &(double left, Mat right)
+        {
+            var result = new Mat(right.Rows, right.Cols, right.Depth, right.Channels);
+            CV.AndS(right, Scalar.All(left), result);
+            return result;
+        }
+
+        /// <summary>
+        /// Performs per-element bit-wise disjunction of two <see cref="Mat"/> values.
+        /// </summary>
+        /// <param name="left">The first matrix value.</param>
+        /// <param name="right">The second matrix value.</param>
+        /// <returns>
+        /// The result of performing the bit-wise disjunction of <paramref name="left"/>
+        /// and <paramref name="right"/>.
+        /// </returns>
+        public static Mat operator |(Mat left, Mat right)
+        {
+            var result = new Mat(left.Rows, left.Cols, left.Depth, left.Channels);
+            CV.Or(left, right, result);
+            return result;
+        }
+
+        /// <summary>
+        /// Performs per-element bit-wise disjunction of a <see cref="Mat"/> and a
+        /// <see cref="Scalar"/>.
+        /// </summary>
+        /// <param name="left">The matrix value.</param>
+        /// <param name="right">The scalar value.</param>
+        /// <returns>
+        /// The result of performing the bit-wise disjunction of <paramref name="left"/>
+        /// and <paramref name="right"/>.
+        /// </returns>
+        public static Mat operator |(Mat left, Scalar right)
+        {
+            var result = new Mat(left.Rows, left.Cols, left.Depth, left.Channels);
+            CV.OrS(left, right, result);
+            return result;
+        }
+
+        /// <summary>
+        /// Performs per-element bit-wise disjunction of a <see cref="Scalar"/> and a
+        /// <see cref="Mat"/>.
+        /// </summary>
+        /// <param name="left">The scalar value.</param>
+        /// <param name="right">The matrix value.</param>
+        /// <returns>
+        /// The result of performing the bit-wise disjunction of <paramref name="left"/>
+        /// and <paramref name="right"/>.
+        /// </returns>
+        public static Mat operator |(Scalar left, Mat right)
+        {
+            var result = new Mat(right.Rows, right.Cols, right.Depth, right.Channels);
+            CV.OrS(right, left, result);
+            return result;
+        }
+
+        /// <summary>
+        /// Performs per-element bit-wise disjunction of a <see cref="Mat"/> and a
+        /// <see cref="double"/> value.
+        /// </summary>
+        /// <param name="left">The matrix value.</param>
+        /// <param name="right">The scalar value.</param>
+        /// <returns>
+        /// The result of performing the bit-wise disjunction of <paramref name="left"/>
+        /// and <paramref name="right"/>.
+        /// </returns>
+        public static Mat operator |(Mat left, double right)
+        {
+            var result = new Mat(left.Rows, left.Cols, left.Depth, left.Channels);
+            CV.OrS(left, Scalar.All(right), result);
+            return result;
+        }
+
+        /// <summary>
+        /// Performs per-element bit-wise disjunction of a <see cref="double"/> value and a
+        /// <see cref="Mat"/>.
+        /// </summary>
+        /// <param name="left">The scalar value.</param>
+        /// <param name="right">The matrix value.</param>
+        /// <returns>
+        /// The result of performing the bit-wise disjunction of <paramref name="left"/>
+        /// and <paramref name="right"/>.
+        /// </returns>
+        public static Mat operator |(double left, Mat right)
+        {
+            var result = new Mat(right.Rows, right.Cols, right.Depth, right.Channels);
+            CV.OrS(right, Scalar.All(left), result);
+            return result;
+        }
+
+        #endregion
     }
 }
