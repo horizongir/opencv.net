@@ -252,6 +252,16 @@ namespace OpenCV.Net
         #region Operator Overloads
 
         /// <summary>
+        /// Converts a <see cref="IplImage"/> value to a <see cref="Mat"/>.
+        /// </summary>
+        /// <param name="image">The image to convert.</param>
+        /// <returns>A <see cref="Mat"/> value of the same size and element type.</returns>
+        public static explicit operator Mat(IplImage image)
+        {
+            return image.GetMat();
+        }
+
+        /// <summary>
         /// Returns the <see cref="IplImage"/> value (the sign is unchanged).
         /// </summary>
         /// <param name="image">The image to return.</param>

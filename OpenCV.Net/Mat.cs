@@ -608,6 +608,16 @@ namespace OpenCV.Net
         #region Operator Overloads
 
         /// <summary>
+        /// Converts a <see cref="Mat"/> value to a <see cref="IplImage"/>.
+        /// </summary>
+        /// <param name="mat">The matrix to convert.</param>
+        /// <returns>A <see cref="IplImage"/> value of the same size and element type.</returns>
+        public static explicit operator IplImage(Mat mat)
+        {
+            return mat.GetImage();
+        }
+
+        /// <summary>
         /// Returns the <see cref="Mat"/> value (the sign is unchanged).
         /// </summary>
         /// <param name="mat">The matrix to return.</param>
