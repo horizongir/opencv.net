@@ -548,6 +548,91 @@ namespace OpenCV.Net
         }
 
         /// <summary>
+        /// Performs per-element bit-wise "exclusive or" operation on two
+        /// <see cref="IplImage"/> values.
+        /// </summary>
+        /// <param name="left">The first image value.</param>
+        /// <param name="right">The second image value.</param>
+        /// <returns>
+        /// The result of performing the bit-wise "exclusive or" operation
+        /// of <paramref name="left"/> and <paramref name="right"/>.
+        /// </returns>
+        public static IplImage operator ^(IplImage left, IplImage right)
+        {
+            var result = new IplImage(left.Size, left.Depth, left.Channels);
+            CV.Xor(left, right, result);
+            return result;
+        }
+
+        /// <summary>
+        /// Performs per-element bit-wise "exclusive or" operation of a
+        /// <see cref="IplImage"/> and a <see cref="Scalar"/>.
+        /// </summary>
+        /// <param name="left">The image value.</param>
+        /// <param name="right">The scalar value.</param>
+        /// <returns>
+        /// The result of performing the bit-wise "exclusive or" operation
+        /// of <paramref name="left"/> and <paramref name="right"/>.
+        /// </returns>
+        public static IplImage operator ^(IplImage left, Scalar right)
+        {
+            var result = new IplImage(left.Size, left.Depth, left.Channels);
+            CV.XorS(left, right, result);
+            return result;
+        }
+
+        /// <summary>
+        /// Performs per-element bit-wise "exclusive or" operation of a
+        /// <see cref="Scalar"/> and a <see cref="IplImage"/>.
+        /// </summary>
+        /// <param name="left">The scalar value.</param>
+        /// <param name="right">The image value.</param>
+        /// <returns>
+        /// The result of performing the bit-wise "exclusive or" operation
+        /// of <paramref name="left"/> and <paramref name="right"/>.
+        /// </returns>
+        public static IplImage operator ^(Scalar left, IplImage right)
+        {
+            var result = new IplImage(right.Size, right.Depth, right.Channels);
+            CV.XorS(right, left, result);
+            return result;
+        }
+
+        /// <summary>
+        /// Performs per-element bit-wise "exclusive or" operation of a
+        /// <see cref="IplImage"/> and a <see cref="double"/> value.
+        /// </summary>
+        /// <param name="left">The image value.</param>
+        /// <param name="right">The scalar value.</param>
+        /// <returns>
+        /// The result of performing the bit-wise "exclusive or" operation
+        /// of <paramref name="left"/> and <paramref name="right"/>.
+        /// </returns>
+        public static IplImage operator ^(IplImage left, double right)
+        {
+            var result = new IplImage(left.Size, left.Depth, left.Channels);
+            CV.XorS(left, Scalar.All(right), result);
+            return result;
+        }
+
+        /// <summary>
+        /// Performs per-element bit-wise "exclusive or" operation of a
+        /// <see cref="double"/> value and a <see cref="IplImage"/>.
+        /// </summary>
+        /// <param name="left">The scalar value.</param>
+        /// <param name="right">The image value.</param>
+        /// <returns>
+        /// The result of performing the bit-wise "exclusive or" operation
+        /// of <paramref name="left"/> and <paramref name="right"/>.
+        /// </returns>
+        public static IplImage operator ^(double left, IplImage right)
+        {
+            var result = new IplImage(right.Size, right.Depth, right.Channels);
+            CV.XorS(right, Scalar.All(left), result);
+            return result;
+        }
+
+        /// <summary>
         /// Performs per-element bit-wise conjunction of two <see cref="IplImage"/> values.
         /// </summary>
         /// <param name="left">The first image value.</param>
