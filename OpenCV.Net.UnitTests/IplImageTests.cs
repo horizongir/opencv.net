@@ -259,6 +259,46 @@ namespace OpenCV.Net.UnitTests
         }
 
         [TestMethod]
+        public void op_ExclusiveOr_IplImageIplImage_ReturnsExclusiveOrOnTwoIplImages()
+        {
+            var left = CreateEye();
+            var right = CreateEye();
+            Assert.AreEqual(0, (left ^ right).GetReal(0, 0));
+        }
+
+        [TestMethod]
+        public void op_ExclusiveOr_IplImageScalar_ReturnsExclusiveOrOnIplImageAndScalar()
+        {
+            var image = CreateEye(depth: IplDepth.S32);
+            var scalar = Scalar.All(ScalarValue);
+            Assert.AreEqual((int)EyeValue ^ (int)ScalarValue, (image ^ scalar).GetReal(0, 0));
+        }
+
+        [TestMethod]
+        public void op_ExclusiveOr_ScalarIplImage_ReturnsExclusiveOrOnIplImageAndScalar()
+        {
+            var scalar = Scalar.All(ScalarValue);
+            var image = CreateEye(depth: IplDepth.S32);
+            Assert.AreEqual((int)EyeValue ^ (int)ScalarValue, (scalar ^ image).GetReal(0, 0));
+        }
+
+        [TestMethod]
+        public void op_ExclusiveOr_IplImageDouble_ReturnsExclusiveOrOnIplImageAndScalar()
+        {
+            var image = CreateEye(depth: IplDepth.S32);
+            var scalar = ScalarValue;
+            Assert.AreEqual((int)EyeValue ^ (int)ScalarValue, (image ^ scalar).GetReal(0, 0));
+        }
+
+        [TestMethod]
+        public void op_ExclusiveOr_DoubleIplImage_ReturnsExclusiveOrOnIplImageAndScalar()
+        {
+            var scalar = ScalarValue;
+            var image = CreateEye(depth: IplDepth.S32);
+            Assert.AreEqual((int)EyeValue ^ (int)ScalarValue, (scalar ^ image).GetReal(0, 0));
+        }
+
+        [TestMethod]
         public void op_BitwiseAnd_IplImageIplImage_ReturnsBitwiseConjunctionOfTwoIplImages()
         {
             var left = CreateEye();

@@ -904,6 +904,91 @@ namespace OpenCV.Net
         }
 
         /// <summary>
+        /// Performs per-element bit-wise "exclusive or" operation on two
+        /// <see cref="Mat"/> values.
+        /// </summary>
+        /// <param name="left">The first matrix value.</param>
+        /// <param name="right">The second matrix value.</param>
+        /// <returns>
+        /// The result of performing the bit-wise "exclusive or" operation
+        /// of <paramref name="left"/> and <paramref name="right"/>.
+        /// </returns>
+        public static Mat operator ^(Mat left, Mat right)
+        {
+            var result = new Mat(left.Rows, left.Cols, left.Depth, left.Channels);
+            CV.Xor(left, right, result);
+            return result;
+        }
+
+        /// <summary>
+        /// Performs per-element bit-wise "exclusive or" operation of a
+        /// <see cref="Mat"/> and a <see cref="Scalar"/>.
+        /// </summary>
+        /// <param name="left">The matrix value.</param>
+        /// <param name="right">The scalar value.</param>
+        /// <returns>
+        /// The result of performing the bit-wise "exclusive or" operation
+        /// of <paramref name="left"/> and <paramref name="right"/>.
+        /// </returns>
+        public static Mat operator ^(Mat left, Scalar right)
+        {
+            var result = new Mat(left.Rows, left.Cols, left.Depth, left.Channels);
+            CV.XorS(left, right, result);
+            return result;
+        }
+
+        /// <summary>
+        /// Performs per-element bit-wise "exclusive or" operation of a
+        /// <see cref="Scalar"/> and a <see cref="Mat"/>.
+        /// </summary>
+        /// <param name="left">The scalar value.</param>
+        /// <param name="right">The matrix value.</param>
+        /// <returns>
+        /// The result of performing the bit-wise "exclusive or" operation
+        /// of <paramref name="left"/> and <paramref name="right"/>.
+        /// </returns>
+        public static Mat operator ^(Scalar left, Mat right)
+        {
+            var result = new Mat(right.Rows, right.Cols, right.Depth, right.Channels);
+            CV.XorS(right, left, result);
+            return result;
+        }
+
+        /// <summary>
+        /// Performs per-element bit-wise "exclusive or" operation of a
+        /// <see cref="Mat"/> and a <see cref="double"/> value.
+        /// </summary>
+        /// <param name="left">The matrix value.</param>
+        /// <param name="right">The scalar value.</param>
+        /// <returns>
+        /// The result of performing the bit-wise "exclusive or" operation
+        /// of <paramref name="left"/> and <paramref name="right"/>.
+        /// </returns>
+        public static Mat operator ^(Mat left, double right)
+        {
+            var result = new Mat(left.Rows, left.Cols, left.Depth, left.Channels);
+            CV.XorS(left, Scalar.All(right), result);
+            return result;
+        }
+
+        /// <summary>
+        /// Performs per-element bit-wise "exclusive or" operation of a
+        /// <see cref="double"/> value and a <see cref="Mat"/>.
+        /// </summary>
+        /// <param name="left">The scalar value.</param>
+        /// <param name="right">The matrix value.</param>
+        /// <returns>
+        /// The result of performing the bit-wise "exclusive or" operation
+        /// of <paramref name="left"/> and <paramref name="right"/>.
+        /// </returns>
+        public static Mat operator ^(double left, Mat right)
+        {
+            var result = new Mat(right.Rows, right.Cols, right.Depth, right.Channels);
+            CV.XorS(right, Scalar.All(left), result);
+            return result;
+        }
+
+        /// <summary>
         /// Performs per-element bit-wise conjunction of two <see cref="Mat"/> values.
         /// </summary>
         /// <param name="left">The first matrix value.</param>

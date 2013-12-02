@@ -215,6 +215,46 @@ namespace OpenCV.Net.UnitTests
         }
 
         [TestMethod]
+        public void op_ExclusiveOr_MatMat_ReturnsExclusiveOrOnTwoMats()
+        {
+            var left = CreateEye();
+            var right = CreateEye();
+            Assert.AreEqual(0, (left ^ right).GetReal(0, 0));
+        }
+
+        [TestMethod]
+        public void op_ExclusiveOr_MatScalar_ReturnsExclusiveOrOnMatAndScalar()
+        {
+            var mat = CreateEye(depth: Depth.S32);
+            var scalar = Scalar.All(ScalarValue);
+            Assert.AreEqual((int)EyeValue ^ (int)ScalarValue, (mat ^ scalar).GetReal(0, 0));
+        }
+
+        [TestMethod]
+        public void op_ExclusiveOr_ScalarMat_ReturnsExclusiveOrOnMatAndScalar()
+        {
+            var scalar = Scalar.All(ScalarValue);
+            var mat = CreateEye(depth: Depth.S32);
+            Assert.AreEqual((int)EyeValue ^ (int)ScalarValue, (scalar ^ mat).GetReal(0, 0));
+        }
+
+        [TestMethod]
+        public void op_ExclusiveOr_MatDouble_ReturnsExclusiveOrOnMatAndScalar()
+        {
+            var mat = CreateEye(depth: Depth.S32);
+            var scalar = ScalarValue;
+            Assert.AreEqual((int)EyeValue ^ (int)ScalarValue, (mat ^ scalar).GetReal(0, 0));
+        }
+
+        [TestMethod]
+        public void op_ExclusiveOr_DoubleMat_ReturnsExclusiveOrOnMatAndScalar()
+        {
+            var scalar = ScalarValue;
+            var mat = CreateEye(depth: Depth.S32);
+            Assert.AreEqual((int)EyeValue ^ (int)ScalarValue, (scalar ^ mat).GetReal(0, 0));
+        }
+
+        [TestMethod]
         public void op_BitwiseAnd_MatMat_ReturnsBitwiseConjunctionOfTwoMats()
         {
             var left = CreateEye();
