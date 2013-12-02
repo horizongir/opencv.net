@@ -150,7 +150,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\.nuget\NuGet.exe">
+    <None Include="$(SolutionDir)\.nuget\NuGet.exe">
       <Link>NuGet\build\native\private\NuGet.exe</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
