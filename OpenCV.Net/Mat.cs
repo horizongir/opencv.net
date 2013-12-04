@@ -50,6 +50,19 @@ namespace OpenCV.Net
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Mat"/> class with the specified
+        /// <paramref name="size"/>, element bit <paramref name="depth"/> and
+        /// <paramref name="channels"/> per element.
+        /// </summary>
+        /// <param name="size">The pixel-accurate size of the <see cref="Mat"/>.</param>
+        /// <param name="depth">The bit depth of matrix elements.</param>
+        /// <param name="channels">The number of channels per element.</param>
+        public Mat(Size size, Depth depth, int channels)
+            : this(size.Height, size.Width, depth, channels)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Mat"/> class with the specified
         /// number of <paramref name="rows"/> and <paramref name="cols"/>, element bit
         /// <paramref name="depth"/> and <paramref name="channels"/> per element.
         /// </summary>
@@ -59,6 +72,23 @@ namespace OpenCV.Net
         /// <param name="channels">The number of channels per element.</param>
         public Mat(int rows, int cols, Depth depth, int channels)
             : this(NativeMethods.cvCreateMat(rows, cols, MatHelper.GetMatType(depth, channels)), true)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Mat"/> class with the specified
+        /// <paramref name="size"/>, element bit <paramref name="depth"/> and
+        /// <paramref name="channels"/> per element. A pointer to the matrix raw
+        /// <paramref name="data"/> is provided as well as the optional full row length
+        /// <paramref name="step"/> size in bytes.
+        /// </summary>
+        /// <param name="size">The pixel-accurate size of the <see cref="Mat"/>.</param>
+        /// <param name="depth">The bit depth of matrix elements.</param>
+        /// <param name="channels">The number of channels per matrix element.</param>
+        /// <param name="data">A pointer to the matrix raw element data.</param>
+        /// <param name="step">The full row length in bytes.</param>
+        public Mat(Size size, Depth depth, int channels, IntPtr data, int step = AutoStep)
+            : this(size.Height, size.Width, depth, channels, data, step)
         {
         }
 
@@ -192,6 +222,111 @@ namespace OpenCV.Net
         public Mat Clone()
         {
             return new Mat(NativeMethods.cvCloneMat(this), true);
+        }
+
+        /// <summary>
+        /// Initializes a new <see cref="Mat"/> with all elements set to zero and
+        /// the specified number of <paramref name="rows"/> and <paramref name="cols"/>,
+        /// element bit <paramref name="depth"/> and <paramref name="channels"/> per element.
+        /// </summary>
+        /// <param name="rows">The number of rows in the matrix.</param>
+        /// <param name="cols">The number of columns in the matrix.</param>
+        /// <param name="depth">The bit depth of matrix elements.</param>
+        /// <param name="channels">The number of channels per matrix element.</param>
+        /// <returns>
+        /// A new <see cref="Mat"/> instance with all its elements set to zero.
+        /// </returns>
+        public static Mat Zeros(int rows, int cols, Depth depth, int channels)
+        {
+            var mat = new Mat(rows, cols, depth, channels);
+            mat.SetZero();
+            return mat;
+        }
+
+        /// <summary>
+        /// Initializes a new <see cref="Mat"/> with all elements set to zero and
+        /// the specified <paramref name="size"/>, element bit <paramref name="depth"/>
+        /// and <paramref name="channels"/> per element.
+        /// </summary>
+        /// <param name="size">The pixel-accurate size of the <see cref="Mat"/>.</param>
+        /// <param name="depth">The bit depth of matrix elements.</param>
+        /// <param name="channels">The number of channels per matrix element.</param>
+        /// <returns>
+        /// A new <see cref="Mat"/> instance with all its elements set to zero.
+        /// </returns>
+        public static Mat Zeros(Size size, Depth depth, int channels)
+        {
+            return Zeros(size.Height, size.Width, depth, channels);
+        }
+
+        /// <summary>
+        /// Initializes a new <see cref="Mat"/> with all elements set to one and
+        /// the specified number of <paramref name="rows"/> and <paramref name="cols"/>,
+        /// element bit <paramref name="depth"/> and <paramref name="channels"/> per element.
+        /// </summary>
+        /// <param name="rows">The number of rows in the matrix.</param>
+        /// <param name="cols">The number of columns in the matrix.</param>
+        /// <param name="depth">The bit depth of matrix elements.</param>
+        /// <param name="channels">The number of channels per matrix element.</param>
+        /// <returns>
+        /// A new <see cref="Mat"/> instance with all its elements set to one.
+        /// </returns>
+        public static Mat Ones(int rows, int cols, Depth depth, int channels)
+        {
+            var mat = new Mat(rows, cols, depth, channels);
+            mat.Set(Scalar.All(1));
+            return mat;
+        }
+
+        /// <summary>
+        /// Initializes a new <see cref="Mat"/> with all elements set to one and
+        /// the specified <paramref name="size"/>, element bit <paramref name="depth"/>
+        /// and <paramref name="channels"/> per element.
+        /// </summary>
+        /// <param name="size">The pixel-accurate size of the <see cref="Mat"/>.</param>
+        /// <param name="depth">The bit depth of matrix elements.</param>
+        /// <param name="channels">The number of channels per matrix element.</param>
+        /// <returns>
+        /// A new <see cref="Mat"/> instance with all its elements set to one.
+        /// </returns>
+        public static Mat Ones(Size size, Depth depth, int channels)
+        {
+            return Ones(size.Height, size.Width, depth, channels);
+        }
+
+        /// <summary>
+        /// Initializes a new <see cref="Mat"/> with ones on the main diagonal and zeros elsewhere.
+        /// The matrix will have the specified number of <paramref name="rows"/> and <paramref name="cols"/>,
+        /// element bit <paramref name="depth"/> and <paramref name="channels"/> per element.
+        /// </summary>
+        /// <param name="rows">The number of rows in the matrix.</param>
+        /// <param name="cols">The number of columns in the matrix.</param>
+        /// <param name="depth">The bit depth of matrix elements.</param>
+        /// <param name="channels">The number of channels per matrix element.</param>
+        /// <returns>
+        /// A new <see cref="Mat"/> instance with ones on the main diagonal and zeros elsewhere.
+        /// </returns>
+        public static Mat Eye(int rows, int cols, Depth depth, int channels)
+        {
+            var mat = new Mat(rows, cols, depth, channels);
+            CV.SetIdentity(mat);
+            return mat;
+        }
+
+        /// <summary>
+        /// Initializes a new <see cref="Mat"/> with ones on the main diagonal and zeros elsewhere.
+        /// The matrix will have the specified <paramref name="size"/>, element bit
+        /// <paramref name="depth"/> and <paramref name="channels"/> per element.
+        /// </summary>
+        /// <param name="size">The pixel-accurate size of the <see cref="Mat"/>.</param>
+        /// <param name="depth">The bit depth of matrix elements.</param>
+        /// <param name="channels">The number of channels per matrix element.</param>
+        /// <returns>
+        /// A new <see cref="Mat"/> instance with ones on the main diagonal and zeros elsewhere.
+        /// </returns>
+        public static Mat Eye(Size size, Depth depth, int channels)
+        {
+            return Eye(size.Height, size.Width, depth, channels);
         }
 
         /// <summary>
