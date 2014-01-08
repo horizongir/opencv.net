@@ -22,7 +22,7 @@ namespace OpenCV.Net
         public const int AutoStep = 0x7fffffff;
 
         internal Mat()
-            : base(false)
+            : base(true)
         {
         }
 
