@@ -94,16 +94,16 @@ namespace OpenCV.Net.Native
         internal static extern void cvWarpAffine(Arr src, Arr dst, Mat map_matrix, WarpFlags flags, Scalar fillval);
 
         [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern Mat cvGetAffineTransform(Point2f[] src, Point2f[] dst, Mat map_matrix);
+        internal static extern IntPtr cvGetAffineTransform(Point2f[] src, Point2f[] dst, Mat map_matrix);
 
         [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern Mat cv2DRotationMatrix(Point2f center, double angle, double scale, Mat map_matrix);
+        internal static extern IntPtr cv2DRotationMatrix(Point2f center, double angle, double scale, Mat map_matrix);
 
         [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void cvWarpPerspective(Arr src, Arr dst, Mat map_matrix, WarpFlags flags, Scalar fillval);
 
         [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern Mat cvGetPerspectiveTransform(Point2f[] src, Point2f[] dst, Mat map_matrix);
+        internal static extern IntPtr cvGetPerspectiveTransform(Point2f[] src, Point2f[] dst, Mat map_matrix);
 
         [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void cvRemap(Arr src, Arr dst, Arr mapx, Arr mapy, WarpFlags flags, Scalar fillval);
