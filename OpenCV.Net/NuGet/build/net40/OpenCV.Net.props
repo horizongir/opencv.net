@@ -2,7 +2,7 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" InitialTargets="OpenCV_init_props_0">
   <PropertyGroup Condition="'$(Needs-OpenCV-Version)' == '' OR '$(Needs-OpenCV-Version)' == '*Undefined*'">
     <NugetMsBuildExtensionLoaded Condition="'$(NugetMsBuildExtensionLoaded)' == '' OR '$(NuGet-OverlayLoaded)' == 'false'">false</NugetMsBuildExtensionLoaded>
-    <NuGet-NativeExtensionPath Condition="'$(NuGet-NativeExtensionPath)' == '' OR '$(NuGet-NativeExtensionVersion)' =='' OR $(NuGet-NativeExtensionVersion) &lt; 562967161143296">$(MSBuildThisFileDirectory)\private</NuGet-NativeExtensionPath>
+    <NuGet-NativeExtensionPath Condition="'$(NuGet-NativeExtensionPath)' == '' OR '$(NuGet-NativeExtensionVersion)' =='' OR $(NuGet-NativeExtensionVersion) &lt; 562967161143296">$(MSBuildThisFileDirectory)..\..\build\native\private</NuGet-NativeExtensionPath>
     <Needs-OpenCV />
     <Needs-OpenCV-Version />
   </PropertyGroup>
