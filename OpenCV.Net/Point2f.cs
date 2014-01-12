@@ -98,6 +98,19 @@ namespace OpenCV.Net
         }
 
         /// <summary>
+        /// Creates a <see cref="String"/> representation of this <see cref="Point2f"/>
+        /// structure.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="String"/> containing the <see cref="X"/> and <see cref="Y"/>
+        /// values of this <see cref="Point2f"/> structure.
+        /// </returns>
+        public override string ToString()
+        {
+            return string.Format("({0}, {1})", X, Y);
+        }
+
+        /// <summary>
         /// Tests whether two <see cref="Point2f"/> structures are equal.
         /// </summary>
         /// <param name="left">The <see cref="Point2f"/> structure on the left of the equality operator.</param>

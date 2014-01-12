@@ -94,6 +94,19 @@ namespace OpenCV.Net
         }
 
         /// <summary>
+        /// Creates a <see cref="String"/> representation of this <see cref="Point3d"/>
+        /// structure.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="String"/> containing the <see cref="X"/>, <see cref="Y"/> and
+        /// <see cref="Z"/> values of this <see cref="Point3d"/> structure.
+        /// </returns>
+        public override string ToString()
+        {
+            return string.Format("({0}, {1}, {2})", X, Y, Z);
+        }
+
+        /// <summary>
         /// Tests whether two <see cref="Point3d"/> structures are equal.
         /// </summary>
         /// <param name="left">The <see cref="Point3d"/> structure on the left of the equality operator.</param>
