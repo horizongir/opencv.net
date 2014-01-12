@@ -8,7 +8,7 @@ namespace OpenCV.Net.Native
 {
     static partial class NativeMethods
     {
-        const string coreLib = "opencv_core247";
+        const string coreLib = "opencv_core248";
 
         #region Array allocation, deallocation, initialization and access to elements
 

@@ -8,7 +8,7 @@ namespace OpenCV.Net.Native
 {
     static partial class NativeMethods
     {
-        const string videoLib = "opencv_video247";
+        const string videoLib = "opencv_video248";
 
         #region Motion Analysis
 
