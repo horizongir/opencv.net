@@ -536,7 +536,12 @@ namespace OpenCV.Net
         /// <summary>
         /// Specifies the Smartek Giganetix GigEVision SDK capture domain.
         /// </summary>
-        Giganetix = 1300
+        Giganetix = 1300,
+
+        /// <summary>
+        /// Specifies the Intel Perceptual Computing SDK capture domain.
+        /// </summary>
+        IntelPerc = 1500
     }
 
     /// <summary>
@@ -1088,6 +1093,57 @@ namespace OpenCV.Net
         /// <summary>
         /// Specifies the sensor height (Smartek Giganetix Ethernet vision interface only).
         /// </summary>
-        GigaFrameSensorHeight = 10006
+        GigaFrameSensorHeight = 10006,
+
+        /// <summary>
+        /// Specifies the number of profiles (Intel Perceptual Computing interface only).
+        /// </summary>
+        IntelPercProfileCount = 11001,
+
+        /// <summary>
+        /// Specifies the profile index (Intel Perceptual Computing interface only).
+        /// </summary>
+        IntelPercProfileIndex = 11002,
+
+        /// <summary>
+        /// Specifies the low confidence value of the depth sensor (Intel Perceptual Computing interface only).
+        /// </summary>
+        IntelPercDepthLowConfidenceValue = 11003,
+
+        /// <summary>
+        /// Specifies the saturation value of the depth sensor (Intel Perceptual Computing interface only).
+        /// </summary>
+        IntelPercDepthSaturationValue = 11004,
+
+        /// <summary>
+        /// Specifies the confidence threshold of the depth sensor (Intel Perceptual Computing interface only).
+        /// </summary>
+        IntelPercDepthConfidenceThreshold = 11005,
+
+        /// <summary>
+        /// Specifies the horizontal focal length of the depth sensor (Intel Perceptual Computing interface only).
+        /// </summary>
+        IntelPercDepthFocalLengthHorizontal = 11006,
+
+        /// <summary>
+        /// Specifies the vertical focal length of the depth sensor (Intel Perceptual Computing interface only).
+        /// </summary>
+        IntelPercDepthFocalLengthVertical = 11007,
+
+        /// <summary>
+        /// Specifies a flag for getting/setting properties of the Intel Perceptual SDK sensor depth generator.
+        /// </summary>
+        IntelPercDepthGenerator = 1 << 29,
+
+        /// <summary>
+        /// Specifies a flag for getting/setting properties of the Intel Perceptual SDK sensor image generator.
+        /// </summary>
+        IntelPercImageGenerator = 1 << 28,
+
+        /// <summary>
+        /// Specifies a combination of <see cref="IntelPercDepthGenerator"/> and
+        /// <see cref="IntelPercImageGenerator"/>.
+        /// </summary>
+        IntelPercGeneratorsMask = IntelPercDepthGenerator + IntelPercImageGenerator
     }
 }
