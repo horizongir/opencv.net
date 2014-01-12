@@ -191,7 +191,7 @@ namespace OpenCV.Net
         /// </returns>
         public override string ToString()
         {
-            return string.Format("{Width={0}, Height={1}, Depth={2}, Channels={3}}", Width, Height, Depth, Channels);
+            return string.Format("{{Width={0}, Height={1}, Depth={2}, Channels={3}}}", Width, Height, Depth, Channels);
         }
 
         /// <summary>

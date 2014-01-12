@@ -93,7 +93,7 @@ namespace OpenCV.Net
         /// </returns>
         public override string ToString()
         {
-            return string.Format("{Center={0}, Size={1}, Angle={2}}", Center, Size, Angle);
+            return string.Format("{{Center={0}, Size={1}, Angle={2}}}", Center, Size, Angle);
         }
 
         /// <summary>
