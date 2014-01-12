@@ -14,7 +14,7 @@ namespace OpenCV.Net
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     [TypeConverter(typeof(NumericAggregateConverter))]
-    public struct Scalar
+    public struct Scalar : IEquatable<Scalar>
     {
         /// <summary>
         /// The first value of the scalar tuple.
@@ -114,6 +114,48 @@ namespace OpenCV.Net
         }
 
         /// <summary>
+        /// Returns a hash code for this <see cref="Scalar"/> structure.
+        /// </summary>
+        /// <returns>An integer value that specifies a hash value for this <see cref="Scalar"/> structure.</returns>
+        public override int GetHashCode()
+        {
+            return Val0.GetHashCode() ^ Val1.GetHashCode() ^ Val2.GetHashCode() ^ Val3.GetHashCode();
+        }
+
+        /// <summary>
+        /// Tests to see whether the specified object is a <see cref="Scalar"/> structure
+        /// with the same tuple values as this <see cref="Scalar"/> structure.
+        /// </summary>
+        /// <param name="obj">The <see cref="Object"/> to test.</param>
+        /// <returns>
+        /// <b>true</b> if <paramref name="obj"/> is a <see cref="Scalar"/> and has the
+        /// same Val0, Val1, Val2 and Val3 values as this <see cref="Scalar"/>; otherwise, <b>false</b>.
+        /// </returns>
+        public override bool Equals(object obj)
+        {
+            if (obj is Scalar)
+            {
+                return Equals((Scalar)obj);
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Returns a value indicating whether this instance has the same tuple values
+        /// as a specified <see cref="Scalar"/> structure.
+        /// </summary>
+        /// <param name="other">The <see cref="Scalar"/> structure to compare to this instance.</param>
+        /// <returns>
+        /// <b>true</b> if <paramref name="other"/> has the same Val0, Val1, Val2 and Val3 values as
+        /// this instance; otherwise, <b>false</b>.
+        /// </returns>
+        public bool Equals(Scalar other)
+        {
+            return Val0 == other.Val0 && Val1 == other.Val1 && Val2 == other.Val2 && Val3 == other.Val3;
+        }
+
+        /// <summary>
         /// Creates a <see cref="String"/> representation of this <see cref="Scalar"/>
         /// structure.
         /// </summary>
@@ -124,6 +166,34 @@ namespace OpenCV.Net
         public override string ToString()
         {
             return string.Format("({0}, {1}, {2}, {3})", Val0, Val1, Val2, Val3);
+        }
+
+        /// <summary>
+        /// Tests whether two <see cref="Scalar"/> structures are equal.
+        /// </summary>
+        /// <param name="left">The <see cref="Scalar"/> structure on the left of the equality operator.</param>
+        /// <param name="right">The <see cref="Scalar"/> structure on the right of the equality operator.</param>
+        /// <returns>
+        /// <b>true</b> if <paramref name="left"/> and <paramref name="right"/> have equal Val0, Val1, Val2
+        /// and Val3 values; otherwise, <b>false</b>.
+        /// </returns>
+        public static bool operator ==(Scalar left, Scalar right)
+        {
+            return left.Equals(right);
+        }
+
+        /// <summary>
+        /// Tests whether two <see cref="Scalar"/> structures are different.
+        /// </summary>
+        /// <param name="left">The <see cref="Scalar"/> structure on the left of the inequality operator.</param>
+        /// <param name="right">The <see cref="Scalar"/> structure on the right of the inequality operator.</param>
+        /// <returns>
+        /// <b>true</b> if <paramref name="left"/> and <paramref name="right"/> differ in Val0, Val1, Val2
+        /// or Val3 values; <b>false</b> if <paramref name="left"/> and <paramref name="right"/> are equal.
+        /// </returns>
+        public static bool operator !=(Scalar left, Scalar right)
+        {
+            return !left.Equals(right);
         }
     }
 }
