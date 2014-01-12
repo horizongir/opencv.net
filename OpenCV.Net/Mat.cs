@@ -213,6 +213,18 @@ namespace OpenCV.Net
         }
 
         /// <summary>
+        /// Creates a <see cref="String"/> representation of this <see cref="Mat"/> instance.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="String"/> containing the rows, columns, depth and number of channels
+        /// of this <see cref="Mat"/> instance.
+        /// </returns>
+        public override string ToString()
+        {
+            return string.Format("{Rows={0}, Cols={1}, Depth={2}, Channels={3}}", Rows, Cols, Depth, Channels);
+        }
+
+        /// <summary>
         /// Creates a new <see cref="Mat"/> that is a copy of the current instance.
         /// </summary>
         /// <returns>
