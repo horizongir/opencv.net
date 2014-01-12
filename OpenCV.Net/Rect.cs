@@ -93,6 +93,20 @@ namespace OpenCV.Net
         }
 
         /// <summary>
+        /// Creates a <see cref="String"/> representation of this <see cref="Rect"/>
+        /// structure.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="String"/> containing the <see cref="X"/> and <see cref="Y"/> offset
+        /// as well as the <see cref="Width"/> and <see cref="Height"/> of this
+        /// <see cref="Rect"/> structure.
+        /// </returns>
+        public override string ToString()
+        {
+            return string.Format("{X={0}, Y={1}, Width={2}, Height={3}}", X, Y, Width, Height);
+        }
+
+        /// <summary>
         /// Tests whether two <see cref="Rect"/> structures are equal.
         /// </summary>
         /// <param name="left">The <see cref="Rect"/> structure on the left of the equality operator.</param>

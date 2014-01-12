@@ -183,6 +183,18 @@ namespace OpenCV.Net
         }
 
         /// <summary>
+        /// Creates a <see cref="String"/> representation of this <see cref="IplImage"/> instance.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="String"/> containing the width, height, depth and number of channels
+        /// of this <see cref="IplImage"/> instance.
+        /// </returns>
+        public override string ToString()
+        {
+            return string.Format("{Width={0}, Height={1}, Depth={2}, Channels={3}}", Width, Height, Depth, Channels);
+        }
+
+        /// <summary>
         /// Creates a new <see cref="IplImage"/> that is a copy of the current instance.
         /// </summary>
         /// <returns>

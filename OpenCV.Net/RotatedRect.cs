@@ -84,6 +84,19 @@ namespace OpenCV.Net
         }
 
         /// <summary>
+        /// Creates a <see cref="String"/> representation of this <see cref="RotatedRect"/>
+        /// structure.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="String"/> containing the center, size and rotation angle of this
+        /// <see cref="RotatedRect"/> structure.
+        /// </returns>
+        public override string ToString()
+        {
+            return string.Format("{Center={0}, Size={1}, Angle={2}}", Center, Size, Angle);
+        }
+
+        /// <summary>
         /// Tests whether two <see cref="RotatedRect"/> structures are equal.
         /// </summary>
         /// <param name="left">The <see cref="RotatedRect"/> structure on the left of the equality operator.</param>
