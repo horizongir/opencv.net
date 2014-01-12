@@ -45,7 +45,7 @@ namespace OpenCV.Net.UnitTests
         [TestMethod]
         public void GetSubRect_ReturnsMatWithSubRectDimensions()
         {
-            var rect = new Rect(0, 0, arr.Size.Width / 2, arr.Size.Height / 2);
+            var rect = new Rect(0, 0, Dim1 / 2, Dim0 / 2);
             using (var subRect = arr.GetSubRect(rect))
             {
                 Assert.AreEqual(rect.Height, subRect.Rows);
@@ -96,7 +96,7 @@ namespace OpenCV.Net.UnitTests
         [TestMethod]
         public void GetDiag_ReturnsMatWithArrHeight()
         {
-            using (var diag = arr.GetCol(0))
+            using (var diag = arr.GetDiag(0))
             {
                 Assert.AreEqual(1, diag.Cols);
                 Assert.AreEqual(arr.Size.Height, diag.Rows);
@@ -353,7 +353,7 @@ namespace OpenCV.Net.UnitTests
         [TestMethod]
         public void ConvertScale_DestinationArrHasCorrectlyScaledElements()
         {
-            arr.Set(Scalar.All(1));
+            arr[0, 0] = Scalar.All(1);
             using (var arr2 = CreateArr(1))
             {
                 CV.ConvertScale(arr, arr2, 5, 1);
@@ -364,7 +364,7 @@ namespace OpenCV.Net.UnitTests
         [TestMethod]
         public void ConvertScaleAbs_DestinationArrHasCorrectlyScaledElements()
         {
-            arr.Set(Scalar.All(1));
+            arr[0, 0] = Scalar.All(1);
             using (var arr2 = CreateArr(1, Depth.U8))
             {
                 CV.ConvertScaleAbs(arr, arr2, 5, 1);
