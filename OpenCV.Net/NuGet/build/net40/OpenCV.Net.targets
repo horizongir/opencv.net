@@ -42,8 +42,8 @@
     <PropertyGroup>
       <NugetMsBuildExtensionLoaded Condition="'$(NugetMsBuildExtensionLoaded)' == '' OR '$(NuGet-OverlayLoaded)' == 'false'">true</NugetMsBuildExtensionLoaded>
     </PropertyGroup>
-    <NuGetPackageOverlay Package="OpenCV.overlay-x64_v110" Version="$(Needs-OpenCV-Version)" PackageDirectory="$(MSBuildThisFileDirectory)\..\.." SolutionDirectory="$(SolutionDir)" Condition="'$(Platform.ToLower())' == 'x64'" />
-    <NuGetPackageOverlay Package="OpenCV.overlay-Win32_v110" Version="$(Needs-OpenCV-Version)" PackageDirectory="$(MSBuildThisFileDirectory)\..\.." SolutionDirectory="$(SolutionDir)" Condition="'$(Platform.ToLower())' == 'x86' Or '$(Platform.ToLower())' == 'anycpu'" />
+    <NuGetPackageOverlay Package="OpenCV.ffmpeg.overlay-x64_v110" Version="$(Needs-OpenCV-Version)" PackageDirectory="$(MSBuildThisFileDirectory)\..\.." SolutionDirectory="$(SolutionDir)" Condition="'$(Platform.ToLower())' == 'x64'" />
+    <NuGetPackageOverlay Package="OpenCV.ffmpeg.overlay-Win32_v110" Version="$(Needs-OpenCV-Version)" PackageDirectory="$(MSBuildThisFileDirectory)\..\.." SolutionDirectory="$(SolutionDir)" Condition="'$(Platform.ToLower())' == 'x86' Or '$(Platform.ToLower())' == 'anycpu'" />
     <NuGetPackageOverlay Package="OpenCV.overlay-x64_v110_Release" Version="$(Needs-OpenCV-Version)" PackageDirectory="$(MSBuildThisFileDirectory)\..\.." SolutionDirectory="$(SolutionDir)" Condition="'$(Platform.ToLower())' == 'x64'" />
     <NuGetPackageOverlay Package="OpenCV.overlay-Win32_v110_Release" Version="$(Needs-OpenCV-Version)" PackageDirectory="$(MSBuildThisFileDirectory)\..\.." SolutionDirectory="$(SolutionDir)" Condition="'$(Platform.ToLower())' == 'x86' Or '$(Platform.ToLower())' == 'anycpu'" />
   </Target>
