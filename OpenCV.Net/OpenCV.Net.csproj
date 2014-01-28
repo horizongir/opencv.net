@@ -137,9 +137,6 @@
     <None Include="NuGet\build\native\pivot-list.txt" />
     <None Include="NuGet\build\native\private\CoApp.NuGetNativeExtensions.dll" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="NuGet\build\native\private\NuGet.exe" />
-  </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

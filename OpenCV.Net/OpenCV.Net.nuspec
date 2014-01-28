@@ -16,6 +16,7 @@
     <tags>OpenCV Computer Vision Image Processing Wrapper</tags>
   </metadata>
   <files>
+    <file src="..\.nuget\NuGet.exe" target="build\native\private"/>
     <file src="NuGet\build\**" target="build"/>
     <file src="NuGet\NuGet-Overlay.cmd"/>
   </files>
