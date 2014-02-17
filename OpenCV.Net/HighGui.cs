@@ -62,8 +62,8 @@ namespace OpenCV.Net
                 throw new ArgumentNullException("fileName");
             }
 
-            var image = NativeMethods.cvLoadImage(fileName, colorType);
-            return image.IsInvalid ? null : image;
+            var pImage = NativeMethods.cvLoadImage(fileName, colorType);
+            return pImage == IntPtr.Zero ? null : new IplImage(pImage, true);
         }
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace OpenCV.Net
                 throw new ArgumentNullException("fileName");
             }
 
-            var mat = NativeMethods.cvLoadImageM(fileName, colorType);
-            return mat.IsInvalid ? null : mat;
+            var pMat = NativeMethods.cvLoadImageM(fileName, colorType);
+            return pMat == IntPtr.Zero ? null : new Mat(pMat, true);
         }
 
         /// <summary>
@@ -110,7 +110,8 @@ namespace OpenCV.Net
         /// <returns>The newly loaded image.</returns>
         public static IplImage DecodeImage(Mat buf, LoadImageFlags colorType)
         {
-            return NativeMethods.cvDecodeImage(buf, colorType);
+            var pImage = NativeMethods.cvDecodeImage(buf, colorType);
+            return pImage == IntPtr.Zero ? null : new IplImage(pImage, true);
         }
 
         /// <summary>
@@ -121,7 +122,8 @@ namespace OpenCV.Net
         /// <returns>The newly loaded image.</returns>
         public static Mat DecodeImageM(Mat buf, LoadImageFlags colorType)
         {
-            return NativeMethods.cvDecodeImageM(buf, colorType);
+            var pMat = NativeMethods.cvDecodeImageM(buf, colorType);
+            return pMat == IntPtr.Zero ? null : new Mat(pMat, true);
         }
 
         /// <summary>
@@ -140,7 +142,8 @@ namespace OpenCV.Net
                 throw new ArgumentNullException("ext");
             }
 
-            return NativeMethods.cvEncodeImage(ext, image, parameters);
+            var pMat = NativeMethods.cvEncodeImage(ext, image, parameters);
+            return pMat == IntPtr.Zero ? null : new Mat(pMat, true);
         }
 
         /// <summary>

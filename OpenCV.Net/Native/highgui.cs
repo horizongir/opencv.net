@@ -113,22 +113,22 @@ namespace OpenCV.Net.Native
         internal static extern void cvSetMouseCallback(string window_name, _CvMouseCallback on_mouse, IntPtr param);
 
         [DllImport(highguiLib, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        internal static extern IplImage cvLoadImage(string filename, LoadImageFlags iscolor);
+        internal static extern IntPtr cvLoadImage(string filename, LoadImageFlags iscolor);
 
         [DllImport(highguiLib, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        internal static extern Mat cvLoadImageM(string filename, LoadImageFlags iscolor);
+        internal static extern IntPtr cvLoadImageM(string filename, LoadImageFlags iscolor);
 
         [DllImport(highguiLib, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         internal static extern int cvSaveImage(string filename, Arr image, int[] parameters);
 
         [DllImport(highguiLib, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern IplImage cvDecodeImage(Mat buf, LoadImageFlags iscolor);
+        internal static extern IntPtr cvDecodeImage(Mat buf, LoadImageFlags iscolor);
 
         [DllImport(highguiLib, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern Mat cvDecodeImageM(Mat buf, LoadImageFlags iscolor);
+        internal static extern IntPtr cvDecodeImageM(Mat buf, LoadImageFlags iscolor);
 
         [DllImport(highguiLib, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        internal static extern Mat cvEncodeImage(string ext, Arr image, int[] parameters);
+        internal static extern IntPtr cvEncodeImage(string ext, Arr image, int[] parameters);
 
         [DllImport(highguiLib, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void cvConvertImage(Arr src, Arr dst, ConvertImageFlags flags);
