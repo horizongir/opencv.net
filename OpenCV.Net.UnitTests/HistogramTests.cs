@@ -29,6 +29,43 @@ namespace OpenCV.Net.UnitTests
         }
 
         [TestMethod]
+        public void GetType_DenseHistogram_ReturnsArrayEnumValue()
+        {
+            Assert.AreEqual(HistogramType.Array, hist.Type);
+        }
+
+        [TestMethod]
+        public void GetType_SparseHistogram_ReturnsSparseEnumValue()
+        {
+            var sparseHist = new Histogram(2, new[] { 2, 3 }, HistogramType.Sparse);
+            Assert.AreEqual(HistogramType.Sparse, sparseHist.Type);
+        }
+
+        [TestMethod]
+        public void Copy_NullOutput_ReturnsValidHistogram()
+        {
+            Histogram copy;
+            hist.Copy(out copy);
+            Assert.IsFalse(copy.IsInvalid);
+            Assert.AreEqual(hist.Bins.GetDims(), copy.Bins.GetDims());
+        }
+
+        [TestMethod]
+        public void Copy_NonNullOutput_ReplacesHistogram()
+        {
+            Histogram copy;
+            hist.Copy(out copy);
+            Assert.IsFalse(copy.IsInvalid);
+            Assert.AreEqual(hist.Bins.GetDims(), copy.Bins.GetDims());
+
+            var previous = copy;
+            hist.Copy(out copy);
+            Assert.AreNotSame(previous, copy);
+            Assert.IsFalse(copy.IsInvalid);
+            Assert.AreEqual(hist.Bins.GetDims(), copy.Bins.GetDims());
+        }
+
+        [TestMethod]
         public void GetIsUniform_UniformHistogram_ReturnsTrue()
         {
             Assert.IsTrue(hist.IsUniform);

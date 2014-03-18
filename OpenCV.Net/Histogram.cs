@@ -14,7 +14,12 @@ namespace OpenCV.Net
     public sealed class Histogram : SafeHandleZeroOrMinusOneIsInvalid
     {
         const int UniformFlag = 1 << 10;
-        readonly Arr bins;
+        Arr bins;
+
+        internal Histogram()
+            : base(true)
+        {
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Histogram"/> class with the
@@ -38,18 +43,7 @@ namespace OpenCV.Net
                 SetHandle(pHist);
             });
 
-            unsafe
-            {
-                switch (type)
-                {
-                    case HistogramType.Array:
-                        bins = new MatND(((_CvHistogram*)handle.ToPointer())->bins, false);
-                        break;
-                    case HistogramType.Sparse:
-                        bins = new SparseMat(((_CvHistogram*)handle.ToPointer())->bins, false);
-                        break;
-                }
-            }
+            CreateBins(type);
         }
 
         /// <summary>
@@ -58,6 +52,14 @@ namespace OpenCV.Net
         public Arr Bins
         {
             get { return bins; }
+        }
+
+        /// <summary>
+        /// Gets the type of the histogram representation format.
+        /// </summary>
+        public HistogramType Type
+        {
+            get { return bins is MatND ? HistogramType.Array : HistogramType.Sparse; }
         }
 
         /// <summary>
@@ -118,6 +120,22 @@ namespace OpenCV.Net
         public void SetBinRanges(float[][] ranges, bool uniform = true)
         {
             ConvertRanges(ranges, pRanges => NativeMethods.cvSetHistBinRanges(this, pRanges, uniform ? 1 : 0));
+        }
+
+        void CreateBins(HistogramType type)
+        {
+            unsafe
+            {
+                switch (type)
+                {
+                    case HistogramType.Array:
+                        bins = new MatND(((_CvHistogram*)handle.ToPointer())->bins, false);
+                        break;
+                    case HistogramType.Sparse:
+                        bins = new SparseMat(((_CvHistogram*)handle.ToPointer())->bins, false);
+                        break;
+                }
+            }
         }
 
         static void ConvertRanges(float[][] ranges, Action<IntPtr[]> action)
@@ -186,6 +204,7 @@ namespace OpenCV.Net
         public void Copy(out Histogram dst)
         {
             NativeMethods.cvCopyHist(this, out dst);
+            dst.CreateBins(Type);
         }
 
         /// <summary>
