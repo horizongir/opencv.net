@@ -62,6 +62,7 @@
     <Compile Include="IplImageTests.cs" />
     <Compile Include="ArrTests.cs" />
     <Compile Include="MatNDTests.cs" />
+    <Compile Include="HistogramTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OpenCV.Net\OpenCV.Net.csproj">
