@@ -13,18 +13,8 @@ namespace OpenCV.Net
     /// </summary>
     public sealed class Histogram : SafeHandleZeroOrMinusOneIsInvalid
     {
+        const int UniformFlag = 1 << 10;
         readonly Arr bins;
-
-        internal Histogram()
-            : base(true)
-        {
-        }
-
-        internal Histogram(IntPtr handle)
-            : base(true)
-        {
-            SetHandle(handle);
-        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Histogram"/> class with the
@@ -50,8 +40,70 @@ namespace OpenCV.Net
 
             unsafe
             {
-                bins = new Mat(((_CvHistogram*)handle.ToPointer())->bins, false);
+                switch (type)
+                {
+                    case HistogramType.Array:
+                        bins = new MatND(((_CvHistogram*)handle.ToPointer())->bins, false);
+                        break;
+                    case HistogramType.Sparse:
+                        bins = new SparseMat(((_CvHistogram*)handle.ToPointer())->bins, false);
+                        break;
+                }
             }
+        }
+
+        /// <summary>
+        /// Gets the multi-dimensional array of histogram data.
+        /// </summary>
+        public Arr Bins
+        {
+            get { return bins; }
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether the histogram uses evenly spaced bins.
+        /// </summary>
+        public bool IsUniform
+        {
+            get
+            {
+                unsafe
+                {
+                    return (((_CvHistogram*)handle.ToPointer())->type & UniformFlag) != 0;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets the bounds of the histogram bins.
+        /// </summary>
+        /// <returns>The array of ranges for the histogram bins.</returns>
+        public float[][] GetBinRanges()
+        {
+            var dims = bins.GetDims();
+            var ranges = new float[dims][];
+            unsafe
+            {
+                var hist = (_CvHistogram*)handle.ToPointer();
+                if (IsUniform)
+                {
+                    for (int i = 0; i < ranges.Length; i++)
+                    {
+                        ranges[i] = new[] { hist->thresh[i * 2], hist->thresh[i * 2 + 1] };
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < ranges.Length; i++)
+                    {
+                        var dimSize = bins.GetDimSize(i);
+                        ranges[i] = new float[dimSize * 2];
+                        Marshal.Copy((IntPtr)((float**)hist->thresh2)[i], ranges[i], 0, dimSize * 2);
+                    }
+                }
+            }
+
+            return ranges;
         }
 
         /// <summary>
@@ -68,7 +120,7 @@ namespace OpenCV.Net
             ConvertRanges(ranges, pRanges => NativeMethods.cvSetHistBinRanges(this, pRanges, uniform ? 1 : 0));
         }
 
-        void ConvertRanges(float[][] ranges, Action<IntPtr[]> action)
+        static void ConvertRanges(float[][] ranges, Action<IntPtr[]> action)
         {
             var handles = ranges != null ? Array.ConvertAll(ranges, range => GCHandle.Alloc(range, GCHandleType.Pinned)) : null;
             var pRanges = handles != null ? Array.ConvertAll(handles, handle => handle.AddrOfPinnedObject()) : null;
