@@ -115,5 +115,17 @@ namespace OpenCV.Net.UnitTests
                 }
             }
         }
+
+        [TestMethod]
+        public void Normalize_UniformHistogram_SumOfBinsEqualsOne()
+        {
+            var factor = 1.0;
+            var hist = new Histogram(1, new[] { 100 }, HistogramType.Array, new[] { new[] { 0, 256f } });
+            var diag = Mat.Eye(50, 50, Depth.U8, 1);
+            hist.CalcArrHist(new[] { diag });
+            hist.Normalize(factor);
+            var sum = CV.Sum(hist.Bins).Val0;
+            Assert.AreEqual(factor, sum);
+        }
     }
 }
