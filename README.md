@@ -1,5 +1,6 @@
 OpenCV.NET is a .NET interface for the popular OpenCV computer vision and image processing library. These bindings were developed over the course of a year and include many features that have been missing from other attempts, namely:
 
+* Cross-platform Mono compatibility (only P/Invoke is used)
 * Very close to 100% support of the latest C API (including undocumented functions)
 * Full documentation/intellisense for all supported methods, classes and enum members (arduously mined from many different sources)
 * Support for exceptions
