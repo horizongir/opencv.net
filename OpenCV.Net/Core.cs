@@ -1772,6 +1772,112 @@ namespace OpenCV.Net
 
         #endregion
 
+        #region K-means
+
+        /// <summary>
+        /// Finds centers of clusters and groups input samples around the clusters.
+        /// </summary>
+        /// <param name="samples">The floating-point matrix of input samples, one row per sample.</param>
+        /// <param name="clusterCount">The number of clusters to split the set by.</param>
+        /// <param name="labels">The input/output integer array that stores the cluster indices for every sample.</param>
+        /// <param name="criteria">
+        /// The algorithm termination criteria, that is, the maximum number of iterations
+        /// and/or the desired accuracy.
+        /// </param>
+        /// <param name="attempts">
+        /// Specifies the number of times the algorithm is executed using different initial labelings.
+        /// The algorithm returns the labels that yield the best compactness (see the last parameter).
+        /// </param>
+        /// <returns>The compactness measure for the best clustering attempt.</returns>
+        public static int KMeans2(
+            Arr samples,
+            int clusterCount,
+            Arr labels,
+            TermCriteria criteria,
+            int attempts = 1)
+        {
+            ulong rng = Rng(-1);
+            return KMeans2(samples, clusterCount, labels, criteria, attempts, ref rng);
+        }
+
+        /// <summary>
+        /// Finds centers of clusters and groups input samples around the clusters.
+        /// </summary>
+        /// <param name="samples">The floating-point matrix of input samples, one row per sample.</param>
+        /// <param name="clusterCount">The number of clusters to split the set by.</param>
+        /// <param name="labels">The input/output integer array that stores the cluster indices for every sample.</param>
+        /// <param name="criteria">
+        /// The algorithm termination criteria, that is, the maximum number of iterations
+        /// and/or the desired accuracy.
+        /// </param>
+        /// <param name="attempts">
+        /// Specifies the number of times the algorithm is executed using different initial labelings.
+        /// The algorithm returns the labels that yield the best compactness (see the last parameter).
+        /// </param>
+        /// <param name="rng">The random number generator state initialized by <see cref="Rng"/>.</param>
+        /// <param name="flags">The operation flags for the k-means algorithm.</param>
+        /// <param name="centers">The output matrix of the cluster centers, one row per each cluster center.</param>
+        /// <returns>The compactness measure for the best clustering attempt.</returns>
+        public static int KMeans2(
+            Arr samples,
+            int clusterCount,
+            Arr labels,
+            TermCriteria criteria,
+            int attempts,
+            ref ulong rng,
+            KMeansFlags flags = KMeansFlags.None,
+            Arr centers = null)
+        {
+            double compactness;
+            return KMeans2(samples, clusterCount, labels, criteria, attempts, ref rng, flags, centers, out compactness);
+        }
+
+        /// <summary>
+        /// Finds centers of clusters and groups input samples around the clusters.
+        /// </summary>
+        /// <param name="samples">The floating-point matrix of input samples, one row per sample.</param>
+        /// <param name="clusterCount">The number of clusters to split the set by.</param>
+        /// <param name="labels">The input/output integer array that stores the cluster indices for every sample.</param>
+        /// <param name="criteria">
+        /// The algorithm termination criteria, that is, the maximum number of iterations
+        /// and/or the desired accuracy.
+        /// </param>
+        /// <param name="attempts">
+        /// Specifies the number of times the algorithm is executed using different initial labelings.
+        /// The algorithm returns the labels that yield the best compactness (see the last parameter).
+        /// </param>
+        /// <param name="rng">The random number generator state initialized by <see cref="Rng"/>.</param>
+        /// <param name="flags">The operation flags for the k-means algorithm.</param>
+        /// <param name="centers">The output matrix of the cluster centers, one row per each cluster center.</param>
+        /// <param name="compactness">
+        /// When this method returns, contains the compactness measure for the best clustering attempt.
+        /// </param>
+        /// <returns>The compactness measure for the best clustering attempt.</returns>
+        public static int KMeans2(
+            Arr samples,
+            int clusterCount,
+            Arr labels,
+            TermCriteria criteria,
+            int attempts,
+            ref ulong rng,
+            KMeansFlags flags,
+            Arr centers,
+            out double compactness)
+        {
+            return NativeMethods.cvKMeans2(
+                samples,
+                clusterCount,
+                labels,
+                criteria,
+                attempts,
+                ref rng,
+                flags,
+                centers ?? Arr.Null,
+                out compactness);
+        }
+
+        #endregion
+
         #region Data Persistence
 
         /// <summary>
