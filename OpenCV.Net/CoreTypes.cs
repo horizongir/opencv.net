@@ -422,7 +422,7 @@ namespace OpenCV.Net
     }
 
     /// <summary>
-    /// Specifies operation flags for <see cref="CV.CalcPCA"/>
+    /// Specifies operation flags for <see cref="CV.CalcPCA"/>.
     /// </summary>
     [Flags]
     public enum PcaFlags : int
@@ -805,6 +805,25 @@ namespace OpenCV.Net
         /// Specifies that the font should be rendered in italic or oblique font.
         /// </summary>
         Italic = 16
+    }
+
+    /// <summary>
+    /// Specifies operation flags for <see cref="CV.KMeans2"/>.
+    /// </summary>
+    [Flags]
+    public enum KMeansFlags : int
+    {
+        /// <summary>
+        /// Specifies that no operation flags are active.
+        /// </summary>
+        None = 0,
+
+        /// <summary>
+        /// Specifies that during the first attempt the user-supplied labels should be used
+        /// instead of computing them from the initial centers. For the second and further
+        /// attempts, use the random or semi-random centers.
+        /// </summary>
+        UseInitialLabels = 1
     }
 
     /// <summary>

@@ -780,6 +780,22 @@ namespace OpenCV.Net.Native
 
         #endregion
 
+        #region K-means
+
+        [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern int cvKMeans2(
+            Arr samples,
+            int cluster_count,
+            Arr labels,
+            TermCriteria termcrit,
+            int attempts,
+            ref ulong rng,
+            KMeansFlags flags,
+            Arr _centers,
+            out double compactness);
+
+        #endregion
+
         #region Data Persistence
 
         [DllImport(coreLib, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
