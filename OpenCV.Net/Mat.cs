@@ -510,6 +510,29 @@ namespace OpenCV.Net
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="Mat"/> class that is a wrapper header around
+        /// <paramref name="data"/> with the specified number of <paramref name="rows"/> and
+        /// <paramref name="cols"/>, element bit <paramref name="depth"/> and <paramref name="channels"/>
+        /// per element. The reference to <paramref name="data"/> will be pinned in the garbage
+        /// collector until the matrix header is released.
+        /// </summary>
+        /// <typeparam name="TData">The type of elements in the data array.</typeparam>
+        /// <param name="data">The array to be wrapped.</param>
+        /// <param name="rows">The number of rows in the matrix.</param>
+        /// <param name="cols">The number of columns in the matrix.</param>
+        /// <param name="depth">The bit depth of matrix elements.</param>
+        /// <param name="channels">The number of channels per element.</param>
+        /// <returns>
+        /// A new <see cref="Mat"/> instance that is a wrapper header around <paramref name="data"/>
+        /// with the specified number of <paramref name="rows"/> and <paramref name="cols"/>, element
+        /// bit <paramref name="depth"/> and <paramref name="channels"/> per element.
+        /// </returns>
+        public static Mat CreateMatHeader<TData>(TData[] data, int rows, int cols, Depth depth, int channels) where TData : struct
+        {
+            return new MatDataHandle(rows, cols, depth, channels, data);
+        }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="Mat"/> class that is a copy of
         /// the specified managed array <paramref name="data"/>.
         /// </summary>
@@ -696,6 +719,31 @@ namespace OpenCV.Net
         public static Mat FromArray(double[,] data)
         {
             using (var dataHeader = CreateMatHeader(data))
+            {
+                return dataHeader.Clone();
+            }
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Mat"/> class that is a copy of the
+        /// <paramref name="data"/> array with the specified number of <paramref name="rows"/> and
+        /// <paramref name="cols"/>, element bit <paramref name="depth"/> and <paramref name="channels"/>
+        /// per element.
+        /// </summary>
+        /// <typeparam name="TData">The type of elements in the data array.</typeparam>
+        /// <param name="data">The array to be wrapped.</param>
+        /// <param name="rows">The number of rows in the matrix.</param>
+        /// <param name="cols">The number of columns in the matrix.</param>
+        /// <param name="depth">The bit depth of matrix elements.</param>
+        /// <param name="channels">The number of channels per element.</param>
+        /// <returns>
+        /// A new <see cref="Mat"/> instance that is a copy of the <paramref name="data"/> array
+        /// with the specified number of <paramref name="rows"/> and <paramref name="cols"/>, element
+        /// bit <paramref name="depth"/> and <paramref name="channels"/> per element.
+        /// </returns>
+        public static Mat FromArray<TData>(TData[] data, int rows, int cols, Depth depth, int channels) where TData : struct
+        {
+            using (var dataHeader = CreateMatHeader(data, rows, cols, depth, channels))
             {
                 return dataHeader.Clone();
             }
