@@ -808,7 +808,7 @@ namespace OpenCV.Net
     }
 
     /// <summary>
-    /// Specifies operation flags for <see cref="CV.KMeans2"/>.
+    /// Specifies operation flags for the k-means algorithm.
     /// </summary>
     [Flags]
     public enum KMeansFlags : int
