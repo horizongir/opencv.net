@@ -759,9 +759,9 @@ namespace OpenCV.Net
         /// The operation flags indicating whether to sort rows or columns and whether to use ascending
         /// or descending order.
         /// </param>
-        public static void Sort(Arr src, Arr dst, Arr indices, SortFlags flags)
+        public static void Sort(Arr src, Arr dst = null, Arr indices = null, SortFlags flags = SortFlags.EveryRow)
         {
-            NativeMethods.cvSort(src, dst, indices, flags);
+            NativeMethods.cvSort(src, dst ?? Arr.Null, indices ?? Arr.Null, flags);
         }
 
         /// <summary>

@@ -172,6 +172,13 @@ namespace OpenCV.Net.UnitTests
         }
 
         [TestMethod]
+        [ExpectedException(typeof(CVException))]
+        public new void Sort_DestinationArrHasSortedElements()
+        {
+            base.Sort_DestinationArrHasSortedElements();
+        }
+
+        [TestMethod]
         public void SparseMatIterator_CorrectlyEnumeratesSparseElementNodes()
         {
             using (var mat = new SparseMat(new[] { 3, 3 }, Depth.F32, 2))
