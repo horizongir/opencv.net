@@ -378,5 +378,16 @@ namespace OpenCV.Net.UnitTests
             var buf = CV.SampleLine<float>(arr, new Point(0, 0), new Point(Dim1 + 100, 1));
             Assert.AreEqual(Dim1, buf.Length);
         }
+
+        [TestMethod]
+        public void Sort_DestinationArrHasSortedElements()
+        {
+            arr[0, 0] = Scalar.All(2);
+            arr[0, 1] = Scalar.All(1);
+            var arr2 = CreateArr();
+            CV.Sort(arr, arr2);
+            Assert.AreEqual(1, arr2[0, 0].Val0);
+            Assert.AreEqual(2, arr2[0, 1].Val0);
+        }
     }
 }
