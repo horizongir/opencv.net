@@ -802,6 +802,25 @@ namespace OpenCV.Net
 
         #region Operator Overloads
 
+        static void Broadcast(ref Mat mat, ref Size size)
+        {
+            if (mat.Cols != size.Width || mat.Rows != size.Height)
+            {
+                var broadcast = new Mat(size, mat.Depth, mat.Channels);
+                CV.Repeat(mat, broadcast);
+                mat = broadcast;
+            }
+        }
+
+        static void Broadcast(ref Mat left, ref Mat right)
+        {
+            var leftSize = left.Size;
+            var rightSize = right.Size;
+            Size.Broadcast(ref leftSize, ref rightSize);
+            Broadcast(ref left, ref leftSize);
+            Broadcast(ref right, ref rightSize);
+        }
+
         /// <summary>
         /// Converts a <see cref="Mat"/> value to a <see cref="IplImage"/>.
         /// </summary>
@@ -858,6 +877,7 @@ namespace OpenCV.Net
         /// </returns>
         public static Mat operator +(Mat left, Mat right)
         {
+            Broadcast(ref left, ref right);
             var result = new Mat(left.Rows, left.Cols, left.Depth, left.Channels);
             CV.Add(left, right, result);
             return result;
@@ -935,6 +955,7 @@ namespace OpenCV.Net
         /// </returns>
         public static Mat operator -(Mat left, Mat right)
         {
+            Broadcast(ref left, ref right);
             var result = new Mat(left.Rows, left.Cols, left.Depth, left.Channels);
             CV.Sub(left, right, result);
             return result;
@@ -1014,6 +1035,7 @@ namespace OpenCV.Net
         /// </returns>
         public static Mat operator *(Mat left, Mat right)
         {
+            Broadcast(ref left, ref right);
             var result = new Mat(left.Rows, left.Cols, left.Depth, left.Channels);
             CV.Mul(left, right, result);
             return result;
@@ -1061,6 +1083,7 @@ namespace OpenCV.Net
         /// </returns>
         public static Mat operator /(Mat left, Mat right)
         {
+            Broadcast(ref left, ref right);
             var result = new Mat(left.Rows, left.Cols, left.Depth, left.Channels);
             CV.Div(left, right, result);
             return result;
@@ -1110,6 +1133,7 @@ namespace OpenCV.Net
         /// </returns>
         public static Mat operator ^(Mat left, Mat right)
         {
+            Broadcast(ref left, ref right);
             var result = new Mat(left.Rows, left.Cols, left.Depth, left.Channels);
             CV.Xor(left, right, result);
             return result;
@@ -1194,6 +1218,7 @@ namespace OpenCV.Net
         /// </returns>
         public static Mat operator &(Mat left, Mat right)
         {
+            Broadcast(ref left, ref right);
             var result = new Mat(left.Rows, left.Cols, left.Depth, left.Channels);
             CV.And(left, right, result);
             return result;
@@ -1278,6 +1303,7 @@ namespace OpenCV.Net
         /// </returns>
         public static Mat operator |(Mat left, Mat right)
         {
+            Broadcast(ref left, ref right);
             var result = new Mat(left.Rows, left.Cols, left.Depth, left.Channels);
             CV.Or(left, right, result);
             return result;

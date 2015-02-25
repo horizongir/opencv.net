@@ -263,6 +263,25 @@ namespace OpenCV.Net
 
         #region Operator Overloads
 
+        static void Broadcast(ref IplImage image, ref Size size)
+        {
+            if (image.Width != size.Width || image.Height != size.Height)
+            {
+                var broadcast = new IplImage(size, image.Depth, image.Channels);
+                CV.Repeat(image, broadcast);
+                image = broadcast;
+            }
+        }
+
+        static void Broadcast(ref IplImage left, ref IplImage right)
+        {
+            var leftSize = left.Size;
+            var rightSize = right.Size;
+            Size.Broadcast(ref leftSize, ref rightSize);
+            Broadcast(ref left, ref leftSize);
+            Broadcast(ref right, ref rightSize);
+        }
+
         /// <summary>
         /// Converts a <see cref="IplImage"/> value to a <see cref="Mat"/>.
         /// </summary>
@@ -319,6 +338,7 @@ namespace OpenCV.Net
         /// </returns>
         public static IplImage operator +(IplImage left, IplImage right)
         {
+            Broadcast(ref left, ref right);
             var result = new IplImage(left.Size, left.Depth, left.Channels);
             CV.Add(left, right, result);
             return result;
@@ -396,6 +416,7 @@ namespace OpenCV.Net
         /// </returns>
         public static IplImage operator -(IplImage left, IplImage right)
         {
+            Broadcast(ref left, ref right);
             var result = new IplImage(left.Size, left.Depth, left.Channels);
             CV.Sub(left, right, result);
             return result;
@@ -475,6 +496,7 @@ namespace OpenCV.Net
         /// </returns>
         public static IplImage operator *(IplImage left, IplImage right)
         {
+            Broadcast(ref left, ref right);
             var result = new IplImage(left.Size, left.Depth, left.Channels);
             CV.Mul(left, right, result);
             return result;
@@ -522,6 +544,7 @@ namespace OpenCV.Net
         /// </returns>
         public static IplImage operator /(IplImage left, IplImage right)
         {
+            Broadcast(ref left, ref right);
             var result = new IplImage(left.Size, left.Depth, left.Channels);
             CV.Div(left, right, result);
             return result;
@@ -571,6 +594,7 @@ namespace OpenCV.Net
         /// </returns>
         public static IplImage operator ^(IplImage left, IplImage right)
         {
+            Broadcast(ref left, ref right);
             var result = new IplImage(left.Size, left.Depth, left.Channels);
             CV.Xor(left, right, result);
             return result;
@@ -655,6 +679,7 @@ namespace OpenCV.Net
         /// </returns>
         public static IplImage operator &(IplImage left, IplImage right)
         {
+            Broadcast(ref left, ref right);
             var result = new IplImage(left.Size, left.Depth, left.Channels);
             CV.And(left, right, result);
             return result;
@@ -739,6 +764,7 @@ namespace OpenCV.Net
         /// </returns>
         public static IplImage operator |(IplImage left, IplImage right)
         {
+            Broadcast(ref left, ref right);
             var result = new IplImage(left.Size, left.Depth, left.Channels);
             CV.Or(left, right, result);
             return result;
