@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Runtime.InteropServices;
+using System.Security;
 
 namespace OpenCV.Net.Native
 {
+    [SuppressUnmanagedCodeSecurity]
     static partial class NativeMethods
     {
         const string coreLib = "opencv_core248";
