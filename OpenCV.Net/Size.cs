@@ -126,5 +126,22 @@ namespace OpenCV.Net
         {
             return !left.Equals(right);
         }
+
+        internal static void Broadcast(ref Size left, ref Size right)
+        {
+            if (left.Width != right.Width)
+            {
+                if (left.Width == 1) left.Width = right.Width;
+                else if (right.Width == 1) right.Width = left.Width;
+                else throw new ArgumentException("Operand width cannot be broadcast together.", "right");
+            }
+
+            if (left.Height != right.Height)
+            {
+                if (left.Height == 1) left.Height = right.Height;
+                else if (right.Height == 1) right.Height = left.Height;
+                else throw new ArgumentException("Operand height cannot be broadcast together.", "right");
+            }
+        }
     }
 }
