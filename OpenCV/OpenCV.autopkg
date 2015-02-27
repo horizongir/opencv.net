@@ -1,7 +1,7 @@
 nuget {
     nuspec {
         id = OpenCV;
-        version: 2.4.9;
+        version: 2.4.10;
         title: OpenCV;
         authors: {Itseez};
         owners: {Gonçalo Lopes};
@@ -11,7 +11,7 @@ nuget {
         requireLicenseAcceptance: false;
         summary: "OpenCV is a library of programming functions for realtime computer vision.";
         description: @"OpenCV (Open Source Computer Vision) is a library of programming functions for realtime computer vision. OpenCV is released under a BSD license and hence it’s free for both academic and commercial use. It has C++, C, Python and Java (Android) interfaces and supports Windows, Linux, Android, iOS and Mac OS. It has more than 2500 optimized algorithms. Adopted all around the world, OpenCV has more than 7 million downloads growing by nearly 200K/month. Usage ranges from interactive art, to mines inspection, stitching maps on the web on through advanced robotics.";
-        releaseNotes: "Binaries and build targets for OpenCV 2.4.9 in the x86 and x64 platform architectures.";
+        releaseNotes: "Binaries and build targets for OpenCV 2.4.10 in the x86 and x64 platform architectures.";
         copyright: "© Copyright 2014, Itseez";
         tags: { OpenCV, Computer, Vision, Image, Processing };
     }
@@ -20,64 +20,64 @@ nuget {
         docs: { "LICENSE" };
         include: { "include\**\*" };
         [x64,v110] {
-            bin: { "x64\vc11\bin\opencv_ffmpeg249_64.dll" };
+            bin: { "x64\vc11\bin\opencv_ffmpeg2410_64.dll" };
         }
         
         [x86,v110] {
-            bin: { "x86\vc11\bin\opencv_ffmpeg249.dll" };
+            bin: { "x86\vc11\bin\opencv_ffmpeg2410.dll" };
         }
         
         [x64,v110,debug] {
-            lib: { "x64\vc11\lib\*249d.lib" };
-            bin: { "x64\vc11\bin\*249d.dll" };
+            lib: { "x64\vc11\lib\*2410d.lib" };
+            bin: { "x64\vc11\bin\*2410d.dll" };
         }
         
         [x64,v110,release] {
-            lib: { "x64\vc11\lib\*249.lib" };
-            bin: { "x64\vc11\bin\*249.dll" };
+            lib: { "x64\vc11\lib\*2410.lib" };
+            bin: { "x64\vc11\bin\*2410.dll" };
         }
         
         [x86,v110,debug] {
-            lib: { "x86\vc11\lib\*249d.lib" };
-            bin: { "x86\vc11\bin\*249d.dll" };
+            lib: { "x86\vc11\lib\*2410d.lib" };
+            bin: { "x86\vc11\bin\*2410d.dll" };
         }
         
         [x86,v110,release] {
-            lib: { "x86\vc11\lib\*249.lib" };
+            lib: { "x86\vc11\lib\*2410.lib" };
             bin: {
                 #exclude: { "**\opencv_ffmpeg*.dll" };
-                "x86\vc11\bin\*249.dll"
+                "x86\vc11\bin\*2410.dll"
             };
         }
         
         [x64,v120] {
-            bin: { "x64\vc12\bin\opencv_ffmpeg249_64.dll" };
+            bin: { "x64\vc12\bin\opencv_ffmpeg2410_64.dll" };
         }
         
         [x86,v120] {
-            bin: { "x86\vc12\bin\opencv_ffmpeg249.dll" };
+            bin: { "x86\vc12\bin\opencv_ffmpeg2410.dll" };
         }
         
         [x64,v120,debug] {
-            lib: { "x64\vc12\lib\*249d.lib" };
-            bin: { "x64\vc12\bin\*249d.dll" };
+            lib: { "x64\vc12\lib\*2410d.lib" };
+            bin: { "x64\vc12\bin\*2410d.dll" };
         }
         
         [x64,v120,release] {
-            lib: { "x64\vc12\lib\*249.lib" };
-            bin: { "x64\vc12\bin\*249.dll" };
+            lib: { "x64\vc12\lib\*2410.lib" };
+            bin: { "x64\vc12\bin\*2410.dll" };
         }
         
         [x86,v120,debug] {
-            lib: { "x86\vc12\lib\*249d.lib" };
-            bin: { "x86\vc12\bin\*249d.dll" };
+            lib: { "x86\vc12\lib\*2410d.lib" };
+            bin: { "x86\vc12\bin\*2410d.dll" };
         }
         
         [x86,v120,release] {
-            lib: { "x86\vc12\lib\*249.lib" };
+            lib: { "x86\vc12\lib\*2410.lib" };
             bin: {
                 #exclude: { "**\opencv_ffmpeg*.dll" };
-                "x86\vc12\bin\*249.dll"
+                "x86\vc12\bin\*2410.dll"
             };
         }
     }
