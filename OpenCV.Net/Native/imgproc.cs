@@ -451,7 +451,7 @@ namespace OpenCV.Net.Native
         [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void cvFindCornerSubPix(
             Arr image,
-            [Out]Point2f[] corners,
+            [In, Out]Point2f[] corners,
             int count,
             Size win,
             Size zero_zone,
