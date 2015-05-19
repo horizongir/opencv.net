@@ -479,7 +479,7 @@ namespace OpenCV.Net
         /// </param>
         public static void Cmp(Arr src1, Arr src2, Arr dst, ComparisonOperation cmpOp)
         {
-            NativeMethods.cvCmp(src2, src2, dst, cmpOp);
+            NativeMethods.cvCmp(src1, src2, dst, cmpOp);
         }
 
         /// <summary>
