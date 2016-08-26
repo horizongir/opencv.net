@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="CaptureTests.cs" />
     <Compile Include="CoreTests.cs" />
+    <Compile Include="ImgProcTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FileStorageTests.cs" />
     <Compile Include="MatTests.cs" />
