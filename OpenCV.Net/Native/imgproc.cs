@@ -304,7 +304,7 @@ namespace OpenCV.Net.Native
         internal static extern Rect cvMaxRect(ref Rect rect1, ref Rect rect2);
 
         [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void cvBoxPoints(RotatedRect box, Point2f[] pt);
+        internal static extern void cvBoxPoints(RotatedRect box, IntPtr pt);
 
         [DllImport(imgprocLib, CallingConvention = CallingConvention.Cdecl)]
         internal static extern Seq cvPointSeqFromMat(int seq_kind, Arr mat, Contour contour_header, IntPtr block);
