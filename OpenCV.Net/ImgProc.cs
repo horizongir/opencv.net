@@ -1239,26 +1239,7 @@ namespace OpenCV.Net
         /// <param name="pt">The array of box vertices.</param>
         public static void BoxPoints(RotatedRect box, Point2f[] pt)
         {
-            var sizeofPoint2F = Marshal.SizeOf(typeof(Point2f));
-            var mem = Marshal.AllocHGlobal(sizeofPoint2F * pt.Length);
-            try
-            {
-                NativeMethods.cvBoxPoints(box, mem);
-
-                for(int i = 0; i < pt.Length; i++)
-                {
-                    unsafe
-                    {
-                        var pointer = ((byte*)mem.ToPointer()) + (sizeofPoint2F * i);
-                        pt[i].X = *((float*)pointer);
-                        pt[i].Y = *((float*)(pointer + sizeof(float)));
-                    }
-                }
-            }
-            finally
-            {
-                Marshal.FreeHGlobal(mem);
-            }
+            NativeMethods.cvBoxPoints(box, pt);
         }
 
         /// <summary>
