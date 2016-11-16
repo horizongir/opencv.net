@@ -589,8 +589,8 @@ namespace OpenCV.Net
             NativeMethods.cvSeqSort(
                 this,
                 (a, b, userData) => comparison(
-                    (TElement)Marshal.PtrToStructure(a, typeof(TElement)),
-                    (TElement)Marshal.PtrToStructure(b, typeof(TElement))),
+                    (TElement)Marshal.PtrToStructure<TElement>(a),
+                    (TElement)Marshal.PtrToStructure<TElement>(b)),
                 IntPtr.Zero);
         }
 
@@ -615,8 +615,8 @@ namespace OpenCV.Net
                     this,
                     elementHandle.AddrOfPinnedObject(),
                     (a, b, userData) => comparison(
-                        (TElement)Marshal.PtrToStructure(a, typeof(TElement)),
-                        (TElement)Marshal.PtrToStructure(b, typeof(TElement))),
+                        (TElement)Marshal.PtrToStructure<TElement>(a),
+                        (TElement)Marshal.PtrToStructure<TElement>(b)),
                     isSorted ? 1 : 0,
                     out index,
                     IntPtr.Zero);
@@ -656,8 +656,8 @@ namespace OpenCV.Net
                 storage,
                 out labels,
                 (a, b, userData) => equalityComparison(
-                        (TElement)Marshal.PtrToStructure(a, typeof(TElement)),
-                        (TElement)Marshal.PtrToStructure(b, typeof(TElement))) ? 1 : 0,
+                        (TElement)Marshal.PtrToStructure<TElement>(a),
+                        (TElement)Marshal.PtrToStructure<TElement>(b)) ? 1 : 0,
                 IntPtr.Zero);
             labels.SetOwnerStorage(storage);
             return classes;

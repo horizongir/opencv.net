@@ -39,7 +39,7 @@ namespace OpenCV.Net
         public Font(FontFace fontFace, double hscale, double vscale, double shear = 0, int thickness = 1, LineFlags lineType = LineFlags.Connected8)
             : base(true)
         {
-            var pFont = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(_CvFont)));
+            var pFont = Marshal.AllocHGlobal(Marshal.SizeOf<_CvFont>());
             NativeMethods.cvInitFont(pFont, fontFace, hscale, vscale, shear, thickness, lineType);
             SetHandle(pFont);
         }
@@ -84,7 +84,7 @@ namespace OpenCV.Net
             }
 
             var font = NativeMethods.cvFontQt(nameFont, pointSize, color, weight, style, spacing);
-            var pFont = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(_CvFont)));
+            var pFont = Marshal.AllocHGlobal(Marshal.SizeOf<_CvFont>());
             Marshal.StructureToPtr(font, pFont, false);
             SetHandle(pFont);
         }
