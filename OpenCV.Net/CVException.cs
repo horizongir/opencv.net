@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+#if !NET_CORE
 using System.Runtime.Serialization;
+#endif
 using System.IO;
 using System.Runtime.InteropServices;
 using OpenCV.Net.Native;
@@ -12,7 +14,9 @@ namespace OpenCV.Net
     /// <summary>
     /// The exception that is thrown when OpenCV error status is set.
     /// </summary>
+#if !NET_CORE
     [Serializable]
+#endif
     public class CVException : Exception
     {
         /// <summary>
@@ -67,6 +71,7 @@ namespace OpenCV.Net
             Line = line;
         }
 
+#if !NET_CORE
         /// <summary>
         /// Initializes a new instance of the <see cref="CVException"/> class from
         /// serialization data.
@@ -77,6 +82,7 @@ namespace OpenCV.Net
             : base(info, context)
         {
         }
+#endif
 
         /// <summary>
         /// Gets or sets the error code, usually a negative value.
