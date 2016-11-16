@@ -1,5 +1,4 @@
-﻿using Microsoft.Win32.SafeHandles;
-using OpenCV.Net.Native;
+﻿using OpenCV.Net.Native;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +10,7 @@ namespace OpenCV.Net
     /// <summary>
     /// Represents a storage associated with a file on disk.
     /// </summary>
-    public class FileStorage : SafeHandleZeroOrMinusOneIsInvalid
+    public class FileStorage : CVHandle
     {
         MemStorage owner;
 

@@ -1,5 +1,4 @@
-﻿using Microsoft.Win32.SafeHandles;
-using OpenCV.Net.Native;
+﻿using OpenCV.Net.Native;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +10,7 @@ namespace OpenCV.Net
     /// <summary>
     /// Represents a font that can be passed to text rendering functions.
     /// </summary>
-    public class Font : SafeHandleZeroOrMinusOneIsInvalid
+    public class Font : CVHandle
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Font"/> class with the specified

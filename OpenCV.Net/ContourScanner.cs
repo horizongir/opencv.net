@@ -1,5 +1,4 @@
-﻿using Microsoft.Win32.SafeHandles;
-using OpenCV.Net.Native;
+﻿using OpenCV.Net.Native;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +9,7 @@ namespace OpenCV.Net
     /// <summary>
     /// Represents a contour scanning process.
     /// </summary>
-    public sealed class ContourScanner : SafeHandleZeroOrMinusOneIsInvalid
+    public sealed class ContourScanner : CVHandle
     {
         MemStorage owner;
 

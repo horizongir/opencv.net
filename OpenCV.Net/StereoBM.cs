@@ -1,5 +1,4 @@
-﻿using Microsoft.Win32.SafeHandles;
-using OpenCV.Net.Native;
+﻿using OpenCV.Net.Native;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +9,7 @@ namespace OpenCV.Net
     /// <summary>
     /// Represents the block matching algorithm for computing stereo correspondence.
     /// </summary>
-    public class StereoBM : SafeHandleZeroOrMinusOneIsInvalid
+    public class StereoBM : CVHandle
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="StereoBM"/> class with the specified

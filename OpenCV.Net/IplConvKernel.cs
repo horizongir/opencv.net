@@ -1,9 +1,7 @@
-﻿using Microsoft.Win32.SafeHandles;
-using OpenCV.Net.Native;
+﻿using OpenCV.Net.Native;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
 
 namespace OpenCV.Net
@@ -11,7 +9,7 @@ namespace OpenCV.Net
     /// <summary>
     /// Represents a rectangular convolution kernel used for morphological operations.
     /// </summary>
-    public class IplConvKernel : SafeHandleZeroOrMinusOneIsInvalid
+    public class IplConvKernel : CVHandle
     {
         internal static readonly IplConvKernel Null = new IplConvKernel();
 

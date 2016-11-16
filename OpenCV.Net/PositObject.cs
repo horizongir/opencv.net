@@ -1,5 +1,4 @@
-﻿using Microsoft.Win32.SafeHandles;
-using OpenCV.Net.Native;
+﻿using OpenCV.Net.Native;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +9,7 @@ namespace OpenCV.Net
     /// <summary>
     /// Represents information about a 3D object model for camera pose estimation.
     /// </summary>
-    public class PositObject : SafeHandleZeroOrMinusOneIsInvalid
+    public class PositObject : CVHandle
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="PositObject"/> class with the
