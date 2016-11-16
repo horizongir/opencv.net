@@ -267,7 +267,7 @@ namespace OpenCV.Net
             var handles = new IntPtr[extraLayers + 1];
             var pyramid = NativeMethods.cvCreatePyramid(img, extraLayers, rate, layerSizes, buffer ?? Arr.Null, calc ? 1 : 0, filter);
             Marshal.Copy(pyramid, handles, 0, handles.Length);
-            return Array.ConvertAll(handles, handle => new Mat(handle, true));
+            return handles.ConvertAll(handle => new Mat(handle, true));
         }
 
         /// <summary>
@@ -1272,8 +1272,8 @@ namespace OpenCV.Net
         /// <param name="dst">The destination histograms.</param>
         public static void CalcBayesianProb(Histogram[] src, Histogram[] dst)
         {
-            var pSrc = Array.ConvertAll(src, hist => hist.DangerousGetHandle());
-            var pDst = Array.ConvertAll(dst, hist => hist.DangerousGetHandle());
+            var pSrc = src.ConvertAll(hist => hist.DangerousGetHandle());
+            var pDst = dst.ConvertAll(hist => hist.DangerousGetHandle());
             NativeMethods.cvCalcBayesianProb(pSrc, pSrc.Length, pDst);
             GC.KeepAlive(src);
             GC.KeepAlive(dst);

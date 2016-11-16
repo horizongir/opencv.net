@@ -139,8 +139,8 @@ namespace OpenCV.Net
         /// </remarks>
         public static void MixChannels(Arr[] src, Arr[] dst, int[] fromTo)
         {
-            var srcHandles = Array.ConvertAll(src, arr => arr.DangerousGetHandle());
-            var dstHandles = Array.ConvertAll(dst, arr => arr.DangerousGetHandle());
+            var srcHandles = src.ConvertAll(arr => arr.DangerousGetHandle());
+            var dstHandles = dst.ConvertAll(arr => arr.DangerousGetHandle());
             NativeMethods.cvMixChannels(srcHandles, srcHandles.Length, dstHandles, dstHandles.Length, fromTo, fromTo.Length / 2);
             GC.KeepAlive(src);
             GC.KeepAlive(dst);
@@ -1061,7 +1061,7 @@ namespace OpenCV.Net
         /// <param name="flags">A value specifying various operation flags.</param>
         public static void CalcCovarMatrix(Arr[] vects, Arr covMat, Arr avg, CovarianceFlags flags)
         {
-            var pVects = Array.ConvertAll(vects, vect => vect.DangerousGetHandle());
+            var pVects = vects.ConvertAll(vect => vect.DangerousGetHandle());
             NativeMethods.cvCalcCovarMatrix(pVects, pVects.Length, covMat, avg, flags);
             GC.KeepAlive(vects);
         }
@@ -1526,14 +1526,14 @@ namespace OpenCV.Net
             LineFlags lineType = LineFlags.Connected8,
             int shift = 0)
         {
-            var npts = Array.ConvertAll(pts, poly => poly.Length);
-            var handles = Array.ConvertAll(pts, poly => GCHandle.Alloc(poly, GCHandleType.Pinned));
+            var npts = pts.ConvertAll(poly => poly.Length);
+            var handles = pts.ConvertAll(poly => GCHandle.Alloc(poly, GCHandleType.Pinned));
             try
             {
-                var pPts = Array.ConvertAll(handles, handle => handle.AddrOfPinnedObject());
+                var pPts = handles.ConvertAll(handle => handle.AddrOfPinnedObject());
                 NativeMethods.cvFillPoly(img, pPts, npts, pts.Length, color, lineType, shift);
             }
-            finally { Array.ForEach(handles, handle => handle.Free()); }
+            finally { handles.ForEach(handle => handle.Free()); }
         }
 
         /// <summary>
@@ -1558,14 +1558,14 @@ namespace OpenCV.Net
             LineFlags lineType = LineFlags.Connected8,
             int shift = 0)
         {
-            var npts = Array.ConvertAll(pts, poly => poly.Length);
-            var handles = Array.ConvertAll(pts, poly => GCHandle.Alloc(poly, GCHandleType.Pinned));
+            var npts = pts.ConvertAll(poly => poly.Length);
+            var handles = pts.ConvertAll(poly => GCHandle.Alloc(poly, GCHandleType.Pinned));
             try
             {
-                var pPts = Array.ConvertAll(handles, handle => handle.AddrOfPinnedObject());
+                var pPts = handles.ConvertAll(handle => handle.AddrOfPinnedObject());
                 NativeMethods.cvPolyLine(img, pPts, npts, pts.Length, isClosed ? 1 : 0, color, thickness, lineType, shift);
             }
-            finally { Array.ForEach(handles, handle => handle.Free()); }
+            finally { handles.ForEach(handle => handle.Free()); }
         }
 
         /// <summary>

@@ -139,10 +139,10 @@ namespace OpenCV.Net
 
         static void ConvertRanges(float[][] ranges, Action<IntPtr[]> action)
         {
-            var handles = ranges != null ? Array.ConvertAll(ranges, range => GCHandle.Alloc(range, GCHandleType.Pinned)) : null;
-            var pRanges = handles != null ? Array.ConvertAll(handles, handle => handle.AddrOfPinnedObject()) : null;
+            var handles = ranges != null ? ranges.ConvertAll(range => GCHandle.Alloc(range, GCHandleType.Pinned)) : null;
+            var pRanges = handles != null ? handles.ConvertAll(handle => handle.AddrOfPinnedObject()) : null;
             try { action(pRanges); }
-            finally { if (handles != null) Array.ForEach(handles, h => h.Free()); }
+            finally { if (handles != null) handles.ForEach(h => h.Free()); }
         }
 
         /// <summary>
@@ -233,7 +233,7 @@ namespace OpenCV.Net
         /// </param>
         public void CalcArrHist(Arr[] images, bool accumulate = false, Arr mask = null)
         {
-            var pImages = Array.ConvertAll(images, image => image.DangerousGetHandle());
+            var pImages = images.ConvertAll(image => image.DangerousGetHandle());
             NativeMethods.cvCalcArrHist(pImages, this, accumulate ? 1 : 0, mask ?? Arr.Null);
             GC.KeepAlive(images);
         }
@@ -247,7 +247,7 @@ namespace OpenCV.Net
         /// </param>
         public void CalcArrBackProject(Arr[] images, Arr dst)
         {
-            var pImages = Array.ConvertAll(images, image => image.DangerousGetHandle());
+            var pImages = images.ConvertAll(image => image.DangerousGetHandle());
             NativeMethods.cvCalcArrBackProject(pImages, dst, this);
             GC.KeepAlive(images);
         }
@@ -267,7 +267,7 @@ namespace OpenCV.Net
             HistogramComparison method,
             double factor)
         {
-            var pImages = Array.ConvertAll(images, image => image.DangerousGetHandle());
+            var pImages = images.ConvertAll(image => image.DangerousGetHandle());
             NativeMethods.cvCalcArrBackProjectPatch(pImages, dst, range, this, method, factor);
             GC.KeepAlive(images);
         }

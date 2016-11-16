@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Calib3D.cs" />
     <Compile Include="Calib3DTypes.cs" />
+    <Compile Include="ArrayHelper.cs" />
     <Compile Include="AttrList.cs" />
     <Compile Include="AvgComp.cs" />
     <Compile Include="FileNode.cs" />
