@@ -7,7 +7,9 @@ using System.Security;
 
 namespace OpenCV.Net.Native
 {
+#if !NET_CORE
     [SuppressUnmanagedCodeSecurity]
+#endif
     static partial class NativeMethods
     {
         const string coreLib = "opencv_core248";

@@ -13,7 +13,9 @@ namespace OpenCV.Net
     /// <see cref="Scalar"/> is always represented as a four-tuple.
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
+#if !NET_CORE
     [TypeConverter(typeof(NumericAggregateConverter))]
+#endif
     public struct Scalar : IEquatable<Scalar>
     {
         /// <summary>

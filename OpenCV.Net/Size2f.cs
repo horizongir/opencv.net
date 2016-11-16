@@ -11,7 +11,9 @@ namespace OpenCV.Net
     /// Represents the sub-pixel accurate size of a rectangle.
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
+#if !NET_CORE
     [TypeConverter(typeof(NumericAggregateConverter))]
+#endif
     public struct Size2f : IEquatable<Size2f>
     {
         /// <summary>
