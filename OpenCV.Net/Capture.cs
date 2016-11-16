@@ -1,5 +1,4 @@
-﻿using Microsoft.Win32.SafeHandles;
-using OpenCV.Net.Native;
+﻿using OpenCV.Net.Native;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +9,7 @@ namespace OpenCV.Net
     /// <summary>
     /// Represents a video capture stream.
     /// </summary>
-    public sealed class Capture : SafeHandleZeroOrMinusOneIsInvalid
+    public sealed class Capture : CVHandle
     {
         internal Capture()
             : base(true)

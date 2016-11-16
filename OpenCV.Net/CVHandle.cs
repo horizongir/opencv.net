@@ -1,7 +1,7 @@
-﻿using Microsoft.Win32.SafeHandles;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace OpenCV.Net
@@ -9,7 +9,7 @@ namespace OpenCV.Net
     /// <summary>
     /// Represents a native handle to OpenCV structures and classes.
     /// </summary>
-    public abstract class CVHandle : SafeHandleZeroOrMinusOneIsInvalid
+    public abstract class CVHandle : SafeHandle
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="CVHandle"/> class, specifying
@@ -20,8 +20,16 @@ namespace OpenCV.Net
         /// <b>false</b> to prevent reliable release (not recommended).
         /// </param>
         protected CVHandle(bool ownsHandle)
-            : base(ownsHandle)
+            : base(IntPtr.Zero, ownsHandle)
         {
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether the handle is invalid.
+        /// </summary>
+        public override bool IsInvalid
+        {
+            get { return handle == IntPtr.Zero; }
         }
     }
 }

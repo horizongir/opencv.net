@@ -1,5 +1,4 @@
-﻿using Microsoft.Win32.SafeHandles;
-using OpenCV.Net.Native;
+﻿using OpenCV.Net.Native;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +10,7 @@ namespace OpenCV.Net
     /// <summary>
     /// Represents a multi-dimensional histogram.
     /// </summary>
-    public sealed class Histogram : SafeHandleZeroOrMinusOneIsInvalid
+    public sealed class Histogram : CVHandle
     {
         const int UniformFlag = 1 << 10;
         Arr bins;
