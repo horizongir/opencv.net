@@ -346,12 +346,16 @@ namespace OpenCV.Net.Native
 
         internal static int GetElemSize1(int type)
         {
-            return ((((Marshal.SizeOf<UIntPtr>() << 28) | 0x8442211) >> (type & DepthMask) * 4) & 15);
+#pragma warning disable CS0618 // Type or member is obsolete
+            return ((((Marshal.SizeOf(typeof(UIntPtr)) << 28) | 0x8442211) >> (type & DepthMask) * 4) & 15);
+#pragma warning restore CS0618 // Type or member is obsolete
         }
 
         internal static int GetElemSize(int type)
         {
-            return (GetMatChannels(type) << ((((Marshal.SizeOf<UIntPtr>() / 4 + 1) * 16384 | 0x3a50) >> (int)GetMatDepth(type) * 2) & 3));
+#pragma warning disable CS0618 // Type or member is obsolete
+            return (GetMatChannels(type) << ((((Marshal.SizeOf(typeof(UIntPtr)) / 4 + 1) * 16384 | 0x3a50) >> (int)GetMatDepth(type) * 2) & 3));
+#pragma warning restore CS0618 // Type or member is obsolete
         }
     }
 
@@ -363,10 +367,12 @@ namespace OpenCV.Net.Native
         internal const int FlagShift = KindBits + ElementTypeBits;
         internal const int FlagMask = ~((1 << FlagShift) - 1);
 
-        internal static readonly UIntPtr SeqHeaderSize = (UIntPtr)Marshal.SizeOf<_CvSeq>();
-        internal static readonly int SetHeaderSize = Marshal.SizeOf<_CvSet>();
-        internal static readonly int GraphHeaderSize = Marshal.SizeOf<_CvGraph>();
-        internal static readonly int ContourHeaderSize = Marshal.SizeOf<_CvContour>();
-        internal static readonly int ChainHeaderSize = Marshal.SizeOf<_CvChain>();
+#pragma warning disable CS0618 // Type or member is obsolete
+        internal static readonly UIntPtr SeqHeaderSize = (UIntPtr)Marshal.SizeOf(typeof(_CvSeq));
+        internal static readonly int SetHeaderSize = Marshal.SizeOf(typeof(_CvSet));
+        internal static readonly int GraphHeaderSize = Marshal.SizeOf(typeof(_CvGraph));
+        internal static readonly int ContourHeaderSize = Marshal.SizeOf(typeof(_CvContour));
+        internal static readonly int ChainHeaderSize = Marshal.SizeOf(typeof(_CvChain));
+#pragma warning restore CS0618 // Type or member is obsolete
     }
 }
