@@ -286,6 +286,7 @@ namespace OpenCV.Net
         {
             if (node.IsInvalid) return default(TElement);
             var handle = NativeMethods.cvRead(this, node, IntPtr.Zero);
+#if !NET_CORE
             var result = (TElement)Activator.CreateInstance(
                 typeof(TElement),
                 System.Reflection.BindingFlags.Instance |
@@ -293,6 +294,9 @@ namespace OpenCV.Net
                 null,
                 new object[] { handle },
                 null);
+#else
+            var result = (TElement)Activator.CreateInstance(typeof(TElement), handle);
+#endif
             return result;
         }
 

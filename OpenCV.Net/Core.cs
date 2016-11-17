@@ -1949,6 +1949,7 @@ namespace OpenCV.Net
             IntPtr realNamePtr;
             var handle = NativeMethods.cvLoad(fileName, storage ?? MemStorage.Null, name, out realNamePtr);
             realName = Marshal.PtrToStringAnsi(realNamePtr);
+#if !NET_CORE
             var result = (TElement)Activator.CreateInstance(
                 typeof(TElement),
                 System.Reflection.BindingFlags.Instance |
@@ -1956,6 +1957,9 @@ namespace OpenCV.Net
                 null,
                 new object[] { handle },
                 null);
+#else
+            var result = (TElement)Activator.CreateInstance(typeof(TElement), handle);
+#endif
             return result;
         }
 
