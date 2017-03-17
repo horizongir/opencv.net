@@ -25,7 +25,6 @@
     <DefineConstants>TRACE</DefineConstants>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <DocumentationFile>bin\Release\netstandard1.1\OpenCV.Net.xml</DocumentationFile>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
