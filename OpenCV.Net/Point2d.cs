@@ -11,7 +11,7 @@ namespace OpenCV.Net
     /// Represents a 2D point with double-precision floating-point coordinates.
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-#if !NET_CORE
+#if !NETSTANDARD1_1
     [TypeConverter(typeof(NumericAggregateConverter))]
 #endif
     public struct Point2d : IEquatable<Point2d>

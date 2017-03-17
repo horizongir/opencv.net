@@ -11,7 +11,7 @@ namespace OpenCV.Net
     /// Represents a 3D point with single-precision floating-point coordinates.
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-#if !NET_CORE
+#if !NETSTANDARD1_1
     [TypeConverter(typeof(NumericAggregateConverter))]
 #endif
     public struct Point3f : IEquatable<Point3f>

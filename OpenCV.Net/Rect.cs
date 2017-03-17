@@ -11,7 +11,7 @@ namespace OpenCV.Net
     /// Represents the offset and size of a rectangle.
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-#if !NET_CORE
+#if !NETSTANDARD1_1
     [TypeConverter(typeof(NumericAggregateConverter))]
 #endif
     public struct Rect : IEquatable<Rect>

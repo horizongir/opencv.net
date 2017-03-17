@@ -7,7 +7,7 @@ using System.Security;
 
 namespace OpenCV.Net.Native
 {
-#if !NET_CORE
+#if !NETSTANDARD1_1
     [SuppressUnmanagedCodeSecurity]
 #endif
     static partial class NativeMethods
