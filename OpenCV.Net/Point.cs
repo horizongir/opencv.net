@@ -11,7 +11,7 @@ namespace OpenCV.Net
     /// Represents a 2D point with integer coordinates (usually zero-based).
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-#if !NET_CORE
+#if !NETSTANDARD1_1
     [TypeConverter(typeof(NumericAggregateConverter))]
 #endif
     public struct Point : IEquatable<Point>

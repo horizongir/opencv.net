@@ -11,7 +11,7 @@ namespace OpenCV.Net
     /// Represents the pixel-accurate size of a rectangle.
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-#if !NET_CORE
+#if !NETSTANDARD1_1
     [TypeConverter(typeof(NumericAggregateConverter))]
 #endif
     public struct Size : IEquatable<Size>
