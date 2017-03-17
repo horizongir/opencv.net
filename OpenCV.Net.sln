@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenCV.Net", "OpenCV.Net\OpenCV.Net.csproj", "{235A6E90-9CB5-469E-808F-6D4C422258A9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCV.Net.UnitTests", "OpenCV.Net.UnitTests\OpenCV.Net.UnitTests.csproj", "{8140F431-01D0-4E41-93AB-BC042D0EA120}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{235A6E90-9CB5-469E-808F-6D4C422258A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{235A6E90-9CB5-469E-808F-6D4C422258A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{235A6E90-9CB5-469E-808F-6D4C422258A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8140F431-01D0-4E41-93AB-BC042D0EA120}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8140F431-01D0-4E41-93AB-BC042D0EA120}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8140F431-01D0-4E41-93AB-BC042D0EA120}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8140F431-01D0-4E41-93AB-BC042D0EA120}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
