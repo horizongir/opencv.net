@@ -1,3 +1,13 @@
+configurations 
+{
+    // This node contains custom pivot information.
+    Toolset 
+    {
+        key : "PlatformToolset"; // this is CoApp pre-defined key
+        choices: { v140, v120, v110, v100 };
+    };
+}
+
 nuget {
     nuspec {
         id = OpenCV;
@@ -11,7 +21,7 @@ nuget {
         requireLicenseAcceptance: false;
         summary: "OpenCV is a library of programming functions for realtime computer vision.";
         description: @"OpenCV (Open Source Computer Vision) is a library of programming functions for realtime computer vision. OpenCV is released under a BSD license and hence it’s free for both academic and commercial use. It has C++, C, Python and Java (Android) interfaces and supports Windows, Linux, Android, iOS and Mac OS. It has more than 2500 optimized algorithms. Adopted all around the world, OpenCV has more than 7 million downloads growing by nearly 200K/month. Usage ranges from interactive art, to mines inspection, stitching maps on the web on through advanced robotics.";
-        releaseNotes: "Binaries and build targets for OpenCV 2.4.10 in the x86 and x64 platform architectures.";
+        releaseNotes: "Binaries and build targets for OpenCV 2.4.11 in the x86 and x64 platform architectures.";
         copyright: "© Copyright 2015, Itseez";
         tags: { OpenCV, Computer, Vision, Image, Processing };
     }
@@ -78,6 +88,37 @@ nuget {
             bin: {
                 #exclude: { "**\opencv_ffmpeg*.dll" };
                 "x86\vc12\bin\*2411.dll"
+            };
+        }
+		
+        [x64,v140] {
+            bin: { "x64\vc14\bin\opencv_ffmpeg2411_64.dll" };
+        }
+		
+        [x86,v140] {
+            bin: { "x86\vc14\bin\opencv_ffmpeg2411.dll" };
+        }
+        
+        [x64,v140,debug] {
+            lib: { "x64\vc14\lib\*2411d.lib" };
+            bin: { "x64\vc14\bin\*2411d.dll" };
+        }
+        
+        [x64,v140,release] {
+            lib: { "x64\vc14\lib\*2411.lib" };
+            bin: { "x64\vc14\bin\*2411.dll" };
+        }
+        
+        [x86,v140,debug] {
+            lib: { "x86\vc14\lib\*2411d.lib" };
+            bin: { "x86\vc14\bin\*2411d.dll" };
+        }
+        
+        [x86,v140,release] {
+            lib: { "x86\vc14\lib\*2411.lib" };
+            bin: {
+                #exclude: { "**\opencv_ffmpeg*.dll" };
+                "x86\vc14\bin\*2411.dll"
             };
         }
     }
