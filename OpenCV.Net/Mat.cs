@@ -50,6 +50,30 @@ namespace OpenCV.Net
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Mat"/> class with the specified
+        /// <paramref name="size"/> and element <paramref name="type"/>.
+        /// </summary>
+        /// <param name="size">The pixel-accurate size of the <see cref="Mat"/>.</param>
+        /// <param name="type">The type of matrix elements.</param>
+        public Mat(Size size, int type)
+            : this(size.Height, size.Width, type)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Mat"/> class with the specified
+        /// number of <paramref name="rows"/>, <paramref name="cols"/> and element
+        /// <paramref name="type"/>.
+        /// </summary>
+        /// <param name="rows">The number of rows in the matrix.</param>
+        /// <param name="cols">The number of columns in the matrix.</param>
+        /// <param name="type">The type of matrix elements.</param>
+        public Mat(int rows, int cols, int type)
+            : this(NativeMethods.cvCreateMat(rows, cols, type), true)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Mat"/> class with the specified
         /// <paramref name="size"/>, element bit <paramref name="depth"/> and
         /// <paramref name="channels"/> per element.
         /// </summary>
@@ -71,7 +95,42 @@ namespace OpenCV.Net
         /// <param name="depth">The bit depth of matrix elements.</param>
         /// <param name="channels">The number of channels per element.</param>
         public Mat(int rows, int cols, Depth depth, int channels)
-            : this(NativeMethods.cvCreateMat(rows, cols, MatHelper.GetMatType(depth, channels)), true)
+            : this(rows, cols, MatHelper.GetMatType(depth, channels))
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Mat"/> class with the specified
+        /// number of <paramref name="rows"/>, <paramref name="cols"/> and element
+        /// <paramref name="type"/>. A pointer to the matrix raw <paramref name="data"/>
+        /// is provided as well as the optional full row length
+        /// <paramref name="step"/> size in bytes.
+        /// </summary>
+        /// <param name="rows">The number of rows in the matrix.</param>
+        /// <param name="cols">The number of columns in the matrix.</param>
+        /// <param name="type">The type of matrix elements.</param>
+        /// <param name="data">A pointer to the matrix raw element data.</param>
+        /// <param name="step">The full row length in bytes.</param>
+        public Mat(int rows, int cols, int type, IntPtr data, int step = AutoStep)
+            : base(true)
+        {
+            var pMat = NativeMethods.cvCreateMatHeader(rows, cols, type);
+            NativeMethods.cvInitMatHeader(pMat, rows, cols, type, data, step);
+            SetHandle(pMat);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Mat"/> class with the specified
+        /// <paramref name="size"/> and element <paramref name="type"/>. A pointer to the
+        /// matrix raw <paramref name="data"/> is provided as well as the optional full
+        /// row length <paramref name="step"/> size in bytes.
+        /// </summary>
+        /// <param name="size">The pixel-accurate size of the <see cref="Mat"/>.</param>
+        /// <param name="type">The type of matrix elements.</param>
+        /// <param name="data">A pointer to the matrix raw element data.</param>
+        /// <param name="step">The full row length in bytes.</param>
+        public Mat(Size size, int type, IntPtr data, int step = AutoStep)
+            : this(size.Height, size.Width, type, data, step)
         {
         }
 
@@ -106,12 +165,8 @@ namespace OpenCV.Net
         /// <param name="data">A pointer to the matrix raw element data.</param>
         /// <param name="step">The full row length in bytes.</param>
         public Mat(int rows, int cols, Depth depth, int channels, IntPtr data, int step = AutoStep)
-            : base(true)
+            : this(rows, cols, MatHelper.GetMatType(depth, channels), data, step)
         {
-            var type = MatHelper.GetMatType(depth, channels);
-            var pMat = NativeMethods.cvCreateMatHeader(rows, cols, type);
-            NativeMethods.cvInitMatHeader(pMat, rows, cols, type, data, step); 
-            SetHandle(pMat);
         }
 
         /// <summary>
