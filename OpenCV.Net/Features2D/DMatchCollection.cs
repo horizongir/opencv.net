@@ -8,43 +8,46 @@ using System.Text;
 namespace OpenCV.Net
 {
     /// <summary>
-    /// Represents a collection of 32-bit signed integers.
+    /// Represents a collection of image keypoint descriptor matches computed
+    /// by one of the available descriptor matchers.
     /// </summary>
-    public class Int32Collection : CVHandle, IEnumerable<int>
+    public class DMatchCollection : CVHandle, IEnumerable<DMatch>
     {
-        internal static readonly Int32Collection Null = new NullCollection();
+        internal static readonly DMatchCollection Null = new NullCollection();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Int32Collection"/> class.
+        /// Initializes a new instance of the <see cref="DMatchCollection"/> class.
         /// </summary>
-        public Int32Collection()
+        public DMatchCollection()
             : this(true)
         {
-            SetHandle(NativeMethods.cv_vector_int_new());
+            SetHandle(NativeMethods.cv_vector_DMatch_new());
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Int32Collection"/> class with
-        /// the specified values.
+        /// Initializes a new instance of the <see cref="DMatchCollection"/> class
+        /// with the specified set of keypoint descriptor matches.
         /// </summary>
-        /// <param name="values">The values with which to initialize the collection.</param>
-        public Int32Collection(params int[] values)
+        /// <param name="values">
+        /// The set of keypoint descriptor matches with which to initialize the collection.
+        /// </param>
+        public DMatchCollection(params DMatch[] values)
             : this(true)
         {
-            SetHandle(NativeMethods.cv_vector_int_new_array(values, (IntPtr)values.Length));
+            SetHandle(NativeMethods.cv_vector_DMatch_new_array(values, (IntPtr)values.Length));
         }
 
-        private Int32Collection(bool ownsHandle)
+        private DMatchCollection(bool ownsHandle)
             : base(ownsHandle)
         {
         }
 
         /// <summary>
-        /// Gets the number of elements in the <see cref="Int32Collection"/>.
+        /// Gets the number of elements in the <see cref="DMatchCollection"/>.
         /// </summary>
         public int Count
         {
-            get { return NativeMethods.cv_vector_int_size(this).ToInt32(); }
+            get { return NativeMethods.cv_vector_DMatch_size(this).ToInt32(); }
         }
 
         /// <summary>
@@ -54,18 +57,18 @@ namespace OpenCV.Net
         /// The one-dimensional <see cref="Array"/> that is the destination of the
         /// elements copied from the collection.
         /// </param>
-        public void CopyTo(int[] array)
+        public void CopyTo(DMatch[] array)
         {
-            NativeMethods.cv_vector_int_copy(this, array);
+            NativeMethods.cv_vector_DMatch_copy(this, array);
         }
 
         /// <summary>
-        /// Creates an array from the <see cref="Int32Collection"/>.
+        /// Creates an array from the <see cref="DMatchCollection"/>.
         /// </summary>
         /// <returns>An array that contains the elements from the collection.</returns>
-        public int[] ToArray()
+        public DMatch[] ToArray()
         {
-            var array = new int[Count];
+            var array = new DMatch[Count];
             CopyTo(array);
             return array;
         }
@@ -74,17 +77,17 @@ namespace OpenCV.Net
         /// Returns an enumerator that iterates through the collection.
         /// </summary>
         /// <returns>An enumerator that can be used to iterate through the collection.</returns>
-        public IEnumerator<int> GetEnumerator()
+        public IEnumerator<DMatch> GetEnumerator()
         {
-            var iterator = NativeMethods.cv_vector_int_iterator_new(this);
+            var iterator = NativeMethods.cv_vector_DMatch_iterator_new(this);
             try
             {
-                while (NativeMethods.cv_vector_int_iterator_hasNext(iterator))
+                while (NativeMethods.cv_vector_DMatch_iterator_hasNext(iterator))
                 {
-                    yield return NativeMethods.cv_vector_int_iterator_next(iterator);
+                    yield return NativeMethods.cv_vector_DMatch_iterator_next(iterator);
                 }
             }
-            finally { NativeMethods.cv_vector_int_iterator_delete(iterator); }
+            finally { NativeMethods.cv_vector_DMatch_iterator_delete(iterator); }
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -93,7 +96,7 @@ namespace OpenCV.Net
         }
 
         /// <summary>
-        /// Executes the code required to free the native <see cref="Int32Collection"/> handle.
+        /// Executes the code required to free the native <see cref="DMatchCollection"/> handle.
         /// </summary>
         /// <returns>
         /// <b>true</b> if the handle is released successfully; otherwise, in the event of a
@@ -101,11 +104,11 @@ namespace OpenCV.Net
         /// </returns>
         protected override bool ReleaseHandle()
         {
-            NativeMethods.cv_vector_int_delete(handle);
+            NativeMethods.cv_vector_DMatch_delete(handle);
             return true;
         }
 
-        class NullCollection : Int32Collection
+        class NullCollection : DMatchCollection
         {
             internal NullCollection() : base(false) { }
 
