@@ -41,6 +41,38 @@ namespace OpenCV.Net.Native
 
         #endregion
 
+        #region Vector<char>
+
+        [DllImport(externLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr cv_vector_char_new();
+
+        [DllImport(externLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr cv_vector_char_new_array([In]byte[] data, IntPtr length);
+
+        [DllImport(externLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr cv_vector_char_size(ByteCollection vector);
+
+        [DllImport(externLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cv_vector_char_copy(ByteCollection vector, [Out]byte[] data);
+
+        [DllImport(externLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr cv_vector_char_iterator_new(ByteCollection vector);
+
+        [DllImport(externLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern byte cv_vector_char_iterator_next(IntPtr iterator);
+
+        [return: MarshalAs(UnmanagedType.I1)]
+        [DllImport(externLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern bool cv_vector_char_iterator_hasNext(IntPtr iterator);
+
+        [DllImport(externLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cv_vector_char_iterator_delete(IntPtr iterator);
+
+        [DllImport(externLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cv_vector_char_delete(IntPtr vector);
+
+        #endregion
+
         #region Vector<Point2f>
 
         [DllImport(externLib, CallingConvention = CallingConvention.Cdecl)]
@@ -102,6 +134,38 @@ namespace OpenCV.Net.Native
 
         [DllImport(externLib, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void cv_vector_KeyPoint_delete(IntPtr vector);
+
+        #endregion
+
+        #region Vector<DMatch>
+
+        [DllImport(externLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr cv_vector_DMatch_new();
+
+        [DllImport(externLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr cv_vector_DMatch_new_array([In]DMatch[] data, IntPtr length);
+
+        [DllImport(externLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr cv_vector_DMatch_size(DMatchCollection vector);
+
+        [DllImport(externLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cv_vector_DMatch_copy(DMatchCollection vector, [Out]DMatch[] data);
+
+        [DllImport(externLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr cv_vector_DMatch_iterator_new(DMatchCollection vector);
+
+        [DllImport(externLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern DMatch cv_vector_DMatch_iterator_next(IntPtr iterator);
+
+        [return: MarshalAs(UnmanagedType.I1)]
+        [DllImport(externLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern bool cv_vector_DMatch_iterator_hasNext(IntPtr iterator);
+
+        [DllImport(externLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cv_vector_DMatch_iterator_delete(IntPtr iterator);
+
+        [DllImport(externLib, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void cv_vector_DMatch_delete(IntPtr vector);
 
         #endregion
     }
