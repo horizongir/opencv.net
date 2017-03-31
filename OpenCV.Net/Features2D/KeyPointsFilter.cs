@@ -29,18 +29,8 @@ namespace OpenCV.Net
         /// </summary>
         /// <param name="keyPoints">The collection of keypoints to filter.</param>
         /// <param name="minSize">The minimum size of the keypoints.</param>
-        public static void RunByKeypointSize(KeyPointCollection keyPoints, float minSize)
-        {
-            NativeMethods.cv_features2d_KeyPointsFilter_runByKeypointSize(keyPoints, minSize, float.MaxValue);
-        }
-
-        /// <summary>
-        /// Remove keypoints with sizes outside of the specified range.
-        /// </summary>
-        /// <param name="keyPoints">The collection of keypoints to filter.</param>
-        /// <param name="minSize">The minimum size of the keypoints.</param>
         /// <param name="maxSize">The maximum size of the keypoints.</param>
-        public static void RunByKeypointSize(KeyPointCollection keyPoints, float minSize, float maxSize)
+        public static void RunByKeypointSize(KeyPointCollection keyPoints, float minSize, float maxSize = float.MaxValue)
         {
             NativeMethods.cv_features2d_KeyPointsFilter_runByKeypointSize(keyPoints, minSize, maxSize);
         }
