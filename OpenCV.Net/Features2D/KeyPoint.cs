@@ -51,7 +51,7 @@ namespace OpenCV.Net
         /// <param name="response">The response by which the strongest keypoints have been selected.</param>
         /// <param name="octave">The octave, or pyramid layer, from which the keypoint has been extracted.</param>
         /// <param name="classId">The class of the object, in case keypoints need to be clustered by an object they belong to.</param>
-        public KeyPoint(Point2f point, float size, float angle, float response, int octave, int classId)
+        public KeyPoint(Point2f point, float size, float angle = -1, float response = 0, int octave = 0, int classId = -1)
         {
             Point = point;
             Size = size;
@@ -71,7 +71,7 @@ namespace OpenCV.Net
         /// <param name="response">The response by which the strongest keypoints have been selected.</param>
         /// <param name="octave">The octave, or pyramid layer, from which the keypoint has been extracted.</param>
         /// <param name="classId">The class of the object, in case keypoints need to be clustered by an object they belong to.</param>
-        public KeyPoint(float x, float y, float size, float angle, float response, int octave, int classId)
+        public KeyPoint(float x, float y, float size, float angle = -1, float response = 0, int octave = 0, int classId = -1)
         {
             Point = new Point2f(x, y);
             Size = size;
@@ -79,6 +79,18 @@ namespace OpenCV.Net
             Response = response;
             Octave = octave;
             ClassId = classId;
+        }
+
+        /// <summary>
+        /// Converts a collection of keypoints to an array of points.
+        /// </summary>
+        /// <param name="keyPoints">The collection of keypoints to convert.</param>
+        /// <returns>The array of converted keypoints.</returns>
+        public static Point2f[] Convert(KeyPointCollection keyPoints)
+        {
+            var points = new Point2f[keyPoints.Count];
+            Convert(keyPoints, points);
+            return points;
         }
 
         /// <summary>
@@ -133,6 +145,28 @@ namespace OpenCV.Net
         /// keypoint is assigned the same size, response and orientation.
         /// </summary>
         /// <param name="points">The array of points to convert.</param>
+        /// <param name="size">The shared size of the converted keypoints.</param>
+        /// <param name="response">The shared response of the converted keypoints.</param>
+        /// <param name="octave">The shared octave, or pyramid level, of the converted keypoints.</param>
+        /// <param name="classId">The shared class id of the converted keypoints.</param>
+        /// <returns>The collection of converted keypoints.</returns>
+        public static KeyPointCollection Convert(
+            Point2f[] points,
+            float size = 1,
+            float response = 1,
+            int octave = 0,
+            int classId = -1)
+        {
+            var keyPoints = new KeyPointCollection();
+            Convert(points, keyPoints, size, response, octave, classId);
+            return keyPoints;
+        }
+
+        /// <summary>
+        /// Converts an array of points to a collection of keypoints, where each
+        /// keypoint is assigned the same size, response and orientation.
+        /// </summary>
+        /// <param name="points">The array of points to convert.</param>
         /// <param name="keyPoints">The collection that is the destination of the converted keypoints.</param>
         /// <param name="size">The shared size of the converted keypoints.</param>
         /// <param name="response">The shared response of the converted keypoints.</param>
@@ -141,10 +175,10 @@ namespace OpenCV.Net
         public static void Convert(
             Point2f[] points,
             KeyPointCollection keyPoints,
-            float size,
-            float response,
-            int octave,
-            int classId)
+            float size = 1,
+            float response = 1,
+            int octave = 0,
+            int classId = -1)
         {
             using (var vector = new Point2fCollection(points))
             {
@@ -165,10 +199,10 @@ namespace OpenCV.Net
         public static void Convert(
             Point2fCollection points,
             KeyPointCollection keyPoints,
-            float size,
-            float response,
-            int octave,
-            int classId)
+            float size = 1,
+            float response = 1,
+            int octave = 0,
+            int classId = -1)
         {
             NativeMethods.cv_features2d_KeyPoint_convert_vector_Point2f(
                 points,
