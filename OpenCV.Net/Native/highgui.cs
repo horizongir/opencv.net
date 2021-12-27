@@ -8,7 +8,7 @@ namespace OpenCV.Net.Native
 {
     static partial class NativeMethods
     {
-        const string highguiLib = "opencv_highgui248";
+        const string highguiLib = "opencv_highgui" + libSuffix;
 
         #region Basic GUI functions
 
