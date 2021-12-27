@@ -15,165 +15,147 @@ namespace OpenCV.Net.UnitTests
 
         [TestMethod]
         [ExpectedException(typeof(CVException))]
-        public new void GetSize_ReturnsArrWidthAndHeight()
+        public override void GetSize_ReturnsArrWidthAndHeight()
         {
             base.GetSize_ReturnsArrWidthAndHeight();
         }
 
         [TestMethod]
         [ExpectedException(typeof(CVException))]
-        public new void GetSubRect_ReturnsMatWithSubRectDimensions()
+        public override void GetSubRect_ReturnsMatWithSubRectDimensions()
         {
             base.GetSubRect_ReturnsMatWithSubRectDimensions();
         }
 
         [TestMethod]
         [ExpectedException(typeof(CVException))]
-        public new void GetRow_ReturnsMatVectorWithArrWidthLength()
+        public override void GetRow_ReturnsMatVectorWithArrWidthLength()
         {
             base.GetRow_ReturnsMatVectorWithArrWidthLength();
         }
 
         [TestMethod]
         [ExpectedException(typeof(CVException))]
-        public new void GetRows_ReturnsMatWithHeightEqualToSelectedRowCount()
+        public override void GetRows_ReturnsMatWithHeightEqualToSelectedRowCount()
         {
             base.GetRows_ReturnsMatWithHeightEqualToSelectedRowCount();
         }
 
         [TestMethod]
         [ExpectedException(typeof(CVException))]
-        public new void GetCol_ReturnsMatVectorWithArrHeightLength()
+        public override void GetCol_ReturnsMatVectorWithArrHeightLength()
         {
             base.GetCol_ReturnsMatVectorWithArrHeightLength();
         }
 
         [TestMethod]
         [ExpectedException(typeof(CVException))]
-        public new void GetCols_ReturnsMatWithWidthEqualToSelectedRowCount()
+        public override void GetCols_ReturnsMatWithWidthEqualToSelectedRowCount()
         {
             base.GetCols_ReturnsMatWithWidthEqualToSelectedRowCount();
         }
 
         [TestMethod]
         [ExpectedException(typeof(CVException))]
-        public new void GetDiag_ReturnsMatWithArrHeight()
+        public override void GetDiag_ReturnsMatWithArrHeight()
         {
             base.GetDiag_ReturnsMatWithArrHeight();
         }
 
         [TestMethod]
-        public new void Ptr3D_ReturnsNonZeroPointer()
-        {
-            base.Ptr3D_ReturnsNonZeroPointer();
-        }
-
-        [TestMethod]
-        public new void Get3D_ReturnsCorrectElementValue()
-        {
-            base.Get3D_ReturnsCorrectElementValue();
-        }
-
-        [TestMethod]
-        public new void GetReal3D_ReturnsCorrectElementValue()
-        {
-            base.GetReal3D_ReturnsCorrectElementValue();
-        }
-
-        [TestMethod]
         [ExpectedException(typeof(CVException))]
-        public new void GetMat_ReturnsMatWrapperTo2DDenseArr()
+        public override void GetMat_ReturnsMatWrapperTo2DDenseArr()
         {
             base.GetMat_ReturnsMatWrapperTo2DDenseArr();
         }
 
         [TestMethod]
         [ExpectedException(typeof(CVException))]
-        public new void GetImage_ReturnsIplImageWrapperTo2DDenseArr()
+        public override void GetImage_ReturnsIplImageWrapperTo2DDenseArr()
         {
             base.GetImage_ReturnsIplImageWrapperTo2DDenseArr();
         }
 
         [TestMethod]
         [ExpectedException(typeof(CVException))]
-        public new void Reshape_ReturnsReshapedMatFor2DDenseArr()
+        public override void Reshape_ReturnsReshapedMatFor2DDenseArr()
         {
             base.Reshape_ReturnsReshapedMatFor2DDenseArr();
         }
 
         [TestMethod]
         [ExpectedException(typeof(CVException))]
-        public new void GetRawData_ReturnsNonZeroPointer()
+        public override void GetRawData_ReturnsNonZeroPointer()
         {
             base.GetRawData_ReturnsNonZeroPointer();
         }
 
         [TestMethod]
         [ExpectedException(typeof(CVException))]
-        public new void Set_ArrElementsHaveTargetValue()
+        public override void Set_ArrElementsHaveTargetValue()
         {
             base.Set_ArrElementsHaveTargetValue();
         }
 
         [TestMethod]
         [ExpectedException(typeof(CVException))]
-        public new void CheckRange_ValidRangeElements_ReturnsTrue()
+        public override void CheckRange_ValidRangeElements_ReturnsTrue()
         {
             base.CheckRange_ValidRangeElements_ReturnsTrue();
         }
 
         [TestMethod]
         [ExpectedException(typeof(CVException))]
-        public new void Repeat_DestinationArrIsTiledWithSourceArr()
+        public override void Repeat_DestinationArrIsTiledWithSourceArr()
         {
             base.Repeat_DestinationArrIsTiledWithSourceArr();
         }
 
         [TestMethod]
         [ExpectedException(typeof(CVException))]
-        public new void Split_DestinationArrPlaneHasCorrectChannelValues()
+        public override void Split_DestinationArrPlaneHasCorrectChannelValues()
         {
             base.Split_DestinationArrPlaneHasCorrectChannelValues();
         }
 
         [TestMethod]
         [ExpectedException(typeof(CVException))]
-        public new void Merge_DestinationArrHasCorrectChannelValues()
+        public override void Merge_DestinationArrHasCorrectChannelValues()
         {
             base.Merge_DestinationArrHasCorrectChannelValues();
         }
 
         [TestMethod]
         [ExpectedException(typeof(CVException))]
-        public new void MixChannels_TargetArrHasRemappedChannelValues()
+        public override void MixChannels_TargetArrHasRemappedChannelValues()
         {
             base.MixChannels_TargetArrHasRemappedChannelValues();
         }
 
         [TestMethod]
         [ExpectedException(typeof(CVException))]
-        public new void ConvertScale_DestinationArrHasCorrectlyScaledElements()
+        public override void ConvertScale_DestinationArrHasCorrectlyScaledElements()
         {
             base.ConvertScale_DestinationArrHasCorrectlyScaledElements();
         }
 
         [TestMethod]
         [ExpectedException(typeof(CVException))]
-        public new void ConvertScaleAbs_DestinationArrHasCorrectlyScaledElements()
+        public override void ConvertScaleAbs_DestinationArrHasCorrectlyScaledElements()
         {
             base.ConvertScaleAbs_DestinationArrHasCorrectlyScaledElements();
         }
 
         [TestMethod]
         [ExpectedException(typeof(CVException))]
-        public new void SampleLine_ReturnsBufferWithLineElementCountLength()
+        public override void SampleLine_ReturnsBufferWithLineElementCountLength()
         {
             base.SampleLine_ReturnsBufferWithLineElementCountLength();
         }
 
         [TestMethod]
         [ExpectedException(typeof(CVException))]
-        public new void Sort_DestinationArrHasSortedElements()
+        public override void Sort_DestinationArrHasSortedElements()
         {
             base.Sort_DestinationArrHasSortedElements();
         }

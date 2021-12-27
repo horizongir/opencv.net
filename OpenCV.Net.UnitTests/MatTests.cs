@@ -14,6 +14,27 @@ namespace OpenCV.Net.UnitTests
         }
 
         [TestMethod]
+        [ExpectedException(typeof(CVException))]
+        public override void Ptr3D_ReturnsNonZeroPointer()
+        {
+            base.Ptr3D_ReturnsNonZeroPointer();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(CVException))]
+        public override void Get3D_ReturnsCorrectElementValue()
+        {
+            base.Get3D_ReturnsCorrectElementValue();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(CVException))]
+        public override void GetReal3D_ReturnsCorrectElementValue()
+        {
+            base.GetReal3D_ReturnsCorrectElementValue();
+        }
+
+        [TestMethod]
         public void MatRows_ReturnsCorrectNumberOfRows()
         {
             Assert.AreEqual(mat.Rows, Dim0);

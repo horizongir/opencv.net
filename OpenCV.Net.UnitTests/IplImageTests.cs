@@ -43,6 +43,27 @@ namespace OpenCV.Net.UnitTests
         }
 
         [TestMethod]
+        [ExpectedException(typeof(CVException))]
+        public override void Ptr3D_ReturnsNonZeroPointer()
+        {
+            base.Ptr3D_ReturnsNonZeroPointer();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(CVException))]
+        public override void Get3D_ReturnsCorrectElementValue()
+        {
+            base.Get3D_ReturnsCorrectElementValue();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(CVException))]
+        public override void GetReal3D_ReturnsCorrectElementValue()
+        {
+            base.GetReal3D_ReturnsCorrectElementValue();
+        }
+
+        [TestMethod]
         public void CreateIplImageHeader_ValidAccessToUnderlyingDataArray()
         {
             var data = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
