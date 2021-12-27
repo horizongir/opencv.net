@@ -11,7 +11,6 @@
     <GeneratePackageOnBuild Condition="'$(Configuration)'=='Release'">true</GeneratePackageOnBuild>
     <RepositoryUrl>https://github.com/horizongir/opencv.net.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <TargetFramework>net462</TargetFramework>
     <Version>3.4.0</Version>
   </PropertyGroup>
 </Project>
