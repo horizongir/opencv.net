@@ -1,15 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2012 for Windows Desktop
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCV.Net", "OpenCV.Net\OpenCV.Net.csproj", "{DAF4D704-2C86-4657-9210-DB5B847BA8BE}"
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31911.196
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenCV.Net", "OpenCV.Net\OpenCV.Net.csproj", "{DAF4D704-2C86-4657-9210-DB5B847BA8BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCV.Net.UnitTests", "OpenCV.Net.UnitTests\OpenCV.Net.UnitTests.csproj", "{8140F431-01D0-4E41-93AB-BC042D0EA120}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenCV.Net.UnitTests", "OpenCV.Net.UnitTests\OpenCV.Net.UnitTests.csproj", "{8140F431-01D0-4E41-93AB-BC042D0EA120}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{73C44BEA-21AD-401A-820F-88BD6EA58B29}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E846CBB8-E578-46ED-BF6E-21823A12219B}"
 	ProjectSection(SolutionItems) = preProject
-		.nuget\NuGet.Config = .nuget\NuGet.Config
-		.nuget\NuGet.exe = .nuget\NuGet.exe
-		.nuget\NuGet.targets = .nuget\NuGet.targets
+		Directory.Build.props = Directory.Build.props
 	EndProjectSection
 EndProject
 Global
@@ -29,5 +29,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6CAAB1BB-A221-437D-9C83-0A032A2F0916}
 	EndGlobalSection
 EndGlobal
