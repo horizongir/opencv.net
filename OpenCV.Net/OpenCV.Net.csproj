@@ -3,6 +3,7 @@
   <PropertyGroup>
     <Title>OpenCV.NET</Title>
     <Description>A .NET interface for the popular OpenCV computer vision and image processing library.</Description>
+    <GenerateDocumentationFile Condition="'$(Configuration)'=='Release'">true</GenerateDocumentationFile>
     <PackageTags>OpenCV Computer Vision Image Processing</PackageTags>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>

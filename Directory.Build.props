@@ -9,7 +9,6 @@
     <IncludeSymbols Condition="'$(Configuration)'=='Release'">true</IncludeSymbols>
     <SymbolPackageFormat Condition="'$(Configuration)'=='Release'">snupkg</SymbolPackageFormat>
     <GeneratePackageOnBuild Condition="'$(Configuration)'=='Release'">true</GeneratePackageOnBuild>
-    <GenerateDocumentationFile Condition="'$(Configuration)'=='Release'">true</GenerateDocumentationFile>
     <RepositoryUrl>https://github.com/horizongir/opencv.net.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <TargetFramework>net462</TargetFramework>
