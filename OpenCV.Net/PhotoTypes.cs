@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace OpenCV.Net
+﻿namespace OpenCV.Net
 {
     /// <summary>
     /// Specifies available inpainting methods.

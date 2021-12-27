@@ -1,7 +1,5 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Runtime.InteropServices;
-using OpenCV.Net.Native;
 
 namespace OpenCV.Net.UnitTests
 {
