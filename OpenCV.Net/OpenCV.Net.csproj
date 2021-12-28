@@ -10,9 +10,7 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <Content Include="..\.nuget\NuGet.exe" PackagePath="build\native\private" />
-    <Content Include="NuGet\build\**" PackagePath="build" />
-    <Content Include="NuGet\NuGet-Overlay.cmd" PackagePath="/" />
+    <Content Include="runtime.json" PackagePath="/" />
   </ItemGroup>
 
 </Project>
