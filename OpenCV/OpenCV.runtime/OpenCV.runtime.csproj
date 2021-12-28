@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>Multi platform native runtime for OpenCV.</Description>
+    <SuppressDependenciesWhenPacking>false</SuppressDependenciesWhenPacking>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="..\LICENSE" PackagePath="/" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OpenCV.runtime.win-x64\OpenCV.runtime.win-x64.csproj" />
+    <ProjectReference Include="..\OpenCV.runtime.win-x86\OpenCV.runtime.win-x86.csproj" />
+  </ItemGroup>
+
+</Project>

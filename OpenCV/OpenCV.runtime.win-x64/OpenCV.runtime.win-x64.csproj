@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>win x64 native runtime for OpenCV.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="..\LICENSE" PackagePath="/" />
+    <Content Include="x64\**\*.dll" PackagePath="runtimes\win-x64\native" />
+  </ItemGroup>
+
+</Project>

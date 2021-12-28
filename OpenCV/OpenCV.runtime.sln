@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31911.196
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenCV.runtime.win-x86", "OpenCV.runtime.win-x86\OpenCV.runtime.win-x86.csproj", "{6E4156C0-A27C-4B7B-88F2-2D6A11FB054B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D41087D3-DAF5-4EBC-B706-4A637F566AE2}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenCV.runtime.win-x64", "OpenCV.runtime.win-x64\OpenCV.runtime.win-x64.csproj", "{72CB516D-391E-45D1-8F36-5E31E2F21694}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenCV.runtime", "OpenCV.runtime\OpenCV.runtime.csproj", "{EA4F41AB-B492-433D-94F2-8720A12A7AD5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6E4156C0-A27C-4B7B-88F2-2D6A11FB054B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E4156C0-A27C-4B7B-88F2-2D6A11FB054B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72CB516D-391E-45D1-8F36-5E31E2F21694}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72CB516D-391E-45D1-8F36-5E31E2F21694}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA4F41AB-B492-433D-94F2-8720A12A7AD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA4F41AB-B492-433D-94F2-8720A12A7AD5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6CAAB1BB-A221-437D-9C83-0A032A2F0916}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <PropertyGroup>
+    <Authors>OpenCV team</Authors>
+    <Copyright>Copyright © OpenCV team</Copyright>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageProjectUrl>https://opencv.org/</PackageProjectUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <PackageOutputPath>..\..\bin\$(Configuration)</PackageOutputPath>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
+    <RepositoryUrl>https://github.com/opencv/opencv</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Version>2.4.8</Version>
+  </PropertyGroup>
+</Project>
