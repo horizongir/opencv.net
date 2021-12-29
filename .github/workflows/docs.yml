@@ -16,7 +16,7 @@ jobs:
       - uses: nikeee/docfx-action@v1.0.0
         name: Build Documentation
         with:
-         args: docfx_project/docfx.json
+         args: docs/docfx.json
           
       - name: Checkout gh-pages
         uses: actions/checkout@v2
