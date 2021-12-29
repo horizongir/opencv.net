@@ -57,7 +57,7 @@
     "template": [
       "default"
     ],
-    "postProcessors": [],
+    "postProcessors": [ "ExtractSearchIndex" ],
     "markdownEngineName": "markdig",
     "xrefService": [ "https://xref.docs.microsoft.com/query?uid={uid}" ],
     "noLangKeyword": false,
