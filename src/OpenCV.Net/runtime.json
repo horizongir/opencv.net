@@ -2,12 +2,12 @@
   "runtimes": {
     "win-x64": {
       "OpenCV.Net": {
-        "OpenCV.runtime.win-x64": "2.4.8"
+        "native.OpenCV.win-x64": "2.4.8"
       }
     },
     "win-x86": {
       "OpenCV.Net": {
-        "OpenCV.runtime.win-x86": "2.4.8"
+        "native.OpenCV.win-x86": "2.4.8"
       }
     }
   }
