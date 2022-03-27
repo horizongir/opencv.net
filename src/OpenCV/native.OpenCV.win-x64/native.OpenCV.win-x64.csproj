@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <Description>win x64 native runtime for OpenCV.</Description>
@@ -6,7 +6,8 @@
 
   <ItemGroup>
     <Content Include="..\LICENSE" PackagePath="/" />
-    <Content Include="x64\**\*.dll" PackagePath="runtimes\win-x64\native" />
+    <Content Include="x64\**\*.dll" PackagePath="runtimes\win-x64\native"
+             TargetPath="%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>

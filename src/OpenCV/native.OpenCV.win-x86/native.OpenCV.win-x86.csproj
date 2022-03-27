@@ -6,7 +6,8 @@
 
   <ItemGroup>
     <Content Include="..\LICENSE" PackagePath="/" />
-    <Content Include="x86\**\*.dll" PackagePath="runtimes\win-x86\native" />
+    <Content Include="x86\**\*.dll" PackagePath="runtimes\win-x86\native"
+             TargetPath="%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>
