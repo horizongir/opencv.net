@@ -11,6 +11,7 @@
   
   <ItemGroup>
     <Content Include="runtime.json" PackagePath="/" />
+    <Content Include="..\..\LICENSE" PackagePath="/" />
   </ItemGroup>
 
 </Project>
