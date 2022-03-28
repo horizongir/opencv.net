@@ -1,4 +1,4 @@
-
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32319.34
@@ -12,6 +12,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 		Directory.Build.props = Directory.Build.props
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenCV.Net.runtime", "OpenCV\OpenCV.Net.runtime\OpenCV.Net.runtime.csproj", "{2681D3E5-5C94-4A02-8CA8-8B264D1D0E86}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenCV.Net.runtime.win-x64", "OpenCV\OpenCV.Net.runtime.win-x64\OpenCV.Net.runtime.win-x64.csproj", "{89060ED4-0858-4E9E-833E-A2EDD21A02E3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenCV.Net.runtime.win-x86", "OpenCV\OpenCV.Net.runtime.win-x86\OpenCV.Net.runtime.win-x86.csproj", "{87B705FD-B9EE-4E80-9197-7BCADD121926}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +33,18 @@ Global
 		{8140F431-01D0-4E41-93AB-BC042D0EA120}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8140F431-01D0-4E41-93AB-BC042D0EA120}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8140F431-01D0-4E41-93AB-BC042D0EA120}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2681D3E5-5C94-4A02-8CA8-8B264D1D0E86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2681D3E5-5C94-4A02-8CA8-8B264D1D0E86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2681D3E5-5C94-4A02-8CA8-8B264D1D0E86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2681D3E5-5C94-4A02-8CA8-8B264D1D0E86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89060ED4-0858-4E9E-833E-A2EDD21A02E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89060ED4-0858-4E9E-833E-A2EDD21A02E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89060ED4-0858-4E9E-833E-A2EDD21A02E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89060ED4-0858-4E9E-833E-A2EDD21A02E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87B705FD-B9EE-4E80-9197-7BCADD121926}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87B705FD-B9EE-4E80-9197-7BCADD121926}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87B705FD-B9EE-4E80-9197-7BCADD121926}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87B705FD-B9EE-4E80-9197-7BCADD121926}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

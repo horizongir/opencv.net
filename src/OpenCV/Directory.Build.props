@@ -12,6 +12,6 @@
     <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
     <RepositoryUrl>https://github.com/opencv/opencv</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <Version>2.4.8</Version>
+    <Version>2.4.13</Version>
   </PropertyGroup>
 </Project>

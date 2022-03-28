@@ -8,7 +8,7 @@ namespace OpenCV.Net.Native
     static partial class NativeMethods
     {
         const string coreLib = "opencv_core" + libSuffix;
-        const string libSuffix = "248";
+        const string libSuffix = "2413";
 
         #region Array allocation, deallocation, initialization and access to elements
 

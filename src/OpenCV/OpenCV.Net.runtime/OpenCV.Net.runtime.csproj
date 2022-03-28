@@ -10,8 +10,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\native.OpenCV.win-x64\native.OpenCV.win-x64.csproj" />
-    <ProjectReference Include="..\native.OpenCV.win-x86\native.OpenCV.win-x86.csproj" />
+    <ProjectReference Include="..\OpenCV.Net.runtime.win-x64\OpenCV.Net.runtime.win-x64.csproj" />
+    <ProjectReference Include="..\OpenCV.Net.runtime.win-x86\OpenCV.Net.runtime.win-x86.csproj" />
   </ItemGroup>
 
 </Project>
