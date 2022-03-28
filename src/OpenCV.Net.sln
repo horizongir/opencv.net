@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Directory.Build.props = Directory.Build.props
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenCV.Net.runtime", "OpenCV\OpenCV.Net.runtime\OpenCV.Net.runtime.csproj", "{2681D3E5-5C94-4A02-8CA8-8B264D1D0E86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenCV.Net.runtime.win", "OpenCV\OpenCV.Net.runtime.win\OpenCV.Net.runtime.win.csproj", "{2681D3E5-5C94-4A02-8CA8-8B264D1D0E86}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenCV.Net.runtime.win-x64", "OpenCV\OpenCV.Net.runtime.win-x64\OpenCV.Net.runtime.win-x64.csproj", "{89060ED4-0858-4E9E-833E-A2EDD21A02E3}"
 EndProject
