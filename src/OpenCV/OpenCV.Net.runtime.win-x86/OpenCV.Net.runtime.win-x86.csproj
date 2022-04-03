@@ -1,11 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Description>win x86 native runtime for OpenCV.</Description>
+    <Description>win x86 native runtime for OpenCV. This is an internal implementation package not meant for direct consumption.</Description>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="..\LICENSE" PackagePath="/" />
     <Content Include="x86\**\*.dll" PackagePath="runtimes\win-x86\native"
              TargetPath="%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>

@@ -8,8 +8,10 @@
     <GeneratePackageOnBuild Condition="'$(Configuration)'=='Release'">true</GeneratePackageOnBuild>
     <RepositoryUrl>https://github.com/horizongir/opencv.net.git</RepositoryUrl>
     <PackageProjectUrl>https://github.com/horizongir/opencv.net</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/horizongir/opencv.net/main/src/icon.png</PackageIconUrl>
     <PackageOutputPath>..\bin\$(Configuration)</PackageOutputPath>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageIcon>icon.png</PackageIcon>
     <RepositoryType>git</RepositoryType>
     <Version>3.4.0</Version>
   </PropertyGroup>

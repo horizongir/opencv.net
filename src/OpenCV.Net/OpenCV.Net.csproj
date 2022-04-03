@@ -12,6 +12,7 @@
   <ItemGroup>
     <Content Include="runtime.json" PackagePath="/" />
     <Content Include="..\..\LICENSE" PackagePath="/" />
+    <Content Include="..\icon.png" PackagePath="/" />
   </ItemGroup>
 
 </Project>

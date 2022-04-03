@@ -3,15 +3,22 @@
   <PropertyGroup>
     <Authors>OpenCV team</Authors>
     <Copyright>Copyright © OpenCV team</Copyright>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageProjectUrl>https://opencv.org/</PackageProjectUrl>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <IncludeBuildOutput>false</IncludeBuildOutput>
-    <PackageOutputPath>..\..\bin\$(Configuration)</PackageOutputPath>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
-    <RepositoryUrl>https://github.com/opencv/opencv</RepositoryUrl>
+    <RepositoryUrl>https://github.com/horizongir/opencv.net.git</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/horizongir/opencv.net</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/horizongir/opencv.net/main/src/icon.png</PackageIconUrl>
+    <PackageOutputPath>..\..\bin\$(Configuration)</PackageOutputPath>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageIcon>icon.png</PackageIcon>
     <RepositoryType>git</RepositoryType>
     <Version>2.4.13</Version>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="..\LICENSE" PackagePath="/" />
+    <Content Include="..\..\icon.png" PackagePath="/" />
+  </ItemGroup>
 </Project>
