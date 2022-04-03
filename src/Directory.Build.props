@@ -3,8 +3,8 @@
   <PropertyGroup>
     <Authors>Gonçalo Lopes</Authors>
     <Copyright>Copyright © Gonçalo Lopes 2011-2022</Copyright>
-    <IncludeSymbols Condition="'$(Configuration)'=='Release'">true</IncludeSymbols>
-    <SymbolPackageFormat Condition="'$(Configuration)'=='Release'">snupkg</SymbolPackageFormat>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <GeneratePackageOnBuild Condition="'$(Configuration)'=='Release'">true</GeneratePackageOnBuild>
     <RepositoryUrl>https://github.com/horizongir/opencv.net.git</RepositoryUrl>
     <PackageProjectUrl>https://github.com/horizongir/opencv.net</PackageProjectUrl>
