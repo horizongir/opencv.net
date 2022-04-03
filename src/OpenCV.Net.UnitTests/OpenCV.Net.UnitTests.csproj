@@ -18,7 +18,7 @@
   
   <ItemGroup>
     <ProjectReference Include="..\OpenCV.Net\OpenCV.Net.csproj" />
-    <ProjectReference Include="..\OpenCV\OpenCV.Net.runtime.win-x64\OpenCV.Net.runtime.win-x64.csproj" />
+    <ProjectReference Include="..\OpenCV.Net.runtime\OpenCV.Net.runtime.win-x64\OpenCV.Net.runtime.win-x64.csproj" />
   </ItemGroup>
   
 </Project>

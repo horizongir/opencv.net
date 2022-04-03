@@ -1,4 +1,4 @@
-
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32319.34
@@ -13,9 +13,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Directory.Build.props = Directory.Build.props
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenCV.Net.runtime.win-x64", "OpenCV\OpenCV.Net.runtime.win-x64\OpenCV.Net.runtime.win-x64.csproj", "{89060ED4-0858-4E9E-833E-A2EDD21A02E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenCV.Net.runtime.win-x64", "OpenCV.Net.runtime\OpenCV.Net.runtime.win-x64\OpenCV.Net.runtime.win-x64.csproj", "{89060ED4-0858-4E9E-833E-A2EDD21A02E3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenCV.Net.runtime.win-x86", "OpenCV\OpenCV.Net.runtime.win-x86\OpenCV.Net.runtime.win-x86.csproj", "{87B705FD-B9EE-4E80-9197-7BCADD121926}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenCV.Net.runtime.win-x86", "OpenCV.Net.runtime\OpenCV.Net.runtime.win-x86\OpenCV.Net.runtime.win-x86.csproj", "{87B705FD-B9EE-4E80-9197-7BCADD121926}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

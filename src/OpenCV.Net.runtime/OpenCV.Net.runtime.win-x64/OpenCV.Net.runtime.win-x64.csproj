@@ -5,8 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="x64\**\*.dll" PackagePath="runtimes\win-x64\native"
-             TargetPath="%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="$(SolutionDir)opencv\build\x64\**\*.dll" PackagePath="runtimes\win-x64\native"
+             TargetPath="%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest"
+             Exclude="$(SolutionDir)opencv\build\x64\**\*d.dll"/>
   </ItemGroup>
 
 </Project>
