@@ -5,3 +5,5 @@ lib
 include
 staticlib
 *.nupkg
+*.exe
+opencv/
