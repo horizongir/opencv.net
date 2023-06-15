@@ -11,6 +11,7 @@
   
   <ItemGroup>
     <Content Include="runtime.json" PackagePath="/" />
+    <Content Include="OpenCV.Net.dll.config" PackagePath="content" />
     <Content Include="..\..\LICENSE" PackagePath="/" />
     <Content Include="..\icon.png" PackagePath="/" />
   </ItemGroup>
