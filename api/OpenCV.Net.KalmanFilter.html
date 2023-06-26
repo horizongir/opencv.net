@@ -1,0 +1,670 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class KalmanFilter
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class KalmanFilter
+   ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="OpenCV.Net.KalmanFilter">
+  
+  
+  <h1 id="OpenCV_Net_KalmanFilter" data-uid="OpenCV.Net.KalmanFilter" class="text-break">Class KalmanFilter
+  </h1>
+  <div class="markdown level0 summary"><p>Represents a Kalman filter state.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><a class="xref" href="OpenCV.Net.CVHandle.html">CVHandle</a></div>
+    <div class="level2"><span class="xref">KalmanFilter</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="OpenCV.Net.html">OpenCV.Net</a></h6>
+  <h6><strong>Assembly</strong>: OpenCV.Net.dll</h6>
+  <h5 id="OpenCV_Net_KalmanFilter_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class KalmanFilter : CVHandle</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_KalmanFilter__ctor_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20OpenCV.Net.KalmanFilter.%23ctor(System.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/KalmanFilter.cs/#L27">View Source</a>
+  </span>
+  <a id="OpenCV_Net_KalmanFilter__ctor_" data-uid="OpenCV.Net.KalmanFilter.#ctor*"></a>
+  <h4 id="OpenCV_Net_KalmanFilter__ctor_System_Int32_System_Int32_System_Int32_" data-uid="OpenCV.Net.KalmanFilter.#ctor(System.Int32,System.Int32,System.Int32)">KalmanFilter(Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="OpenCV.Net.KalmanFilter.html">KalmanFilter</a> class with the specified dimensionality.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public KalmanFilter(int dynamParams, int measureParams, int controlParams)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">dynamParams</span></td>
+        <td><p>Dimensionality of the state vector.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">measureParams</span></td>
+        <td><p>Dimensionality of the measurement vector.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">controlParams</span></td>
+        <td><p>Dimensionality of the control vector.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_KalmanFilter_ControlMatrix.md&amp;value=---%0Auid%3A%20OpenCV.Net.KalmanFilter.ControlMatrix%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/KalmanFilter.cs/#L75">View Source</a>
+  </span>
+  <a id="OpenCV_Net_KalmanFilter_ControlMatrix_" data-uid="OpenCV.Net.KalmanFilter.ControlMatrix*"></a>
+  <h4 id="OpenCV_Net_KalmanFilter_ControlMatrix" data-uid="OpenCV.Net.KalmanFilter.ControlMatrix">ControlMatrix</h4>
+  <div class="markdown level1 summary"><p>Gets the control matrix (B). Not used if there is no control.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Mat ControlMatrix { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OpenCV.Net.Mat.html">Mat</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_KalmanFilter_ErrorCovariancePosterior.md&amp;value=---%0Auid%3A%20OpenCV.Net.KalmanFilter.ErrorCovariancePosterior%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/KalmanFilter.cs/#L123">View Source</a>
+  </span>
+  <a id="OpenCV_Net_KalmanFilter_ErrorCovariancePosterior_" data-uid="OpenCV.Net.KalmanFilter.ErrorCovariancePosterior*"></a>
+  <h4 id="OpenCV_Net_KalmanFilter_ErrorCovariancePosterior" data-uid="OpenCV.Net.KalmanFilter.ErrorCovariancePosterior">ErrorCovariancePosterior</h4>
+  <div class="markdown level1 summary"><p>Gets the posterior error estimate covariance matrix (P(k)): P(k) = (I - K(k) * H) * P'(k).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Mat ErrorCovariancePosterior { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OpenCV.Net.Mat.html">Mat</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_KalmanFilter_ErrorCovariancePrior.md&amp;value=---%0Auid%3A%20OpenCV.Net.KalmanFilter.ErrorCovariancePrior%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/KalmanFilter.cs/#L107">View Source</a>
+  </span>
+  <a id="OpenCV_Net_KalmanFilter_ErrorCovariancePrior_" data-uid="OpenCV.Net.KalmanFilter.ErrorCovariancePrior*"></a>
+  <h4 id="OpenCV_Net_KalmanFilter_ErrorCovariancePrior" data-uid="OpenCV.Net.KalmanFilter.ErrorCovariancePrior">ErrorCovariancePrior</h4>
+  <div class="markdown level1 summary"><p>Gets the prior error estimate covariance matrix (P'(k)): P'(k) = A * P(k - 1) * At + Q.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Mat ErrorCovariancePrior { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OpenCV.Net.Mat.html">Mat</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_KalmanFilter_Gain.md&amp;value=---%0Auid%3A%20OpenCV.Net.KalmanFilter.Gain%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/KalmanFilter.cs/#L115">View Source</a>
+  </span>
+  <a id="OpenCV_Net_KalmanFilter_Gain_" data-uid="OpenCV.Net.KalmanFilter.Gain*"></a>
+  <h4 id="OpenCV_Net_KalmanFilter_Gain" data-uid="OpenCV.Net.KalmanFilter.Gain">Gain</h4>
+  <div class="markdown level1 summary"><p>Gets the Kalman gain matrix (K(k)): K(k) = P'(k) * Ht * inv(H * P'(k) * Ht + R).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Mat Gain { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OpenCV.Net.Mat.html">Mat</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_KalmanFilter_MeasurementMatrix.md&amp;value=---%0Auid%3A%20OpenCV.Net.KalmanFilter.MeasurementMatrix%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/KalmanFilter.cs/#L83">View Source</a>
+  </span>
+  <a id="OpenCV_Net_KalmanFilter_MeasurementMatrix_" data-uid="OpenCV.Net.KalmanFilter.MeasurementMatrix*"></a>
+  <h4 id="OpenCV_Net_KalmanFilter_MeasurementMatrix" data-uid="OpenCV.Net.KalmanFilter.MeasurementMatrix">MeasurementMatrix</h4>
+  <div class="markdown level1 summary"><p>Gets the measurement matrix (H).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Mat MeasurementMatrix { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OpenCV.Net.Mat.html">Mat</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_KalmanFilter_MeasurementNoiseCovariance.md&amp;value=---%0Auid%3A%20OpenCV.Net.KalmanFilter.MeasurementNoiseCovariance%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/KalmanFilter.cs/#L99">View Source</a>
+  </span>
+  <a id="OpenCV_Net_KalmanFilter_MeasurementNoiseCovariance_" data-uid="OpenCV.Net.KalmanFilter.MeasurementNoiseCovariance*"></a>
+  <h4 id="OpenCV_Net_KalmanFilter_MeasurementNoiseCovariance" data-uid="OpenCV.Net.KalmanFilter.MeasurementNoiseCovariance">MeasurementNoiseCovariance</h4>
+  <div class="markdown level1 summary"><p>Gets the measurement noise covariance matrix (R).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Mat MeasurementNoiseCovariance { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OpenCV.Net.Mat.html">Mat</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_KalmanFilter_ProcessNoiseCovariance.md&amp;value=---%0Auid%3A%20OpenCV.Net.KalmanFilter.ProcessNoiseCovariance%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/KalmanFilter.cs/#L91">View Source</a>
+  </span>
+  <a id="OpenCV_Net_KalmanFilter_ProcessNoiseCovariance_" data-uid="OpenCV.Net.KalmanFilter.ProcessNoiseCovariance*"></a>
+  <h4 id="OpenCV_Net_KalmanFilter_ProcessNoiseCovariance" data-uid="OpenCV.Net.KalmanFilter.ProcessNoiseCovariance">ProcessNoiseCovariance</h4>
+  <div class="markdown level1 summary"><p>Gets the process noise covariance matrix (Q).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Mat ProcessNoiseCovariance { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OpenCV.Net.Mat.html">Mat</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_KalmanFilter_StateCorrected.md&amp;value=---%0Auid%3A%20OpenCV.Net.KalmanFilter.StateCorrected%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/KalmanFilter.cs/#L59">View Source</a>
+  </span>
+  <a id="OpenCV_Net_KalmanFilter_StateCorrected_" data-uid="OpenCV.Net.KalmanFilter.StateCorrected*"></a>
+  <h4 id="OpenCV_Net_KalmanFilter_StateCorrected" data-uid="OpenCV.Net.KalmanFilter.StateCorrected">StateCorrected</h4>
+  <div class="markdown level1 summary"><p>Gets the corrected state vector (x(k)): x(k) = x'(k) + K(k) * (z(k) - H * x'(k))</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Mat StateCorrected { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OpenCV.Net.Mat.html">Mat</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_KalmanFilter_StatePredicted.md&amp;value=---%0Auid%3A%20OpenCV.Net.KalmanFilter.StatePredicted%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/KalmanFilter.cs/#L51">View Source</a>
+  </span>
+  <a id="OpenCV_Net_KalmanFilter_StatePredicted_" data-uid="OpenCV.Net.KalmanFilter.StatePredicted*"></a>
+  <h4 id="OpenCV_Net_KalmanFilter_StatePredicted" data-uid="OpenCV.Net.KalmanFilter.StatePredicted">StatePredicted</h4>
+  <div class="markdown level1 summary"><p>Gets the predicted state vector (x'(k)): x'(k) = A * x(k - 1) + B * u(k).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Mat StatePredicted { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OpenCV.Net.Mat.html">Mat</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_KalmanFilter_TransitionMatrix.md&amp;value=---%0Auid%3A%20OpenCV.Net.KalmanFilter.TransitionMatrix%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/KalmanFilter.cs/#L67">View Source</a>
+  </span>
+  <a id="OpenCV_Net_KalmanFilter_TransitionMatrix_" data-uid="OpenCV.Net.KalmanFilter.TransitionMatrix*"></a>
+  <h4 id="OpenCV_Net_KalmanFilter_TransitionMatrix" data-uid="OpenCV.Net.KalmanFilter.TransitionMatrix">TransitionMatrix</h4>
+  <div class="markdown level1 summary"><p>Gets the state transition matrix (A).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Mat TransitionMatrix { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OpenCV.Net.Mat.html">Mat</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_KalmanFilter_Correct_OpenCV_Net_Mat_.md&amp;value=---%0Auid%3A%20OpenCV.Net.KalmanFilter.Correct(OpenCV.Net.Mat)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/KalmanFilter.cs/#L152">View Source</a>
+  </span>
+  <a id="OpenCV_Net_KalmanFilter_Correct_" data-uid="OpenCV.Net.KalmanFilter.Correct*"></a>
+  <h4 id="OpenCV_Net_KalmanFilter_Correct_OpenCV_Net_Mat_" data-uid="OpenCV.Net.KalmanFilter.Correct(OpenCV.Net.Mat)">Correct(Mat)</h4>
+  <div class="markdown level1 summary"><p>Adjusts the model state.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Mat Correct(Mat measurement)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OpenCV.Net.Mat.html">Mat</a></td>
+        <td><span class="parametername">measurement</span></td>
+        <td><p>The measurement vector z(k).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OpenCV.Net.Mat.html">Mat</a></td>
+        <td><p>The adjusted state estimate.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_KalmanFilter_Predict.md&amp;value=---%0Auid%3A%20OpenCV.Net.KalmanFilter.Predict%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/KalmanFilter.cs/#L132">View Source</a>
+  </span>
+  <a id="OpenCV_Net_KalmanFilter_Predict_" data-uid="OpenCV.Net.KalmanFilter.Predict*"></a>
+  <h4 id="OpenCV_Net_KalmanFilter_Predict" data-uid="OpenCV.Net.KalmanFilter.Predict">Predict()</h4>
+  <div class="markdown level1 summary"><p>Estimates the subsequent model state.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Mat Predict()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OpenCV.Net.Mat.html">Mat</a></td>
+        <td><p>The estimated state vector.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_KalmanFilter_Predict_OpenCV_Net_Mat_.md&amp;value=---%0Auid%3A%20OpenCV.Net.KalmanFilter.Predict(OpenCV.Net.Mat)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/KalmanFilter.cs/#L142">View Source</a>
+  </span>
+  <a id="OpenCV_Net_KalmanFilter_Predict_" data-uid="OpenCV.Net.KalmanFilter.Predict*"></a>
+  <h4 id="OpenCV_Net_KalmanFilter_Predict_OpenCV_Net_Mat_" data-uid="OpenCV.Net.KalmanFilter.Predict(OpenCV.Net.Mat)">Predict(Mat)</h4>
+  <div class="markdown level1 summary"><p>Estimates the subsequent model state.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Mat Predict(Mat control)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OpenCV.Net.Mat.html">Mat</a></td>
+        <td><span class="parametername">control</span></td>
+        <td><p>The control vector u(k) or <strong>null</strong> if there is no control.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OpenCV.Net.Mat.html">Mat</a></td>
+        <td><p>The estimated state vector.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_KalmanFilter_ReleaseHandle.md&amp;value=---%0Auid%3A%20OpenCV.Net.KalmanFilter.ReleaseHandle%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/KalmanFilter.cs/#L164">View Source</a>
+  </span>
+  <a id="OpenCV_Net_KalmanFilter_ReleaseHandle_" data-uid="OpenCV.Net.KalmanFilter.ReleaseHandle*"></a>
+  <h4 id="OpenCV_Net_KalmanFilter_ReleaseHandle" data-uid="OpenCV.Net.KalmanFilter.ReleaseHandle">ReleaseHandle()</h4>
+  <div class="markdown level1 summary"><p>Executes the code required to free the native <a class="xref" href="OpenCV.Net.KalmanFilter.html">KalmanFilter</a> handle.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override bool ReleaseHandle()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><p><strong>true</strong> if the handle is released successfully; otherwise, in the event of a
+catastrophic failure, <strong>false</strong>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_KalmanFilter.md&amp;value=---%0Auid%3A%20OpenCV.Net.KalmanFilter%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/KalmanFilter.cs/#L8" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

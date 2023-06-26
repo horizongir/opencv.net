@@ -1,0 +1,929 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Struct Moments
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Struct Moments
+   ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="OpenCV.Net.Moments">
+  
+  
+  <h1 id="OpenCV_Net_Moments" data-uid="OpenCV.Net.Moments" class="text-break">Struct Moments
+  </h1>
+  <div class="markdown level0 summary"><p>Represents all the moments up to the third order of a polygon or rasterized shape.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="OpenCV.Net.html">OpenCV.Net</a></h6>
+  <h6><strong>Assembly</strong>: OpenCV.Net.dll</h6>
+  <h5 id="OpenCV_Net_Moments_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public struct Moments</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_Moments__ctor_OpenCV_Net_CVHandle_System_Boolean_.md&amp;value=---%0Auid%3A%20OpenCV.Net.Moments.%23ctor(OpenCV.Net.CVHandle%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/Moments.cs/#L39">View Source</a>
+  </span>
+  <a id="OpenCV_Net_Moments__ctor_" data-uid="OpenCV.Net.Moments.#ctor*"></a>
+  <h4 id="OpenCV_Net_Moments__ctor_OpenCV_Net_CVHandle_System_Boolean_" data-uid="OpenCV.Net.Moments.#ctor(OpenCV.Net.CVHandle,System.Boolean)">Moments(CVHandle, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="OpenCV.Net.Moments.html">Moments</a> structure from the
+specified polygon or rasterized shape.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Moments(CVHandle arr, bool binary = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OpenCV.Net.CVHandle.html">CVHandle</a></td>
+        <td><span class="parametername">arr</span></td>
+        <td><p>The handle to the polygon (<a class="xref" href="OpenCV.Net.Seq.html">Seq</a>) or rasterized shape (<a class="xref" href="OpenCV.Net.IplImage.html">IplImage</a>)
+from which to compute the moments.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><span class="parametername">binary</span></td>
+        <td><p>If <strong>true</strong>, all non-zero image pixels are treated as one.
+Used for images only.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="fields">Fields
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_Moments_InvSqrtM00.md&amp;value=---%0Auid%3A%20OpenCV.Net.Moments.InvSqrtM00%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/Moments.cs/#L25">View Source</a>
+  </span>
+  <h4 id="OpenCV_Net_Moments_InvSqrtM00" data-uid="OpenCV.Net.Moments.InvSqrtM00">InvSqrtM00</h4>
+  <div class="markdown level1 summary"><p>The inverse of the square root of the first spatial moment.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double InvSqrtM00</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Double</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_Moments_M00.md&amp;value=---%0Auid%3A%20OpenCV.Net.Moments.M00%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/Moments.cs/#L15">View Source</a>
+  </span>
+  <h4 id="OpenCV_Net_Moments_M00" data-uid="OpenCV.Net.Moments.M00">M00</h4>
+  <div class="markdown level1 summary"><p>The spatial moments of the polygon or rasterized shape.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double M00</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Double</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_Moments_M01.md&amp;value=---%0Auid%3A%20OpenCV.Net.Moments.M01%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/Moments.cs/#L15">View Source</a>
+  </span>
+  <h4 id="OpenCV_Net_Moments_M01" data-uid="OpenCV.Net.Moments.M01">M01</h4>
+  <div class="markdown level1 summary"><p>The spatial moments of the polygon or rasterized shape.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double M01</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Double</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_Moments_M02.md&amp;value=---%0Auid%3A%20OpenCV.Net.Moments.M02%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/Moments.cs/#L15">View Source</a>
+  </span>
+  <h4 id="OpenCV_Net_Moments_M02" data-uid="OpenCV.Net.Moments.M02">M02</h4>
+  <div class="markdown level1 summary"><p>The spatial moments of the polygon or rasterized shape.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double M02</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Double</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_Moments_M03.md&amp;value=---%0Auid%3A%20OpenCV.Net.Moments.M03%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/Moments.cs/#L15">View Source</a>
+  </span>
+  <h4 id="OpenCV_Net_Moments_M03" data-uid="OpenCV.Net.Moments.M03">M03</h4>
+  <div class="markdown level1 summary"><p>The spatial moments of the polygon or rasterized shape.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double M03</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Double</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_Moments_M10.md&amp;value=---%0Auid%3A%20OpenCV.Net.Moments.M10%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/Moments.cs/#L15">View Source</a>
+  </span>
+  <h4 id="OpenCV_Net_Moments_M10" data-uid="OpenCV.Net.Moments.M10">M10</h4>
+  <div class="markdown level1 summary"><p>The spatial moments of the polygon or rasterized shape.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double M10</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Double</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_Moments_M11.md&amp;value=---%0Auid%3A%20OpenCV.Net.Moments.M11%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/Moments.cs/#L15">View Source</a>
+  </span>
+  <h4 id="OpenCV_Net_Moments_M11" data-uid="OpenCV.Net.Moments.M11">M11</h4>
+  <div class="markdown level1 summary"><p>The spatial moments of the polygon or rasterized shape.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double M11</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Double</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_Moments_M12.md&amp;value=---%0Auid%3A%20OpenCV.Net.Moments.M12%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/Moments.cs/#L15">View Source</a>
+  </span>
+  <h4 id="OpenCV_Net_Moments_M12" data-uid="OpenCV.Net.Moments.M12">M12</h4>
+  <div class="markdown level1 summary"><p>The spatial moments of the polygon or rasterized shape.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double M12</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Double</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_Moments_M20.md&amp;value=---%0Auid%3A%20OpenCV.Net.Moments.M20%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/Moments.cs/#L15">View Source</a>
+  </span>
+  <h4 id="OpenCV_Net_Moments_M20" data-uid="OpenCV.Net.Moments.M20">M20</h4>
+  <div class="markdown level1 summary"><p>The spatial moments of the polygon or rasterized shape.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double M20</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Double</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_Moments_M21.md&amp;value=---%0Auid%3A%20OpenCV.Net.Moments.M21%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/Moments.cs/#L15">View Source</a>
+  </span>
+  <h4 id="OpenCV_Net_Moments_M21" data-uid="OpenCV.Net.Moments.M21">M21</h4>
+  <div class="markdown level1 summary"><p>The spatial moments of the polygon or rasterized shape.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double M21</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Double</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_Moments_M30.md&amp;value=---%0Auid%3A%20OpenCV.Net.Moments.M30%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/Moments.cs/#L15">View Source</a>
+  </span>
+  <h4 id="OpenCV_Net_Moments_M30" data-uid="OpenCV.Net.Moments.M30">M30</h4>
+  <div class="markdown level1 summary"><p>The spatial moments of the polygon or rasterized shape.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double M30</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Double</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_Moments_Mu02.md&amp;value=---%0Auid%3A%20OpenCV.Net.Moments.Mu02%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/Moments.cs/#L20">View Source</a>
+  </span>
+  <h4 id="OpenCV_Net_Moments_Mu02" data-uid="OpenCV.Net.Moments.Mu02">Mu02</h4>
+  <div class="markdown level1 summary"><p>The central moments of the polygon or rasterized shape.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double Mu02</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Double</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_Moments_Mu03.md&amp;value=---%0Auid%3A%20OpenCV.Net.Moments.Mu03%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/Moments.cs/#L20">View Source</a>
+  </span>
+  <h4 id="OpenCV_Net_Moments_Mu03" data-uid="OpenCV.Net.Moments.Mu03">Mu03</h4>
+  <div class="markdown level1 summary"><p>The central moments of the polygon or rasterized shape.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double Mu03</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Double</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_Moments_Mu11.md&amp;value=---%0Auid%3A%20OpenCV.Net.Moments.Mu11%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/Moments.cs/#L20">View Source</a>
+  </span>
+  <h4 id="OpenCV_Net_Moments_Mu11" data-uid="OpenCV.Net.Moments.Mu11">Mu11</h4>
+  <div class="markdown level1 summary"><p>The central moments of the polygon or rasterized shape.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double Mu11</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Double</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_Moments_Mu12.md&amp;value=---%0Auid%3A%20OpenCV.Net.Moments.Mu12%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/Moments.cs/#L20">View Source</a>
+  </span>
+  <h4 id="OpenCV_Net_Moments_Mu12" data-uid="OpenCV.Net.Moments.Mu12">Mu12</h4>
+  <div class="markdown level1 summary"><p>The central moments of the polygon or rasterized shape.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double Mu12</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Double</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_Moments_Mu20.md&amp;value=---%0Auid%3A%20OpenCV.Net.Moments.Mu20%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/Moments.cs/#L20">View Source</a>
+  </span>
+  <h4 id="OpenCV_Net_Moments_Mu20" data-uid="OpenCV.Net.Moments.Mu20">Mu20</h4>
+  <div class="markdown level1 summary"><p>The central moments of the polygon or rasterized shape.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double Mu20</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Double</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_Moments_Mu21.md&amp;value=---%0Auid%3A%20OpenCV.Net.Moments.Mu21%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/Moments.cs/#L20">View Source</a>
+  </span>
+  <h4 id="OpenCV_Net_Moments_Mu21" data-uid="OpenCV.Net.Moments.Mu21">Mu21</h4>
+  <div class="markdown level1 summary"><p>The central moments of the polygon or rasterized shape.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double Mu21</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Double</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_Moments_Mu30.md&amp;value=---%0Auid%3A%20OpenCV.Net.Moments.Mu30%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/Moments.cs/#L20">View Source</a>
+  </span>
+  <h4 id="OpenCV_Net_Moments_Mu30" data-uid="OpenCV.Net.Moments.Mu30">Mu30</h4>
+  <div class="markdown level1 summary"><p>The central moments of the polygon or rasterized shape.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double Mu30</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Double</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_Moments_GetCentralMoment_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20OpenCV.Net.Moments.GetCentralMoment(System.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/Moments.cs/#L65">View Source</a>
+  </span>
+  <a id="OpenCV_Net_Moments_GetCentralMoment_" data-uid="OpenCV.Net.Moments.GetCentralMoment*"></a>
+  <h4 id="OpenCV_Net_Moments_GetCentralMoment_System_Int32_System_Int32_" data-uid="OpenCV.Net.Moments.GetCentralMoment(System.Int32,System.Int32)">GetCentralMoment(Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the central moment with the specified <code data-dev-comment-type="paramref" class="paramref">xOrder</code> and <code data-dev-comment-type="paramref" class="paramref">yOrder</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double GetCentralMoment(int xOrder, int yOrder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">xOrder</span></td>
+        <td><p>The x-order of the retrieved moment.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">yOrder</span></td>
+        <td><p>The y-order of the retrieved moment.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Double</a></td>
+        <td><p>The central moment with the specified <code data-dev-comment-type="paramref" class="paramref">xOrder</code> and <code data-dev-comment-type="paramref" class="paramref">yOrder</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_Moments_GetHuMoments.md&amp;value=---%0Auid%3A%20OpenCV.Net.Moments.GetHuMoments%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/Moments.cs/#L90">View Source</a>
+  </span>
+  <a id="OpenCV_Net_Moments_GetHuMoments_" data-uid="OpenCV.Net.Moments.GetHuMoments*"></a>
+  <h4 id="OpenCV_Net_Moments_GetHuMoments" data-uid="OpenCV.Net.Moments.GetHuMoments">GetHuMoments()</h4>
+  <div class="markdown level1 summary"><p>Computes the seven Hu moments invariant to image scale, rotation, and reflection except
+the seventh one, whose sign is changed by reflection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HuMoments GetHuMoments()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OpenCV.Net.HuMoments.html">HuMoments</a></td>
+        <td><p>An instance of <a class="xref" href="OpenCV.Net.HuMoments.html">HuMoments</a> containing the seven Hu moments.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_Moments_GetNormalizedCentralMoment_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20OpenCV.Net.Moments.GetNormalizedCentralMoment(System.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/Moments.cs/#L80">View Source</a>
+  </span>
+  <a id="OpenCV_Net_Moments_GetNormalizedCentralMoment_" data-uid="OpenCV.Net.Moments.GetNormalizedCentralMoment*"></a>
+  <h4 id="OpenCV_Net_Moments_GetNormalizedCentralMoment_System_Int32_System_Int32_" data-uid="OpenCV.Net.Moments.GetNormalizedCentralMoment(System.Int32,System.Int32)">GetNormalizedCentralMoment(Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the normalized central moment with the specified <code data-dev-comment-type="paramref" class="paramref">xOrder</code> and
+<code data-dev-comment-type="paramref" class="paramref">yOrder</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double GetNormalizedCentralMoment(int xOrder, int yOrder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">xOrder</span></td>
+        <td><p>The x-order of the retrieved moment.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">yOrder</span></td>
+        <td><p>The y-order of the retrieved moment.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Double</a></td>
+        <td><p>The normalized central moment with the specified <code data-dev-comment-type="paramref" class="paramref">xOrder</code> and
+<code data-dev-comment-type="paramref" class="paramref">yOrder</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_Moments_GetSpatialMoment_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20OpenCV.Net.Moments.GetSpatialMoment(System.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/Moments.cs/#L52">View Source</a>
+  </span>
+  <a id="OpenCV_Net_Moments_GetSpatialMoment_" data-uid="OpenCV.Net.Moments.GetSpatialMoment*"></a>
+  <h4 id="OpenCV_Net_Moments_GetSpatialMoment_System_Int32_System_Int32_" data-uid="OpenCV.Net.Moments.GetSpatialMoment(System.Int32,System.Int32)">GetSpatialMoment(Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the spatial moment with the specified <code data-dev-comment-type="paramref" class="paramref">xOrder</code> and <code data-dev-comment-type="paramref" class="paramref">yOrder</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double GetSpatialMoment(int xOrder, int yOrder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">xOrder</span></td>
+        <td><p>The x-order of the retrieved moment.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">yOrder</span></td>
+        <td><p>The y-order of the retrieved moment.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Double</a></td>
+        <td><p>The spatial moment with the specified <code data-dev-comment-type="paramref" class="paramref">xOrder</code> and <code data-dev-comment-type="paramref" class="paramref">yOrder</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_Moments.md&amp;value=---%0Auid%3A%20OpenCV.Net.Moments%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/Moments.cs/#L9" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

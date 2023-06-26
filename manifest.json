@@ -1,0 +1,1714 @@
+{
+  "homepages": [],
+  "source_base_path": "/github/workspace/docs",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      },
+      "is_incremental": false
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.AdaptiveThresholdMethod.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.AdaptiveThresholdMethod.html",
+          "hash": "eIMKlUw4C0IGmwUmYwyILA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.Arr.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.Arr.html",
+          "hash": "2Ff0044GlGIAIJoFqi7UvA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.AttrList.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.AttrList.html",
+          "hash": "1zDw7uLCbLkHaTPIYUm8/Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.AvgComp.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.AvgComp.html",
+          "hash": "ZMzJSoi7OOA5tFhXWYmxSA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.ButtonCallback.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.ButtonCallback.html",
+          "hash": "vAkVB5TqRNSlA1JThJdKug=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.ButtonType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.ButtonType.html",
+          "hash": "qjIPkrTmktDDXIThXM4Bxw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.CV.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.CV.html",
+          "hash": "6yjTuVacSRFC2oRdaPd61g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.CVException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.CVException.html",
+          "hash": "+yskkGyFQP4wNNPqISMzyA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.CVHandle.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.CVHandle.html",
+          "hash": "vL3SxKIxPsuwdESjyx4iyA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.CameraCalibrationFlags.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.CameraCalibrationFlags.html",
+          "hash": "9Y3Hlzgz/G951S2wBvgKtA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.Capture.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.Capture.html",
+          "hash": "ju1nph2XhkHHb5girWtUew=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.CaptureDomain.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.CaptureDomain.html",
+          "hash": "RWom+zHNo3YrvDARRrsRvw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.CaptureProperty.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.CaptureProperty.html",
+          "hash": "DdLwWJq2FH2W6my0/+d2vQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.Chain.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.Chain.html",
+          "hash": "fj+4PxioCv+uSKhOMXTikg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.CheckArrayFlags.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.CheckArrayFlags.html",
+          "hash": "GiV94qy2fYKGb1Dpgquu9g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.ChessboardCalibrationFlags.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.ChessboardCalibrationFlags.html",
+          "hash": "u9Bq8GfMupcZQxIjOglepQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.ColorConversion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.ColorConversion.html",
+          "hash": "T5mLNcRN2CfwYqTWqFrpeQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.ComparisonOperation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.ComparisonOperation.html",
+          "hash": "qeQ89mLZ/FPK6COeXGOpyg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.CompressionParameters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.CompressionParameters.html",
+          "hash": "EgiZeb233Ite/PK6PnGuzA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.ConnectedComp.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.ConnectedComp.html",
+          "hash": "jyqQczCv61emPQrlvj9+dQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.Contour.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.Contour.html",
+          "hash": "5wb/Mjdmfcc3flgAdM7d4A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.ContourApproximation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.ContourApproximation.html",
+          "hash": "SYkJeOxXF9KF9l9tXFYeTQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.ContourRetrieval.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.ContourRetrieval.html",
+          "hash": "os2fKr/NjmnbmQB93/hKEQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.ContourScanner.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.ContourScanner.html",
+          "hash": "t1Fs/YeK/tSBejuOBqgzwA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.ConvertImageFlags.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.ConvertImageFlags.html",
+          "hash": "oY22Y8FU2b1ZNW1bCHR8hw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.ConvexityDefect.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.ConvexityDefect.html",
+          "hash": "KDWvR11jb1fHp2JwJzEEXA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.CovarianceFlags.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.CovarianceFlags.html",
+          "hash": "86+34vrjLATlFwz4B6SlKQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.Depth.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.Depth.html",
+          "hash": "HmeBmx4lZ9+fzE56f9Hniw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.DiscreteTransformFlags.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.DiscreteTransformFlags.html",
+          "hash": "/z4+AOg65ZkOvr5akh2pgQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.DistanceLabel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.DistanceLabel.html",
+          "hash": "+bHf9Y/wg8DIQmISSncGkg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.DistanceType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.DistanceType.html",
+          "hash": "j7h9X8oYE5xihwqwYst7iw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.FarnebackFlowFlags.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.FarnebackFlowFlags.html",
+          "hash": "H9kmVIENiJUBKLkmAnAndA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.FileNode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.FileNode.html",
+          "hash": "NNWGV6xeaMVoCkF5fDhEmQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.FileNodeType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.FileNodeType.html",
+          "hash": "poeRQAmrgXcC26yVGTggLQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.FileStorage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.FileStorage.html",
+          "hash": "8/BlDdnbjpyozNb+WiQwYg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.FindHomographyMethod.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.FindHomographyMethod.html",
+          "hash": "T4Hu3F5LjkY5yc7B12fwfQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.FlipMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.FlipMode.html",
+          "hash": "Cv7evyEyouqc7PlDxvLQyQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.FloodFillFlags.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.FloodFillFlags.html",
+          "hash": "/Kpw73hW2VnJNGspQ0Bo1g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.Font.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.Font.html",
+          "hash": "/SgGoJqINx3oEcY6xJMEZQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.FontFace.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.FontFace.html",
+          "hash": "nL1Nr23j9fH0pqtwGgbcRA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.FontStyle.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.FontStyle.html",
+          "hash": "9eJr4dbZtphYAz6MgbYuQA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.FontWeight.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.FontWeight.html",
+          "hash": "4/yZsRcXQFEF27+jb97QRw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.FundamentalMatrixMethod.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.FundamentalMatrixMethod.html",
+          "hash": "cQNkU8X0CCLM0NOFopFGmw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.GemmFlags.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.GemmFlags.html",
+          "hash": "VVrLPKFtqmOvuTfptkjGBQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.Graph.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.Graph.html",
+          "hash": "MUs8oeOq3nJ4EA0tP9J/SA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.HaarClassifierCascade.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.HaarClassifierCascade.html",
+          "hash": "4KW1ALn3ymV5E/+XKnAFmA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.HaarDetectObjectFlags.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.HaarDetectObjectFlags.html",
+          "hash": "Q2IimrQpAcx0N6lEbgowjw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.Histogram.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.Histogram.html",
+          "hash": "p3z+pw/hz0ggZrSRPO0uEw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.HistogramComparison.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.HistogramComparison.html",
+          "hash": "0cIRbz3Tzo4HRVgoNiMpOg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.HistogramType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.HistogramType.html",
+          "hash": "Q3TANbHgKPbcRV8q1WLa7A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.HoughCirclesMethod.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.HoughCirclesMethod.html",
+          "hash": "xhTEsk3W95C+mumAuVikuw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.HoughLinesMethod.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.HoughLinesMethod.html",
+          "hash": "xy0Nrdlfl68/7RoGuWK43Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.HuMoments.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.HuMoments.html",
+          "hash": "d5RvOXwjlOx+Nob/OnSQvg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.InpaintMethod.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.InpaintMethod.html",
+          "hash": "iq8wG/v3e9erdpYzQpth9w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.InversionMethod.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.InversionMethod.html",
+          "hash": "AJ8PsEZX8neXPt5v7FEUdQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.IplBorder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.IplBorder.html",
+          "hash": "8Qtm6RItNyBPg9BJV16Bkg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.IplConvKernel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.IplConvKernel.html",
+          "hash": "LVZX13fTwRYaFFTkyIEsMA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.IplDepth.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.IplDepth.html",
+          "hash": "MHotkN0o0tRi9KXpp9aVYA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.IplImage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.IplImage.html",
+          "hash": "I9+4e2Z4FnTPEMnq6jfpzw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.IplOrigin.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.IplOrigin.html",
+          "hash": "SgLDVaxqwKOWiJMEmbgJ4A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.KMeansFlags.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.KMeansFlags.html",
+          "hash": "U5rJWUaL987LQ+1Jkrh85w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.KalmanFilter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.KalmanFilter.html",
+          "hash": "Dbt7MvBejrXxxtOSPiHkqQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.LKFlowFlags.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.LKFlowFlags.html",
+          "hash": "qfeDPGixEPCY8xNVC4UJbQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.LatentSvmDetector.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.LatentSvmDetector.html",
+          "hash": "QMd5f5AIlJC9sH9M7zFGwg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.LineFlags.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.LineFlags.html",
+          "hash": "bsQZ54QFB9NMtFE3J6lutg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.LineType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.LineType.html",
+          "hash": "SjBXozNx5Yq58fojuz0reg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.LoadImageFlags.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.LoadImageFlags.html",
+          "hash": "dycHkH4VZySroz81SF6Kgg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.Mat.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.Mat.html",
+          "hash": "jlQ8dkFGBz5VckO8mJKd/Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.MatND.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.MatND.html",
+          "hash": "Wvg6ibpfA3c3FYgAQkdI9Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.MemBlock.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.MemBlock.html",
+          "hash": "QKUxi/KFFSos94u6QelsvQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.MemStorage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.MemStorage.html",
+          "hash": "sp6+NpfUnE3HrB8gWxtz9w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.MemStoragePos.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.MemStoragePos.html",
+          "hash": "hwaEmZqaLOCVZQ1ZgWDuNw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.Moments.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.Moments.html",
+          "hash": "CX92RluWULx0HrwzC4Af+w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.MorphologicalOperation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.MorphologicalOperation.html",
+          "hash": "cPkU/Y3pvplEhJzMFOL1eg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.MouseCallback.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.MouseCallback.html",
+          "hash": "43fTcch3/Gp97H+RPRnswQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.MouseEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.MouseEvent.html",
+          "hash": "An9SxHI5XFzzLtdanfMY7w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.MouseEventFlags.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.MouseEventFlags.html",
+          "hash": "eAxxDl6v4lkeg7N2Sobrcg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.NamedWindow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.NamedWindow.html",
+          "hash": "oNUJGqacz800XSf9JEoTfw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.NormTypes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.NormTypes.html",
+          "hash": "i2EssGK/yrDOKMfbpXoWZw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.ObjectDetection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.ObjectDetection.html",
+          "hash": "1Z0hGtM37Eq8kqj8cDKSeg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.OpenGLDrawCallback.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.OpenGLDrawCallback.html",
+          "hash": "CkK0wenXBdWQZXJ06/UdIQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.PcaFlags.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.PcaFlags.html",
+          "hash": "uje5g9IYT+pKXjbEjmVJMA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.Point.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.Point.html",
+          "hash": "nAcuESwwIV6yu3xlOJE2SQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.Point2d.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.Point2d.html",
+          "hash": "3F9M3BpmhxsOSqzkHnNp/w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.Point2f.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.Point2f.html",
+          "hash": "yz6sDy5akxC9sv3gi2+BGQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.Point3d.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.Point3d.html",
+          "hash": "UH+FYU1d5u6ZN+IEbd/frg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.Point3f.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.Point3f.html",
+          "hash": "f/JKN7Pv55MZbOhkoW/T+A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.PolygonApproximation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.PolygonApproximation.html",
+          "hash": "EFb/mMrNO7p9tCCrGGxfxQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.PositObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.PositObject.html",
+          "hash": "xfEfvJxU0ycwlw17gIuM7Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.PyramidDecompositionFilter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.PyramidDecompositionFilter.html",
+          "hash": "aLZX3A8fkoja3SgmDcKyug=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.RandDistribution.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.RandDistribution.html",
+          "hash": "ptgrWKczyXetjrIQthGU6Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.Rect.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.Rect.html",
+          "hash": "TGm40eXY5IShG0m1zA1LGg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.ReduceOperation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.ReduceOperation.html",
+          "hash": "l8wRz1ngpu3soH5CGm80zw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.RotatedRect.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.RotatedRect.html",
+          "hash": "JUWr6ACT0eGXtfN3ATGYQA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.Scalar.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.Scalar.html",
+          "hash": "1R4mbCHKSS/LW0V8o698Ow=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.Seq.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.Seq.html",
+          "hash": "O+08NbwTatZkhuNEviHLxg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.SeqSlice.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.SeqSlice.html",
+          "hash": "Na+8E8nFkvYzqXsgCges6w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.SequenceElementType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.SequenceElementType.html",
+          "hash": "pdwtXkJXP8PsfBjPXUfLKg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.SequenceFlags.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.SequenceFlags.html",
+          "hash": "W+k1UhseO54xm75cp63ssQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.SequenceKind.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.SequenceKind.html",
+          "hash": "4h06nj8I5qk1hhnZ/KKc+Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.Set.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.Set.html",
+          "hash": "tb51OCB7KcsgLb2prsf0nQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.ShapeMatchingMethod.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.ShapeMatchingMethod.html",
+          "hash": "cdKdnydrOccOGrEJBxY7kQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.ShapeOrientation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.ShapeOrientation.html",
+          "hash": "yhWYs0mqI+jtdw0ORWCKUg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.Size.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.Size.html",
+          "hash": "/GZJiWABNZFCW92g0JI+eA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.Size2f.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.Size2f.html",
+          "hash": "QoFF10Kr6pr5Pnd4FD3wQg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.SmoothMethod.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.SmoothMethod.html",
+          "hash": "dIoVXYqUhFG/UCtpupQ1NQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.SortFlags.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.SortFlags.html",
+          "hash": "URA/CGzxdHmZ9LiZiF88/A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.SparseMat.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.SparseMat.html",
+          "hash": "6gX0JH0KDb9VThCOFAtwIQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.SparseNode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.SparseNode.html",
+          "hash": "w1AbCPG6KJx4ekVGm06a9A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.StereoBM.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.StereoBM.html",
+          "hash": "LRj8LXquvUSf/12/Ta4iIQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.StereoBMPreFilterType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.StereoBMPreFilterType.html",
+          "hash": "LnEbfB/XpoZRjWThwqBLcQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.StereoBMPreset.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.StereoBMPreset.html",
+          "hash": "zgryXBbcRo6rEljrY3+ZwA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.StereoCalibrationFlags.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.StereoCalibrationFlags.html",
+          "hash": "idBRQadblIRcbMbnCMnrHw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.StereoRectificationFlags.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.StereoRectificationFlags.html",
+          "hash": "nie/w+OdEPgPnKOTqEpd8A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.StorageFlags.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.StorageFlags.html",
+          "hash": "NtKLLyZjAp2p7C1OnOrj4w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.StringHashNode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.StringHashNode.html",
+          "hash": "b+49vif5mSm7HMbdhkUjMA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.StructStorageFlags.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.StructStorageFlags.html",
+          "hash": "AeyA2REWSlbfi4DWNErNsg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.StructuringElementShape.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.StructuringElementShape.html",
+          "hash": "VJ4lns2+IlAoqp1or0X+4g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.SubPixelInterpolation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.SubPixelInterpolation.html",
+          "hash": "Y1kZ2ekklEFbssBH2xFqbw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.SvdFlags.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.SvdFlags.html",
+          "hash": "CFq7MN8QJzQpLUNmOekU4Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.TemplateMatchingMethod.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.TemplateMatchingMethod.html",
+          "hash": "K0WmQ1pneYQ05WqdMNwk+g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.TermCriteria.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.TermCriteria.html",
+          "hash": "IMqyPgRXB/Yc2zmLT+ow1A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.TermCriteriaType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.TermCriteriaType.html",
+          "hash": "3hAt1eZVN8nsrA8puKg8TA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.ThresholdTypes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.ThresholdTypes.html",
+          "hash": "G3hkM+bKYt5Fr/7Yq6jH0Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.TrackbarCallback.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.TrackbarCallback.html",
+          "hash": "4t6YY0BpKH0HmYTcmHcG1A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.VideoWriter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.VideoWriter.html",
+          "hash": "htwMTh4L5gtzj6rYPFa/IQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.WarpFlags.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.WarpFlags.html",
+          "hash": "InX6CYy+J0zEPIO0UcY7Sw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.WindowFlags.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.WindowFlags.html",
+          "hash": "+E+XDpn9Q+viJp00AAQTmw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.WindowProperty.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.WindowProperty.html",
+          "hash": "MrZtow3gH04cZnwbifCVaw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/OpenCV.Net.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/OpenCV.Net.html",
+          "hash": "mQPxXWParTJUrmfBUi/Fhw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "ZuzIFlJ/BAgZi70whCsqOg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html",
+          "hash": "uS6E4XQUUxLizNq6N40hrw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "gB8AESyvNru97tzIZofEEg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "favicon.ico",
+      "output": {
+        "resource": {
+          "relative_path": "favicon.ico"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "zBGs0MKRafJWXsBpGA3R1g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "logo.svg",
+      "output": {
+        "resource": {
+          "relative_path": "logo.svg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "ApBDcczfXPMajTOoqJtfYg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot build incrementally because last build info is missing.",
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0,
+        "full_build_reason_code": "NoAvailableBuildCache"
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 2,
+          "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 130,
+          "skipped_file_count": 0
+        },
+        "ResourceDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: should not trace intermediate info.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

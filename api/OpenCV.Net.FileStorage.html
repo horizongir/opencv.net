@@ -1,0 +1,1427 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class FileStorage
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class FileStorage
+   ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="OpenCV.Net.FileStorage">
+  
+  
+  <h1 id="OpenCV_Net_FileStorage" data-uid="OpenCV.Net.FileStorage" class="text-break">Class FileStorage
+  </h1>
+  <div class="markdown level0 summary"><p>Represents a storage associated with a file on disk.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><span class="xref">FileStorage</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="OpenCV.Net.html">OpenCV.Net</a></h6>
+  <h6><strong>Assembly</strong>: OpenCV.Net.dll</h6>
+  <h5 id="OpenCV_Net_FileStorage_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class FileStorage : SafeHandleZeroOrMinusOneIsInvalid</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_FileStorage__ctor_System_String_OpenCV_Net_MemStorage_OpenCV_Net_StorageFlags_System_String_.md&amp;value=---%0Auid%3A%20OpenCV.Net.FileStorage.%23ctor(System.String%2COpenCV.Net.MemStorage%2COpenCV.Net.StorageFlags%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/FileStorage.cs/#L30">View Source</a>
+  </span>
+  <a id="OpenCV_Net_FileStorage__ctor_" data-uid="OpenCV.Net.FileStorage.#ctor*"></a>
+  <h4 id="OpenCV_Net_FileStorage__ctor_System_String_OpenCV_Net_MemStorage_OpenCV_Net_StorageFlags_System_String_" data-uid="OpenCV.Net.FileStorage.#ctor(System.String,OpenCV.Net.MemStorage,OpenCV.Net.StorageFlags,System.String)">FileStorage(String, MemStorage, StorageFlags, String)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="OpenCV.Net.FileStorage.html">FileStorage</a> class and prepares the
+file storage for reading or writing data.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FileStorage(string fileName, MemStorage storage, StorageFlags flags, string encoding = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">fileName</span></td>
+        <td><p>Name of the file associated with the storage.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="OpenCV.Net.MemStorage.html">MemStorage</a></td>
+        <td><span class="parametername">storage</span></td>
+        <td><p>Memory storage used for temporary data and for storing dynamic structures, such as
+<a class="xref" href="OpenCV.Net.Seq.html">Seq</a> or <a class="xref" href="OpenCV.Net.Graph.html">Graph</a>. If it is <strong>null</strong>, a temporary memory
+storage is created and used.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="OpenCV.Net.StorageFlags.html">StorageFlags</a></td>
+        <td><span class="parametername">flags</span></td>
+        <td><p>Specifies operation flags associated with the new file storage.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">encoding</span></td>
+        <td><p>Encoding of the file. Note that UTF-16 XML encoding is not supported currently and you
+should use 8-bit encoding instead.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_FileStorage_EndWriteStruct.md&amp;value=---%0Auid%3A%20OpenCV.Net.FileStorage.EndWriteStruct%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/FileStorage.cs/#L58">View Source</a>
+  </span>
+  <a id="OpenCV_Net_FileStorage_EndWriteStruct_" data-uid="OpenCV.Net.FileStorage.EndWriteStruct*"></a>
+  <h4 id="OpenCV_Net_FileStorage_EndWriteStruct" data-uid="OpenCV.Net.FileStorage.EndWriteStruct">EndWriteStruct()</h4>
+  <div class="markdown level1 summary"><p>Ends the writing of a structure.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void EndWriteStruct()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_FileStorage_GetFileNode_OpenCV_Net_FileNode_OpenCV_Net_StringHashNode_System_Boolean_.md&amp;value=---%0Auid%3A%20OpenCV.Net.FileStorage.GetFileNode(OpenCV.Net.FileNode%2COpenCV.Net.StringHashNode%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/FileStorage.cs/#L187">View Source</a>
+  </span>
+  <a id="OpenCV_Net_FileStorage_GetFileNode_" data-uid="OpenCV.Net.FileStorage.GetFileNode*"></a>
+  <h4 id="OpenCV_Net_FileStorage_GetFileNode_OpenCV_Net_FileNode_OpenCV_Net_StringHashNode_System_Boolean_" data-uid="OpenCV.Net.FileStorage.GetFileNode(OpenCV.Net.FileNode,OpenCV.Net.StringHashNode,System.Boolean)">GetFileNode(FileNode, StringHashNode, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Finds a node in a map or file storage.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FileNode GetFileNode(FileNode map, StringHashNode key, bool createMissing = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OpenCV.Net.FileNode.html">FileNode</a></td>
+        <td><span class="parametername">map</span></td>
+        <td><p>The parent map. If it is <strong>null</strong>, the function searches a top-level node.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="OpenCV.Net.StringHashNode.html">StringHashNode</a></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Unique pointer to the node name, retrieved with <a class="xref" href="OpenCV.Net.FileStorage.html#OpenCV_Net_FileStorage_GetHashedKey_System_String_System_Boolean_">GetHashedKey(String, Boolean)</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><span class="parametername">createMissing</span></td>
+        <td><p>A value indicating whether an absent node should be added to the map.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OpenCV.Net.FileNode.html">FileNode</a></td>
+        <td><p>The found or newly created node; <strong>null</strong> in case of failure.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_FileStorage_GetFileNode_OpenCV_Net_FileNode_System_String_.md&amp;value=---%0Auid%3A%20OpenCV.Net.FileStorage.GetFileNode(OpenCV.Net.FileNode%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/FileStorage.cs/#L199">View Source</a>
+  </span>
+  <a id="OpenCV_Net_FileStorage_GetFileNode_" data-uid="OpenCV.Net.FileStorage.GetFileNode*"></a>
+  <h4 id="OpenCV_Net_FileStorage_GetFileNode_OpenCV_Net_FileNode_System_String_" data-uid="OpenCV.Net.FileStorage.GetFileNode(OpenCV.Net.FileNode,System.String)">GetFileNode(FileNode, String)</h4>
+  <div class="markdown level1 summary"><p>Finds a node in a map or file storage.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FileNode GetFileNode(FileNode map, string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OpenCV.Net.FileNode.html">FileNode</a></td>
+        <td><span class="parametername">map</span></td>
+        <td><p>The parent map. If it is <strong>null</strong>, the function searches a top-level node.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The file node name.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OpenCV.Net.FileNode.html">FileNode</a></td>
+        <td><p>The found node or <strong>null</strong> in case of failure.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_FileStorage_GetHashedKey_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20OpenCV.Net.FileStorage.GetHashedKey(System.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/FileStorage.cs/#L157">View Source</a>
+  </span>
+  <a id="OpenCV_Net_FileStorage_GetHashedKey_" data-uid="OpenCV.Net.FileStorage.GetHashedKey*"></a>
+  <h4 id="OpenCV_Net_FileStorage_GetHashedKey_System_String_System_Boolean_" data-uid="OpenCV.Net.FileStorage.GetHashedKey(System.String,System.Boolean)">GetHashedKey(String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Returns a unique reference for a given name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public StringHashNode GetHashedKey(string name, bool createMissing = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>Literal node name.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><span class="parametername">createMissing</span></td>
+        <td><p>A value indicating whether an absent key should be added into the hash table.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OpenCV.Net.StringHashNode.html">StringHashNode</a></td>
+        <td><p>A unique reference for each particular file node name. This reference can later be passed to the
+<a class="xref" href="OpenCV.Net.FileStorage.html#OpenCV_Net_FileStorage_GetFileNode_OpenCV_Net_FileNode_OpenCV_Net_StringHashNode_System_Boolean_">GetFileNode(FileNode, StringHashNode, Boolean)</a> method.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_FileStorage_GetRootFileNode_System_Int32_.md&amp;value=---%0Auid%3A%20OpenCV.Net.FileStorage.GetRootFileNode(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/FileStorage.cs/#L174">View Source</a>
+  </span>
+  <a id="OpenCV_Net_FileStorage_GetRootFileNode_" data-uid="OpenCV.Net.FileStorage.GetRootFileNode*"></a>
+  <h4 id="OpenCV_Net_FileStorage_GetRootFileNode_System_Int32_" data-uid="OpenCV.Net.FileStorage.GetRootFileNode(System.Int32)">GetRootFileNode(Int32)</h4>
+  <div class="markdown level1 summary"><p>Retrieves one of the top-level nodes of the file storage.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FileNode GetRootFileNode(int streamIndex = 0)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">streamIndex</span></td>
+        <td><p>Zero-based index of the stream. In most cases, there is only one stream in the file.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OpenCV.Net.FileNode.html">FileNode</a></td>
+        <td><p>One of the top-level file nodes. The top-level nodes do not have a name, they correspond to the
+streams that are stored one after another in the file storage. If the index is out of range, the
+function returns <strong>null</strong>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_FileStorage_Read__1_OpenCV_Net_FileNode_.md&amp;value=---%0Auid%3A%20OpenCV.Net.FileStorage.Read%60%601(OpenCV.Net.FileNode)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/FileStorage.cs/#L283">View Source</a>
+  </span>
+  <a id="OpenCV_Net_FileStorage_Read_" data-uid="OpenCV.Net.FileStorage.Read*"></a>
+  <h4 id="OpenCV_Net_FileStorage_Read__1_OpenCV_Net_FileNode_" data-uid="OpenCV.Net.FileStorage.Read``1(OpenCV.Net.FileNode)">Read&lt;TElement&gt;(FileNode)</h4>
+  <div class="markdown level1 summary"><p>Decodes an object and returns a reference to it.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TElement Read&lt;TElement&gt;(FileNode node)
+    where TElement : CVHandle</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OpenCV.Net.FileNode.html">FileNode</a></td>
+        <td><span class="parametername">node</span></td>
+        <td><p>The root object node.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TElement</span></td>
+        <td><p>The reference to the decoded object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TElement</span></td>
+        <td><p>The type of the object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_FileStorage_Read__1_OpenCV_Net_FileNode_System_String_.md&amp;value=---%0Auid%3A%20OpenCV.Net.FileStorage.Read%60%601(OpenCV.Net.FileNode%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/FileStorage.cs/#L304">View Source</a>
+  </span>
+  <a id="OpenCV_Net_FileStorage_Read_" data-uid="OpenCV.Net.FileStorage.Read*"></a>
+  <h4 id="OpenCV_Net_FileStorage_Read__1_OpenCV_Net_FileNode_System_String_" data-uid="OpenCV.Net.FileStorage.Read``1(OpenCV.Net.FileNode,System.String)">Read&lt;TElement&gt;(FileNode, String)</h4>
+  <div class="markdown level1 summary"><p>Finds an object by name and decodes it.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TElement Read&lt;TElement&gt;(FileNode map, string name)
+    where TElement : CVHandle</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OpenCV.Net.FileNode.html">FileNode</a></td>
+        <td><span class="parametername">map</span></td>
+        <td><p>The parent map. If it is <strong>null</strong>, the function searches a top-level node.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The node name.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TElement</span></td>
+        <td><p>The reference to the decoded object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TElement</span></td>
+        <td><p>The type of the object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_FileStorage_ReadInt_OpenCV_Net_FileNode_System_Int32_.md&amp;value=---%0Auid%3A%20OpenCV.Net.FileStorage.ReadInt(OpenCV.Net.FileNode%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/FileStorage.cs/#L211">View Source</a>
+  </span>
+  <a id="OpenCV_Net_FileStorage_ReadInt_" data-uid="OpenCV.Net.FileStorage.ReadInt*"></a>
+  <h4 id="OpenCV_Net_FileStorage_ReadInt_OpenCV_Net_FileNode_System_Int32_" data-uid="OpenCV.Net.FileStorage.ReadInt(OpenCV.Net.FileNode,System.Int32)">ReadInt(FileNode, Int32)</h4>
+  <div class="markdown level1 summary"><p>Retrieves an integer value from a file node.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ReadInt(FileNode node, int defaultValue = 0)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OpenCV.Net.FileNode.html">FileNode</a></td>
+        <td><span class="parametername">node</span></td>
+        <td><p>The file node.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">defaultValue</span></td>
+        <td><p>The value that is returned if <code data-dev-comment-type="paramref" class="paramref">node</code> is <strong>null</strong>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><p>An integer that is represented by the file node.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_FileStorage_ReadInt_OpenCV_Net_FileNode_System_String_System_Int32_.md&amp;value=---%0Auid%3A%20OpenCV.Net.FileStorage.ReadInt(OpenCV.Net.FileNode%2CSystem.String%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/FileStorage.cs/#L224">View Source</a>
+  </span>
+  <a id="OpenCV_Net_FileStorage_ReadInt_" data-uid="OpenCV.Net.FileStorage.ReadInt*"></a>
+  <h4 id="OpenCV_Net_FileStorage_ReadInt_OpenCV_Net_FileNode_System_String_System_Int32_" data-uid="OpenCV.Net.FileStorage.ReadInt(OpenCV.Net.FileNode,System.String,System.Int32)">ReadInt(FileNode, String, Int32)</h4>
+  <div class="markdown level1 summary"><p>Finds a file node and returns its integer value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ReadInt(FileNode map, string name, int defaultValue = 0)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OpenCV.Net.FileNode.html">FileNode</a></td>
+        <td><span class="parametername">map</span></td>
+        <td><p>The parent map. If it is <strong>null</strong>, the function searches a top-level node.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The node name.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">defaultValue</span></td>
+        <td><p>The value that is returned if the file node is not found.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><p>An integer that is represented by the file node.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_FileStorage_ReadRawData__1_OpenCV_Net_FileNode___0___System_String_.md&amp;value=---%0Auid%3A%20OpenCV.Net.FileStorage.ReadRawData%60%601(OpenCV.Net.FileNode%2C%60%600%5B%5D%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/FileStorage.cs/#L316">View Source</a>
+  </span>
+  <a id="OpenCV_Net_FileStorage_ReadRawData_" data-uid="OpenCV.Net.FileStorage.ReadRawData*"></a>
+  <h4 id="OpenCV_Net_FileStorage_ReadRawData__1_OpenCV_Net_FileNode___0___System_String_" data-uid="OpenCV.Net.FileStorage.ReadRawData``1(OpenCV.Net.FileNode,``0[],System.String)">ReadRawData&lt;TElement&gt;(FileNode, TElement[], String)</h4>
+  <div class="markdown level1 summary"><p>Reads multiple numbers.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ReadRawData&lt;TElement&gt;(FileNode src, TElement[] dst, string format)
+    where TElement : struct</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OpenCV.Net.FileNode.html">FileNode</a></td>
+        <td><span class="parametername">src</span></td>
+        <td><p>The file node (a sequence) to read numbers from.</p>
+</td>
+      </tr>
+      <tr>
+        <td>TElement[]</td>
+        <td><span class="parametername">dst</span></td>
+        <td><p>The destination array.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">format</span></td>
+        <td><p>Specification of each array element.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TElement</span></td>
+        <td><p>The type of the numbers to read.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_FileStorage_ReadReal_OpenCV_Net_FileNode_System_Double_.md&amp;value=---%0Auid%3A%20OpenCV.Net.FileStorage.ReadReal(OpenCV.Net.FileNode%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/FileStorage.cs/#L235">View Source</a>
+  </span>
+  <a id="OpenCV_Net_FileStorage_ReadReal_" data-uid="OpenCV.Net.FileStorage.ReadReal*"></a>
+  <h4 id="OpenCV_Net_FileStorage_ReadReal_OpenCV_Net_FileNode_System_Double_" data-uid="OpenCV.Net.FileStorage.ReadReal(OpenCV.Net.FileNode,System.Double)">ReadReal(FileNode, Double)</h4>
+  <div class="markdown level1 summary"><p>Retrieves a floating-point value from a file node.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double ReadReal(FileNode node, double defaultValue = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OpenCV.Net.FileNode.html">FileNode</a></td>
+        <td><span class="parametername">node</span></td>
+        <td><p>The file node.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Double</a></td>
+        <td><span class="parametername">defaultValue</span></td>
+        <td><p>The value that is returned if <code data-dev-comment-type="paramref" class="paramref">node</code> is <strong>null</strong>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Double</a></td>
+        <td><p>A floating-point value that is represented by the file node.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_FileStorage_ReadReal_OpenCV_Net_FileNode_System_String_System_Double_.md&amp;value=---%0Auid%3A%20OpenCV.Net.FileStorage.ReadReal(OpenCV.Net.FileNode%2CSystem.String%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/FileStorage.cs/#L248">View Source</a>
+  </span>
+  <a id="OpenCV_Net_FileStorage_ReadReal_" data-uid="OpenCV.Net.FileStorage.ReadReal*"></a>
+  <h4 id="OpenCV_Net_FileStorage_ReadReal_OpenCV_Net_FileNode_System_String_System_Double_" data-uid="OpenCV.Net.FileStorage.ReadReal(OpenCV.Net.FileNode,System.String,System.Double)">ReadReal(FileNode, String, Double)</h4>
+  <div class="markdown level1 summary"><p>Finds a file node and returns its floating-point value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double ReadReal(FileNode map, string name, double defaultValue = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OpenCV.Net.FileNode.html">FileNode</a></td>
+        <td><span class="parametername">map</span></td>
+        <td><p>The parent map. If it is <strong>null</strong>, the function searches a top-level node.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The node name.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Double</a></td>
+        <td><span class="parametername">defaultValue</span></td>
+        <td><p>The value that is returned if the file node is not found.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Double</a></td>
+        <td><p>A floating-point value that is represented by the file node.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_FileStorage_ReadString_OpenCV_Net_FileNode_System_String_.md&amp;value=---%0Auid%3A%20OpenCV.Net.FileStorage.ReadString(OpenCV.Net.FileNode%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/FileStorage.cs/#L259">View Source</a>
+  </span>
+  <a id="OpenCV_Net_FileStorage_ReadString_" data-uid="OpenCV.Net.FileStorage.ReadString*"></a>
+  <h4 id="OpenCV_Net_FileStorage_ReadString_OpenCV_Net_FileNode_System_String_" data-uid="OpenCV.Net.FileStorage.ReadString(OpenCV.Net.FileNode,System.String)">ReadString(FileNode, String)</h4>
+  <div class="markdown level1 summary"><p>Retrieves a text string from a file node.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ReadString(FileNode node, string defaultValue = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OpenCV.Net.FileNode.html">FileNode</a></td>
+        <td><span class="parametername">node</span></td>
+        <td><p>The file node.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">defaultValue</span></td>
+        <td><p>The value that is returned if <code data-dev-comment-type="paramref" class="paramref">node</code> is <strong>null</strong>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><p>A text string that is represented by the file node.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_FileStorage_ReadString_OpenCV_Net_FileNode_System_String_System_String_.md&amp;value=---%0Auid%3A%20OpenCV.Net.FileStorage.ReadString(OpenCV.Net.FileNode%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/FileStorage.cs/#L272">View Source</a>
+  </span>
+  <a id="OpenCV_Net_FileStorage_ReadString_" data-uid="OpenCV.Net.FileStorage.ReadString*"></a>
+  <h4 id="OpenCV_Net_FileStorage_ReadString_OpenCV_Net_FileNode_System_String_System_String_" data-uid="OpenCV.Net.FileStorage.ReadString(OpenCV.Net.FileNode,System.String,System.String)">ReadString(FileNode, String, String)</h4>
+  <div class="markdown level1 summary"><p>Finds a file node and returns its text string value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ReadString(FileNode map, string name, string defaultValue = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="OpenCV.Net.FileNode.html">FileNode</a></td>
+        <td><span class="parametername">map</span></td>
+        <td><p>The parent map. If it is <strong>null</strong>, the function searches a top-level node.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The node name.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">defaultValue</span></td>
+        <td><p>The value that is returned if the file node is not found.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><p>A text string that is represented by the file node.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_FileStorage_ReleaseHandle.md&amp;value=---%0Auid%3A%20OpenCV.Net.FileStorage.ReleaseHandle%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/FileStorage.cs/#L361">View Source</a>
+  </span>
+  <a id="OpenCV_Net_FileStorage_ReleaseHandle_" data-uid="OpenCV.Net.FileStorage.ReleaseHandle*"></a>
+  <h4 id="OpenCV_Net_FileStorage_ReleaseHandle" data-uid="OpenCV.Net.FileStorage.ReleaseHandle">ReleaseHandle()</h4>
+  <div class="markdown level1 summary"><p>Executes the code required to free the native <a class="xref" href="OpenCV.Net.FileStorage.html">FileStorage</a> handle.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override bool ReleaseHandle()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><p><strong>true</strong> if the handle is released successfully; otherwise, in the event of a
+catastrophic failure, <strong>false</strong>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_FileStorage_StartNextStream.md&amp;value=---%0Auid%3A%20OpenCV.Net.FileStorage.StartNextStream%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/FileStorage.cs/#L349">View Source</a>
+  </span>
+  <a id="OpenCV_Net_FileStorage_StartNextStream_" data-uid="OpenCV.Net.FileStorage.StartNextStream*"></a>
+  <h4 id="OpenCV_Net_FileStorage_StartNextStream" data-uid="OpenCV.Net.FileStorage.StartNextStream">StartNextStream()</h4>
+  <div class="markdown level1 summary"><p>Starts the next stream in file storage. Both YAML and XML support multiple streams.
+This is useful for concatenating files or for resuming the writing process.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void StartNextStream()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_FileStorage_StartWriteStruct_System_String_OpenCV_Net_StructStorageFlags_System_String_OpenCV_Net_AttrList_.md&amp;value=---%0Auid%3A%20OpenCV.Net.FileStorage.StartWriteStruct(System.String%2COpenCV.Net.StructStorageFlags%2CSystem.String%2COpenCV.Net.AttrList)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/FileStorage.cs/#L50">View Source</a>
+  </span>
+  <a id="OpenCV_Net_FileStorage_StartWriteStruct_" data-uid="OpenCV.Net.FileStorage.StartWriteStruct*"></a>
+  <h4 id="OpenCV_Net_FileStorage_StartWriteStruct_System_String_OpenCV_Net_StructStorageFlags_System_String_OpenCV_Net_AttrList_" data-uid="OpenCV.Net.FileStorage.StartWriteStruct(System.String,OpenCV.Net.StructStorageFlags,System.String,OpenCV.Net.AttrList)">StartWriteStruct(String, StructStorageFlags, String, AttrList)</h4>
+  <div class="markdown level1 summary"><p>Starts writing a new structure.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void StartWriteStruct(string name, StructStorageFlags structFlags, string typeName = null, AttrList attributes = default(AttrList))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>Name of the written structure. The structure can be accessed by this name when the storage is read.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="OpenCV.Net.StructStorageFlags.html">StructStorageFlags</a></td>
+        <td><span class="parametername">structFlags</span></td>
+        <td><p>Operation flags associated with the written structure.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">typeName</span></td>
+        <td><p>Optional parameter, the object type name. In case of XML it is written as a type_id attribute of the
+structure opening tag. In the case of YAML it is written after a colon following the structure name.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="OpenCV.Net.AttrList.html">AttrList</a></td>
+        <td><span class="parametername">attributes</span></td>
+        <td><p>Not used in the current implementation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_FileStorage_Write_System_String_OpenCV_Net_CVHandle_OpenCV_Net_AttrList_.md&amp;value=---%0Auid%3A%20OpenCV.Net.FileStorage.Write(System.String%2COpenCV.Net.CVHandle%2COpenCV.Net.AttrList)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/FileStorage.cs/#L125">View Source</a>
+  </span>
+  <a id="OpenCV_Net_FileStorage_Write_" data-uid="OpenCV.Net.FileStorage.Write*"></a>
+  <h4 id="OpenCV_Net_FileStorage_Write_System_String_OpenCV_Net_CVHandle_OpenCV_Net_AttrList_" data-uid="OpenCV.Net.FileStorage.Write(System.String,OpenCV.Net.CVHandle,OpenCV.Net.AttrList)">Write(String, CVHandle, AttrList)</h4>
+  <div class="markdown level1 summary"><p>Writes an object to file storage.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Write(string name, CVHandle handle, AttrList attributes = default(AttrList))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>Name of the written object. Should be <strong>null</strong> if and only if the parent structure is a sequence.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="OpenCV.Net.CVHandle.html">CVHandle</a></td>
+        <td><span class="parametername">handle</span></td>
+        <td><p>Handle to the written object.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="OpenCV.Net.AttrList.html">AttrList</a></td>
+        <td><span class="parametername">attributes</span></td>
+        <td><p>The attributes of the object. They are specific for each particular type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_FileStorage_WriteComment_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20OpenCV.Net.FileStorage.WriteComment(System.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/FileStorage.cs/#L112">View Source</a>
+  </span>
+  <a id="OpenCV_Net_FileStorage_WriteComment_" data-uid="OpenCV.Net.FileStorage.WriteComment*"></a>
+  <h4 id="OpenCV_Net_FileStorage_WriteComment_System_String_System_Boolean_" data-uid="OpenCV.Net.FileStorage.WriteComment(System.String,System.Boolean)">WriteComment(String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Writes a comment.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void WriteComment(string comment, bool eolComment)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">comment</span></td>
+        <td><p>The written comment, single-line or multi-line.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><span class="parametername">eolComment</span></td>
+        <td><p>If <strong>true</strong>, the method tries to put the comment at the end of current line; otherwise, if the
+comment is multi-line, or if it does not fit at the end of the current line, the comment starts a new line.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_FileStorage_WriteFileNode_System_String_OpenCV_Net_FileNode_System_Boolean_.md&amp;value=---%0Auid%3A%20OpenCV.Net.FileStorage.WriteFileNode(System.String%2COpenCV.Net.FileNode%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/FileStorage.cs/#L340">View Source</a>
+  </span>
+  <a id="OpenCV_Net_FileStorage_WriteFileNode_" data-uid="OpenCV.Net.FileStorage.WriteFileNode*"></a>
+  <h4 id="OpenCV_Net_FileStorage_WriteFileNode_System_String_OpenCV_Net_FileNode_System_Boolean_" data-uid="OpenCV.Net.FileStorage.WriteFileNode(System.String,OpenCV.Net.FileNode,System.Boolean)">WriteFileNode(String, FileNode, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Writes a file node from another file storage.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void WriteFileNode(string newNodeName, FileNode node, bool embed)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">newNodeName</span></td>
+        <td><p>New name of the file node in the destination file storage. To keep the existing name, use the
+<a class="xref" href="OpenCV.Net.FileNode.html#OpenCV_Net_FileNode_Name">Name</a> property.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="OpenCV.Net.FileNode.html">FileNode</a></td>
+        <td><span class="parametername">node</span></td>
+        <td><p>The written node.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><span class="parametername">embed</span></td>
+        <td><p>If the written node is a collection and this parameter is <strong>true</strong>, no extra level of hierarchy
+is created. Instead, all the elements of node are written into the currently written structure.
+Of course, map elements can only be embedded into another map, and sequence elements can only be
+embedded into another sequence.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_FileStorage_WriteInt_System_String_System_Int32_.md&amp;value=---%0Auid%3A%20OpenCV.Net.FileStorage.WriteInt(System.String%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/FileStorage.cs/#L70">View Source</a>
+  </span>
+  <a id="OpenCV_Net_FileStorage_WriteInt_" data-uid="OpenCV.Net.FileStorage.WriteInt*"></a>
+  <h4 id="OpenCV_Net_FileStorage_WriteInt_System_String_System_Int32_" data-uid="OpenCV.Net.FileStorage.WriteInt(System.String,System.Int32)">WriteInt(String, Int32)</h4>
+  <div class="markdown level1 summary"><p>Writes an integer value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void WriteInt(string name, int value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>Name of the written value. Should be <strong>null</strong> if and only if the parent structure is a sequence.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The written value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_FileStorage_WriteRawData__1___0___System_String_.md&amp;value=---%0Auid%3A%20OpenCV.Net.FileStorage.WriteRawData%60%601(%60%600%5B%5D%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/FileStorage.cs/#L136">View Source</a>
+  </span>
+  <a id="OpenCV_Net_FileStorage_WriteRawData_" data-uid="OpenCV.Net.FileStorage.WriteRawData*"></a>
+  <h4 id="OpenCV_Net_FileStorage_WriteRawData__1___0___System_String_" data-uid="OpenCV.Net.FileStorage.WriteRawData``1(``0[],System.String)">WriteRawData&lt;TElement&gt;(TElement[], String)</h4>
+  <div class="markdown level1 summary"><p>Writes multiple numbers.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void WriteRawData&lt;TElement&gt;(TElement[] source, string format)
+    where TElement : struct</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>TElement[]</td>
+        <td><span class="parametername">source</span></td>
+        <td><p>The source array.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">format</span></td>
+        <td><p>Specification of each array element.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TElement</span></td>
+        <td><p>The type of the numbers to write.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_FileStorage_WriteReal_System_String_System_Double_.md&amp;value=---%0Auid%3A%20OpenCV.Net.FileStorage.WriteReal(System.String%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/FileStorage.cs/#L82">View Source</a>
+  </span>
+  <a id="OpenCV_Net_FileStorage_WriteReal_" data-uid="OpenCV.Net.FileStorage.WriteReal*"></a>
+  <h4 id="OpenCV_Net_FileStorage_WriteReal_System_String_System_Double_" data-uid="OpenCV.Net.FileStorage.WriteReal(System.String,System.Double)">WriteReal(String, Double)</h4>
+  <div class="markdown level1 summary"><p>Writes a floating-point value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void WriteReal(string name, double value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>Name of the written value. Should be <strong>null</strong> if and only if the parent structure is a sequence.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">Double</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The written value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_FileStorage_WriteString_System_String_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20OpenCV.Net.FileStorage.WriteString(System.String%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/FileStorage.cs/#L99">View Source</a>
+  </span>
+  <a id="OpenCV_Net_FileStorage_WriteString_" data-uid="OpenCV.Net.FileStorage.WriteString*"></a>
+  <h4 id="OpenCV_Net_FileStorage_WriteString_System_String_System_String_System_Boolean_" data-uid="OpenCV.Net.FileStorage.WriteString(System.String,System.String,System.Boolean)">WriteString(String, String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Writes a text string.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void WriteString(string name, string value, bool quote = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>Name of the written string. Should be <strong>null</strong> if and only if the parent structure is a sequence.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The written string.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><span class="parametername">quote</span></td>
+        <td><p>If <strong>true</strong>, the written string is put in quotes, regardless of whether they are required.
+Otherwise, if the flag is zero, quotes are used only when they are required (e.g. when the string
+starts with a digit or contains spaces).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/horizongir/opencv.net/new/main/apiSpec/new?filename=OpenCV_Net_FileStorage.md&amp;value=---%0Auid%3A%20OpenCV.Net.FileStorage%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/horizongir/opencv.net/blob/main/src/OpenCV.Net/FileStorage.cs/#L11" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

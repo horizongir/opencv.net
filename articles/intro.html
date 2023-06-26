@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Getting Started </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Getting Started ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="getting-started">Getting Started</h1>
+
+<h2 id="1-what-is-opencvnet">1. What is OpenCV.NET</h2>
+<p>OpenCV.NET is a .NET interface for the popular <a href="https://opencv.org/">OpenCV</a> computer vision and image processing library. These bindings were developed from scratch over several years and include many features that have been missing from other attempts, specifically:</p>
+<ul>
+<li>Cross-platform compatibility with a .NET standard API (only P/Invoke is used).</li>
+<li>Very close to 100% support of the C API (including undocumented functions).</li>
+<li>Full documentation/intellisense for all supported methods, classes and enum members (arduously mined from many different sources).</li>
+<li>Support for exceptions.</li>
+<li>Garbage-collector friendly:
+<ul>
+<li>GC is aware of the actual memory used by matrices and images.</li>
+<li>Pointers are guaranteed to survive function calls even if concurrent garbage collection happens.</li>
+</ul>
+</li>
+<li>Object model following C++ API as much as possible (towards future increased support of C++ API).</li>
+<li>Permissive MIT license.</li>
+</ul>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>The bindings currently target OpenCV 2.4.8. OpenCV has since moved towards a pure C++ API and has subsequently deprecated its C interface, which means we cannot easily access new features. We are currently exploring different alternatives to generate a comprehensive high-quality wrapper for newer versions of OpenCV, but for now OpenCV.Net will keep targeting the 2.4.x series.</p>
+</div>
+<h2 id="2-installing-opencvnet">2. Installing OpenCV.NET</h2>
+<p>The easiest way to start using OpenCV.NET in your projects is to install the <a href="https://www.nuget.org/packages/OpenCV.Net">NuGet package</a> from one of the following sources:</p>
+<ul>
+<li><strong>.NET Command-line</strong>: <code>dotnet add package OpenCV.NET</code>.</li>
+<li><strong>Powershell</strong>: From the NuGet Package Manager Console, type <code>Install-Package OpenCV.Net</code>.</li>
+<li><strong>PackageReference</strong>: Add the line <code>&lt;PackageReference Include=&quot;OpenCV.Net&quot; Version=&quot;3.3.1&quot; /&gt;</code> to your <code>.csproj</code> file.</li>
+</ul>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p><strong>Prerequisites</strong> The <a href="https://www.microsoft.com/en-us/download/details.aspx?id=30679">Visual C++ Redistributable for Visual Studio 2012</a> may be required on Windows systems to correcty load native dependencies.</p>
+</div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/horizongir/opencv.net/blob/main/docs/articles/intro.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
